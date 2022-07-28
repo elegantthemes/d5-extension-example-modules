@@ -1493,15 +1493,33 @@ __metadata:
   languageName: node
   linkType: soft
 
+"@types/divi__field-library@link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__field-library::locator=d5-module-extension-example%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "@types/divi__field-library@link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__field-library::locator=d5-module-extension-example%40workspace%3A."
+  languageName: node
+  linkType: soft
+
 "@types/divi__modal-library@link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal-library::locator=d5-module-extension-example%40workspace%3A.":
   version: 0.0.0-use.local
   resolution: "@types/divi__modal-library@link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal-library::locator=d5-module-extension-example%40workspace%3A."
   languageName: node
   linkType: soft
 
+"@types/divi__modal@link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal::locator=d5-module-extension-example%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "@types/divi__modal@link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal::locator=d5-module-extension-example%40workspace%3A."
+  languageName: node
+  linkType: soft
+
 "@types/divi__module-library@link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module-library::locator=d5-module-extension-example%40workspace%3A.":
   version: 0.0.0-use.local
   resolution: "@types/divi__module-library@link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module-library::locator=d5-module-extension-example%40workspace%3A."
+  languageName: node
+  linkType: soft
+
+"@types/divi__module-utils@link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module-utils::locator=d5-module-extension-example%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: "@types/divi__module-utils@link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module-utils::locator=d5-module-extension-example%40workspace%3A."
   languageName: node
   linkType: soft
 
@@ -2259,6 +2277,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"classnames@npm:^2.3.1":
+  version: 2.3.1
+  resolution: "classnames@npm:2.3.1"
+  checksum: 14db8889d56c267a591f08b0834989fe542d47fac659af5a539e110cc4266694e8de86e4e3bbd271157dbd831361310a8293e0167141e80b0f03a0f175c80960
+  languageName: node
+  linkType: hard
+
 "clean-stack@npm:^2.0.0":
   version: 2.2.0
   resolution: "clean-stack@npm:2.2.0"
@@ -2438,9 +2463,12 @@ __metadata:
     "@types/divi__edit-post": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__edit-post"
     "@types/divi__error-boundary": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__error-boundary"
     "@types/divi__events": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__events"
+    "@types/divi__field-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__field-library"
+    "@types/divi__modal": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal"
     "@types/divi__modal-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal-library"
     "@types/divi__module": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module"
     "@types/divi__module-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module-library"
+    "@types/divi__module-utils": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module-utils"
     "@types/jquery": ^3.5.14
     "@types/lodash": ^4.14.182
     "@types/react": 17.0.44
@@ -2449,6 +2477,7 @@ __metadata:
     "@types/wordpress__i18n": ^3.11.0
     "@wordpress/i18n": ^4.13.0
     babel-loader: ^8.2.5
+    classnames: ^2.3.1
     css-loader: ^6.7.1
     mini-css-extract-plugin: ^2.6.1
     react: ^18.2.0

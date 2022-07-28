@@ -20,9 +20,12 @@
     "@types/divi__edit-post": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__edit-post",
     "@types/divi__error-boundary": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__error-boundary",
     "@types/divi__events": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__events",
+    "@types/divi__field-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__field-library",
+    "@types/divi__modal": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal",
     "@types/divi__modal-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal-library",
     "@types/divi__module": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module",
     "@types/divi__module-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module-library",
+    "@types/divi__module-utils": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module-utils",
     "@types/jquery": "^3.5.14",
     "@types/lodash": "^4.14.182",
     "@types/react": "17.0.44",
@@ -42,5 +45,8 @@
     "typescript": "^4.7.4",
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0"
+  },
+  "dependencies": {
+    "classnames": "^2.3.1"
   }
 }

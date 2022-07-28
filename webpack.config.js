@@ -28,6 +28,9 @@ module.exports = {
     // Divi dependencies.
     '@divi/data': ['divi', 'data'],
     '@divi/module': ['divi', 'module'],
+    '@divi/module-utils': ['divi', 'moduleUtils'],
+    '@divi/modal': ['divi', 'modal'],
+    '@divi/field-library': ['divi', 'fieldLibrary'],
   },
 
   // This option determine how different types of module within the project will be treated.
@@ -126,8 +129,10 @@ module.exports = {
       }
     ]
   },
-
   optimization: {
+    // Split CSS code for visual builder and Front-end.
+    // style.scss file will use for front-end.
+    // module.scss or any other *.scss file without style.scss will be used for Front-end.
     splitChunks: {
       cacheGroups: {
         vb: {
