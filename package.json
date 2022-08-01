@@ -8,7 +8,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack -w --config webpack.config.js --progress",
     "build": "NODE_ENV=production webpack --config webpack.config.js --progress",
-    "test": "wp-scripts test-unit-js --config jest.config.js"
+    "test": "wp-scripts test-unit-js --config ./test-config/jest.config.js"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
@@ -51,6 +51,7 @@
     "enzyme-to-json": "^3.6.2",
     "jest": "^28.1.3",
     "mini-css-extract-plugin": "^2.6.1",
+    "moment": "^2.29.4",
     "react": "^17.0.2",
     "sass": "^1.53.0",
     "sass-loader": "^13.0.2",

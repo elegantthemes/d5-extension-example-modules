@@ -2,11 +2,11 @@ const glob                  = require('glob').sync;
 const { resolve, basename } = require('path');
 
 const { WPDIR } = process.env;
-const wpDir     = WPDIR ? resolve(WPDIR) : resolve(__dirname, '../../..');
+const wpDir     = WPDIR ? resolve(WPDIR) : resolve(__dirname, '../../../..');
 const wpDist    = `${wpDir}/wp-includes/js/dist`;
 
 const { DIVIDIR } = process.env;
-const diviDir     = DIVIDIR ? resolve(DIVIDIR) : resolve(__dirname, '../../themes/Divi');
+const diviDir     = DIVIDIR ? resolve(DIVIDIR) : resolve(__dirname, '../../../themes/Divi');
 const diviDist    = `${diviDir}/includes/builder/visual-builder/build`;
 
 const wpPackages = glob(`${wpDist}/*.js`)
@@ -17,18 +17,21 @@ const diviPackages = glob(`${diviDist}/*.js`)
   .map(name => basename(name, '.js'));
 
 module.exports = {
-  rootDir:          './',
+  rootDir:          '../',
   moduleNameMapper: {
+    '^react$':                                   `${wpDist}/vendor/react.js`,
+    '^react-dom$':                               `${wpDist}/vendor/react-dom.js`,
     [`@wordpress\\/(${wpPackages.join('|')})$`]: `${wpDist}/$1.js`,
     [`@divi\\/(${diviPackages.join('|')})$`]:    `${diviDist}/$1.js`,
     '^lodash$':                                  `${wpDist}/vendor/lodash.js`,
-    '^react$':                                   `${wpDist}/vendor/react.js`,
-    '^react-dom$':                               `${wpDist}/vendor/react-dom.js`,
   },
+  setupFiles: [
+    '<rootDir>/test-config/global-mocks.js',
+  ],
   preset:     '@wordpress/jest-preset-default',
   snapshotSerializers: ['enzyme-to-json/serializer', '@emotion/jest'],
   transform: {
-    '^.+\\.[jt]sx?$': '<rootDir>/babel-transformer.js',
+    '^.+\\.[jt]sx?$': '<rootDir>/test-config/babel-transformer.js',
   },
   setupFilesAfterEnv: [
     `${wpDist}/vendor/wp-polyfill`,
@@ -49,6 +52,7 @@ module.exports = {
     // `${wpDist}/vendor/moment`,
 
     `${wpDist}/escape-html`,
+    '<rootDir>/test-config/override-react-use-layout-effect.js',
     `${wpDist}/element`,
     `${wpDist}/is-shallow-equal`,
     `${wpDist}/priority-queue`,
@@ -81,5 +85,26 @@ module.exports = {
     `${wpDist}/block-editor`,
 
     // `${wpDist}/dom-ready`,
+    
+    
+    `${diviDist}/data`,
+    `${diviDist}/module-utils`,
+    `${diviDist}/style-library`,
+    `${diviDist}/module`,
+    `${diviDist}/middleware`,
+    `${diviDist}/icon-library`,
+    `${diviDist}/settings`,
+    `${diviDist}/module-library`,
+    `${diviDist}/conversion`,
+  ],
+  testPathIgnorePatterns: [
+    '/.git/',
+    '/node_modules/',
+    '<rootDir>/wordpress/',
+    '<rootDir>/.*/scripts/',
+
+    '/__test-cases__',
+    '/__mock-data__',
+    '/test-config',
   ],
 }

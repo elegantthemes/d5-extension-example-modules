@@ -5,6 +5,8 @@ const babelJest = require('babel-jest');
 
 
 const isWPGlobal           = /\/wp-includes\/js\/dist\/[^/]+\.js$/;
+const isDiviGlobal           = /\/wp-content\/themes\/Divi\/includes\/builder\/visual-builder\/build\/[^/]+\.js$/;
+const diviModuleName = /\(window\.divi\s*=\s*window\.divi\s\|\|\s*\{\}\)\.([a-zA-Z]*)\s*=\s*__webpack_exports__;/;
 const babelJestTransformer = babelJest.default.createTransformer({
   plugins: [
     '@babel/plugin-proposal-class-properties',
@@ -16,6 +18,7 @@ const babelJestTransformer = babelJest.default.createTransformer({
     '@babel/preset-typescript',
   ],
 });
+
 
 module.exports = {
   ...babelJestTransformer,
@@ -32,6 +35,24 @@ module.exports = {
           });
         } else {
           module.exports = global.wp.${name};
+        }`;
+        return `${source}${exporter}`;
+      }
+      return source;
+    }
+
+    if (file.indexOf('/wp-content/themes/Divi/includes/builder/visual-builder/build/') > 0) {
+      if (file.match(isDiviGlobal)) {
+        const name = source.match(diviModuleName)[1];
+        source = source.split('(window.divi = window.divi || {}).').join('(global.divi = global.divi || {}).');
+
+        const exporter = `;
+        if ('object' === typeof global.divi.${name}) {
+          Object.keys(global.divi.${name}).forEach((key) => {
+            module.exports[key] = global.divi.${name}[key];
+          });
+        } else {
+          module.exports = global.divi.${name};
         }`;
         return `${source}${exporter}`;
       }

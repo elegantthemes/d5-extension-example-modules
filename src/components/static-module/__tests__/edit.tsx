@@ -2,9 +2,6 @@ import { createElement } from 'react';
 import { shallow } from 'enzyme';
 import {
   forEach,
-  get,
-  has,
-  pickBy,
 } from 'lodash';
 
 import { registerAppUiStore } from '@divi/app-ui';
