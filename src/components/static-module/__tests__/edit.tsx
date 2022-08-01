@@ -13,10 +13,13 @@ import { registerEditPostStore } from '@divi/edit-post';
 import { registerSerializedPostStore } from '@divi/serialized-post';
 import { StaticModuleEdit } from '../edit';
 import * as attrs from '../__mock-data__/attrs';
+import { dispatch } from '@divi/data';
+import { staticModule } from '..';
 
 
 beforeAll(() => {
   registerModuleLibraryStore();
+  dispatch('divi/module-library').addModule(staticModule);
 });
 
 beforeEach(() => {
