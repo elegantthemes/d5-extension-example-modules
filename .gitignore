@@ -11,3 +11,4 @@ yarn-error.log*
 # Build files
 scripts
 styles
+.env

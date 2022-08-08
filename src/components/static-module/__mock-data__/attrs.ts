@@ -112,6 +112,9 @@ export const contentStyle: StaticModuleAttrs = {
           value: {
             letterSpacing: '1px',
             textAlign: 'center',
+            style: [
+              'italic',
+            ],
           },
         },
       },

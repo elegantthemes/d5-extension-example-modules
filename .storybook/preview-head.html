@@ -1,0 +1,1835 @@
+<!-- Gutenberg packages in D5i is loaded via external (D5i enqueue WordPress' packages then importing it -->
+<!-- as package using webpack externals). What happened here is basically the same which is setting up -->
+<!-- alias for externals. The differences: the scripts can't be enqueue automatically so the printed -->
+<!-- HTML is copy-pasted into `.storybook/preview-head.html` (here) manually. -->
+
+<!-- IMPORTANT: Storybook spin up node server on `http://localhost:6006/` address (default config) -->
+<!-- thus the relative trick that is used on unit-test can not be reused. To fix it, Storybook loads -->
+<!-- static script from QA site master branch (because it tends to be updated to follow master branch -->
+<!-- latest status). This works like wonder locally BUT IF STORYBOOK IS BUNDLED AND ABOUT TO BE RELEASED -->
+<!-- PUBLICLY, THE `https://master.qa.etdevs.com/` HAVE TO BE REPLACED OTHERWISE QA SITE ADDRESS WILL BE EXPOSED-->
+
+<!-- Divi Theme specific stylesheets. -->
+<link rel='stylesheet' id='divi-style-css' href="https://master.qa.etdevs.com/wp-content/themes/Divi/style-static.min.css" type='text/css' media='all' />
+<link rel="stylesheet" href="fonts/fonts.css" >
+
+<!-- WordPress dashboard style, enqueued by admin bar, used by checkboxes field component -->
+<link id="dashicons-css" href="https://master.qa.etdevs.com/wp-includes/css/dashicons.css?ver=5.7.4" type="text/css" rel="stylesheet" media="all">
+
+<link rel='stylesheet' id='wp-color-picker-css'  href='https://master.qa.etdevs.com/wp-admin/css/color-picker.css?ver=5.9.3' type='text/css' media='all' />
+
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/jquery.js?ver=3.5.1'
+  id='jquery-core-js'></script>
+
+<script type='text/javascript' id='utils-js-extra'>
+  /* <![CDATA[ */
+  var userSettings = { "url": "\/divi\/", "uid": "1", "time": "1625112125", "secure": "" };
+  /* ]]> */
+</script>
+
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/utils.js?ver=5.7.2'
+  id='utils-js'></script>
+
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/plupload/moxie.js?ver=1.3.5'
+  id='moxiejs-js'></script>
+
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/plupload/plupload.js?ver=2.1.9' id='plupload-js'></script>
+
+<script type="text/html" id="tmpl-media-frame">
+		<div class="media-frame-title" id="media-frame-title"></div>
+		<h2 class="media-frame-menu-heading">Actions</h2>
+		<button type="button" class="button button-link media-frame-menu-toggle" aria-expanded="false">
+			Menu			<span class="dashicons dashicons-arrow-down" aria-hidden="true"></span>
+		</button>
+		<div class="media-frame-menu"></div>
+		<div class="media-frame-tab-panel">
+			<div class="media-frame-router"></div>
+			<div class="media-frame-content"></div>
+		</div>
+		<h2 class="media-frame-actions-heading screen-reader-text">
+		Selected media actions		</h2>
+		<div class="media-frame-toolbar"></div>
+		<div class="media-frame-uploader"></div>
+	</script>
+
+<script type="text/html" id="tmpl-media-modal">
+		<div tabindex="0" class="media-modal wp-core-ui" role="dialog" aria-labelledby="media-frame-title">
+			<# if ( data.hasCloseButton ) { #>
+				<button type="button" class="media-modal-close"><span class="media-modal-icon"><span class="screen-reader-text">Close dialog</span></span></button>
+			<# } #>
+			<div class="media-modal-content" role="document"></div>
+		</div>
+		<div class="media-modal-backdrop"></div>
+	</script>
+
+<script type="text/html" id="tmpl-uploader-window">
+		<div class="uploader-window-content">
+			<div class="uploader-editor-title">Drop files to upload</div>
+		</div>
+	</script>
+
+<script type="text/html" id="tmpl-uploader-editor">
+		<div class="uploader-editor-content">
+			<div class="uploader-editor-title">Drop files to upload</div>
+		</div>
+	</script>
+
+<script type="text/html" id="tmpl-uploader-inline">
+		<# var messageClass = data.message ? 'has-upload-message' : 'no-upload-message'; #>
+		<# if ( data.canClose ) { #>
+		<button class="close dashicons dashicons-no"><span class="screen-reader-text">Close uploader</span></button>
+		<# } #>
+		<div class="uploader-inline-content {{ messageClass }}">
+		<# if ( data.message ) { #>
+			<h2 class="upload-message">{{ data.message }}</h2>
+		<# } #>
+					<div class="upload-ui">
+				<h2 class="upload-instructions drop-instructions">Drop files to upload</h2>
+				<p class="upload-instructions drop-instructions">or</p>
+				<button type="button" class="browser button button-hero" aria-labelledby="post-upload-info">Select Files</button>
+			</div>
+
+			<div class="upload-inline-status"></div>
+
+			<div class="post-upload-ui" id="post-upload-info">
+
+				<p class="max-upload-size">
+				Maximum upload file size: 8 MB.				</p>
+
+				<# if ( data.suggestedWidth && data.suggestedHeight ) { #>
+					<p class="suggested-dimensions">
+						Suggested image dimensions: {{data.suggestedWidth}} by {{data.suggestedHeight}} pixels.					</p>
+				<# } #>
+
+							</div>
+				</div>
+	</script>
+
+<script type="text/html" id="tmpl-media-library-view-switcher">
+		<a href="https://master.qa.etdevs.com/wp-admin/upload.php?mode=list" class="view-list">
+			<span class="screen-reader-text">List view</span>
+		</a>
+		<a href="https://master.qa.etdevs.com/wp-admin/upload.php?mode=grid" class="view-grid current" aria-current="page">
+			<span class="screen-reader-text">Grid view</span>
+		</a>
+	</script>
+
+<script type="text/html" id="tmpl-uploader-status">
+		<h2>Uploading</h2>
+		<button type="button" class="button-link upload-dismiss-errors"><span class="screen-reader-text">Dismiss Errors</span></button>
+
+		<div class="media-progress-bar"><div></div></div>
+		<div class="upload-details">
+			<span class="upload-count">
+				<span class="upload-index"></span> / <span class="upload-total"></span>
+			</span>
+			<span class="upload-detail-separator">&ndash;</span>
+			<span class="upload-filename"></span>
+		</div>
+		<div class="upload-errors"></div>
+	</script>
+
+<script type="text/html" id="tmpl-uploader-status-error">
+		<span class="upload-error-filename">{{{ data.filename }}}</span>
+		<span class="upload-error-message">{{ data.message }}</span>
+	</script>
+
+<script type="text/html" id="tmpl-edit-attachment-frame">
+		<div class="edit-media-header">
+			<button class="left dashicons"<# if ( ! data.hasPrevious ) { #> disabled<# } #>><span class="screen-reader-text">Edit previous media item</span></button>
+			<button class="right dashicons"<# if ( ! data.hasNext ) { #> disabled<# } #>><span class="screen-reader-text">Edit next media item</span></button>
+			<button type="button" class="media-modal-close"><span class="media-modal-icon"><span class="screen-reader-text">Close dialog</span></span></button>
+		</div>
+		<div class="media-frame-title"></div>
+		<div class="media-frame-content"></div>
+	</script>
+
+<script type="text/html" id="tmpl-attachment-details-two-column">
+		<div class="attachment-media-view {{ data.orientation }}">
+			<h2 class="screen-reader-text">Attachment Preview</h2>
+			<div class="thumbnail thumbnail-{{ data.type }}">
+				<# if ( data.uploading ) { #>
+					<div class="media-progress-bar"><div></div></div>
+				<# } else if ( data.sizes && data.sizes.large ) { #>
+					<img class="details-image" src="{{ data.sizes.large.url }}" draggable="false" alt="" />
+				<# } else if ( data.sizes && data.sizes.full ) { #>
+					<img class="details-image" src="{{ data.sizes.full.url }}" draggable="false" alt="" />
+				<# } else if ( -1 === jQuery.inArray( data.type, [ 'audio', 'video' ] ) ) { #>
+					<img class="details-image icon" src="{{ data.icon }}" draggable="false" alt="" />
+				<# } #>
+
+				<# if ( 'audio' === data.type ) { #>
+				<div class="wp-media-wrapper wp-audio">
+					<audio style="visibility: hidden" controls class="wp-audio-shortcode" width="100%" preload="none">
+						<source type="{{ data.mime }}" src="{{ data.url }}"/>
+					</audio>
+				</div>
+				<# } else if ( 'video' === data.type ) {
+					var w_rule = '';
+					if ( data.width ) {
+						w_rule = 'width: ' + data.width + 'px;';
+					} else if ( wp.media.view.settings.contentWidth ) {
+						w_rule = 'width: ' + wp.media.view.settings.contentWidth + 'px;';
+					}
+				#>
+				<div style="{{ w_rule }}" class="wp-media-wrapper wp-video">
+					<video controls="controls" class="wp-video-shortcode" preload="metadata"
+						<# if ( data.width ) { #>width="{{ data.width }}"<# } #>
+						<# if ( data.height ) { #>height="{{ data.height }}"<# } #>
+						<# if ( data.image && data.image.src !== data.icon ) { #>poster="{{ data.image.src }}"<# } #>>
+						<source type="{{ data.mime }}" src="{{ data.url }}"/>
+					</video>
+				</div>
+				<# } #>
+
+				<div class="attachment-actions">
+					<# if ( 'image' === data.type && ! data.uploading && data.sizes && data.can.save ) { #>
+					<button type="button" class="button edit-attachment">Edit Image</button>
+					<# } else if ( 'pdf' === data.subtype && data.sizes ) { #>
+					<p>Document Preview</p>
+					<# } #>
+				</div>
+			</div>
+		</div>
+		<div class="attachment-info">
+			<span class="settings-save-status" role="status">
+				<span class="spinner"></span>
+				<span class="saved">Saved.</span>
+			</span>
+			<div class="details">
+				<h2 class="screen-reader-text">Details</h2>
+				<div class="uploaded"><strong>Uploaded on:</strong> {{ data.dateFormatted }}</div>
+				<div class="uploaded-by">
+					<strong>Uploaded by:</strong>
+						<# if ( data.authorLink ) { #>
+							<a href="{{ data.authorLink }}">{{ data.authorName }}</a>
+						<# } else { #>
+							{{ data.authorName }}
+						<# } #>
+				</div>
+				<# if ( data.uploadedToTitle ) { #>
+					<div class="uploaded-to">
+						<strong>Uploaded to:</strong>
+						<# if ( data.uploadedToLink ) { #>
+							<a href="{{ data.uploadedToLink }}">{{ data.uploadedToTitle }}</a>
+						<# } else { #>
+							{{ data.uploadedToTitle }}
+						<# } #>
+					</div>
+				<# } #>
+				<div class="filename"><strong>File name:</strong> {{ data.filename }}</div>
+				<div class="file-type"><strong>File type:</strong> {{ data.mime }}</div>
+				<div class="file-size"><strong>File size:</strong> {{ data.filesizeHumanReadable }}</div>
+				<# if ( 'image' === data.type && ! data.uploading ) { #>
+					<# if ( data.width && data.height ) { #>
+						<div class="dimensions"><strong>Dimensions:</strong>
+							{{ data.width }} by {{ data.height }} pixels						</div>
+					<# } #>
+
+					<# if ( data.originalImageURL && data.originalImageName ) { #>
+						Original image:						<a href="{{ data.originalImageURL }}">{{data.originalImageName}}</a>
+					<# } #>
+				<# } #>
+
+				<# if ( data.fileLength && data.fileLengthHumanReadable ) { #>
+					<div class="file-length"><strong>Length:</strong>
+						<span aria-hidden="true">{{ data.fileLength }}</span>
+						<span class="screen-reader-text">{{ data.fileLengthHumanReadable }}</span>
+					</div>
+				<# } #>
+
+				<# if ( 'audio' === data.type && data.meta.bitrate ) { #>
+					<div class="bitrate">
+						<strong>Bitrate:</strong> {{ Math.round( data.meta.bitrate / 1000 ) }}kb/s
+						<# if ( data.meta.bitrate_mode ) { #>
+						{{ ' ' + data.meta.bitrate_mode.toUpperCase() }}
+						<# } #>
+					</div>
+				<# } #>
+
+				<# if ( data.mediaStates ) { #>
+					<div class="media-states"><strong>Used as:</strong> {{ data.mediaStates }}</div>
+				<# } #>
+
+				<div class="compat-meta">
+					<# if ( data.compat && data.compat.meta ) { #>
+						{{{ data.compat.meta }}}
+					<# } #>
+				</div>
+			</div>
+
+			<div class="settings">
+				<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
+				<# if ( 'image' === data.type ) { #>
+					<span class="setting has-description" data-setting="alt">
+						<label for="attachment-details-two-column-alt-text" class="name">Alternative Text</label>
+						<input type="text" id="attachment-details-two-column-alt-text" value="{{ data.alt }}" aria-describedby="alt-text-description" {{ maybeReadOnly }} />
+					</span>
+					<p class="description" id="alt-text-description"><a href="https://www.w3.org/WAI/tutorials/images/decision-tree" target="_blank" rel="noopener">Describe the purpose of the image<span class="screen-reader-text"> (opens in a new tab)</span></a>. Leave empty if the image is purely decorative.</p>
+				<# } #>
+								<span class="setting" data-setting="title">
+					<label for="attachment-details-two-column-title" class="name">Title</label>
+					<input type="text" id="attachment-details-two-column-title" value="{{ data.title }}" {{ maybeReadOnly }} />
+				</span>
+								<# if ( 'audio' === data.type ) { #>
+								<span class="setting" data-setting="artist">
+					<label for="attachment-details-two-column-artist" class="name">Artist</label>
+					<input type="text" id="attachment-details-two-column-artist" value="{{ data.artist || data.meta.artist || '' }}" />
+				</span>
+								<span class="setting" data-setting="album">
+					<label for="attachment-details-two-column-album" class="name">Album</label>
+					<input type="text" id="attachment-details-two-column-album" value="{{ data.album || data.meta.album || '' }}" />
+				</span>
+								<# } #>
+				<span class="setting" data-setting="caption">
+					<label for="attachment-details-two-column-caption" class="name">Caption</label>
+					<textarea id="attachment-details-two-column-caption" {{ maybeReadOnly }}>{{ data.caption }}</textarea>
+				</span>
+				<span class="setting" data-setting="description">
+					<label for="attachment-details-two-column-description" class="name">Description</label>
+					<textarea id="attachment-details-two-column-description" {{ maybeReadOnly }}>{{ data.description }}</textarea>
+				</span>
+				<span class="setting" data-setting="url">
+					<label for="attachment-details-two-column-copy-link" class="name">File URL:</label>
+					<input type="text" class="attachment-details-copy-link" id="attachment-details-two-column-copy-link" value="{{ data.url }}" readonly />
+					<span class="copy-to-clipboard-container">
+						<button type="button" class="button button-small copy-attachment-url" data-clipboard-target="#attachment-details-two-column-copy-link">Copy URL to clipboard</button>
+						<span class="success hidden" aria-hidden="true">Copied!</span>
+					</span>
+				</span>
+				<div class="attachment-compat"></div>
+			</div>
+
+			<div class="actions">
+				<# if ( data.link ) { #>
+					<a class="view-attachment" href="{{ data.link }}">View attachment page</a>
+				<# } #>
+				<# if ( data.can.save ) { #>
+					<# if ( data.link ) { #>
+						<span class="links-separator">|</span>
+					<# } #>
+					<a href="{{ data.editLink }}">Edit more details</a>
+				<# } #>
+				<# if ( ! data.uploading && data.can.remove ) { #>
+					<# if ( data.link || data.can.save ) { #>
+						<span class="links-separator">|</span>
+					<# } #>
+											<button type="button" class="button-link delete-attachment">Delete permanently</button>
+									<# } #>
+			</div>
+		</div>
+	</script>
+
+<script type="text/html" id="tmpl-attachment">
+		<div class="attachment-preview js--select-attachment type-{{ data.type }} subtype-{{ data.subtype }} {{ data.orientation }}">
+			<div class="thumbnail">
+				<# if ( data.uploading ) { #>
+					<div class="media-progress-bar"><div style="width: {{ data.percent }}%"></div></div>
+				<# } else if ( 'image' === data.type && data.size && data.size.url ) { #>
+					<div class="centered">
+						<img src="{{ data.size.url }}" draggable="false" alt="" />
+					</div>
+				<# } else { #>
+					<div class="centered">
+						<# if ( data.image && data.image.src && data.image.src !== data.icon ) { #>
+							<img src="{{ data.image.src }}" class="thumbnail" draggable="false" alt="" />
+						<# } else if ( data.sizes && data.sizes.medium ) { #>
+							<img src="{{ data.sizes.medium.url }}" class="thumbnail" draggable="false" alt="" />
+						<# } else { #>
+							<img src="{{ data.icon }}" class="icon" draggable="false" alt="" />
+						<# } #>
+					</div>
+					<div class="filename">
+						<div>{{ data.filename }}</div>
+					</div>
+				<# } #>
+			</div>
+			<# if ( data.buttons.close ) { #>
+				<button type="button" class="button-link attachment-close media-modal-icon"><span class="screen-reader-text">Remove</span></button>
+			<# } #>
+		</div>
+		<# if ( data.buttons.check ) { #>
+			<button type="button" class="check" tabindex="-1"><span class="media-modal-icon"></span><span class="screen-reader-text">Deselect</span></button>
+		<# } #>
+		<#
+		var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly';
+		if ( data.describe ) {
+			if ( 'image' === data.type ) { #>
+				<input type="text" value="{{ data.caption }}" class="describe" data-setting="caption"
+					aria-label="Caption"
+					placeholder="Caption&hellip;" {{ maybeReadOnly }} />
+			<# } else { #>
+				<input type="text" value="{{ data.title }}" class="describe" data-setting="title"
+					<# if ( 'video' === data.type ) { #>
+						aria-label="Video title"
+						placeholder="Video title&hellip;"
+					<# } else if ( 'audio' === data.type ) { #>
+						aria-label="Audio title"
+						placeholder="Audio title&hellip;"
+					<# } else { #>
+						aria-label="Media title"
+						placeholder="Media title&hellip;"
+					<# } #> {{ maybeReadOnly }} />
+			<# }
+		} #>
+	</script>
+
+<script type="text/html" id="tmpl-attachment-details">
+		<h2>
+			Attachment Details			<span class="settings-save-status" role="status">
+				<span class="spinner"></span>
+				<span class="saved">Saved.</span>
+			</span>
+		</h2>
+		<div class="attachment-info">
+
+			<# if ( 'audio' === data.type ) { #>
+				<div class="wp-media-wrapper wp-audio">
+					<audio style="visibility: hidden" controls class="wp-audio-shortcode" width="100%" preload="none">
+						<source type="{{ data.mime }}" src="{{ data.url }}"/>
+					</audio>
+				</div>
+			<# } else if ( 'video' === data.type ) {
+				var w_rule = '';
+				if ( data.width ) {
+					w_rule = 'width: ' + data.width + 'px;';
+				} else if ( wp.media.view.settings.contentWidth ) {
+					w_rule = 'width: ' + wp.media.view.settings.contentWidth + 'px;';
+				}
+			#>
+				<div style="{{ w_rule }}" class="wp-media-wrapper wp-video">
+					<video controls="controls" class="wp-video-shortcode" preload="metadata"
+						<# if ( data.width ) { #>width="{{ data.width }}"<# } #>
+						<# if ( data.height ) { #>height="{{ data.height }}"<# } #>
+						<# if ( data.image && data.image.src !== data.icon ) { #>poster="{{ data.image.src }}"<# } #>>
+						<source type="{{ data.mime }}" src="{{ data.url }}"/>
+					</video>
+				</div>
+			<# } else { #>
+				<div class="thumbnail thumbnail-{{ data.type }}">
+					<# if ( data.uploading ) { #>
+						<div class="media-progress-bar"><div></div></div>
+					<# } else if ( 'image' === data.type && data.size && data.size.url ) { #>
+						<img src="{{ data.size.url }}" draggable="false" alt="" />
+					<# } else { #>
+						<img src="{{ data.icon }}" class="icon" draggable="false" alt="" />
+					<# } #>
+				</div>
+			<# } #>
+
+			<div class="details">
+				<div class="filename">{{ data.filename }}</div>
+				<div class="uploaded">{{ data.dateFormatted }}</div>
+
+				<div class="file-size">{{ data.filesizeHumanReadable }}</div>
+				<# if ( 'image' === data.type && ! data.uploading ) { #>
+					<# if ( data.width && data.height ) { #>
+						<div class="dimensions">
+							{{ data.width }} by {{ data.height }} pixels						</div>
+					<# } #>
+
+					<# if ( data.originalImageURL && data.originalImageName ) { #>
+						Original image:						<a href="{{ data.originalImageURL }}">{{data.originalImageName}}</a>
+					<# } #>
+
+					<# if ( data.can.save && data.sizes ) { #>
+						<a class="edit-attachment" href="{{ data.editLink }}&amp;image-editor" target="_blank">Edit Image</a>
+					<# } #>
+				<# } #>
+
+				<# if ( data.fileLength && data.fileLengthHumanReadable ) { #>
+					<div class="file-length">Length:						<span aria-hidden="true">{{ data.fileLength }}</span>
+						<span class="screen-reader-text">{{ data.fileLengthHumanReadable }}</span>
+					</div>
+				<# } #>
+
+				<# if ( data.mediaStates ) { #>
+					<div class="media-states"><strong>Used as:</strong> {{ data.mediaStates }}</div>
+				<# } #>
+
+				<# if ( ! data.uploading && data.can.remove ) { #>
+											<button type="button" class="button-link delete-attachment">Delete permanently</button>
+									<# } #>
+
+				<div class="compat-meta">
+					<# if ( data.compat && data.compat.meta ) { #>
+						{{{ data.compat.meta }}}
+					<# } #>
+				</div>
+			</div>
+		</div>
+		<# var maybeReadOnly = data.can.save || data.allowLocalEdits ? '' : 'readonly'; #>
+		<# if ( 'image' === data.type ) { #>
+			<span class="setting has-description" data-setting="alt">
+				<label for="attachment-details-alt-text" class="name">Alt Text</label>
+				<input type="text" id="attachment-details-alt-text" value="{{ data.alt }}" aria-describedby="alt-text-description" {{ maybeReadOnly }} />
+			</span>
+			<p class="description" id="alt-text-description"><a href="https://www.w3.org/WAI/tutorials/images/decision-tree" target="_blank" rel="noopener">Describe the purpose of the image<span class="screen-reader-text"> (opens in a new tab)</span></a>. Leave empty if the image is purely decorative.</p>
+		<# } #>
+				<span class="setting" data-setting="title">
+			<label for="attachment-details-title" class="name">Title</label>
+			<input type="text" id="attachment-details-title" value="{{ data.title }}" {{ maybeReadOnly }} />
+		</span>
+				<# if ( 'audio' === data.type ) { #>
+				<span class="setting" data-setting="artist">
+			<label for="attachment-details-artist" class="name">Artist</label>
+			<input type="text" id="attachment-details-artist" value="{{ data.artist || data.meta.artist || '' }}" />
+		</span>
+				<span class="setting" data-setting="album">
+			<label for="attachment-details-album" class="name">Album</label>
+			<input type="text" id="attachment-details-album" value="{{ data.album || data.meta.album || '' }}" />
+		</span>
+				<# } #>
+		<span class="setting" data-setting="caption">
+			<label for="attachment-details-caption" class="name">Caption</label>
+			<textarea id="attachment-details-caption" {{ maybeReadOnly }}>{{ data.caption }}</textarea>
+		</span>
+		<span class="setting" data-setting="description">
+			<label for="attachment-details-description" class="name">Description</label>
+			<textarea id="attachment-details-description" {{ maybeReadOnly }}>{{ data.description }}</textarea>
+		</span>
+		<span class="setting" data-setting="url">
+			<label for="attachment-details-copy-link" class="name">File URL:</label>
+			<input type="text" class="attachment-details-copy-link" id="attachment-details-copy-link" value="{{ data.url }}" readonly />
+			<div class="copy-to-clipboard-container">
+				<button type="button" class="button button-small copy-attachment-url" data-clipboard-target="#attachment-details-copy-link">Copy URL to clipboard</button>
+				<span class="success hidden" aria-hidden="true">Copied!</span>
+			</div>
+		</span>
+	</script>
+
+<script type="text/html" id="tmpl-media-selection">
+		<div class="selection-info">
+			<span class="count"></span>
+			<# if ( data.editable ) { #>
+				<button type="button" class="button-link edit-selection">Edit Selection</button>
+			<# } #>
+			<# if ( data.clearable ) { #>
+				<button type="button" class="button-link clear-selection">Clear</button>
+			<# } #>
+		</div>
+		<div class="selection-view"></div>
+	</script>
+
+<script type="text/html" id="tmpl-attachment-display-settings">
+		<h2>Attachment Display Settings</h2>
+
+		<# if ( 'image' === data.type ) { #>
+			<span class="setting align">
+				<label for="attachment-display-settings-alignment" class="name">Alignment</label>
+				<select id="attachment-display-settings-alignment" class="alignment"
+					data-setting="align"
+					<# if ( data.userSettings ) { #>
+						data-user-setting="align"
+					<# } #>>
+
+					<option value="left">
+						Left					</option>
+					<option value="center">
+						Center					</option>
+					<option value="right">
+						Right					</option>
+					<option value="none" selected>
+						None					</option>
+				</select>
+			</span>
+		<# } #>
+
+		<span class="setting">
+			<label for="attachment-display-settings-link-to" class="name">
+				<# if ( data.model.canEmbed ) { #>
+					Embed or Link				<# } else { #>
+					Link To				<# } #>
+			</label>
+			<select id="attachment-display-settings-link-to" class="link-to"
+				data-setting="link"
+				<# if ( data.userSettings && ! data.model.canEmbed ) { #>
+					data-user-setting="urlbutton"
+				<# } #>>
+
+			<# if ( data.model.canEmbed ) { #>
+				<option value="embed" selected>
+					Embed Media Player				</option>
+				<option value="file">
+			<# } else { #>
+				<option value="none" selected>
+					None				</option>
+				<option value="file">
+			<# } #>
+				<# if ( data.model.canEmbed ) { #>
+					Link to Media File				<# } else { #>
+					Media File				<# } #>
+				</option>
+				<option value="post">
+				<# if ( data.model.canEmbed ) { #>
+					Link to Attachment Page				<# } else { #>
+					Attachment Page				<# } #>
+				</option>
+			<# if ( 'image' === data.type ) { #>
+				<option value="custom">
+					Custom URL				</option>
+			<# } #>
+			</select>
+		</span>
+		<span class="setting">
+			<label for="attachment-display-settings-link-to-custom" class="name">URL</label>
+			<input type="text" id="attachment-display-settings-link-to-custom" class="link-to-custom" data-setting="linkUrl" />
+		</span>
+
+		<# if ( 'undefined' !== typeof data.sizes ) { #>
+			<span class="setting">
+				<label for="attachment-display-settings-size" class="name">Size</label>
+				<select id="attachment-display-settings-size" class="size" name="size"
+					data-setting="size"
+					<# if ( data.userSettings ) { #>
+						data-user-setting="imgsize"
+					<# } #>>
+											<#
+						var size = data.sizes['thumbnail'];
+						if ( size ) { #>
+							<option value="thumbnail" >
+								Thumbnail &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['medium'];
+						if ( size ) { #>
+							<option value="medium" >
+								Medium &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['large'];
+						if ( size ) { #>
+							<option value="large" >
+								Large &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+											<#
+						var size = data.sizes['full'];
+						if ( size ) { #>
+							<option value="full"  selected='selected'>
+								Full Size &ndash; {{ size.width }} &times; {{ size.height }}
+							</option>
+						<# } #>
+									</select>
+			</span>
+		<# } #>
+	</script>
+
+<script type="text/html" id="tmpl-gallery-settings">
+		<h2>Gallery Settings</h2>
+
+		<span class="setting">
+			<label for="gallery-settings-link-to" class="name">Link To</label>
+			<select id="gallery-settings-link-to" class="link-to"
+				data-setting="link"
+				<# if ( data.userSettings ) { #>
+					data-user-setting="urlbutton"
+				<# } #>>
+
+				<option value="post" <# if ( ! wp.media.galleryDefaults.link || 'post' === wp.media.galleryDefaults.link ) {
+					#>selected="selected"<# }
+				#>>
+					Attachment Page				</option>
+				<option value="file" <# if ( 'file' === wp.media.galleryDefaults.link ) { #>selected="selected"<# } #>>
+					Media File				</option>
+				<option value="none" <# if ( 'none' === wp.media.galleryDefaults.link ) { #>selected="selected"<# } #>>
+					None				</option>
+			</select>
+		</span>
+
+		<span class="setting">
+			<label for="gallery-settings-columns" class="name select-label-inline">Columns</label>
+			<select id="gallery-settings-columns" class="columns" name="columns"
+				data-setting="columns">
+									<option value="1" <#
+						if ( 1 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						1					</option>
+									<option value="2" <#
+						if ( 2 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						2					</option>
+									<option value="3" <#
+						if ( 3 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						3					</option>
+									<option value="4" <#
+						if ( 4 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						4					</option>
+									<option value="5" <#
+						if ( 5 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						5					</option>
+									<option value="6" <#
+						if ( 6 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						6					</option>
+									<option value="7" <#
+						if ( 7 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						7					</option>
+									<option value="8" <#
+						if ( 8 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						8					</option>
+									<option value="9" <#
+						if ( 9 == wp.media.galleryDefaults.columns ) { #>selected="selected"<# }
+					#>>
+						9					</option>
+							</select>
+		</span>
+
+		<span class="setting">
+			<input type="checkbox" id="gallery-settings-random-order" data-setting="_orderbyRandom" />
+			<label for="gallery-settings-random-order" class="checkbox-label-inline">Random Order</label>
+		</span>
+
+		<span class="setting size">
+			<label for="gallery-settings-size" class="name">Size</label>
+			<select id="gallery-settings-size" class="size" name="size"
+				data-setting="size"
+				<# if ( data.userSettings ) { #>
+					data-user-setting="imgsize"
+				<# } #>
+				>
+									<option value="thumbnail">
+						Thumbnail					</option>
+									<option value="medium">
+						Medium					</option>
+									<option value="large">
+						Large					</option>
+									<option value="full">
+						Full Size					</option>
+							</select>
+		</span>
+	</script>
+
+<script type="text/html" id="tmpl-playlist-settings">
+		<h2>Playlist Settings</h2>
+
+		<# var emptyModel = _.isEmpty( data.model ),
+			isVideo = 'video' === data.controller.get('library').props.get('type'); #>
+
+		<span class="setting">
+			<input type="checkbox" id="playlist-settings-show-list" data-setting="tracklist" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<label for="playlist-settings-show-list" class="checkbox-label-inline">
+				<# if ( isVideo ) { #>
+				Show Video List				<# } else { #>
+				Show Tracklist				<# } #>
+			</label>
+		</span>
+
+		<# if ( ! isVideo ) { #>
+		<span class="setting">
+			<input type="checkbox" id="playlist-settings-show-artist" data-setting="artists" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<label for="playlist-settings-show-artist" class="checkbox-label-inline">
+				Show Artist Name in Tracklist			</label>
+		</span>
+		<# } #>
+
+		<span class="setting">
+			<input type="checkbox" id="playlist-settings-show-images" data-setting="images" <# if ( emptyModel ) { #>
+				checked="checked"
+			<# } #> />
+			<label for="playlist-settings-show-images" class="checkbox-label-inline">
+				Show Images			</label>
+		</span>
+	</script>
+
+<script type="text/html" id="tmpl-embed-link-settings">
+		<span class="setting link-text">
+			<label for="embed-link-settings-link-text" class="name">Link Text</label>
+			<input type="text" id="embed-link-settings-link-text" class="alignment" data-setting="linkText" />
+		</span>
+		<div class="embed-container" style="display: none;">
+			<div class="embed-preview"></div>
+		</div>
+	</script>
+
+<script type="text/html" id="tmpl-embed-image-settings">
+		<div class="wp-clearfix">
+			<div class="thumbnail">
+				<img src="{{ data.model.url }}" draggable="false" alt="" />
+			</div>
+		</div>
+
+		<span class="setting alt-text has-description">
+			<label for="embed-image-settings-alt-text" class="name">Alternative Text</label>
+			<input type="text" id="embed-image-settings-alt-text" data-setting="alt" aria-describedby="alt-text-description" />
+		</span>
+		<p class="description" id="alt-text-description"><a href="https://www.w3.org/WAI/tutorials/images/decision-tree" target="_blank" rel="noopener">Describe the purpose of the image<span class="screen-reader-text"> (opens in a new tab)</span></a>. Leave empty if the image is purely decorative.</p>
+
+					<span class="setting caption">
+				<label for="embed-image-settings-caption" class="name">Caption</label>
+				<textarea id="embed-image-settings-caption" data-setting="caption"></textarea>
+			</span>
+
+		<fieldset class="setting-group">
+			<legend class="name">Align</legend>
+			<span class="setting align">
+				<span class="button-group button-large" data-setting="align">
+					<button class="button" value="left">
+						Left					</button>
+					<button class="button" value="center">
+						Center					</button>
+					<button class="button" value="right">
+						Right					</button>
+					<button class="button active" value="none">
+						None					</button>
+				</span>
+			</span>
+		</fieldset>
+
+		<fieldset class="setting-group">
+			<legend class="name">Link To</legend>
+			<span class="setting link-to">
+				<span class="button-group button-large" data-setting="link">
+					<button class="button" value="file">
+						Image URL					</button>
+					<button class="button" value="custom">
+						Custom URL					</button>
+					<button class="button active" value="none">
+						None					</button>
+				</span>
+			</span>
+			<span class="setting">
+				<label for="embed-image-settings-link-to-custom" class="name">URL</label>
+				<input type="text" id="embed-image-settings-link-to-custom" class="link-to-custom" data-setting="linkUrl" />
+			</span>
+		</fieldset>
+	</script>
+
+<script type="text/html" id="tmpl-image-details">
+		<div class="media-embed">
+			<div class="embed-media-settings">
+				<div class="column-settings">
+					<span class="setting alt-text has-description">
+						<label for="image-details-alt-text" class="name">Alternative Text</label>
+						<input type="text" id="image-details-alt-text" data-setting="alt" value="{{ data.model.alt }}" aria-describedby="alt-text-description" />
+					</span>
+					<p class="description" id="alt-text-description"><a href="https://www.w3.org/WAI/tutorials/images/decision-tree" target="_blank" rel="noopener">Describe the purpose of the image<span class="screen-reader-text"> (opens in a new tab)</span></a>. Leave empty if the image is purely decorative.</p>
+
+											<span class="setting caption">
+							<label for="image-details-caption" class="name">Caption</label>
+							<textarea id="image-details-caption" data-setting="caption">{{ data.model.caption }}</textarea>
+						</span>
+
+					<h2>Display Settings</h2>
+					<fieldset class="setting-group">
+						<legend class="legend-inline">Align</legend>
+						<span class="setting align">
+							<span class="button-group button-large" data-setting="align">
+								<button class="button" value="left">
+									Left								</button>
+								<button class="button" value="center">
+									Center								</button>
+								<button class="button" value="right">
+									Right								</button>
+								<button class="button active" value="none">
+									None								</button>
+							</span>
+						</span>
+					</fieldset>
+
+					<# if ( data.attachment ) { #>
+						<# if ( 'undefined' !== typeof data.attachment.sizes ) { #>
+							<span class="setting size">
+								<label for="image-details-size" class="name">Size</label>
+								<select id="image-details-size" class="size" name="size"
+									data-setting="size"
+									<# if ( data.userSettings ) { #>
+										data-user-setting="imgsize"
+									<# } #>>
+																			<#
+										var size = data.sizes['thumbnail'];
+										if ( size ) { #>
+											<option value="thumbnail">
+												Thumbnail &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['medium'];
+										if ( size ) { #>
+											<option value="medium">
+												Medium &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['large'];
+										if ( size ) { #>
+											<option value="large">
+												Large &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																			<#
+										var size = data.sizes['full'];
+										if ( size ) { #>
+											<option value="full">
+												Full Size &ndash; {{ size.width }} &times; {{ size.height }}
+											</option>
+										<# } #>
+																		<option value="custom">
+										Custom Size									</option>
+								</select>
+							</span>
+						<# } #>
+							<div class="custom-size wp-clearfix<# if ( data.model.size !== 'custom' ) { #> hidden<# } #>">
+								<span class="custom-size-setting">
+									<label for="image-details-size-width">Width</label>
+									<input type="number" id="image-details-size-width" aria-describedby="image-size-desc" data-setting="customWidth" step="1" value="{{ data.model.customWidth }}" />
+								</span>
+								<span class="sep" aria-hidden="true">&times;</span>
+								<span class="custom-size-setting">
+									<label for="image-details-size-height">Height</label>
+									<input type="number" id="image-details-size-height" aria-describedby="image-size-desc" data-setting="customHeight" step="1" value="{{ data.model.customHeight }}" />
+								</span>
+								<p id="image-size-desc" class="description">Image size in pixels</p>
+							</div>
+					<# } #>
+
+					<span class="setting link-to">
+						<label for="image-details-link-to" class="name">Link To</label>
+						<select id="image-details-link-to" data-setting="link">
+						<# if ( data.attachment ) { #>
+							<option value="file">
+								Media File							</option>
+							<option value="post">
+								Attachment Page							</option>
+						<# } else { #>
+							<option value="file">
+								Image URL							</option>
+						<# } #>
+							<option value="custom">
+								Custom URL							</option>
+							<option value="none">
+								None							</option>
+						</select>
+					</span>
+					<span class="setting">
+						<label for="image-details-link-to-custom" class="name">URL</label>
+						<input type="text" id="image-details-link-to-custom" class="link-to-custom" data-setting="linkUrl" />
+					</span>
+
+					<div class="advanced-section">
+						<h2><button type="button" class="button-link advanced-toggle">Advanced Options</button></h2>
+						<div class="advanced-settings hidden">
+							<div class="advanced-image">
+								<span class="setting title-text">
+									<label for="image-details-title-attribute" class="name">Image Title Attribute</label>
+									<input type="text" id="image-details-title-attribute" data-setting="title" value="{{ data.model.title }}" />
+								</span>
+								<span class="setting extra-classes">
+									<label for="image-details-css-class" class="name">Image CSS Class</label>
+									<input type="text" id="image-details-css-class" data-setting="extraClasses" value="{{ data.model.extraClasses }}" />
+								</span>
+							</div>
+							<div class="advanced-link">
+								<span class="setting link-target">
+									<input type="checkbox" id="image-details-link-target" data-setting="linkTargetBlank" value="_blank" <# if ( data.model.linkTargetBlank ) { #>checked="checked"<# } #>>
+									<label for="image-details-link-target" class="checkbox-label">Open link in a new tab</label>
+								</span>
+								<span class="setting link-rel">
+									<label for="image-details-link-rel" class="name">Link Rel</label>
+									<input type="text" id="image-details-link-rel" data-setting="linkRel" value="{{ data.model.linkRel }}" />
+								</span>
+								<span class="setting link-class-name">
+									<label for="image-details-link-css-class" class="name">Link CSS Class</label>
+									<input type="text" id="image-details-link-css-class" data-setting="linkClassName" value="{{ data.model.linkClassName }}" />
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="column-image">
+					<div class="image">
+						<img src="{{ data.model.url }}" draggable="false" alt="" />
+						<# if ( data.attachment && window.imageEdit ) { #>
+							<div class="actions">
+								<input type="button" class="edit-attachment button" value="Edit Original" />
+								<input type="button" class="replace-attachment button" value="Replace" />
+							</div>
+						<# } #>
+					</div>
+				</div>
+			</div>
+		</div>
+	</script>
+
+<script type="text/html" id="tmpl-image-editor">
+		<div id="media-head-{{ data.id }}"></div>
+		<div id="image-editor-{{ data.id }}"></div>
+	</script>
+
+<script type="text/html" id="tmpl-audio-details">
+		<# var ext, html5types = {
+			mp3: wp.media.view.settings.embedMimes.mp3,
+			ogg: wp.media.view.settings.embedMimes.ogg
+		}; #>
+
+				<div class="media-embed media-embed-details">
+			<div class="embed-media-settings embed-audio-settings">
+				<audio style="visibility: hidden"
+	controls
+	class="wp-audio-shortcode"
+	width="{{ _.isUndefined( data.model.width ) ? 400 : data.model.width }}"
+	preload="{{ _.isUndefined( data.model.preload ) ? 'none' : data.model.preload }}"
+	<#
+		if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
+		#> autoplay<#
+	}
+		if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
+		#> loop<#
+	}
+	#>
+>
+	<# if ( ! _.isEmpty( data.model.src ) ) { #>
+	<source src="{{ data.model.src }}" type="{{ wp.media.view.settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
+	<# } #>
+
+		<# if ( ! _.isEmpty( data.model.mp3 ) ) { #>
+	<source src="{{ data.model.mp3 }}" type="{{ wp.media.view.settings.embedMimes[ 'mp3' ] }}" />
+	<# } #>
+			<# if ( ! _.isEmpty( data.model.ogg ) ) { #>
+	<source src="{{ data.model.ogg }}" type="{{ wp.media.view.settings.embedMimes[ 'ogg' ] }}" />
+	<# } #>
+			<# if ( ! _.isEmpty( data.model.flac ) ) { #>
+	<source src="{{ data.model.flac }}" type="{{ wp.media.view.settings.embedMimes[ 'flac' ] }}" />
+	<# } #>
+			<# if ( ! _.isEmpty( data.model.m4a ) ) { #>
+	<source src="{{ data.model.m4a }}" type="{{ wp.media.view.settings.embedMimes[ 'm4a' ] }}" />
+	<# } #>
+			<# if ( ! _.isEmpty( data.model.wav ) ) { #>
+	<source src="{{ data.model.wav }}" type="{{ wp.media.view.settings.embedMimes[ 'wav' ] }}" />
+	<# } #>
+		</audio>
+
+				<# if ( ! _.isEmpty( data.model.src ) ) {
+					ext = data.model.src.split('.').pop();
+					if ( html5types[ ext ] ) {
+						delete html5types[ ext ];
+					}
+				#>
+				<span class="setting">
+					<label for="audio-details-source" class="name">URL</label>
+					<input type="text" id="audio-details-source" readonly data-setting="src" value="{{ data.model.src }}" />
+					<button type="button" class="button-link remove-setting">Remove audio source</button>
+				</span>
+				<# } #>
+								<# if ( ! _.isEmpty( data.model.mp3 ) ) {
+					if ( ! _.isUndefined( html5types.mp3 ) ) {
+						delete html5types.mp3;
+					}
+				#>
+				<span class="setting">
+					<label for="audio-details-mp3-source" class="name">MP3</label>
+					<input type="text" id="audio-details-mp3-source" readonly data-setting="mp3" value="{{ data.model.mp3 }}" />
+					<button type="button" class="button-link remove-setting">Remove audio source</button>
+				</span>
+				<# } #>
+								<# if ( ! _.isEmpty( data.model.ogg ) ) {
+					if ( ! _.isUndefined( html5types.ogg ) ) {
+						delete html5types.ogg;
+					}
+				#>
+				<span class="setting">
+					<label for="audio-details-ogg-source" class="name">OGG</label>
+					<input type="text" id="audio-details-ogg-source" readonly data-setting="ogg" value="{{ data.model.ogg }}" />
+					<button type="button" class="button-link remove-setting">Remove audio source</button>
+				</span>
+				<# } #>
+								<# if ( ! _.isEmpty( data.model.flac ) ) {
+					if ( ! _.isUndefined( html5types.flac ) ) {
+						delete html5types.flac;
+					}
+				#>
+				<span class="setting">
+					<label for="audio-details-flac-source" class="name">FLAC</label>
+					<input type="text" id="audio-details-flac-source" readonly data-setting="flac" value="{{ data.model.flac }}" />
+					<button type="button" class="button-link remove-setting">Remove audio source</button>
+				</span>
+				<# } #>
+								<# if ( ! _.isEmpty( data.model.m4a ) ) {
+					if ( ! _.isUndefined( html5types.m4a ) ) {
+						delete html5types.m4a;
+					}
+				#>
+				<span class="setting">
+					<label for="audio-details-m4a-source" class="name">M4A</label>
+					<input type="text" id="audio-details-m4a-source" readonly data-setting="m4a" value="{{ data.model.m4a }}" />
+					<button type="button" class="button-link remove-setting">Remove audio source</button>
+				</span>
+				<# } #>
+								<# if ( ! _.isEmpty( data.model.wav ) ) {
+					if ( ! _.isUndefined( html5types.wav ) ) {
+						delete html5types.wav;
+					}
+				#>
+				<span class="setting">
+					<label for="audio-details-wav-source" class="name">WAV</label>
+					<input type="text" id="audio-details-wav-source" readonly data-setting="wav" value="{{ data.model.wav }}" />
+					<button type="button" class="button-link remove-setting">Remove audio source</button>
+				</span>
+				<# } #>
+
+				<# if ( ! _.isEmpty( html5types ) ) { #>
+				<fieldset class="setting-group">
+					<legend class="name">Add alternate sources for maximum HTML5 playback</legend>
+					<span class="setting">
+						<span class="button-large">
+						<# _.each( html5types, function (mime, type) { #>
+							<button class="button add-media-source" data-mime="{{ mime }}">{{ type }}</button>
+						<# } ) #>
+						</span>
+					</span>
+				</fieldset>
+				<# } #>
+
+				<fieldset class="setting-group">
+					<legend class="name">Preload</legend>
+					<span class="setting preload">
+						<span class="button-group button-large" data-setting="preload">
+							<button class="button" value="auto">Auto</button>
+							<button class="button" value="metadata">Metadata</button>
+							<button class="button active" value="none">None</button>
+						</span>
+					</span>
+				</fieldset>
+
+				<span class="setting-group">
+					<span class="setting checkbox-setting autoplay">
+						<input type="checkbox" id="audio-details-autoplay" data-setting="autoplay" />
+						<label for="audio-details-autoplay" class="checkbox-label">Autoplay</label>
+					</span>
+
+					<span class="setting checkbox-setting">
+						<input type="checkbox" id="audio-details-loop" data-setting="loop" />
+						<label for="audio-details-loop" class="checkbox-label">Loop</label>
+					</span>
+				</span>
+			</div>
+		</div>
+	</script>
+
+<script type="text/html" id="tmpl-video-details">
+		<# var ext, html5types = {
+			mp4: wp.media.view.settings.embedMimes.mp4,
+			ogv: wp.media.view.settings.embedMimes.ogv,
+			webm: wp.media.view.settings.embedMimes.webm
+		}; #>
+
+				<div class="media-embed media-embed-details">
+			<div class="embed-media-settings embed-video-settings">
+				<div class="wp-video-holder">
+				<#
+				var w = ! data.model.width || data.model.width > 640 ? 640 : data.model.width,
+					h = ! data.model.height ? 360 : data.model.height;
+
+				if ( data.model.width && w !== data.model.width ) {
+					h = Math.ceil( ( h * w ) / data.model.width );
+				}
+				#>
+
+				<#  var w_rule = '', classes = [],
+		w, h, settings = wp.media.view.settings,
+		isYouTube = isVimeo = false;
+
+	if ( ! _.isEmpty( data.model.src ) ) {
+		isYouTube = data.model.src.match(/youtube|youtu\.be/);
+		isVimeo = -1 !== data.model.src.indexOf('vimeo');
+	}
+
+	if ( settings.contentWidth && data.model.width >= settings.contentWidth ) {
+		w = settings.contentWidth;
+	} else {
+		w = data.model.width;
+	}
+
+	if ( w !== data.model.width ) {
+		h = Math.ceil( ( data.model.height * w ) / data.model.width );
+	} else {
+		h = data.model.height;
+	}
+
+	if ( w ) {
+		w_rule = 'width: ' + w + 'px; ';
+	}
+
+	if ( isYouTube ) {
+		classes.push( 'youtube-video' );
+	}
+
+	if ( isVimeo ) {
+		classes.push( 'vimeo-video' );
+	}
+
+#>
+<div style="{{ w_rule }}" class="wp-video">
+<video controls
+	class="wp-video-shortcode {{ classes.join( ' ' ) }}"
+	<# if ( w ) { #>width="{{ w }}"<# } #>
+	<# if ( h ) { #>height="{{ h }}"<# } #>
+			<#
+		if ( ! _.isUndefined( data.model.poster ) && data.model.poster ) {
+			#> poster="{{ data.model.poster }}"<#
+		} #>
+			preload			="{{ _.isUndefined( data.model.preload ) ? 'metadata' : data.model.preload }}"
+				<#
+		if ( ! _.isUndefined( data.model.autoplay ) && data.model.autoplay ) {
+		#> autoplay<#
+	}
+		if ( ! _.isUndefined( data.model.loop ) && data.model.loop ) {
+		#> loop<#
+	}
+	#>
+>
+	<# if ( ! _.isEmpty( data.model.src ) ) {
+		if ( isYouTube ) { #>
+		<source src="{{ data.model.src }}" type="video/youtube" />
+		<# } else if ( isVimeo ) { #>
+		<source src="{{ data.model.src }}" type="video/vimeo" />
+		<# } else { #>
+		<source src="{{ data.model.src }}" type="{{ settings.embedMimes[ data.model.src.split('.').pop() ] }}" />
+		<# }
+	} #>
+
+		<# if ( data.model.mp4 ) { #>
+	<source src="{{ data.model.mp4 }}" type="{{ settings.embedMimes[ 'mp4' ] }}" />
+	<# } #>
+		<# if ( data.model.m4v ) { #>
+	<source src="{{ data.model.m4v }}" type="{{ settings.embedMimes[ 'm4v' ] }}" />
+	<# } #>
+		<# if ( data.model.webm ) { #>
+	<source src="{{ data.model.webm }}" type="{{ settings.embedMimes[ 'webm' ] }}" />
+	<# } #>
+		<# if ( data.model.ogv ) { #>
+	<source src="{{ data.model.ogv }}" type="{{ settings.embedMimes[ 'ogv' ] }}" />
+	<# } #>
+		<# if ( data.model.flv ) { #>
+	<source src="{{ data.model.flv }}" type="{{ settings.embedMimes[ 'flv' ] }}" />
+	<# } #>
+		{{{ data.model.content }}}
+</video>
+</div>
+
+				<# if ( ! _.isEmpty( data.model.src ) ) {
+					ext = data.model.src.split('.').pop();
+					if ( html5types[ ext ] ) {
+						delete html5types[ ext ];
+					}
+				#>
+				<span class="setting">
+					<label for="video-details-source" class="name">URL</label>
+					<input type="text" id="video-details-source" readonly data-setting="src" value="{{ data.model.src }}" />
+					<button type="button" class="button-link remove-setting">Remove video source</button>
+				</span>
+				<# } #>
+								<# if ( ! _.isEmpty( data.model.mp4 ) ) {
+					if ( ! _.isUndefined( html5types.mp4 ) ) {
+						delete html5types.mp4;
+					}
+				#>
+				<span class="setting">
+					<label for="video-details-mp4-source" class="name">MP4</label>
+					<input type="text" id="video-details-mp4-source" readonly data-setting="mp4" value="{{ data.model.mp4 }}" />
+					<button type="button" class="button-link remove-setting">Remove video source</button>
+				</span>
+				<# } #>
+								<# if ( ! _.isEmpty( data.model.m4v ) ) {
+					if ( ! _.isUndefined( html5types.m4v ) ) {
+						delete html5types.m4v;
+					}
+				#>
+				<span class="setting">
+					<label for="video-details-m4v-source" class="name">M4V</label>
+					<input type="text" id="video-details-m4v-source" readonly data-setting="m4v" value="{{ data.model.m4v }}" />
+					<button type="button" class="button-link remove-setting">Remove video source</button>
+				</span>
+				<# } #>
+								<# if ( ! _.isEmpty( data.model.webm ) ) {
+					if ( ! _.isUndefined( html5types.webm ) ) {
+						delete html5types.webm;
+					}
+				#>
+				<span class="setting">
+					<label for="video-details-webm-source" class="name">WEBM</label>
+					<input type="text" id="video-details-webm-source" readonly data-setting="webm" value="{{ data.model.webm }}" />
+					<button type="button" class="button-link remove-setting">Remove video source</button>
+				</span>
+				<# } #>
+								<# if ( ! _.isEmpty( data.model.ogv ) ) {
+					if ( ! _.isUndefined( html5types.ogv ) ) {
+						delete html5types.ogv;
+					}
+				#>
+				<span class="setting">
+					<label for="video-details-ogv-source" class="name">OGV</label>
+					<input type="text" id="video-details-ogv-source" readonly data-setting="ogv" value="{{ data.model.ogv }}" />
+					<button type="button" class="button-link remove-setting">Remove video source</button>
+				</span>
+				<# } #>
+								<# if ( ! _.isEmpty( data.model.flv ) ) {
+					if ( ! _.isUndefined( html5types.flv ) ) {
+						delete html5types.flv;
+					}
+				#>
+				<span class="setting">
+					<label for="video-details-flv-source" class="name">FLV</label>
+					<input type="text" id="video-details-flv-source" readonly data-setting="flv" value="{{ data.model.flv }}" />
+					<button type="button" class="button-link remove-setting">Remove video source</button>
+				</span>
+				<# } #>
+								</div>
+
+				<# if ( ! _.isEmpty( html5types ) ) { #>
+				<fieldset class="setting-group">
+					<legend class="name">Add alternate sources for maximum HTML5 playback</legend>
+					<span class="setting">
+						<span class="button-large">
+						<# _.each( html5types, function (mime, type) { #>
+							<button class="button add-media-source" data-mime="{{ mime }}">{{ type }}</button>
+						<# } ) #>
+						</span>
+					</span>
+				</fieldset>
+				<# } #>
+
+				<# if ( ! _.isEmpty( data.model.poster ) ) { #>
+				<span class="setting">
+					<label for="video-details-poster-image" class="name">Poster Image</label>
+					<input type="text" id="video-details-poster-image" readonly data-setting="poster" value="{{ data.model.poster }}" />
+					<button type="button" class="button-link remove-setting">Remove poster image</button>
+				</span>
+				<# } #>
+
+				<fieldset class="setting-group">
+					<legend class="name">Preload</legend>
+					<span class="setting preload">
+						<span class="button-group button-large" data-setting="preload">
+							<button class="button" value="auto">Auto</button>
+							<button class="button" value="metadata">Metadata</button>
+							<button class="button active" value="none">None</button>
+						</span>
+					</span>
+				</fieldset>
+
+				<span class="setting-group">
+					<span class="setting checkbox-setting autoplay">
+						<input type="checkbox" id="video-details-autoplay" data-setting="autoplay" />
+						<label for="video-details-autoplay" class="checkbox-label">Autoplay</label>
+					</span>
+
+					<span class="setting checkbox-setting">
+						<input type="checkbox" id="video-details-loop" data-setting="loop" />
+						<label for="video-details-loop" class="checkbox-label">Loop</label>
+					</span>
+				</span>
+
+				<span class="setting" data-setting="content">
+					<#
+					var content = '';
+					if ( ! _.isEmpty( data.model.content ) ) {
+						var tracks = jQuery( data.model.content ).filter( 'track' );
+						_.each( tracks.toArray(), function( track, index ) {
+							content += track.outerHTML; #>
+						<label for="video-details-track-{{ index }}" class="name">Tracks (subtitles, captions, descriptions, chapters, or metadata)</label>
+						<input class="content-track" type="text" id="video-details-track-{{ index }}" aria-describedby="video-details-track-desc-{{ index }}" value="{{ track.outerHTML }}" />
+						<span class="description" id="video-details-track-desc-{{ index }}">
+						The srclang, label, and kind values can be edited to set the video track language and kind.						</span>
+						<button type="button" class="button-link remove-setting remove-track">Remove video track</button><br/>
+						<# } ); #>
+					<# } else { #>
+					<span class="name">Tracks (subtitles, captions, descriptions, chapters, or metadata)</span><br />
+					<em>There are no associated subtitles.</em>
+					<# } #>
+					<textarea class="hidden content-setting">{{ content }}</textarea>
+				</span>
+			</div>
+		</div>
+	</script>
+
+<script type="text/html" id="tmpl-editor-gallery">
+		<# if ( data.attachments.length ) { #>
+			<div class="gallery gallery-columns-{{ data.columns }}">
+				<# _.each( data.attachments, function( attachment, index ) { #>
+					<dl class="gallery-item">
+						<dt class="gallery-icon">
+							<# if ( attachment.thumbnail ) { #>
+								<img src="{{ attachment.thumbnail.url }}" width="{{ attachment.thumbnail.width }}" height="{{ attachment.thumbnail.height }}" alt="{{ attachment.alt }}" />
+							<# } else { #>
+								<img src="{{ attachment.url }}" alt="{{ attachment.alt }}" />
+							<# } #>
+						</dt>
+						<# if ( attachment.caption ) { #>
+							<dd class="wp-caption-text gallery-caption">
+								{{{ data.verifyHTML( attachment.caption ) }}}
+							</dd>
+						<# } #>
+					</dl>
+					<# if ( index % data.columns === data.columns - 1 ) { #>
+						<br style="clear: both;">
+					<# } #>
+				<# } ); #>
+			</div>
+		<# } else { #>
+			<div class="wpview-error">
+				<div class="dashicons dashicons-format-gallery"></div><p>No items found.</p>
+			</div>
+		<# } #>
+	</script>
+
+<script type="text/html" id="tmpl-crop-content">
+		<img class="crop-image" src="{{ data.url }}" alt="Image crop area preview. Requires mouse interaction.">
+		<div class="upload-errors"></div>
+	</script>
+
+<script type="text/html" id="tmpl-site-icon-preview">
+		<h2>Preview</h2>
+		<strong aria-hidden="true">As a browser icon</strong>
+		<div class="favicon-preview">
+			<img src="https://master.qa.etdevs.com/wp-admin/images/browser.png" class="browser-preview" width="182" height="" alt="" />
+
+			<div class="favicon">
+				<img id="preview-favicon" src="{{ data.url }}" alt="Preview as a browser icon"/>
+			</div>
+			<span class="browser-title" aria-hidden="true"><# print( 'Divi Test Site' ) #></span>
+		</div>
+
+		<strong aria-hidden="true">As an app icon</strong>
+		<div class="app-icon-preview">
+			<img id="preview-app-icon" src="{{ data.url }}" alt="Preview as an app icon"/>
+		</div>
+	</script>
+
+<!-- D5i the following param is intentionally disabled; enabling this makes `isBuilder` from '../utils/utils' returns `true` -->
+<!-- <script type='text/javascript' id='et-builder-modules-global-functions-script-js-extra'>
+/* <![CDATA[ */
+var et_builder_utils_params = {"condition":{"diviTheme":true,"extraTheme":false},"scrollLocations":["app","top"],"builderScrollLocations":{"desktop":"app","tablet":"top","phone":"top","zoom":"top","wireframe":"app"},"onloadScrollLocation":"app","builderType":"vb"};
+/* ]]> */
+</script> -->
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/frontend-builder/build/frontend-builder-global-functions.js?ver=4.9.4' id='et-builder-modules-global-functions-script-js'></script>
+<!-- <script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/feature/dynamic-assets/assets/js/jquery_mobile_custom.js' id='et-jquery-touch-mobile-js'></script> -->
+<script type='text/javascript' id='divi-custom-script-js-extra'>
+/* <![CDATA[ */
+var DIVI = {"item_count":"%d Item","items_count":"%d Items","row_selector":"body.et_pb_pagebuilder_layout.single.et_full_width_page #page-container #et-boc .et-l %%order_class%%.et_pb_row"};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/core/admin/js/es6-promise.auto.min.js?ver=4.9.4' id='es6-promise-js'></script>
+
+<!-- D5i loads scripts.min.js from `/storybook-assets`. storybook needs the latest `scripts.min.js` that contains -->
+<!-- latest change on main dev branch. The script gets copied from `/Divi/js` on `yarn storybook` command.  -->
+<script type='text/javascript' src='./js/scripts.min.js' id='divi-custom-script-js'></script>
+
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/underscore.min.js?ver=1.8.3'
+  id='underscore-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/shortcode.js?ver=5.7.2'
+  id='shortcode-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/backbone.min.js?ver=1.4.0'
+  id='backbone-js'></script>
+<script type='text/javascript' id='wp-util-js-extra'>
+  /* <![CDATA[ */
+  var _wpUtilSettings = { "ajax": { "url": "\/divi\/wp-admin\/admin-ajax.php" } };
+  /* ]]> */
+</script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/wp-util.js?ver=5.7.2'
+  id='wp-util-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/wp-backbone.js?ver=5.7.2'
+  id='wp-backbone-js'></script>
+<script type='text/javascript' id='media-models-js-extra'>
+  /* <![CDATA[ */
+  var _wpMediaModelsL10n = { "settings": { "ajaxurl": "\/divi\/wp-admin\/admin-ajax.php", "post": { "id": 0 } } };
+  /* ]]> */
+</script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/media-models.js?ver=5.7.2'
+  id='media-models-js'></script>
+<script type='text/javascript' id='wp-plupload-js-extra'>
+  /* <![CDATA[ */
+  var pluploadL10n = { "queue_limit_exceeded": "You have attempted to queue too many files.", "file_exceeds_size_limit": "%s exceeds the maximum upload size for this site.", "zero_byte_file": "This file is empty. Please try another.", "invalid_filetype": "Sorry, this file type is not permitted for security reasons.", "not_an_image": "This file is not an image. Please try another.", "image_memory_exceeded": "Memory exceeded. Please try another smaller file.", "image_dimensions_exceeded": "This is larger than the maximum size. Please try another.", "default_error": "An error occurred in the upload. Please try again later.", "missing_upload_url": "There was a configuration error. Please contact the server administrator.", "upload_limit_exceeded": "You may only upload 1 file.", "http_error": "Unexpected response from the server. The file may have been uploaded successfully. Check in the Media Library or reload the page.", "http_error_image": "Post-processing of the image failed likely because the server is busy or does not have enough resources. Uploading a smaller image may help. Suggested maximum size is 2500 pixels.", "upload_failed": "Upload failed.", "big_upload_failed": "Please try uploading this file with the %1$sbrowser uploader%2$s.", "big_upload_queued": "%s exceeds the maximum upload size for the multi-file uploader when used in your browser.", "io_error": "IO error.", "security_error": "Security error.", "file_cancelled": "File canceled.", "upload_stopped": "Upload stopped.", "dismiss": "Dismiss", "crunching": "Crunching\u2026", "deleted": "moved to the Trash.", "error_uploading": "\u201c%s\u201d has failed to upload.", "unsupported_image": "This image cannot be displayed in a web browser. For best results convert it to JPEG before uploading." };
+  var _wpPluploadSettings = { "defaults": { "file_data_name": "async-upload", "url": "\/divi\/wp-admin\/async-upload.php", "filters": { "max_file_size": "8388608b", "mime_types": [{ "extensions": "jpg,jpeg,jpe,gif,png,bmp,tiff,tif,ico,heic,asf,asx,wmv,wmx,wm,avi,divx,flv,mov,qt,mpeg,mpg,mpe,mp4,m4v,ogv,webm,mkv,3gp,3gpp,3g2,3gp2,txt,asc,c,cc,h,srt,csv,tsv,ics,rtx,css,htm,html,vtt,dfxp,mp3,m4a,m4b,aac,ra,ram,wav,ogg,oga,flac,mid,midi,wma,wax,mka,rtf,js,pdf,class,tar,zip,gz,gzip,rar,7z,psd,xcf,doc,pot,pps,ppt,wri,xla,xls,xlt,xlw,mdb,mpp,docx,docm,dotx,dotm,xlsx,xlsm,xlsb,xltx,xltm,xlam,pptx,pptm,ppsx,ppsm,potx,potm,ppam,sldx,sldm,onetoc,onetoc2,onetmp,onepkg,oxps,xps,odt,odp,ods,odg,odc,odb,odf,wp,wpd,key,numbers,pages" }] }, "heic_upload_error": true, "multipart_params": { "action": "upload-attachment", "_wpnonce": "f9d204e26a" } }, "browser": { "mobile": false, "supported": true }, "limitExceeded": false };
+  /* ]]> */
+</script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/plupload/wp-plupload.js?ver=5.7.2'
+  id='wp-plupload-js'></script>
+
+  <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/ui/core.js?ver=1.12.1'
+  id='jquery-ui-core-js'></script>
+
+  <script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/ui/mouse.js?ver=1.12.1'
+  id='jquery-ui-mouse-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/ui/sortable.js?ver=1.12.1'
+  id='jquery-ui-sortable-js'></script>
+<script type='text/javascript' id='mediaelement-core-js-before'>
+  var mejsL10n = { "language": "en", "strings": { "mejs.download-file": "Download File", "mejs.install-flash": "You are using a browser that does not have Flash player enabled or installed. Please turn on your Flash player plugin or download the latest version from https:\/\/get.adobe.com\/flashplayer\/", "mejs.fullscreen": "Fullscreen", "mejs.play": "Play", "mejs.pause": "Pause", "mejs.time-slider": "Time Slider", "mejs.time-help-text": "Use Left\/Right Arrow keys to advance one second, Up\/Down arrows to advance ten seconds.", "mejs.live-broadcast": "Live Broadcast", "mejs.volume-help-text": "Use Up\/Down Arrow keys to increase or decrease volume.", "mejs.unmute": "Unmute", "mejs.mute": "Mute", "mejs.volume-slider": "Volume Slider", "mejs.video-player": "Video Player", "mejs.audio-player": "Audio Player", "mejs.captions-subtitles": "Captions\/Subtitles", "mejs.captions-chapters": "Chapters", "mejs.none": "None", "mejs.afrikaans": "Afrikaans", "mejs.albanian": "Albanian", "mejs.arabic": "Arabic", "mejs.belarusian": "Belarusian", "mejs.bulgarian": "Bulgarian", "mejs.catalan": "Catalan", "mejs.chinese": "Chinese", "mejs.chinese-simplified": "Chinese (Simplified)", "mejs.chinese-traditional": "Chinese (Traditional)", "mejs.croatian": "Croatian", "mejs.czech": "Czech", "mejs.danish": "Danish", "mejs.dutch": "Dutch", "mejs.english": "English", "mejs.estonian": "Estonian", "mejs.filipino": "Filipino", "mejs.finnish": "Finnish", "mejs.french": "French", "mejs.galician": "Galician", "mejs.german": "German", "mejs.greek": "Greek", "mejs.haitian-creole": "Haitian Creole", "mejs.hebrew": "Hebrew", "mejs.hindi": "Hindi", "mejs.hungarian": "Hungarian", "mejs.icelandic": "Icelandic", "mejs.indonesian": "Indonesian", "mejs.irish": "Irish", "mejs.italian": "Italian", "mejs.japanese": "Japanese", "mejs.korean": "Korean", "mejs.latvian": "Latvian", "mejs.lithuanian": "Lithuanian", "mejs.macedonian": "Macedonian", "mejs.malay": "Malay", "mejs.maltese": "Maltese", "mejs.norwegian": "Norwegian", "mejs.persian": "Persian", "mejs.polish": "Polish", "mejs.portuguese": "Portuguese", "mejs.romanian": "Romanian", "mejs.russian": "Russian", "mejs.serbian": "Serbian", "mejs.slovak": "Slovak", "mejs.slovenian": "Slovenian", "mejs.spanish": "Spanish", "mejs.swahili": "Swahili", "mejs.swedish": "Swedish", "mejs.tagalog": "Tagalog", "mejs.thai": "Thai", "mejs.turkish": "Turkish", "mejs.ukrainian": "Ukrainian", "mejs.vietnamese": "Vietnamese", "mejs.welsh": "Welsh", "mejs.yiddish": "Yiddish" } };
+</script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/mediaelement/mediaelement-and-player.js?ver=4.2.16'
+  id='mediaelement-core-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/mediaelement/mediaelement-migrate.js?ver=5.7.2'
+  id='mediaelement-migrate-js'></script>
+<script type='text/javascript' id='mediaelement-js-extra'>
+  /* <![CDATA[ */
+  var _wpmejsSettings = { "pluginPath": "\/divi\/wp-includes\/js\/mediaelement\/", "classPrefix": "mejs-", "stretching": "responsive" };
+  /* ]]> */
+</script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/mediaelement/wp-mediaelement.js?ver=5.7.2'
+  id='wp-mediaelement-js'></script>
+<script type='text/javascript' id='wp-api-request-js-extra'>
+  /* <![CDATA[ */
+  var wpApiSettings = { "root": "http:\/\/wp54.php74.local.etdevs.com\/divi\/wp-json\/", "nonce": "5d8dc98b9e", "versionString": "wp\/v2\/" };
+  /* ]]> */
+</script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/api-request.js?ver=5.7.2'
+  id='wp-api-request-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/wp-polyfill.js?ver=7.4.4'
+  id='wp-polyfill-js'></script>
+<script type='text/javascript' id='wp-polyfill-js-after'>
+  ('fetch' in window) || document.write('<script src="%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/wp-polyfill-fetch.js?ver=3.0.0"></scr' + 'ipt>'); (document.contains) || document.write('<script src="%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/wp-polyfill-node-contains.js?ver=3.42.0"></scr' + 'ipt>'); (window.DOMRect) || document.write('<script src="%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/wp-polyfill-dom-rect.js?ver=3.42.0"></scr' + 'ipt>'); (window.URL && window.URL.prototype && window.URLSearchParams) || document.write('<script src="%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/wp-polyfill-url.js?ver=3.6.4"></scr' + 'ipt>'); (window.FormData && window.FormData.prototype.keys) || document.write('<script src="%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/wp-polyfill-formdata.js?ver=3.0.12"></scr' + 'ipt>'); (Element.prototype.matches && Element.prototype.closest) || document.write('<script src="%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/wp-polyfill-element-closest.js?ver=2.0.2"></scr' + 'ipt>'); ('objectFit' in document.documentElement.style) || document.write('<script src="%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/wp-polyfill-object-fit.js?ver=2.3.4"></scr' + 'ipt>');
+</script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/dom-ready.js?ver=eb19f7980f0268577acb5c2da5457de3'
+  id='wp-dom-ready-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/hooks.js?ver=50e23bed88bcb9e6e14023e9961698c1'
+  id='wp-hooks-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/i18n.js?ver=db9a9a37da262883343e941c3731bc67'
+  id='wp-i18n-js'></script>
+<script type='text/javascript' id='wp-i18n-js-after'>
+  wp.i18n.setLocaleData({ 'text direction\u0004ltr': ['ltr'] });
+</script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/a11y.js?ver=5e00de7a43b31bbb9eaf685f089a3903'
+  id='wp-a11y-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/clipboard.js?ver=5.7.2'
+  id='clipboard-js'></script>
+<script type='text/javascript' id='media-views-js-extra'>
+  /* <![CDATA[ */
+  var _wpMediaViewsL10n = { "mediaFrameDefaultTitle": "Media", "url": "URL", "addMedia": "Add media", "search": "Search", "select": "Select", "cancel": "Cancel", "update": "Update", "replace": "Replace", "remove": "Remove", "back": "Back", "selected": "%d selected", "dragInfo": "Drag and drop to reorder media files.", "uploadFilesTitle": "Upload files", "uploadImagesTitle": "Upload images", "mediaLibraryTitle": "Media Library", "insertMediaTitle": "Add media", "createNewGallery": "Create a new gallery", "createNewPlaylist": "Create a new playlist", "createNewVideoPlaylist": "Create a new video playlist", "returnToLibrary": "\u2190 Go to library", "allMediaItems": "All media items", "allDates": "All dates", "noItemsFound": "No items found.", "insertIntoPost": "Insert into post", "unattached": "Unattached", "mine": "Mine", "trash": "Trash", "uploadedToThisPost": "Uploaded to this post", "warnDelete": "You are about to permanently delete this item from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete.", "warnBulkDelete": "You are about to permanently delete these items from your site.\nThis action cannot be undone.\n 'Cancel' to stop, 'OK' to delete.", "warnBulkTrash": "You are about to trash these items.\n  'Cancel' to stop, 'OK' to delete.", "bulkSelect": "Bulk select", "trashSelected": "Move to Trash", "restoreSelected": "Restore from Trash", "deletePermanently": "Delete permanently", "apply": "Apply", "filterByDate": "Filter by date", "filterByType": "Filter by type", "searchLabel": "Search", "searchMediaLabel": "Search media", "searchMediaPlaceholder": "Search media items...", "mediaFound": "Number of media items found: %d", "mediaFoundHasMoreResults": "Number of media items displayed: %d. Scroll the page for more results.", "noMedia": "No media items found.", "noMediaTryNewSearch": "No media items found. Try a different search.", "attachmentDetails": "Attachment details", "insertFromUrlTitle": "Insert from URL", "setFeaturedImageTitle": "Featured image", "setFeaturedImage": "Set featured image", "createGalleryTitle": "Create gallery", "editGalleryTitle": "Edit gallery", "cancelGalleryTitle": "\u2190 Cancel gallery", "insertGallery": "Insert gallery", "updateGallery": "Update gallery", "addToGallery": "Add to gallery", "addToGalleryTitle": "Add to gallery", "reverseOrder": "Reverse order", "imageDetailsTitle": "Image details", "imageReplaceTitle": "Replace image", "imageDetailsCancel": "Cancel edit", "editImage": "Edit image", "chooseImage": "Choose image", "selectAndCrop": "Select and crop", "skipCropping": "Skip cropping", "cropImage": "Crop image", "cropYourImage": "Crop your image", "cropping": "Cropping\u2026", "suggestedDimensions": "Suggested image dimensions: %1$s by %2$s pixels.", "cropError": "There has been an error cropping your image.", "audioDetailsTitle": "Audio details", "audioReplaceTitle": "Replace audio", "audioAddSourceTitle": "Add audio source", "audioDetailsCancel": "Cancel edit", "videoDetailsTitle": "Video details", "videoReplaceTitle": "Replace video", "videoAddSourceTitle": "Add video source", "videoDetailsCancel": "Cancel edit", "videoSelectPosterImageTitle": "Select poster image", "videoAddTrackTitle": "Add subtitles", "playlistDragInfo": "Drag and drop to reorder tracks.", "createPlaylistTitle": "Create audio playlist", "editPlaylistTitle": "Edit audio playlist", "cancelPlaylistTitle": "\u2190 Cancel audio playlist", "insertPlaylist": "Insert audio playlist", "updatePlaylist": "Update audio playlist", "addToPlaylist": "Add to audio playlist", "addToPlaylistTitle": "Add to Audio Playlist", "videoPlaylistDragInfo": "Drag and drop to reorder videos.", "createVideoPlaylistTitle": "Create video playlist", "editVideoPlaylistTitle": "Edit video playlist", "cancelVideoPlaylistTitle": "\u2190 Cancel video playlist", "insertVideoPlaylist": "Insert video playlist", "updateVideoPlaylist": "Update video playlist", "addToVideoPlaylist": "Add to video playlist", "addToVideoPlaylistTitle": "Add to video Playlist", "filterAttachments": "Filter media", "attachmentsList": "Media list", "settings": { "tabs": [], "tabUrl": "http:\/\/wp54.php74.local.etdevs.com\/divi\/wp-admin\/media-upload.php?chromeless=1", "mimeTypes": { "image": "Images", "audio": "Audio", "video": "Video", "application\/msword,application\/vnd.openxmlformats-officedocument.wordprocessingml.document,application\/vnd.ms-word.document.macroEnabled.12,application\/vnd.ms-word.template.macroEnabled.12,application\/vnd.oasis.opendocument.text,application\/vnd.apple.pages,application\/pdf,application\/vnd.ms-xpsdocument,application\/oxps,application\/rtf,application\/wordperfect,application\/octet-stream": "Documents", "application\/vnd.apple.numbers,application\/vnd.oasis.opendocument.spreadsheet,application\/vnd.ms-excel,application\/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application\/vnd.ms-excel.sheet.macroEnabled.12,application\/vnd.ms-excel.sheet.binary.macroEnabled.12": "Spreadsheets", "application\/x-gzip,application\/rar,application\/x-tar,application\/zip,application\/x-7z-compressed": "Archives" }, "captions": true, "nonce": { "sendToEditor": "75dc38216a" }, "post": { "id": 0 }, "defaultProps": { "link": "none", "align": "", "size": "" }, "attachmentCounts": { "audio": 1, "video": 1 }, "oEmbedProxyUrl": "http:\/\/wp54.php74.local.etdevs.com\/divi\/wp-json\/oembed\/1.0\/proxy", "embedExts": ["mp3", "ogg", "flac", "m4a", "wav", "mp4", "m4v", "webm", "ogv", "flv"], "embedMimes": { "mp3": "audio\/mpeg", "ogg": "audio\/ogg", "flac": "audio\/flac", "m4a": "audio\/mpeg", "wav": "audio\/wav", "mp4": "video\/mp4", "m4v": "video\/mp4", "webm": "video\/webm", "ogv": "video\/ogg", "flv": "video\/x-flv" }, "contentWidth": 1080, "months": [{ "year": "2021", "month": "6", "text": "June 2021" }, { "year": "2021", "month": "5", "text": "May 2021" }, { "year": "2021", "month": "4", "text": "April 2021" }, { "year": "2021", "month": "2", "text": "February 2021" }, { "year": "2020", "month": "10", "text": "October 2020" }, { "year": "2020", "month": "9", "text": "September 2020" }, { "year": "2020", "month": "8", "text": "August 2020" }, { "year": "2020", "month": "7", "text": "July 2020" }, { "year": "2020", "month": "6", "text": "June 2020" }, { "year": "2020", "month": "5", "text": "May 2020" }], "mediaTrash": 0 } };
+  /* ]]> */
+</script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/media-views.js?ver=5.7.2'
+  id='media-views-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/media-editor.js?ver=5.7.2'
+  id='media-editor-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/media-audiovideo.js?ver=5.7.2'
+  id='media-audiovideo-js'></script>
+
+  <!-- <script type='text/javascript'
+  src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/scripts/ext/media-library.js?ver=4.9.3'
+  id='et_pb_media_library-js'></script> -->
+
+  <script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/ui/draggable.js?ver=1.12.1'
+  id='jquery-ui-draggable-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/ui/slider.js?ver=1.12.1'
+  id='jquery-ui-slider-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/jquery.ui.touch-punch.js?ver=0.2.2'
+  id='jquery-touch-punch-js'></script>
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-admin/js/iris.min.js?ver=5.7.2'
+  id='iris-js'></script>
+<script type='text/javascript' id='wp-color-picker-js-extra'>
+  /* <![CDATA[ */
+  var wpColorPickerL10n = { "clear": "Clear", "defaultString": "Default", "pick": "Select Color" };
+  /* ]]> */
+</script>
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-admin/js/color-picker.min.js?ver=5.7.2'
+  id='wp-color-picker-js'></script>
+<script type='text/javascript' id='wp-color-picker-alpha-js-extra'>
+  /* <![CDATA[ */
+  var et_pb_color_picker_strings = { "legacy_pick": "Select", "legacy_current": "Current Color" };
+  /* ]]> */
+</script>
+
+<script type='text/javascript'
+  src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/scripts/ext/wp-color-picker-alpha.min.js?ver=4.9.4'
+  id='wp-color-picker-alpha-js'></script>
+
+<script type='text/javascript' id='mce-view-js-extra'>
+  /* <![CDATA[ */
+  var mceViewL10n = { "shortcodes": ["wp_caption", "caption", "gallery", "playlist", "audio", "video", "embed", "et_pb_split_track", "digg", "stumble", "facebook", "twitter", "feedburner", "retweet", "protected", "box", "tooltip", "learn_more", "button", "slide", "tabs", "tabcontainer", "imagetabcontainer", "imagetabtext", "tabtext", "tabcontent", "tab", "imagetab", "author", "author_image", "author_info", "pricing_table", "custom_list", "pricing", "feature", "dropcap", "testimonial", "quote", "one_half", "one_half_last", "one_third", "one_third_last", "one_fourth", "one_fourth_last", "two_third", "two_third_last", "three_fourth", "three_fourth_last", "et_pb_section", "et_pb_row", "et_pb_row_inner", "et_pb_column", "et_pb_column_inner", "et_pb_accordion", "et_pb_audio", "et_pb_counters", "et_pb_counter", "et_pb_blog", "et_pb_blurb", "et_pb_button", "et_pb_circle_counter", "et_pb_code", "et_pb_comments", "et_pb_contact_form", "et_pb_contact_field", "et_pb_signup_custom_field", "et_pb_countdown_timer", "et_pb_cta", "et_pb_divider", "et_pb_filterable_portfolio", "et_pb_fullwidth_code", "et_pb_fullwidth_header", "et_pb_fullwidth_image", "et_pb_fullwidth_map", "et_pb_fullwidth_menu", "et_pb_fullwidth_portfolio", "et_pb_fullwidth_post_content", "et_pb_fullwidth_post_slider", "et_pb_fullwidth_post_title", "et_pb_fullwidth_slider", "et_pb_gallery", "et_pb_image", "et_pb_login", "et_pb_map", "et_pb_map_pin", "et_pb_menu", "et_pb_number_counter", "et_pb_portfolio", "et_pb_post_content", "et_pb_post_slider", "et_pb_post_title", "et_pb_post_nav", "et_pb_pricing_tables", "et_pb_pricing_item", "et_pb_pricing_table", "et_pb_search", "et_pb_shop", "et_pb_sidebar", "et_pb_signup", "et_pb_slider", "et_pb_slide", "et_pb_social_media_follow", "et_pb_social_media_follow_network", "et_pb_tabs", "et_pb_tab", "et_pb_team_member", "et_pb_testimonial", "et_pb_text", "et_pb_toggle", "et_pb_accordion_item", "et_pb_video", "et_pb_video_slider", "et_pb_video_slider_item"] };
+  /* ]]> */
+</script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/mce-view.js?ver=5.7.2'
+  id='mce-view-js'></script>
+
+
+<!-- <script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/feature/dynamic-assets/assets/js/fitvids.js' id='divi-fitvids-js'></script> -->
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/scripts/ext/waypoints.min.js?ver=4.9.4' id='waypoints-js'></script>
+<!-- <script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/feature/dynamic-assets/assets/js/magnific-popup.js' id='magnific-popup-js'></script> -->
+<script type='text/javascript' id='et-builder-modules-script-js-extra'>
+/* <![CDATA[ */
+var et_frontend_scripts = {"builderCssContainerPrefix":"#et-boc","builderCssLayoutPrefix":"#et-boc .et-l"};
+var et_pb_custom = {"ajaxurl":"http:\/\/wp54.php74.local.etdevs.com\/divi\/wp-admin\/admin-ajax.php","images_uri":"http:\/\/wp54.php74.local.etdevs.com\/divi\/wp-content\/themes\/Divi\/images","builder_images_uri":"http:\/\/wp54.php74.local.etdevs.com\/divi\/wp-content\/themes\/Divi\/includes\/builder\/images","et_frontend_nonce":"a69a24455c","subscription_failed":"Please, check the fields below to make sure you entered the correct information.","et_ab_log_nonce":"54fb2902a8","fill_message":"Please, fill in the following fields:","contact_error_message":"Please, fix the following errors:","invalid":"Invalid email","captcha":"Captcha","prev":"Prev","previous":"Previous","next":"Next","wrong_captcha":"You entered the wrong number in captcha.","wrong_checkbox":"Checkbox","ignore_waypoints":"no","is_divi_theme_used":"1","widget_search_selector":".widget_search","ab_tests":[],"is_ab_testing_active":"","page_id":"231672","unique_test_id":"","ab_bounce_rate":"5","is_cache_plugin_active":"no","is_shortcode_tracking":"","tinymce_uri":"http:\/\/wp54.php74.local.etdevs.com\/divi\/wp-content\/themes\/Divi\/includes\/builder\/frontend-builder\/assets\/vendors"};
+var et_pb_box_shadow_elements = [];
+var et_pb_motion_elements = {"desktop":[],"tablet":[],"phone":[]};
+var et_pb_sticky_elements = [];
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/frontend-builder/build/frontend-builder-scripts.js?ver=4.9.4' id='et-builder-modules-script-js'></script>
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/scripts/ext/jquery.visible.min.js?ver=4.9.4' id='et-jquery-visible-viewport-js'></script>
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/core/admin/js/common.js?ver=4.9.4' id='et-core-common-js'></script>
+
+
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/wp-embed.js?ver=5.7.2'
+  id='wp-embed-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/ui/tabs.js?ver=1.12.1'
+  id='jquery-ui-tabs-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/jquery.form.js?ver=4.2.1'
+  id='jquery-form-js'></script>
+<script type='text/javascript' id='et-core-admin-js-extra'>
+  /* <![CDATA[ */
+  var etCore = { "ajaxurl": "http:\/\/wp54.php74.local.etdevs.com\/divi\/wp-admin\/admin-ajax.php", "text": { "modalTempContentCheck": "Got it, thanks!" } };
+  /* ]]> */
+</script>
+
+<!-- <script type='text/javascript'
+  src='https://master.qa.etdevs.com/wp-content/themes/Divi/core/admin/js/core.js?ver=4.9.4'
+  id='et-core-admin-js'></script> -->
+
+<!-- <script type='text/javascript' id='et-core-portability-js-extra'>
+/* <![CDATA[ */
+var etCorePortability = {"nonces":{"import":"e94ed9f420","export":"f1bbf9ae15","cancel":"df489bff35"},"postMaxSize":"8","uploadMaxSize":"32","text":{"browserSupport":"The browser version you are currently using is outdated. Please update to the newest version.","memoryExhausted":"You reached your server memory limit. Please try increasing your PHP memory limit.","maxSizeExceeded":"This file cannot be imported. It may be caused by file_uploads being disabled in your php.ini. It may also be caused by post_max_size or\/and upload_max_filesize being smaller than file selected. Please increase it or transfer more substantial data at the time.","invalideFile":"Invalid File format. You should be uploading a JSON file.","importContextFail":"This file should not be imported in this context.","noItemsSelected":"Please select at least one item to export or disable the &quot;Only export selected items&quot; option","importing":"Import estimated time remaining: <span>1<\/span>min","exporting":"Export estimated time remaining: <span>1<\/span>min","backuping":"Backup estimated time remaining: <span>1<\/span>min"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/core/admin/js/portability.js?ver=4.9.4' id='et-core-portability-js'></script> -->
+
+
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/ui/resizable.js?ver=1.12.1'
+  id='jquery-ui-resizable-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/ui/effect.js?ver=1.12.1'
+  id='jquery-effects-core-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/jquery/ui/datepicker.js?ver=1.12.1'
+  id='jquery-ui-datepicker-js'></script>
+<script type='text/javascript'
+  src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/scripts/ext/jquery-ui-timepicker-addon.js?ver=4.9.4'
+  id='et_pb_admin_date_addon_js-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/shortcode.js?ver=5.7.2'
+  id='et-wp-shortcode-js'></script>
+<script type='text/javascript' id='heartbeat-js-extra'>
+  /* <![CDATA[ */
+  var heartbeatSettings = { "ajaxurl": "\/divi\/wp-admin\/admin-ajax.php", "nonce": "30a96cf1f7" };
+  /* ]]> */
+</script>
+
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/heartbeat.js?ver=5.7.2' id='heartbeat-js'></script>
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/scripts/ext/jquery.tablesorter.min.js?ver=4.9.4' id='jquery-tablesorter-js'></script>
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/scripts/ext/chart.min.js?ver=4.9.4' id='chart-js'></script> -->
+
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/react.js?ver=16.13.1' id='react-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/react-dom.js?ver=16.13.1'
+  id='react-dom-js'></script>
+
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/frontend-builder/assets/vendors/tinymce.min.js?ver=5.7.2' id='react-tiny-mce-js'></script>
+<script type='text/javascript' id='et-shortcodes-js-js-extra'>
+/* <![CDATA[ */
+var et_shortcodes_strings = {"previous":"Previous","next":"Next"};
+/* ]]> */
+</script>
+<!-- <script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/epanel/shortcodes/js/et_shortcodes_frontend.js?ver=4.9.4' id='et-shortcodes-js-js'></script> -->
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/feature/dynamic-assets/assets/js/easypiechart.js' id='easypiechart-js'></script>
+<!-- <script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/feature/dynamic-assets/assets/js/salvattore.js' id='salvattore-js'></script>
+<script type='text/javascript' src='https://master.qa.etdevs.com/wp-content/themes/Divi/includes/builder/feature/dynamic-assets/assets/js/hashchange.js' id='hashchange-js'></script> -->
+
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/lodash.js?ver=4.17.19'
+  id='lodash-js'></script>
+<script type='text/javascript' id='lodash-js-after'>
+  window.lodash = _.noConflict();
+</script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/vendor/moment.js?ver=2.26.0' id='moment-js'></script>
+<script type='text/javascript' id='moment-js-after'>
+  moment.updateLocale('en_US', { "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "monthsShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "weekdaysShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], "week": { "dow": 1 }, "longDateFormat": { "LT": "g:i a", "LTS": null, "L": null, "LL": "F j, Y", "LLL": "F j, Y g:i a", "LLLL": null } });
+</script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/deprecated.js?ver=be1d4376501c21d85ba98dd28ca2d7ea'
+  id='wp-deprecated-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/dom.js?ver=671f146cf127795e6a263e97355441bb'
+  id='wp-dom-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/escape-html.js?ver=318abfb97a58ba13225ff74699ad73d4'
+  id='wp-escape-html-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/element.js?ver=ade78933fc78fc95c1988dda7ccc9fb3'
+  id='wp-element-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/is-shallow-equal.js?ver=cf24fb93db7d16bf3d6bdffd1bec05e1'
+  id='wp-is-shallow-equal-js'></script>
+
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/keycodes.js?ver=cac26ca61be251f8c22084b9bc31baf7'
+  id='wp-keycodes-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/priority-queue.js?ver=153c6098088db23133f6868ce3b5b53b'
+  id='wp-priority-queue-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/compose.js?ver=2992ad367077bac67cff98221f7cc481'
+  id='wp-compose-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/date.js?ver=e44c6aaa6f78b408b2505ac9bfb0a862'
+  id='wp-date-js'></script>
+<script type='text/javascript' id='wp-date-js-after'>
+  wp.date.setSettings({ "l10n": { "locale": "en_US", "months": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"], "monthsShort": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"], "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"], "weekdaysShort": ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"], "meridiem": { "am": "am", "pm": "pm", "AM": "AM", "PM": "PM" }, "relative": { "future": "%s from now", "past": "%s ago" } }, "formats": { "time": "g:i a", "date": "F j, Y", "datetime": "F j, Y g:i a", "datetimeAbbreviated": "M j, Y g:i a" }, "timezone": { "offset": "0", "string": "", "abbr": "" } });
+</script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/primitives.js?ver=b7316cc76fe897dfe1948b24704fc9af'
+  id='wp-primitives-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/redux-routine.js?ver=284288e957394d2097c6fbe95625e2fb'
+  id='wp-redux-routine-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/data.js?ver=943087ae96d075f126df689839bb96b9'
+  id='wp-data-js'></script>
+<script type='text/javascript' id='wp-data-js-after'>
+  (function () {
+    var userId = 1;
+    var storageKey = "WP_DATA_USER_" + userId;
+    wp.data
+      .use(wp.data.plugins.persistence, { storageKey: storageKey });
+    wp.data.plugins.persistence.__unstableMigrate({ storageKey: storageKey });
+  })();
+</script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/rich-text.js?ver=dc66b38a90bdf10456e113646934eb2f'
+  id='wp-rich-text-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/warning.js?ver=bcafad57697ddba79662ee71e2e589e6'
+  id='wp-warning-js'></script>
+
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/components.js?ver=05cdf30cf2623cd4539a5c19832b0114'
+  id='wp-components-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/autop.js?ver=31f0fb8bb0841ffcfb23a7c3703eb382'
+  id='wp-autop-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/blob.js?ver=a0108ef6c9ee1a6a6f732ce03fe0826b'
+  id='wp-blob-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/block-serialization-default-parser.js?ver=b88372fe5cb856a54e6c1133d7b8769b'
+  id='wp-block-serialization-default-parser-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/html-entities.js?ver=b27799bc72bad91610410e4c2fa81e80'
+  id='wp-html-entities-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/shortcode.js?ver=705513cce141b41d5a0dbbfdb1ff66a4'
+  id='wp-shortcode-js'></script>
+
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/blocks.js?ver=9ed25ffa009c799f99a4340915b6dc6a'
+  id='wp-blocks-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/keyboard-shortcuts.js?ver=bc9b217d8ecda546a28d738c96226f97'
+  id='wp-keyboard-shortcuts-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/notices.js?ver=cbb5435defb0daf022a906a77356cb96'
+  id='wp-notices-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/token-list.js?ver=b1183e4c41fce8fc2b379f58de2a80ce'
+  id='wp-token-list-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/url.js?ver=0ac7e0472c46121366e7ce07244be1ac'
+  id='wp-url-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/wordcount.js?ver=6c1e45df8f05f7eb2258ecd3d758ecf0'
+  id='wp-wordcount-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/block-editor.js?ver=4378547cec8f5157a02ead3dfc5c65b2'
+  id='wp-block-editor-js'></script>
+<script type='text/javascript'
+  src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/api-fetch.js?ver=a783d1f442d2abefc7d6dbd156a44561'
+  id='wp-api-fetch-js'></script>
+<script type='text/javascript' id='wp-api-fetch-js-after'>
+  wp.apiFetch.use(wp.apiFetch.createRootURLMiddleware("https://master.qa.etdevs.com/wp-json/"));
+  wp.apiFetch.nonceMiddleware = wp.apiFetch.createNonceMiddleware("5d8dc98b9e");
+  wp.apiFetch.use(wp.apiFetch.nonceMiddleware);
+  wp.apiFetch.use(wp.apiFetch.mediaUploadMiddleware);
+  wp.apiFetch.nonceEndpoint = "https://master.qa.etdevs.com/wp-admin/admin-ajax.php?action=rest-nonce";
+</script>
+<!-- <script src="http://maps.googleapis.com/maps/api/js?v=3&key=%STORYBOOK_GOOGLE_MAP_API_KEY%" id="google-maps-api-js"></script> -->
+
+
+
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/data.js?ver=36151c80501e3b92b4f877a6ffd271cd' id='divi-data-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/middleware.js?ver=1b8d94fcf533a8f7b25555beba4aa7df' id='divi-middleware-js'></script>
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/ajax.js?ver=afed6c2d2c54779233e8dbdaa7c4c441' id='divi-ajax-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/constant-library.js?ver=323ce6b5a5aa0e4d4bb2d9c83c66f857' id='divi-constant-library-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/divider-library.js?ver=080c303be1509ae07c3e3aa64264e3be' id='divi-divider-library-js'></script> -->
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/window.js?ver=af2eab624c875213432c8150771f87dc' id='divi-window-js'></script>
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/draggable.js?ver=311fd588b7ea7028456b524b8ed4688a' id='divi-draggable-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/error-boundary.js?ver=61c025f7ef664bd537ef18a9b84ed4c9' id='divi-error-boundary-js'></script> -->
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/icon-library.js?ver=09bb23109b25268542cc043719f34496' id='divi-icon-library-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/keyboard-shortcuts.js?ver=46ff7ad0af90d13a9176e0305d381ac7' id='divi-keyboard-shortcuts-js'></script>
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/mask-and-pattern-library.js?ver=2c446553ef7ead7c0bab4da7d982c483' id='divi-mask-and-pattern-library-js'></script> -->
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/module-utils.js?ver=85f9eb6b2671670b560839c070532d2b' id='divi-module-utils-js'></script>
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/numbers.js?ver=67d826c0a5e87cbc75f0e8cb6e8c8c0f' id='divi-numbers-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/context-library.js?ver=8332b3d69457f051a40d9ce90e4a9916' id='divi-context-library-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/seamless-immutable-extension.js?ver=3c1283f76d353044512ec35db8d53641' id='divi-seamless-immutable-extension-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/clipboard.js?ver=10d127d685dd365c2cf6721683593524' id='divi-clipboard-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/right-click-options.js?ver=6fa497d6997a5fd104ba206312c8a17d' id='divi-right-click-options-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/sanitize.js?ver=2a9d2de2e92b9271b1528f138ac6d793' id='divi-sanitize-js'></script> -->
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/style-library.js?ver=76dfabc875281e965c8776a40abd4aec' id='divi-style-library-js'></script>
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/tooltip.js?ver=3f84a891c7643c0f0bc6683a58c551cd' id='divi-tooltip-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/url.js?ver=49bb765b94159f5d9ccc93d8a4621953' id='divi-url-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/ui-library.js?ver=01fd2e8648d659083fbfecc7b77b6fb1' id='divi-ui-library-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-includes/js/dist/autop.js?ver=e5e1c1378bcb34e073986566ac756500' id='wp-autop-js'></script> -->
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/field-library.js?ver=30c73ce0ddc3c59db5d3b9037e216067' id='divi-field-library-js'></script>
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/app-frame.js?ver=f390258f2cccc235f649a5fb0c899b42' id='divi-app-frame-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/app-preferences.js?ver=8f3168254e2e0d7791d681887c17bd9b' id='divi-app-preferences-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/app-ui.js?ver=d0cb82260eadd981d3e8c4a0d7467860' id='divi-app-ui-js'></script> -->
+
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/settings.js?ver=e9ba0d913bef1fda1fe8ba47db29bde8' id='divi-settings-js'></script>
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/colors.js?ver=eac631a45b418c799db026ef440c711b' id='divi-colors-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/hooks.js?ver=953d5f282c9284f51b9df4b3a9d4e2d9' id='divi-hooks-js'></script> -->
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/modal.js?ver=68fa87fd582720bc2f7ba01336e8157b' id='divi-modal-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/module.js?ver=05f745909ff40617d732c1a4e73d7484' id='divi-module-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/module-library.js?ver=42d99ca26ef798d87315e60b3f320fa4' id='divi-module-library-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/conversion.js?ver=22873ad0816497660218dda147dbcd67' id='divi-conversion-js'></script>
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/edit-post.js?ver=0b4a72fd0f60367a7c528df1fdbf54e1' id='divi-edit-post-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/events.js?ver=da18ecd9a8278ab356286e5d4bd6c76f' id='divi-events-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/fonts.js?ver=097cfdfc5cc741cb967909ba03216177' id='divi-fonts-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/history.js?ver=b59c8c5de1469b9de677a090ae89082d' id='divi-history-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/page-settings-bar.js?ver=a21f1d7d02916b9062c46a358fe0829e' id='divi-page-settings-bar-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/modal-library.js?ver=5bfc29f869441bf4a23f85a02650ced7' id='divi-modal-library-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/modal-snap-indicator.js?ver=b4ec0de094e15b9b54f5a5d64bd587f2' id='divi-modal-snap-indicator-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/root.js?ver=a6b2a5241bfab05ef61b31868bb00d55' id='divi-root-js'></script> -->
+<!-- <script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/serialized-post.js?ver=34b27134f6d6efbe6b0ca73d78856d5a' id='divi-serialized-post-js'></script> -->
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/visual-builder.js?ver=d1c86e2b27d7e6e5e91c5be7c0ad90f5' id='divi-visual-builder-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/object-renderer.js?ver=b24968afd3a79cc558f7239509ff0cf4' id='divi-object-renderer-js'></script>
+<script type='text/javascript' src='%STORYBOOK_SITE_URL%/wp-content/themes/Divi/includes/builder/visual-builder/build/defaults.js?ver=b2caa35bb296ce16996fc50c0b191e3c' id='divi-defaults-js'></script>
+<script>
+	/**
+	 * This is merely a Mock for `Circle Counter` module to work.
+	 * Fot it to work as expected, We need to include `js/scripts.min.js` and additional invocations.
+	 * I tried to that but it seems this is well out of the scope of `Circle Counter` storybook task,
+	 * So I've added this mock for now.
+	 *
+	 * @todo We need to revisit this and make `js/scripts.min.js` work on Storybook.
+	 **/
+	if ( ! window.et_pb_circle_counter_init ) {
+		window.et_pb_circle_counter_init = () => {}
+	}
+</script>
