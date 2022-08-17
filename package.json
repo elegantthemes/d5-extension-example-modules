@@ -38,6 +38,7 @@
     "@types/divi__error-boundary": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__error-boundary",
     "@types/divi__events": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__events",
     "@types/divi__field-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__field-library",
+    "@types/divi__icon-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__icon-library",
     "@types/divi__keyboard-shortcuts": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__keyboard-shortcuts",
     "@types/divi__modal": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal",
     "@types/divi__modal-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal-library",
@@ -71,6 +72,7 @@
     "react": "^17.0.2",
     "sass": "^1.53.0",
     "sass-loader": "^10.0.3",
+    "seamless-immutable": "^7.1.4",
     "style-loader": "^2.0.0",
     "thread-loader": "^3.0.4",
     "ts-loader": "^9.3.1",
@@ -83,6 +85,7 @@
   },
   "resolutions": {
     "@types/react": "17.0.44",
-    "@types/react-dom": "17.0.14"
+    "@types/react-dom": "17.0.14",
+    "react": "^17.0.2"
   }
 }
