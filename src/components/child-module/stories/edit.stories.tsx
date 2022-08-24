@@ -14,8 +14,19 @@ import {
 
 import { ChildModuleEdit } from '../edit';
 import { ChildModuleEditProps } from '../types';
-import { dispatch } from '@divi/data';
+import { dispatch, select } from '@divi/data';
 import { childModule } from '..';
+import { isNull } from 'lodash';
+import { registerModuleLibraryStore } from '@divi/module-library';
+import { registerEventsStore } from '@divi/events';
+import { registerModalLibraryStore, registerModals } from '@divi/modal-library';
+import { registerAppUiStore } from '@divi/app-ui';
+import { registerKeyboardShortcutsStore } from '@divi/keyboard-shortcuts';
+import { registerSerializedPostStore } from '@divi/serialized-post';
+import { registerEditPostStore } from '@divi/edit-post';
+import { registerSettingsStore } from '@divi/settings';
+import { registerHistoryStore } from '@divi/history';
+import { registerAppPreferencesStore } from '@divi/app-preferences';
 
 // Create template to render argument given.
 const templateDividerEdit: Story<ChildModuleEditProps> = args => createElement(ChildModuleEdit, args);
@@ -107,6 +118,18 @@ export default {
   title: 'Modules/Child Module/Edit',
   decorators: [
     ((story: () => ReactElement): ReactElement => {
+      registerAppPreferencesStore();
+      registerAppUiStore();
+      registerEventsStore();
+      registerKeyboardShortcutsStore();
+      registerModals();
+      registerSettingsStore();
+      registerSerializedPostStore();
+      registerEditPostStore();
+      registerHistoryStore();
+      if (isNull(select('divi/module-library'))) {
+        registerModuleLibraryStore();
+      }
       dispatch('divi/module-library').addModule(childModule);
       return story();
     }),

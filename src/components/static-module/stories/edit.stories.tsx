@@ -15,8 +15,19 @@ import {
 
 import { StaticModuleEdit } from '../edit';
 import { StaticModuleEditProps } from '../types';
-import { dispatch } from '@divi/data';
+import { dispatch, select } from '@divi/data';
 import { staticModule } from '..';
+import { isNull, isUndefined } from 'lodash';
+import { registerModuleLibraryStore } from '@divi/module-library';
+import { registerEventsStore } from '@divi/events';
+import { registerModalLibraryStore, registerModals } from '@divi/modal-library';
+import { registerAppUiStore } from '@divi/app-ui';
+import { registerKeyboardShortcutsStore } from '@divi/keyboard-shortcuts';
+import { registerSerializedPostStore } from '@divi/serialized-post';
+import { registerEditPostStore } from '@divi/edit-post';
+import { registerSettingsStore } from '@divi/settings';
+import { registerHistoryStore } from '@divi/history';
+import { registerAppPreferencesStore } from '@divi/app-preferences';
 
 // Create template to render argument given.
 const templateDividerEdit: Story<StaticModuleEditProps> = args => createElement(StaticModuleEdit, args);
@@ -122,7 +133,24 @@ export default {
   title: 'Modules/Static Module/Edit',
   decorators: [
     ((story: () => ReactElement): ReactElement => {
-      dispatch('divi/module-library').addModule(staticModule);
+      registerAppPreferencesStore();
+      registerAppUiStore();
+      registerEventsStore();
+      registerKeyboardShortcutsStore();
+      registerModals();
+      registerSettingsStore();
+      registerSerializedPostStore();
+      registerEditPostStore();
+      registerHistoryStore();
+      if (isNull(select('divi/module-library'))) {
+        registerModuleLibraryStore();
+      }
+
+      const theModule = select('divi/module-library').getModule(staticModule.name);
+
+      if (isUndefined(theModule)) {
+        dispatch('divi/module-library').addModule(staticModule);
+      }
       return story();
     }),
   ],

@@ -97,7 +97,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     parentModule1: {
       id:     'parentModule1',
-      name:   'divi/slider',
+      name:   'divi/parent-module',
       parent: 'column1',
       props:  {
         attrs: defaultAttributes,
@@ -110,7 +110,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule1: {
       id:     'childModule1',
-      name:   'divi/slide',
+      name:   'divi/child-module',
       parent: 'parentModule1',
       props:  {
         attrs: childDefaultAttributes,
@@ -119,7 +119,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule2: {
       id:     'childModule2',
-      name:   'divi/slide',
+      name:   'divi/child-module',
       parent: 'parentModule1',
       props:  {
         attrs: childDefaultAttributes,
@@ -128,7 +128,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule3: {
       id:     'childModule3',
-      name:   'divi/slide',
+      name:   'divi/child-module',
       parent: 'parentModule1',
       props:  {
         attrs: childDefaultAttributes,
