@@ -15,8 +15,9 @@ import {
 
 import { StaticModuleEdit } from '../edit';
 import { StaticModuleEditProps } from '../types';
-import { dispatch } from '@divi/data';
 import { staticModule } from '..';
+import { registerModule } from '@divi/module-library';
+import { omit } from 'lodash';
 
 // Create template to render argument given.
 const templateDividerEdit: Story<StaticModuleEditProps> = args => createElement(StaticModuleEdit, args);
@@ -122,7 +123,7 @@ export default {
   title: 'Modules/Static Module/Edit',
   decorators: [
     ((story: () => ReactElement): ReactElement => {
-      dispatch('divi/module-library').addModule(staticModule);
+      registerModule(staticModule.metadata, omit(staticModule, 'metadata'));
       return story();
     }),
   ],

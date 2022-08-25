@@ -2,9 +2,10 @@
 import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
-import { ModuleDefinition } from '@divi/module-library';
+import { ModuleRegisterDefinition } from '@divi/module-library';
 
 // Local dependencies.
+import metadata from './module.json';
 import { StaticModuleEdit } from './edit';
 import { StaticModuleSave } from './save';
 import { SettingsContent } from './settings-content';
@@ -17,28 +18,16 @@ import { placeholderContent } from './placeholder-content';
 import './style.scss';
 import './module.scss';
 
-/**
- * Call To Action module.
- *
- * @since ??
- */
-export const staticModule: ModuleDefinition<StaticModuleAttrs> = {
-  name:     'divi/static-module',
+export const staticModule: ModuleRegisterDefinition<StaticModuleAttrs> = {
+  metadata,
+  placeholderContent,
   settings: {
-    title:      __('Static Module', 'd5-module-extension-example'),
-    titles:     __('Static Modules', 'd5-module-extension-example'),
-    moduleIcon: 'divi/module-cta',
-    category:   'module',
-    attributes: {},
-    placeholderContent,
-    settings:   {
-      content:  SettingsContent,
-      design:   SettingsDesign,
-      advanced: SettingsAdvanced,
-    },
-    renderers: {
-      edit: StaticModuleEdit,
-      save: StaticModuleSave,
-    },
+    content:  SettingsContent,
+    design:   SettingsDesign,
+    advanced: SettingsAdvanced,
+  },
+  renderers: {
+    edit: StaticModuleEdit,
+    save: StaticModuleSave,
   },
 };
