@@ -15,10 +15,9 @@ import {
 
 import { StaticModuleEdit } from '../edit';
 import { StaticModuleEditProps } from '../types';
-import { dispatch, select } from '@divi/data';
 import { staticModule } from '..';
-import { isNull, isUndefined } from 'lodash';
-import { registerModuleLibraryStore } from '@divi/module-library';
+import { isNull, isUndefined, omit } from 'lodash';
+import { registerModuleLibraryStore, registerModule } from '@divi/module-library';
 import { registerEventsStore } from '@divi/events';
 import { registerModalLibraryStore, registerModals } from '@divi/modal-library';
 import { registerAppUiStore } from '@divi/app-ui';
@@ -28,6 +27,7 @@ import { registerEditPostStore } from '@divi/edit-post';
 import { registerSettingsStore } from '@divi/settings';
 import { registerHistoryStore } from '@divi/history';
 import { registerAppPreferencesStore } from '@divi/app-preferences';
+import { select } from '@divi/data';
 
 // Create template to render argument given.
 const templateDividerEdit: Story<StaticModuleEditProps> = args => createElement(StaticModuleEdit, args);
@@ -149,7 +149,7 @@ export default {
       const theModule = select('divi/module-library').getModule(staticModule.name);
 
       if (isUndefined(theModule)) {
-        dispatch('divi/module-library').addModule(staticModule);
+        registerModule(staticModule.metadata, omit(staticModule, 'metadata'));
       }
       return story();
     }),

@@ -2,7 +2,7 @@
 import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
-import { ModuleDefinition } from '@divi/module-library';
+import { ModuleRegisterDefinition } from '@divi/module-library';
 
 // Local dependencies.
 import { ChildModuleEdit } from './edit';
@@ -22,23 +22,16 @@ import './module.scss';
  *
  * @since ??
  */
-export const childModule: ModuleDefinition<ChildModuleAttrs> = {
-  name:     'divi/child-module',
-  settings: {
-    title:      __('Child Module', 'd5-module-extension-example'),
-    titles:     __('Child Modules', 'd5-module-extension-example'),
-    category:   'child-module',
-    parentsName: ['divi/parent-module'],
-    attributes: {},
-    placeholderContent,
-    settings:   {
-      content:  SettingsContent,
-      design:   SettingsDesign,
-      advanced: SettingsAdvanced,
-    },
-    renderers: {
-      edit: ChildModuleEdit,
-      save: ChildModuleSave,
-    },
+export const childModule: ModuleRegisterDefinition<ChildModuleAttrs> = {
+  metadata,
+  placeholderContent,
+  settings:   {
+    content:  SettingsContent,
+    design:   SettingsDesign,
+    advanced: SettingsAdvanced,
+  },
+  renderers: {
+    edit: ChildModuleEdit,
+    save: ChildModuleSave,
   },
 };

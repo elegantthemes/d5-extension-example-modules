@@ -32,6 +32,7 @@ module.exports = {
     '@divi/modal': ['divi', 'modal'],
     '@divi/field-library': ['divi', 'fieldLibrary'],
     '@divi/icon-library': ['divi', 'iconLibrary'],
+    '@divi/module-library': ['divi', 'moduleLibrary'],
   },
 
   // This option determine how different types of module within the project will be treated.
