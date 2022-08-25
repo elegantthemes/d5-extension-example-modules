@@ -14,20 +14,19 @@ import { registerKeyboardShortcutsStore } from '@divi/keyboard-shortcuts';
 import { registerModals } from '@divi/modal-library';
 import { registerEditPostStore } from '@divi/edit-post';
 import { registerSerializedPostStore } from '@divi/serialized-post';
-import { StaticModuleEdit } from '../edit';
+import { ChildModuleEdit } from '../edit';
 import { dispatch } from '@divi/data';
-import { registerAppPreferencesStore } from '@divi/app-preferences';
-import { staticModule } from '..';
+import { childModule } from '..';
 
 import * as editStories  from '../stories/edit.stories';
+import { registerAppPreferencesStore } from '@divi/app-preferences';
 
 // Only test story that has description. This naturally excludes `default` export from being included as test.
 const testableStories = pickBy(editStories, story => has(story, 'parameters.docs.description.story')) as Omit<typeof editStories, 'default'>;
 
-
 beforeAll(() => {
   registerModuleLibraryStore();
-  dispatch('divi/module-library').addModule(staticModule);
+  dispatch('divi/module-library').addModule(childModule);
 });
 
 beforeEach(() => {
@@ -40,13 +39,13 @@ beforeEach(() => {
   registerEditPostStore();
 });
 
-describe('<StaticModuleEdit />', () => {
+describe('<ChildModuleEdit />', () => {
   // Snapshot test based on storybook configuration.
   // Prevents regression due to unintentionally modifying component.
   forEach(testableStories, testableStory => {
     it(`Should match the snapshot when "${get(testableStory, 'parameters.docs.description.story') as string}"`, () => {
       expect(
-        shallow(createElement(StaticModuleEdit, testableStory.args)).html(),
+        shallow(createElement(ChildModuleEdit, testableStory.args)).html(),
       ).toMatchSnapshot();
     });
   });

@@ -57,7 +57,7 @@ CustomIcon.args       = {
 CustomIcon.parameters = {
   docs: {
     description: {
-      story: 'Default attributes that gets added when Child module is added.',
+      story: 'Display selected icon properly when the icon value is set.',
     },
   },
 };
@@ -71,7 +71,7 @@ IconStyle.args       = {
 IconStyle.parameters = {
   docs: {
     description: {
-      story: 'Default attributes that gets added when Child module is added.',
+      story: 'Display icon style properly when the icon style is set.',
     },
   },
 };
@@ -85,7 +85,7 @@ TitleStyle.args       = {
 TitleStyle.parameters = {
   docs: {
     description: {
-      story: 'Default attributes that gets added when Child module is added.',
+      story: 'Display title style properly when the title style is set.',
     },
   },
 };
@@ -99,7 +99,7 @@ ContentStyle.args       = {
 ContentStyle.parameters = {
   docs: {
     description: {
-      story: 'Default attributes that gets added when Child module is added.',
+      story: 'Display content style properly when the content style is set.',
     },
   },
 };

@@ -6,6 +6,10 @@ import {
 import { Story } from '@storybook/react';
 import {
   defaultAttributes,
+  customIcon,
+  iconStyle,
+  titleStyle,
+  contentStyle,
 } from '../__mock-data__/attrs';
 
 import { ParentModuleEdit } from '../edit';
@@ -15,7 +19,7 @@ import { registerEditPostStore } from '@divi/edit-post';
 import { parentModule } from '..';
 import { childModule } from '../../child-module';
 import { state } from '../__mock-data__/module-objects';
-import { isNull } from 'lodash';
+import { isNull, isUndefined } from 'lodash';
 import { registerModuleLibraryStore } from '@divi/module-library';
 import { registerEventsStore } from '@divi/events';
 import { registerModalLibraryStore, registerModals } from '@divi/modal-library';
@@ -35,7 +39,7 @@ const name = 'divi/parent-module';
 const DefaultValues      = templateDividerEdit.bind({}) as Story<ParentModuleEditProps>;
 DefaultValues.args       = {
   name,
-  id:    'parent-module-1',
+  id:    'parentModule1',
   attrs: defaultAttributes,
   childrenIds: [
     'childModule1',
@@ -46,7 +50,83 @@ DefaultValues.args       = {
 DefaultValues.parameters = {
   docs: {
     description: {
-      story: 'Default attributes that gets added when Child module is added.',
+      story: 'Default attributes that gets added when Parent module is added.',
+    },
+  },
+};
+
+const CustomIcon      = templateDividerEdit.bind({}) as Story<ParentModuleEditProps>;
+CustomIcon.args       = {
+  name,
+  id:    'parentModule2',
+  attrs: customIcon,
+  childrenIds: [
+    'childModule4',
+    'childModule5',
+    'childModule6',
+  ],
+};
+CustomIcon.parameters = {
+  docs: {
+    description: {
+      story: 'Display selected icon properly into child module when the icon value is set.',
+    },
+  },
+};
+
+const IconStyle      = templateDividerEdit.bind({}) as Story<ParentModuleEditProps>;
+IconStyle.args       = {
+  name,
+  id:    'parentModule3',
+  attrs: iconStyle,
+  childrenIds: [
+    'childModule7',
+    'childModule8',
+    'childModule9',
+  ],
+};
+IconStyle.parameters = {
+  docs: {
+    description: {
+      story: 'Display icon style properly when the icon style is set.',
+    },
+  },
+};
+
+const TitleStyle      = templateDividerEdit.bind({}) as Story<ParentModuleEditProps>;
+TitleStyle.args       = {
+  name,
+  id:    'parentModule4',
+  attrs: titleStyle,
+  childrenIds: [
+    'childModule10',
+    'childModule11',
+    'childModule12',
+  ],
+};
+TitleStyle.parameters = {
+  docs: {
+    description: {
+      story: 'Display title style properly when the title style is set.',
+    },
+  },
+};
+
+const ContentStyle      = templateDividerEdit.bind({}) as Story<ParentModuleEditProps>;
+ContentStyle.args       = {
+  name,
+  id:    'parentModule5',
+  attrs: contentStyle,
+  childrenIds: [
+    'childModule13',
+    'childModule14',
+    'childModule15',
+  ],
+};
+ContentStyle.parameters = {
+  docs: {
+    description: {
+      story: 'Display content style properly when the content style is set.',
     },
   },
 };
@@ -54,6 +134,10 @@ DefaultValues.parameters = {
 
 export {
   DefaultValues,
+  CustomIcon,
+  IconStyle,
+  TitleStyle,
+  ContentStyle,
 };
 
 export default {
@@ -73,8 +157,15 @@ export default {
         registerModuleLibraryStore();
       }
 
-      dispatch('divi/module-library').addModule(childModule);
-      dispatch('divi/module-library').addModule(parentModule);
+      const theChildModule  = select('divi/module-library').getModule(childModule.name);
+      const theParentModule = select('divi/module-library').getModule(parentModule.name);
+
+      if (isUndefined(theChildModule)) {
+        dispatch('divi/module-library').addModule(childModule);
+      }
+      if (isUndefined(theParentModule)) {
+        dispatch('divi/module-library').addModule(parentModule);
+      }
       return story();
     }),
   ],
