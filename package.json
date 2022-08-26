@@ -32,12 +32,15 @@
     "@storybook/manager-webpack5": "^6.5.10",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
+    "@types/divi__app-preferences": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__app-preferences",
     "@types/divi__app-ui": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__app-ui",
     "@types/divi__data": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__data",
     "@types/divi__edit-post": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__edit-post",
     "@types/divi__error-boundary": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__error-boundary",
     "@types/divi__events": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__events",
     "@types/divi__field-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__field-library",
+    "@types/divi__history": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__history",
+    "@types/divi__icon-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__icon-library",
     "@types/divi__keyboard-shortcuts": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__keyboard-shortcuts",
     "@types/divi__modal": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal",
     "@types/divi__modal-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__modal-library",
@@ -45,6 +48,7 @@
     "@types/divi__module-library": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module-library",
     "@types/divi__module-utils": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__module-utils",
     "@types/divi__serialized-post": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__serialized-post",
+    "@types/divi__settings": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__settings",
     "@types/enzyme": "^3.10.12",
     "@types/jest": "^28.1.6",
     "@types/jquery": "^3.5.14",
@@ -71,6 +75,7 @@
     "react": "^17.0.2",
     "sass": "^1.53.0",
     "sass-loader": "^10.0.3",
+    "seamless-immutable": "^7.1.4",
     "style-loader": "^2.0.0",
     "thread-loader": "^3.0.4",
     "ts-loader": "^9.3.1",
@@ -83,6 +88,7 @@
   },
   "resolutions": {
     "@types/react": "17.0.44",
-    "@types/react-dom": "17.0.14"
+    "@types/react-dom": "17.0.14",
+    "react": "^17.0.2"
   }
 }

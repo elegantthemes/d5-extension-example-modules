@@ -41,7 +41,6 @@ const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
   const backgroundLayoutDesktop = moduleAttrs?.text?.text?.desktop?.value?.color;
   const backgroundLayoutTablet  = moduleAttrs?.text?.text?.tablet?.value?.color;
   const backgroundLayoutPhone   = moduleAttrs?.text?.text?.phone?.value?.color;
-  const textOrientation         = moduleAttrs?.text?.text?.desktop?.value?.orientation;
 
   return (
     <ModuleContainer
@@ -51,7 +50,6 @@ const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
       name={name}
       stylesComponent={ModuleStyles}
       className={classnames({
-        [`et_pb_text_align_${textOrientation}`]:              true,
         [`et_pb_bg_layout_${backgroundLayoutDesktop}`]:       backgroundLayoutDesktop,
         [`et_pb_bg_layout_${backgroundLayoutTablet}_tablet`]: backgroundLayoutTablet,
         [`et_pb_bg_layout_${backgroundLayoutPhone}_phone`]:   backgroundLayoutPhone,
