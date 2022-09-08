@@ -26,6 +26,7 @@ module.exports = {
     '@wordpress/i18n': ['wp', 'i18n'],
 
     // Divi dependencies.
+    '@divi/ajax': ['divi', 'ajax'],
     '@divi/data': ['divi', 'data'],
     '@divi/module': ['divi', 'module'],
     '@divi/module-utils': ['divi', 'moduleUtils'],

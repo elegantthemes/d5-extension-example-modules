@@ -1,0 +1,16 @@
+.et_pb_dynamic_module {
+    padding: 50px;
+    background-color: #f5f5f5;
+
+    &_title {
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    &_post_item {
+        margin-bottom: 20px;
+
+        &_title {
+            font-size: 18px;
+        }
+    }
+}

@@ -14,12 +14,12 @@ import {
 
 import { ChildModuleEdit } from '../edit';
 import { ChildModuleEditProps } from '../types';
-import { dispatch, select } from '@divi/data';
+import { select } from '@divi/data';
 import { childModule } from '..';
-import { isNull } from 'lodash';
-import { registerModuleLibraryStore } from '@divi/module-library';
+import { isNull, isUndefined, omit } from 'lodash';
+import { registerModule, registerModuleLibraryStore } from '@divi/module-library';
 import { registerEventsStore } from '@divi/events';
-import { registerModalLibraryStore, registerModals } from '@divi/modal-library';
+import { registerModals } from '@divi/modal-library';
 import { registerAppUiStore } from '@divi/app-ui';
 import { registerKeyboardShortcutsStore } from '@divi/keyboard-shortcuts';
 import { registerSerializedPostStore } from '@divi/serialized-post';
@@ -130,7 +130,11 @@ export default {
       if (isNull(select('divi/module-library'))) {
         registerModuleLibraryStore();
       }
-      dispatch('divi/module-library').addModule(childModule);
+      const theChildModule  = select('divi/module-library').getModule(childModule?.metadata?.name);
+
+      if (isUndefined(theChildModule)) {
+        registerModule(childModule.metadata, omit(childModule, 'metadata'));
+      }
       return story();
     }),
   ],

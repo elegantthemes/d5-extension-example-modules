@@ -32,6 +32,7 @@
     "@storybook/manager-webpack5": "^6.5.10",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
+    "@types/divi__ajax": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__ajax",
     "@types/divi__app-preferences": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__app-preferences",
     "@types/divi__app-ui": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__app-ui",
     "@types/divi__data": "link:../../themes/Divi/includes/builder/visual-builder/packages/types-divi__data",
@@ -72,6 +73,8 @@
     "lodash": "^4.17.21",
     "mini-css-extract-plugin": "^2.6.1",
     "moment": "^2.29.4",
+    "msw": "^0.47.0",
+    "msw-storybook-addon": "^1.6.3",
     "react": "^17.0.2",
     "sass": "^1.53.0",
     "sass-loader": "^10.0.3",
@@ -90,5 +93,8 @@
     "@types/react": "17.0.44",
     "@types/react-dom": "17.0.14",
     "react": "^17.0.2"
+  },
+  "msw": {
+    "workerDirectory": "storybook-assets"
   }
 }

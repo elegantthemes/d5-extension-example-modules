@@ -9,6 +9,7 @@ module.exports = {
     "@storybook/addon-essentials",
     // '@storybook/preset-scss'
   ],
+  staticDirs: ['../storybook-assets'],
   // "stories": [
   //   "../src/**/*.stories.mdx",
   //   "../src/**/*.stories.@(js|jsx|ts|tsx)"
