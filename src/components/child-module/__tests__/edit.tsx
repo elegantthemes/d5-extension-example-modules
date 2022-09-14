@@ -5,17 +5,17 @@ import {
   pickBy,
   has,
   get,
+  omit,
 } from 'lodash';
 
 import { registerAppUiStore } from '@divi/app-ui';
-import { registerModuleLibraryStore } from '@divi/module-library';
+import { registerModule, registerModuleLibraryStore } from '@divi/module-library';
 import { registerEventsStore } from '@divi/events';
 import { registerKeyboardShortcutsStore } from '@divi/keyboard-shortcuts';
 import { registerModals } from '@divi/modal-library';
 import { registerEditPostStore } from '@divi/edit-post';
 import { registerSerializedPostStore } from '@divi/serialized-post';
 import { ChildModuleEdit } from '../edit';
-import { dispatch } from '@divi/data';
 import { childModule } from '..';
 
 import * as editStories  from '../stories/edit.stories';
@@ -26,7 +26,7 @@ const testableStories = pickBy(editStories, story => has(story, 'parameters.docs
 
 beforeAll(() => {
   registerModuleLibraryStore();
-  dispatch('divi/module-library').addModule(childModule);
+  registerModule(childModule.metadata, omit(childModule, 'metadata'));
 });
 
 beforeEach(() => {

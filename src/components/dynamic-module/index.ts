@@ -21,6 +21,5 @@ export const dynamicModule: ModuleRegisterDefinition<DynamicModuleAttrs> = {
   },
   renderers: {
     edit: DynamicModuleEdit,
-    save: () => null,
   },
 };

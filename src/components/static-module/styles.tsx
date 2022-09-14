@@ -34,125 +34,105 @@ import { cssFields } from './custom-css';
  */
  const ModuleStyles = ({
   attrs,
-  componentType,
+  settings,
   orderClass,
   mode,
   state,
   noStyleTag,
 }: StylesProps<StaticModuleAttrs>): ReactElement => {
-  const imageClass = `${orderClass} .et_pb_static_module_image img`;
-  const titleClass = `${orderClass} .et_pb_static_module_title`;
+  const imageClass            = `${orderClass} .et_pb_static_module_image img`;
+  const titleClass            = `${orderClass} .et_pb_static_module_title`;
   const contentContainerClass = `${orderClass} .et_pb_static_module_content_container`;
-  const contentClass = `${orderClass} .et_pb_static_module_content`;
-
-  const selectors = {
-    value: orderClass,
-  };
-
-  const imageSelectors = {
-    value: imageClass,
-  };
-
-  const titleSelectors = {
-    value: titleClass,
-  };
-
-  const contentSelectors = {
-    value: contentClass,
-  };
-
-  const contentContainerSelectors = {
-    value: contentContainerClass,
-  };
+  const contentClass          = `${orderClass} .et_pb_static_module_content`;
 
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
       <BackgroundStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.background}
       />
       <SpacingStyle
-        selectors={imageSelectors}
+        selector={imageClass}
         attr={attrs?.image?.spacing}
       />
       <BorderStyle
-        selectors={imageSelectors}
+        selector={imageClass}
         attr={attrs?.image?.border}
 
         // Once module highlight no longer use border, drop this important.
         important
       />
       <BoxShadowStyle
-        selectors={imageSelectors}
+        selector={imageClass}
         attr={attrs?.image?.boxShadow}
       />
       <FiltersStyle
-        selectors={imageSelectors}
+        selector={imageClass}
         attr={attrs?.image?.filter}
       />
       <TextStyle
-        selectors={contentContainerSelectors}
+        selector={contentContainerClass}
         attr={attrs?.text}
       />
       <FontStyle
-        selectors={titleSelectors}
+        selector={titleClass}
         attr={attrs?.titleFont}
       />
       <FontBodyStyle
-        selectors={contentSelectors}
+        selector={contentClass}
         attr={attrs?.bodyFont}
       />
       <SizingStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.sizing}
       />
       <SpacingStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.spacing}
       />
       <BorderStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.border}
 
         // Once module highlight no longer use border, drop this important.
         important
       />
       <BoxShadowStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.boxShadow}
       />
       <FiltersStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.filter}
       />
       <TransformStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.transform}
       />
       <AnimationStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.animation}
-        componentType={componentType}
       />
       <CssStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.css}
         cssFields={cssFields}
       />
       <DisabledOnStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.disabledOn}
+        disabledModuleVisibility={settings?.disabledModuleVisibility}
       />
       <OverflowStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.overflow}
       />
       <PositionStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.position}
       />
       <ZIndexStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.zIndex}
       />
     </StyleContainer>

@@ -1,0 +1,3 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<DynamicModuleEdit /> Should match the snapshot when "Default attributes that gets added when Parent module is added." 1`] = `"<div class=\\"et_pb_dynamic_module et_pb_module\\" data-id=\\"dynamicModule1\\"><div class=\\"et_pb_dynamic_module_post_items\\"></div><div>No post found.</div></div>"`;

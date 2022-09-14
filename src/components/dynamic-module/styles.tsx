@@ -33,7 +33,7 @@ import { DynamicModuleAttrs } from './types';
  */
  const ModuleStyles = ({
   attrs,
-  componentType,
+  settings,
   orderClass,
   mode,
   state,
@@ -96,7 +96,6 @@ import { DynamicModuleAttrs } from './types';
       <AnimationStyle
         selector={orderClass}
         attr={attrs?.animation}
-        componentType={componentType}
       />
       <CssStyle
         selector={orderClass}
@@ -105,6 +104,7 @@ import { DynamicModuleAttrs } from './types';
       <DisabledOnStyle
         selector={orderClass}
         attr={attrs?.disabledOn}
+        disabledModuleVisibility={settings?.disabledModuleVisibility}
       />
       <OverflowStyle
         selector={orderClass}

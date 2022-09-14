@@ -7,7 +7,6 @@ import { ModuleRegisterDefinition } from '@divi/module-library';
 // Local dependencies.
 import metadata from './module.json';
 import { StaticModuleEdit } from './edit';
-import { StaticModuleSave } from './save';
 import { SettingsContent } from './settings-content';
 import { SettingsDesign } from './settings-design';
 import { SettingsAdvanced } from './settings-advanced';
@@ -28,6 +27,5 @@ export const staticModule: ModuleRegisterDefinition<StaticModuleAttrs> = {
   },
   renderers: {
     edit: StaticModuleEdit,
-    save: StaticModuleSave,
   },
 };
