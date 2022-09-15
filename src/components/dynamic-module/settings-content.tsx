@@ -13,9 +13,7 @@ import {
 } from '@divi/module';
 import { GroupContainer } from '@divi/modal';
 import {
-  RichTextContainer,
   TextContainer,
-  UploadContainer,
 } from '@divi/field-library';
 import { defaultSettingsAttrs } from './constants';
 
@@ -44,7 +42,9 @@ export const SettingsContent = (): ReactElement => (
       </FieldContainer>
     </GroupContainer>
     <LinkOptions />
-    <Background />
+    <Background
+      defaultGroupAttr={defaultSettingsAttrs?.background}
+    />
     <AdminLabel />
   </React.Fragment>
 );

@@ -7,7 +7,7 @@ import { Story } from '@storybook/react';
 import { rest } from 'msw';
 
 import {
-  defaultAttributes,
+  defaultAttributes, numberOfPosts, postTitleStyle, titleStyle,
 } from '../__mock-data__/attrs';
 
 import { DynamicModuleEdit } from '../edit';
@@ -15,7 +15,7 @@ import { DynamicModuleEditProps } from '../types';
 import { select } from '@divi/data';
 import { registerEditPostStore } from '@divi/edit-post';
 import { dynamicModule } from '..';
-import { isNull, isUndefined, omit } from 'lodash';
+import { isNull, isUndefined, omit, times } from 'lodash';
 import { registerModule, registerModuleLibraryStore } from '@divi/module-library';
 import { registerEventsStore } from '@divi/events';
 import { registerModals } from '@divi/modal-library';
@@ -26,12 +26,20 @@ import { registerSettingsStore } from '@divi/settings';
 import { registerHistoryStore } from '@divi/history';
 import { registerAppPreferencesStore } from '@divi/app-preferences';
 import { registerAjaxStore } from '@divi/ajax';
-import { posts } from '../__mock-data__/posts';
+import { post } from '../__mock-data__/posts';
 
 // Create template to render argument given.
 const templateDividerEdit: Story<DynamicModuleEditProps> = args => createElement(DynamicModuleEdit, args);
 
 const name = 'divi/dynamic-module';
+
+const posts = rest.get('wp-json/wp/v2/posts', (req, res, ctx) => {
+  const perPage = req?.url?.searchParams?.get('per_page');
+  
+  return res(        
+    ctx.json(times(parseInt(perPage), () => post)),
+  );
+});
 
 // Stories.
 const DefaultValues      = templateDividerEdit.bind({}) as Story<DynamicModuleEditProps>;
@@ -43,18 +51,69 @@ DefaultValues.args       = {
 DefaultValues.parameters = {
   docs: {
     description: {
-      story: 'Default attributes that gets added when Parent module is added.',
+      story: 'Default attributes that gets added when Dynamic module is added.',
     },
   },
   msw: {
     handlers: {
-      posts: rest.get('wp-json/wp/v2/posts', (req, res, ctx) => {
-        console.log('Called!', req);
-        
-        return res(        
-          ctx.json(posts),
-        );
-      }),
+      posts,
+    },
+  },
+};
+
+const NumberOfPosts      = templateDividerEdit.bind({}) as Story<DynamicModuleEditProps>;
+NumberOfPosts.args       = {
+  name,
+  id:    'dynamicModule2',
+  attrs: numberOfPosts,
+};
+NumberOfPosts.parameters = {
+  docs: {
+    description: {
+      story: 'Display only 2 posts when the numberOfPosts attribute is set to 2.',
+    },
+  },
+  msw: {
+    handlers: {
+      posts,
+    },
+  },
+};
+
+const TitleStyle      = templateDividerEdit.bind({}) as Story<DynamicModuleEditProps>;
+TitleStyle.args       = {
+  name,
+  id:    'dynamicModule3',
+  attrs: titleStyle,
+};
+TitleStyle.parameters = {
+  docs: {
+    description: {
+      story: 'Display title style properly when the title style is set.',
+    },
+  },
+  msw: {
+    handlers: {
+      posts,
+    },
+  },
+};
+
+const PostTitleStyle      = templateDividerEdit.bind({}) as Story<DynamicModuleEditProps>;
+PostTitleStyle.args       = {
+  name,
+  id:    'dynamicModule3',
+  attrs: postTitleStyle,
+};
+PostTitleStyle.parameters = {
+  docs: {
+    description: {
+      story: 'Display title style properly when the post title style is set.',
+    },
+  },
+  msw: {
+    handlers: {
+      posts,
     },
   },
 };
@@ -62,6 +121,9 @@ DefaultValues.parameters = {
 
 export {
   DefaultValues,
+  NumberOfPosts,
+  TitleStyle,
+  PostTitleStyle,
 };
 
 export default {

@@ -27,7 +27,6 @@ export const parameters = {
     handlers: {
       auth: [
         rest.head('/iframe.html', (req, res, ctx) => res(res => {
-          console.log(res);
           res.status = 201;
           res.headers.set('link', '<http://localhost:6006/wp-json/>; rel="https://api.w.org/"');
           return res;

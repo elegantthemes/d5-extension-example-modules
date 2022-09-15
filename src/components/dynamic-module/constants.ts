@@ -13,7 +13,7 @@ import { DynamicModuleAttrs } from './types';
 export const defaultAttrs: DynamicModuleAttrs = {
   numberOfPosts: {
     desktop: {
-      value: '2',
+      value: '5',
     },
   },
   titleFont: {

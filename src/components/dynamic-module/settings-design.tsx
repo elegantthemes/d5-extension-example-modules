@@ -17,7 +17,6 @@ import {
   Text,
   Transform,
 } from '@divi/module';
-import { GroupContainer } from '@divi/modal';
 import { defaultSettingsAttrs } from './constants';
 
 
