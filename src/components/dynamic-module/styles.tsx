@@ -24,8 +24,7 @@ import {
 } from '@divi/module';
 
 // Local dependencies.
-import { StaticModuleAttrs } from './types';
-import { cssFields } from './custom-css';
+import { DynamicModuleAttrs } from './types';
 
 /**
  * Blurb Module's style components.
@@ -39,11 +38,11 @@ import { cssFields } from './custom-css';
   mode,
   state,
   noStyleTag,
-}: StylesProps<StaticModuleAttrs>): ReactElement => {
-  const imageClass            = `${orderClass} .et_pb_static_module_image img`;
-  const titleClass            = `${orderClass} .et_pb_static_module_title`;
-  const contentContainerClass = `${orderClass} .et_pb_static_module_content_container`;
-  const contentClass          = `${orderClass} .et_pb_static_module_content`;
+}: StylesProps<DynamicModuleAttrs>): ReactElement => {
+  const titleClass = `${orderClass} .et_pb_dynamic_module_title`;
+  const postTitleClass = `${orderClass} .et_pb_dynamic_module_post_item_title`;
+  const contentClass = `${orderClass} .et_pb_dynamic_module_post_item_content`;
+
 
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
@@ -51,32 +50,17 @@ import { cssFields } from './custom-css';
         selector={orderClass}
         attr={attrs?.background}
       />
-      <SpacingStyle
-        selector={imageClass}
-        attr={attrs?.image?.spacing}
-      />
-      <BorderStyle
-        selector={imageClass}
-        attr={attrs?.image?.border}
-
-        // Once module highlight no longer use border, drop this important.
-        important
-      />
-      <BoxShadowStyle
-        selector={imageClass}
-        attr={attrs?.image?.boxShadow}
-      />
-      <FiltersStyle
-        selector={imageClass}
-        attr={attrs?.image?.filter}
-      />
       <TextStyle
-        selector={contentContainerClass}
+        selector={orderClass}
         attr={attrs?.text}
       />
       <FontStyle
         selector={titleClass}
         attr={attrs?.titleFont}
+      />
+      <FontStyle
+        selector={postTitleClass}
+        attr={attrs?.postTitleFont}
       />
       <FontBodyStyle
         selector={contentClass}
@@ -116,7 +100,6 @@ import { cssFields } from './custom-css';
       <CssStyle
         selector={orderClass}
         attr={attrs?.css}
-        cssFields={cssFields}
       />
       <DisabledOnStyle
         selector={orderClass}

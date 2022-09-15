@@ -31,78 +31,72 @@ import { cssFields } from './custom-css';
  */
  const ModuleStyles = ({
   attrs,
-  componentType,
+  settings,
   orderClass,
   mode,
   state,
   noStyleTag,
-}: StylesProps<ParentModuleAttrs>): ReactElement => {
-  const selectors = {
-    value: orderClass,
-  };
+}: StylesProps<ParentModuleAttrs>): ReactElement => (
+  <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
+    <BackgroundStyle
+      selector={orderClass}
+      attr={attrs?.background}
+    />
+    <SizingStyle
+      selector={orderClass}
+      attr={attrs?.sizing}
+    />
+    <SpacingStyle
+      selector={orderClass}
+      attr={attrs?.spacing}
+    />
+    <BorderStyle
+      selector={orderClass}
+      attr={attrs?.border}
 
-  return (
-    <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
-      <BackgroundStyle
-        selectors={selectors}
-        attr={attrs?.background}
-      />
-      <SizingStyle
-        selectors={selectors}
-        attr={attrs?.sizing}
-      />
-      <SpacingStyle
-        selectors={selectors}
-        attr={attrs?.spacing}
-      />
-      <BorderStyle
-        selectors={selectors}
-        attr={attrs?.border}
-
-        // Once module highlight no longer use border, drop this important.
-        important
-      />
-      <BoxShadowStyle
-        selectors={selectors}
-        attr={attrs?.boxShadow}
-      />
-      <FiltersStyle
-        selectors={selectors}
-        attr={attrs?.filter}
-      />
-      <TransformStyle
-        selectors={selectors}
-        attr={attrs?.transform}
-      />
-      <AnimationStyle
-        selectors={selectors}
-        attr={attrs?.animation}
-        componentType={componentType}
-      />
-      <CssStyle
-        selectors={selectors}
-        attr={attrs?.css}
-        cssFields={cssFields}
-      />
-      <DisabledOnStyle
-        selectors={selectors}
-        attr={attrs?.disabledOn}
-      />
-      <OverflowStyle
-        selectors={selectors}
-        attr={attrs?.overflow}
-      />
-      <PositionStyle
-        selectors={selectors}
-        attr={attrs?.position}
-      />
-      <ZIndexStyle
-        selectors={selectors}
-        attr={attrs?.zIndex}
-      />
-    </StyleContainer>
-  );
-}
+      // Once module highlight no longer use border, drop this important.
+      important
+    />
+    <BoxShadowStyle
+      selector={orderClass}
+      attr={attrs?.boxShadow}
+    />
+    <FiltersStyle
+      selector={orderClass}
+      attr={attrs?.filter}
+    />
+    <TransformStyle
+      selector={orderClass}
+      attr={attrs?.transform}
+    />
+    <AnimationStyle
+      selector={orderClass}
+      attr={attrs?.animation}
+    />
+    <CssStyle
+      selector={orderClass}
+      attr={attrs?.css}
+      cssFields={cssFields}
+    />
+    <DisabledOnStyle
+      selector={orderClass}
+      attr={attrs?.disabledOn}
+      disabledModuleVisibility={settings?.disabledModuleVisibility}
+    />
+    <OverflowStyle
+      selector={orderClass}
+      attr={attrs?.overflow}
+    />
+    <PositionStyle
+      selector={orderClass}
+      attr={attrs?.position}
+    />
+    <ZIndexStyle
+      selector={orderClass}
+      attr={attrs?.zIndex}
+    />
+  </StyleContainer>
+);
 
 export {
   ModuleStyles,

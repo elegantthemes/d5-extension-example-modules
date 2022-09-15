@@ -35,116 +35,96 @@ import { cssFields } from './custom-css';
  */
  const ModuleStyles = ({
   attrs,
-  componentType,
+  settings,
   orderClass,
   mode,
   state,
   noStyleTag,
 }: StylesProps<ChildModuleAttrs>): ReactElement => {
-  const iconClass = `${orderClass} .et_pb_child_module_icon.et-pb-icon`;
-  const titleClass = `${orderClass} .et_pb_child_module_title`;
+  const iconClass             = `${orderClass} .et_pb_child_module_icon.et-pb-icon`;
+  const titleClass            = `${orderClass} .et_pb_child_module_title`;
   const contentContainerClass = `${orderClass} .et_pb_child_module_content_container`;
-  const contentClass = `${orderClass} .et_pb_child_module_content`;
-
-  const selectors = {
-    value: orderClass,
-  };
-
-  const iconSelectors = {
-    value: iconClass,
-  };
-
-  const titleSelectors = {
-    value: titleClass,
-  };
-
-  const contentSelectors = {
-    value: contentClass,
-  };
-
-  const contentContainerSelectors = {
-    value: contentContainerClass,
-  };
+  const contentClass          = `${orderClass} .et_pb_child_module_content`;
 
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
       <BackgroundStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.background}
       />
       <CommonStyle
-        selectors={iconSelectors}
+        selector={iconClass}
         attr={attrs?.iconColor}
         property="color"
       />
       <CommonStyle
-        selectors={iconSelectors}
+        selector={iconClass}
         attr={attrs?.iconSize}
         property="font-size"
       />
       <TextStyle
-        selectors={contentContainerSelectors}
+        selector={contentContainerClass}
         attr={attrs?.text}
       />
       <FontStyle
-        selectors={titleSelectors}
+        selector={titleClass}
         attr={attrs?.titleFont}
       />
       <FontBodyStyle
-        selectors={contentSelectors}
+        selector={contentClass}
         attr={attrs?.bodyFont}
       />
       <SizingStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.sizing}
       />
       <SpacingStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.spacing}
       />
       <BorderStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.border}
 
         // Once module highlight no longer use border, drop this important.
         important
       />
       <BoxShadowStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.boxShadow}
       />
       <FiltersStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.filter}
       />
       <TransformStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.transform}
       />
       <AnimationStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.animation}
-        componentType={componentType}
       />
       <CssStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.css}
         cssFields={cssFields}
       />
       <DisabledOnStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.disabledOn}
+        disabledModuleVisibility={settings?.disabledModuleVisibility}
       />
       <OverflowStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.overflow}
       />
       <PositionStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.position}
       />
       <ZIndexStyle
-        selectors={selectors}
+        selector={orderClass}
         attr={attrs?.zIndex}
       />
     </StyleContainer>

@@ -5,8 +5,8 @@ import { __ } from '@wordpress/i18n';
 import { ModuleRegisterDefinition } from '@divi/module-library';
 
 // Local dependencies.
+import metadata from './module.json';
 import { ChildModuleEdit } from './edit';
-import { ChildModuleSave } from './save';
 import { SettingsContent } from './settings-content';
 import { SettingsDesign } from './settings-design';
 import { SettingsAdvanced } from './settings-advanced';
@@ -32,6 +32,5 @@ export const childModule: ModuleRegisterDefinition<ChildModuleAttrs> = {
   },
   renderers: {
     edit: ChildModuleEdit,
-    save: ChildModuleSave,
   },
 };

@@ -146,7 +146,7 @@ export default {
         registerModuleLibraryStore();
       }
 
-      const theModule = select('divi/module-library').getModule(staticModule.name);
+      const theModule = select('divi/module-library').getModule(staticModule?.metadata?.name);
 
       if (isUndefined(theModule)) {
         registerModule(staticModule.metadata, omit(staticModule, 'metadata'));

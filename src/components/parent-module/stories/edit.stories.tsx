@@ -14,15 +14,15 @@ import {
 
 import { ParentModuleEdit } from '../edit';
 import { ParentModuleEditProps } from '../types';
-import { dispatch, select } from '@divi/data';
+import { select } from '@divi/data';
 import { registerEditPostStore } from '@divi/edit-post';
 import { parentModule } from '..';
 import { childModule } from '../../child-module';
 import { state } from '../__mock-data__/module-objects';
-import { isNull, isUndefined } from 'lodash';
-import { registerModuleLibraryStore } from '@divi/module-library';
+import { isNull, isUndefined, omit } from 'lodash';
+import { registerModule, registerModuleLibraryStore } from '@divi/module-library';
 import { registerEventsStore } from '@divi/events';
-import { registerModalLibraryStore, registerModals } from '@divi/modal-library';
+import { registerModals } from '@divi/modal-library';
 import { registerAppUiStore } from '@divi/app-ui';
 import { registerKeyboardShortcutsStore } from '@divi/keyboard-shortcuts';
 import { registerSerializedPostStore } from '@divi/serialized-post';
@@ -157,14 +157,14 @@ export default {
         registerModuleLibraryStore();
       }
 
-      const theChildModule  = select('divi/module-library').getModule(childModule.name);
-      const theParentModule = select('divi/module-library').getModule(parentModule.name);
+      const theChildModule  = select('divi/module-library').getModule(childModule?.metadata?.name);
+      const theParentModule = select('divi/module-library').getModule(parentModule?.metadata?.name);
 
       if (isUndefined(theChildModule)) {
-        dispatch('divi/module-library').addModule(childModule);
+        registerModule(childModule.metadata, omit(childModule, 'metadata'));
       }
       if (isUndefined(theParentModule)) {
-        dispatch('divi/module-library').addModule(parentModule);
+        registerModule(parentModule.metadata, omit(parentModule, 'metadata'));
       }
       return story();
     }),

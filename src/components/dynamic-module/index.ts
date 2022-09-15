@@ -1,23 +1,17 @@
-// WordPress dependencies.
-import { __ } from '@wordpress/i18n';
-
-// Divi dependencies.
 import { ModuleRegisterDefinition } from '@divi/module-library';
-
-// Local dependencies.
+import React from 'react';
+import { DynamicModuleEdit } from './edit';
 import metadata from './module.json';
-import { StaticModuleEdit } from './edit';
+import { SettingsAdvanced } from './settings-advanced';
 import { SettingsContent } from './settings-content';
 import { SettingsDesign } from './settings-design';
-import { SettingsAdvanced } from './settings-advanced';
-import { StaticModuleAttrs } from './types';
+import { DynamicModuleAttrs } from './types';
 import { placeholderContent } from './placeholder-content';
 
-// Styles.
-import './style.scss';
 import './module.scss';
 
-export const staticModule: ModuleRegisterDefinition<StaticModuleAttrs> = {
+
+export const dynamicModule: ModuleRegisterDefinition<DynamicModuleAttrs> = {
   metadata,
   placeholderContent,
   settings: {
@@ -26,6 +20,6 @@ export const staticModule: ModuleRegisterDefinition<StaticModuleAttrs> = {
     advanced: SettingsAdvanced,
   },
   renderers: {
-    edit: StaticModuleEdit,
+    edit: DynamicModuleEdit,
   },
 };
