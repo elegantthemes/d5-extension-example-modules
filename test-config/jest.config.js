@@ -73,7 +73,7 @@ module.exports = {
     `${wpDist}/block-serialization-default-parser`,
 
     // `${wpDist}/html-entities`,
-    // `${wpDist}/shortcode`,
+    `${wpDist}/shortcode`,
     `${wpDist}/blocks`,
 
     // `${wpDist}/keyboard-shortcuts`,
@@ -104,7 +104,7 @@ module.exports = {
     // `${diviDist}/seamless-immutable-extension`,
     // `${diviDist}/clipboard`,
     // `${diviDist}/right-click-options`,
-    // `${diviDist}/sanitize`,
+    `${diviDist}/sanitize`,
     `${diviDist}/style-library`,
     // `${diviDist}/tooltip`,
     // `${diviDist}/url`,

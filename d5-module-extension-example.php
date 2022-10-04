@@ -25,6 +25,11 @@ You should have received a copy of the GNU General Public License
 along with D5 Module Extension Example. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
 
+function dicm_initialize_extension() {
+    require_once plugin_dir_path( __FILE__ ) . 'divi-4/modules/Divi4Module/Divi4Module.php';
+}
+add_action( 'et_builder_ready', 'dicm_initialize_extension' );
+
 /**
  * Enqueue style and scripts of Module Extension Example for Visual Builder.
  *
@@ -39,8 +44,6 @@ function d5_module_extension_example_enqueue_vb_scripts() {
             "{$plugin_dir_url}scripts/bundle.js",
             array(
                 'divi-visual-builder',
-                'divi-data',
-                'divi-module',
             ),
             '1.0.0',
             true
@@ -48,7 +51,7 @@ function d5_module_extension_example_enqueue_vb_scripts() {
         wp_enqueue_style( "d5-module-extension-example-builder-vb-bundle-style", "{$plugin_dir_url}styles/vb-bundle.css", array(), '1.0.0' );
     }
 }
-add_action( 'et_vb_assets_after_enqueue_package_script', 'd5_module_extension_example_enqueue_vb_scripts' );
+add_action( 'et_vb_assets_after_enqueue_packages', 'd5_module_extension_example_enqueue_vb_scripts' );
 
 /**
  * Enqueue style and scripts of Module Extension Example
@@ -111,7 +114,7 @@ function d5_module_extension_example_dynamic_render_callback( $block_attributes 
 }
 
 function d5_module_extension_example_register_modules() {
-    et_register_module(
+    ET\Builder\ModuleLibrary\ModuleRegistration::register_module(
         __DIR__ . '/src/components/dynamic-module/' ,
         [
             'render_callback' => 'd5_module_extension_example_dynamic_render_callback',
@@ -119,3 +122,11 @@ function d5_module_extension_example_register_modules() {
     );
 }
 add_action( 'init', 'd5_module_extension_example_register_modules' );
+
+
+function d5_module_extension_example_modules_to_convert( $modules ) {
+    $modules['d4_module'] = 'divi/d4-module';
+
+    return $modules;
+}
+add_filter( 'et_vb_modules_to_convert', 'd5_module_extension_example_modules_to_convert' );

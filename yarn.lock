@@ -5053,6 +5053,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/uuid@npm:^8.3.4":
+  version: 8.3.4
+  resolution: "@types/uuid@npm:8.3.4"
+  checksum: 6f11f3ff70f30210edaa8071422d405e9c1d4e53abbe50fdce365150d3c698fe7bbff65c1e71ae080cbfb8fded860dbb5e174da96fdbbdfcaa3fb3daa474d20f
+  languageName: node
+  linkType: hard
+
 "@types/webpack-env@npm:^1.16.0":
   version: 1.17.0
   resolution: "@types/webpack-env@npm:1.17.0"
@@ -5790,6 +5797,15 @@ __metadata:
   dependencies:
     "@babel/runtime": ^7.16.0
   checksum: f96ab491fbc7b4495f3737e73567ff1a16fe6cc579e6688ab330c2e64b6ffda041871b466a388b1a2790eb2ace017db0bc0b9af719815a1a7e0e65ccb2c1356e
+  languageName: node
+  linkType: hard
+
+"@wordpress/hooks@npm:^3.18.0":
+  version: 3.18.0
+  resolution: "@wordpress/hooks@npm:3.18.0"
+  dependencies:
+    "@babel/runtime": ^7.16.0
+  checksum: fbf7cbe074f8121338fb13db4218692c3dbe1c042e506c00f58d4b17d1d32110224b2700a4e3696c299ff92069db4bfd2f923a239294fc0d3f024d574a3d3285
   languageName: node
   linkType: hard
 
@@ -9094,7 +9110,9 @@ __metadata:
     "@types/react": 17.0.44
     "@types/react-dom": 17.0.14
     "@types/seamless-immutable": ^7.1.16
+    "@types/uuid": ^8.3.4
     "@types/wordpress__i18n": ^3.11.0
+    "@wordpress/hooks": ^3.18.0
     "@wordpress/i18n": ^4.13.0
     "@wordpress/jest-console": ^5.4.0
     "@wordpress/jest-preset-default": ^8.5.0
@@ -9121,6 +9139,7 @@ __metadata:
     thread-loader: ^3.0.4
     ts-loader: ^9.3.1
     typescript: ^4.7.4
+    uuid: ^9.0.0
     webpack: ^5.73.0
     webpack-cli: ^4.10.0
   languageName: unknown
@@ -21951,6 +21970,15 @@ __metadata:
   bin:
     uuid: dist/bin/uuid
   checksum: 5575a8a75c13120e2f10e6ddc801b2c7ed7d8f3c8ac22c7ed0c7b2ba6383ec0abda88c905085d630e251719e0777045ae3236f04c812184b7c765f63a70e58df
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "uuid@npm:9.0.0"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 8dd2c83c43ddc7e1c71e36b60aea40030a6505139af6bee0f382ebcd1a56f6cd3028f7f06ffb07f8cf6ced320b76aea275284b224b002b289f89fe89c389b028
   languageName: node
   linkType: hard
 
