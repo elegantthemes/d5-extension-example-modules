@@ -15,6 +15,15 @@ addFilter('custom_modules_list', 'd5-module-extension-example', (modulesName) =>
     };
 });
 
+addFilter('module_exceptions_attr_map', 'd5-module-extension-example', (moduleExceptions) => {
+    return {
+        ...moduleExceptions,
+        'd4-module': {
+          header_level: 'titleFont.font.*.headingLevel',
+        },
+    };
+});
+
 // Mock uuid for consistent value.
 jest.mock('uuid', () => ({
   v4: jest.fn(),
@@ -31,10 +40,9 @@ describe('Conversion of `d4_module` shortcode into `divi/d4-module` GB Format at
     it(`should verify that \`${shortcodeKey}\` shortcode matches \`${shortcodeKey}\` attributes`, () => {
       const moduleObject = parseSerializedPostIntoFlatModuleObject(
         maybeConvertContent(shortcodeItem),
+        undefined,
+        uuid,
       );
-
-      console.log(maybeConvertContent(shortcodeItem));
-      
 
       expect(moduleObject[moduleId].props.attrs).toEqual(get(attrs, [shortcodeKey]));
     });

@@ -34,6 +34,17 @@ export const styleOne: D4ModuleAttrs = {
       },
     },
   },
+  bodyFont: {
+    body: {
+      font: {
+        desktop: {
+          value: {
+            color: '#ffffff',
+          },
+        },
+      },
+    },
+  },
   spacing: {
     desktop: {
       value: {
@@ -52,8 +63,92 @@ export const styleOne: D4ModuleAttrs = {
 
 export const styleTwo: D4ModuleAttrs = {
   ...defaultAttributes,
+  background: {
+    desktop: {
+      value: {
+        color: '#EDF000',
+      },
+    },
+  },
+  boxShadow: {
+    desktop: {
+      value: {
+        style: 'preset3',
+      },
+    },
+  },
+  border: {
+    desktop: {
+      value: {
+        radius: {
+          bottomLeft:  '15px',
+          bottomRight: '15px',
+          sync:        'on',
+          topLeft:     '15px',
+          topRight:    '15px',
+        },
+      },
+    },
+  },
+  titleFont: {
+    font: {
+      desktop: {
+        value: {
+          style: [ 'uppercase' ],
+          headingLevel: 'h3',
+        },
+      },
+    },
+  },
+  spacing: {
+    desktop: {
+      value: {
+        padding: {
+          bottom:         '30px',
+          left:           '30px',
+          right:          '30px',
+          syncHorizontal: 'on',
+          syncVertical:   'on',
+          top:            '30px',
+        },
+      },
+    },
+  },
+  text: {
+    text: {
+      desktop: {
+        value: {
+          orientation: 'center',
+        },
+      },
+    },
+  },
 };
 
 export const contentStyle: D4ModuleAttrs = {
   ...defaultAttributes,
+  bodyFont: {
+    body: {
+      font: {
+        desktop: {
+          value: {
+            color: '#8300E9',
+            lineHeight: '1.8em',
+            size: '18px',
+            style: [
+              'capitalize',
+            ],
+          },
+        },
+      },
+      textShadow: {
+        desktop: {
+          value: {
+            color: '#00FFC3',
+            style: 'preset2',
+          },
+        },
+      },
+    },
+  },
 };
