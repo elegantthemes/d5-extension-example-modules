@@ -7,7 +7,7 @@ const wpDist    = `${wpDir}/wp-includes/js/dist`;
 
 const { DIVIDIR } = process.env;
 const diviDir     = DIVIDIR ? resolve(DIVIDIR) : resolve(__dirname, '../../../themes/Divi');
-const diviDist    = `${diviDir}/includes/builder/visual-builder/build`;
+const diviDist    = `${diviDir}/includes/builder-5/visual-builder/build`;
 
 const wpPackages = glob(`${wpDist}/*.js`)
   .filter(name => 0 > name.indexOf('.min.js'))

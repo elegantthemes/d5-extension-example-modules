@@ -13,8 +13,6 @@ registerModule(childModule.metadata, omit(childModule, 'metadata'));
 registerModule(parentModule.metadata, omit(parentModule, 'metadata'));
 registerModule(d4Module.metadata, omit(d4Module, 'metadata'));
 
-console.log('Hi');
-
 addFilter('custom_modules_list', 'd5-module-extension-example', (modulesName) => ({
     ...modulesName,
     d4_module: 'divi/d4-module'
