@@ -6,6 +6,7 @@ module.exports = {
   // @see https://webpack.js.org/concepts/#entry
   entry: {
     bundle: './src/index.ts',
+    conversion: './src/conversion.ts',
   },
 
   // Divi Visual Builder use of scripts that is already enqueued by WordPress and available
@@ -177,7 +178,7 @@ module.exports = {
   // Determine where the created bundles will be outputted.
   // @see https://webpack.js.org/concepts/#output
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'scripts'),
   },
   stats: {

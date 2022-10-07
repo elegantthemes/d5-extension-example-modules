@@ -48,6 +48,16 @@ function d5_module_extension_example_enqueue_vb_scripts() {
             '1.0.0',
             true
         );
+        wp_enqueue_script(
+            "d5-module-extension-example-conversion-script",
+            "{$plugin_dir_url}scripts/conversion.js",
+            array(
+                'divi-module-library',
+                'wp-hooks',
+            ),
+            '1.0.0',
+            false
+        );
         wp_enqueue_style( "d5-module-extension-example-builder-vb-bundle-style", "{$plugin_dir_url}styles/vb-bundle.css", array(), '1.0.0' );
     }
 }
@@ -122,11 +132,3 @@ function d5_module_extension_example_register_modules() {
     );
 }
 add_action( 'init', 'd5_module_extension_example_register_modules' );
-
-
-function d5_module_extension_example_modules_to_convert( $modules ) {
-    $modules['d4_module'] = 'divi/d4-module';
-
-    return $modules;
-}
-add_filter( 'et_vb_modules_to_convert', 'd5_module_extension_example_modules_to_convert' );
