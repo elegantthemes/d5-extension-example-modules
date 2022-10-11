@@ -7,7 +7,7 @@ const wpDist    = `${wpDir}/wp-includes/js/dist`;
 
 const { DIVIDIR } = process.env;
 const diviDir     = DIVIDIR ? resolve(DIVIDIR) : resolve(__dirname, '../../../themes/Divi');
-const diviDist    = `${diviDir}/includes/builder/visual-builder/build`;
+const diviDist    = `${diviDir}/includes/builder-5/visual-builder/build`;
 
 const wpPackages = glob(`${wpDist}/*.js`)
   .filter(name => 0 > name.indexOf('.min.js'))
@@ -73,7 +73,7 @@ module.exports = {
     `${wpDist}/block-serialization-default-parser`,
 
     // `${wpDist}/html-entities`,
-    // `${wpDist}/shortcode`,
+    `${wpDist}/shortcode`,
     `${wpDist}/blocks`,
 
     // `${wpDist}/keyboard-shortcuts`,
@@ -104,7 +104,7 @@ module.exports = {
     // `${diviDist}/seamless-immutable-extension`,
     // `${diviDist}/clipboard`,
     // `${diviDist}/right-click-options`,
-    // `${diviDist}/sanitize`,
+    `${diviDist}/sanitize`,
     `${diviDist}/style-library`,
     // `${diviDist}/tooltip`,
     // `${diviDist}/url`,

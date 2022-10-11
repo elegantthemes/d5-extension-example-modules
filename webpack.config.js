@@ -6,6 +6,7 @@ module.exports = {
   // @see https://webpack.js.org/concepts/#entry
   entry: {
     bundle: './src/index.ts',
+    conversion: './src/conversion.ts',
   },
 
   // Divi Visual Builder use of scripts that is already enqueued by WordPress and available
@@ -24,6 +25,7 @@ module.exports = {
 
     // WordPress dependencies.
     '@wordpress/i18n': ['wp', 'i18n'],
+    '@wordpress/hooks': ['wp', 'hooks'],
 
     // Divi dependencies.
     '@divi/ajax': ['divi', 'ajax'],
@@ -176,7 +178,7 @@ module.exports = {
   // Determine where the created bundles will be outputted.
   // @see https://webpack.js.org/concepts/#output
   output: {
-    filename: 'bundle.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'scripts'),
   },
   stats: {
