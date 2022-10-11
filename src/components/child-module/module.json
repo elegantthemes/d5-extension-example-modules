@@ -2,6 +2,6 @@
   "name": "divi/child-module",
   "title": "Child Module",
   "titles": "Child Modules",
-  "category": "module",
+  "category": "child-module",
   "attributes": {}
 }
