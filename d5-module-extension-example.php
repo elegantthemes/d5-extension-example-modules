@@ -25,10 +25,16 @@ You should have received a copy of the GNU General Public License
 along with D5 Module Extension Example. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
 
-function dicm_initialize_extension() {
+/**
+ * Register all Divi 4 modules.
+ *
+ * @since ??
+ */
+function d5_module_extension_example_initialize_d4_modules() {
     require_once plugin_dir_path( __FILE__ ) . 'divi-4/modules/Divi4Module/Divi4Module.php';
+    require_once plugin_dir_path( __FILE__ ) . 'divi-4/modules/Divi4OnlyModule/Divi4OnlyModule.php';
 }
-add_action( 'et_builder_ready', 'dicm_initialize_extension' );
+add_action( 'et_builder_ready', 'd5_module_extension_example_initialize_d4_modules' );
 
 /**
  * Enqueue style and scripts of Module Extension Example for Visual Builder.
