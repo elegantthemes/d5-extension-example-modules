@@ -24,7 +24,7 @@ import { defaultSettingsAttrs } from './constants';
 export const SettingsContent = (): ReactElement => (
   <React.Fragment>
     <DraggableChildModuleListContainer
-      childModuleName="divi/child-module"
+      childModuleName="example/child-module"
       addTitle={__('Add New Child Module', 'et_builder')}
     >
       <DraggableListContainer />

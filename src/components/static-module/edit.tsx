@@ -55,13 +55,13 @@ const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
         [`et_pb_bg_layout_${backgroundLayoutPhone}_phone`]:   backgroundLayoutPhone,
       })}
     >
-      <div className="et_pb_static_module_image">
+      <div className="static-module__image">
         <img src={imageSrc} alt={imageAlt} />
       </div>
-      <div className="et_pb_static_module_content_container">
-        <HeadingLevel className="et_pb_static_module_title">{title}</HeadingLevel>
+      <div className="static-module__content-container">
+        <HeadingLevel className="static-module__title">{title}</HeadingLevel>
         <div
-          className="et_pb_static_module_content"
+          className="static-module__content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>

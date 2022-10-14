@@ -83,14 +83,14 @@ const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
       tag="li"
     >
       { icon && (
-        <div className="et_pb_child_module_icon et-pb-icon">
+        <div className="child-module__icon et-pb-icon">
             {processFontIcon(icon)}
         </div>
       )}
-      <div className="et_pb_child_module_content_container">
-        <div className="et_pb_child_module_title">{title}</div>
+      <div className="child-module__content-container">
+        <div className="child-module__title">{title}</div>
         <div
-          className="et_pb_child_module_content"
+          className="child-module__content"
           dangerouslySetInnerHTML={{ __html: content }}
         />
       </div>

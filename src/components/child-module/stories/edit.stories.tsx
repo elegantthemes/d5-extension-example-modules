@@ -31,7 +31,7 @@ import { registerAppPreferencesStore } from '@divi/app-preferences';
 // Create template to render argument given.
 const templateDividerEdit: Story<ChildModuleEditProps> = args => createElement(ChildModuleEdit, args);
 
-const name = 'divi/child-module';
+const name = 'example/child-module';
 
 // Stories.
 const DefaultValues      = templateDividerEdit.bind({}) as Story<ChildModuleEditProps>;

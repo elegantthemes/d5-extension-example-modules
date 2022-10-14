@@ -35,6 +35,7 @@
     "@types/divi__ajax": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__ajax",
     "@types/divi__app-preferences": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__app-preferences",
     "@types/divi__app-ui": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__app-ui",
+    "@types/divi__conversion": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__conversion",
     "@types/divi__data": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__data",
     "@types/divi__edit-post": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__edit-post",
     "@types/divi__error-boundary": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__error-boundary",

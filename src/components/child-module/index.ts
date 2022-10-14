@@ -33,4 +33,5 @@ export const childModule: ModuleRegisterDefinition<ChildModuleAttrs> = {
   renderers: {
     edit: ChildModuleEdit,
   },
+  parentsName: ['example/parent-module'],
 };

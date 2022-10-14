@@ -1,15 +1,15 @@
-.et_pb_dynamic_module {
+.dynamic-module {
     padding: 50px;
     background-color: #f5f5f5;
 
-    &_title {
+    &__title {
         margin-bottom: 30px;
     }
 
-    &_post_item {
+    &__post-item {
         margin-bottom: 20px;
 
-        &_title {
+        &-title {
             font-size: 18px;
         }
     }

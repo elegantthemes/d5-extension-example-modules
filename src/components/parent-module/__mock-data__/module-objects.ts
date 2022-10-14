@@ -158,7 +158,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     parentModule1: {
       id:     'parentModule1',
-      name:   'divi/parent-module',
+      name:   'example/parent-module',
       parent: 'column1',
       props:  {
         attrs: defaultAttributes,
@@ -171,7 +171,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule1: {
       id:     'childModule1',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule1',
       props:  {
         attrs: childDefaultAttributes,
@@ -180,7 +180,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule2: {
       id:     'childModule2',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule1',
       props:  {
         attrs: childDefaultAttributes,
@@ -189,7 +189,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule3: {
       id:     'childModule3',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule1',
       props:  {
         attrs: childDefaultAttributes,
@@ -198,7 +198,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     parentModule2: {
       id:     'parentModule2',
-      name:   'divi/parent-module',
+      name:   'example/parent-module',
       parent: 'column1',
       props:  {
         attrs: customIcon,
@@ -211,7 +211,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule4: {
       id:     'childModule4',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule2',
       props:  {
         attrs: childDefaultAttributes,
@@ -220,7 +220,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule5: {
       id:     'childModule5',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule2',
       props:  {
         attrs: childDefaultAttributes,
@@ -229,7 +229,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule6: {
       id:     'childModule6',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule2',
       props:  {
         attrs: childDefaultAttributes,
@@ -238,7 +238,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     parentModule3: {
       id:     'parentModule3',
-      name:   'divi/parent-module',
+      name:   'example/parent-module',
       parent: 'column1',
       props:  {
         attrs: iconStyle,
@@ -251,7 +251,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule7: {
       id:     'childModule7',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule3',
       props:  {
         attrs: childDefaultAttributes,
@@ -260,7 +260,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule8: {
       id:     'childModule8',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule3',
       props:  {
         attrs: childDefaultAttributes,
@@ -269,7 +269,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule9: {
       id:     'childModule9',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule3',
       props:  {
         attrs: childDefaultAttributes,
@@ -278,7 +278,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     parentModule4: {
       id:     'parentModule4',
-      name:   'divi/parent-module',
+      name:   'example/parent-module',
       parent: 'column1',
       props:  {
         attrs: titleStyle,
@@ -291,7 +291,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule10: {
       id:     'childModule10',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule4',
       props:  {
         attrs: childDefaultAttributes,
@@ -300,7 +300,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule11: {
       id:     'childModule11',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule4',
       props:  {
         attrs: childDefaultAttributes,
@@ -309,7 +309,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule12: {
       id:     'childModule12',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule4',
       props:  {
         attrs: childDefaultAttributes,
@@ -318,7 +318,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     parentModule5: {
       id:     'parentModule5',
-      name:   'divi/parent-module',
+      name:   'example/parent-module',
       parent: 'column1',
       props:  {
         attrs: contentStyle,
@@ -331,7 +331,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule13: {
       id:     'childModule13',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule5',
       props:  {
         attrs: childDefaultAttributes,
@@ -340,7 +340,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule14: {
       id:     'childModule14',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule5',
       props:  {
         attrs: childDefaultAttributes,
@@ -349,7 +349,7 @@ export const mutableState: MutableEditPostStoreState = {
     },
     childModule15: {
       id:     'childModule15',
-      name:   'divi/child-module',
+      name:   'example/child-module',
       parent: 'parentModule5',
       props:  {
         attrs: childDefaultAttributes,

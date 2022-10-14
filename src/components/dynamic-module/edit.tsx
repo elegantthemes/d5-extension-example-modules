@@ -62,17 +62,17 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
           <>
             {
               title && (
-                <TitleHeading className="et_pb_dynamic_module_title">{title}</TitleHeading>
+                <TitleHeading className="dynamic-module__title">{title}</TitleHeading>
               )
             }
-            <div className="et_pb_dynamic_module_post_items">
+            <div className="dynamic-module__post-items">
               {
                 map(posts, (post) => (
-                    <div className="et_pb_dynamic_module_post_item">
-                      <PostTitleHeading className="et_pb_dynamic_module_post_item_title">
+                    <div className="dynamic-module__post-item">
+                      <PostTitleHeading className="dynamic-module__post-item-title">
                         <a href={post?.link} onClick={() => false}>{post?.title?.rendered}</a>
                       </PostTitleHeading>
-                      <div className="et_pb_dynamic_module_post_item_content" dangerouslySetInnerHTML={{__html: post?.excerpt?.rendered}} />
+                      <div className="dynamic-module__post-item-content" dangerouslySetInnerHTML={{__html: post?.excerpt?.rendered}} />
                     </div>
                   )
                 )

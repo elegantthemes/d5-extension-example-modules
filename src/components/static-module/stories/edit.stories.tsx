@@ -32,7 +32,7 @@ import { select } from '@divi/data';
 // Create template to render argument given.
 const templateDividerEdit: Story<StaticModuleEditProps> = args => createElement(StaticModuleEdit, args);
 
-const name = 'divi/static-module';
+const name = 'example/static-module';
 
 // Stories.
 const DefaultValues      = templateDividerEdit.bind({}) as Story<StaticModuleEditProps>;

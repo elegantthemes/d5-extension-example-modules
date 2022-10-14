@@ -30,7 +30,7 @@ import { select } from '@divi/data';
 // Create template to render argument given.
 const templateDividerEdit: Story<D4ModuleEditProps> = args => createElement(D4ModuleEdit, args);
 
-const name = 'divi/d4-module';
+const name = 'example/d4-module';
 
 // Stories.
 const DefaultValues      = templateDividerEdit.bind({}) as Story<D4ModuleEditProps>;

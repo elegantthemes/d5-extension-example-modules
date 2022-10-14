@@ -23,11 +23,11 @@ import './module.scss';
  */
 export const parentModule: ModuleRegisterDefinition<ParentModuleAttrs> = {
   metadata,
-  childrenName: ['divi/child-module'],
+  childrenName: ['example/child-module'],
   template:     [
-    ['divi/child-module', {}],
-    ['divi/child-module', {}],
-    ['divi/child-module', {}],
+    ['example/child-module', {}],
+    ['example/child-module', {}],
+    ['example/child-module', {}],
   ],
   settings:   {
     content:  SettingsContent,

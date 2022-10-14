@@ -1,7 +1,8 @@
 {
-  "name": "divi/d4-module",
+  "name": "example/d4-module",
   "title": "Divi 4 Module",
   "titles": "Divi 4 Modules",
   "category": "module",
+  "d4Slug": "d4_module",
   "attributes": {}
 }

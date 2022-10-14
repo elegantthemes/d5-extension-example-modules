@@ -31,7 +31,7 @@ import { post } from '../__mock-data__/posts';
 // Create template to render argument given.
 const templateDividerEdit: Story<DynamicModuleEditProps> = args => createElement(DynamicModuleEdit, args);
 
-const name = 'divi/dynamic-module';
+const name = 'example/dynamic-module';
 
 const posts = rest.get('wp-json/wp/v2/posts', (req, res, ctx) => {
   const perPage = req?.url?.searchParams?.get('per_page');
