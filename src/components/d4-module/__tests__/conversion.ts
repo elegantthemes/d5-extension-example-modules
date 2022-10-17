@@ -9,7 +9,7 @@ import * as shortcodes from '../__mock-data__/shortcodes';
 import { registerModule, registerModuleLibraryStore } from '@divi/module-library';
 import { d4Module } from '..';
 
-import '../../../conversion';
+import '../../../module-exceptions';
 
 registerModuleLibraryStore();
 registerModule(d4Module.metadata, omit(d4Module, 'metadata'));
