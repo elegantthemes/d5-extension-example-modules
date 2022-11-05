@@ -1,5 +1,6 @@
 {
   "name": "example/parent-module",
+  "d4Shortcode": "",
   "title": "Parent Module",
   "titles": "Parent Modules",
   "category": "module",

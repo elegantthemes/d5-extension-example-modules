@@ -121,11 +121,13 @@ function d5_module_extension_example_dynamic_render_callback( $block_attributes 
 }
 
 function d5_module_extension_example_register_modules() {
-    ET\Builder\ModuleLibrary\ModuleRegistration::register_module(
-        __DIR__ . '/src/components/dynamic-module/' ,
-        [
-            'render_callback' => 'd5_module_extension_example_dynamic_render_callback',
-        ]
-    );
+    if ( class_exists( 'ET\Builder\ModuleLibrary\ModuleRegistration' ) ) {
+        ET\Builder\ModuleLibrary\ModuleRegistration::register_module(
+            __DIR__ . '/src/components/dynamic-module/' ,
+            [
+                'render_callback' => 'd5_module_extension_example_dynamic_render_callback',
+            ]
+        );
+    }
 }
 add_action( 'init', 'd5_module_extension_example_register_modules' );

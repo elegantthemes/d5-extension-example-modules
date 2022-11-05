@@ -1,5 +1,6 @@
 {
   "name": "example/child-module",
+  "d4Shortcode": "",
   "title": "Child Module",
   "titles": "Child Modules",
   "category": "child-module",
