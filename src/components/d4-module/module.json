@@ -1,8 +1,33 @@
 {
-  "name": "example/d4-module",
-  "d4Shortcode": "d4_module",
-  "title": "Divi 4 Module",
-  "titles": "Divi 4 Modules",
-  "category": "module",
-  "attributes": {}
+    "name": "example/d4-module",
+    "d4Shortcode": "d4_module",
+    "title": "Divi 4 Module",
+    "titles": "Divi 4 Modules",
+    "category": "module",
+    "attributes": {
+        "text": {
+            "type": "object",
+            "default": {
+                "text": {
+                    "desktop": {
+                        "value": {
+                            "color": "light"
+                        }
+                    }
+                }
+            }
+        },
+        "titleFont": {
+            "type": "object",
+            "default": {
+                "font": {
+                    "desktop": {
+                        "value": {
+                            "headingLevel": "h2"
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -11,7 +11,7 @@ export const useGetRecentPosts = () => {
     apiFetchController.abort();
   }, []);
 
-  const getPosts = (postsPerPage = 3) => {
+  const getPosts = (postsPerPage = 5) => {
     setLoading(true);
     
     fetch({

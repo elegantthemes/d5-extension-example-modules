@@ -37,10 +37,10 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
 
   const {getPosts, posts, isLoading} = useGetRecentPosts();
 
-  const title         = moduleAttrs?.title?.desktop?.value;
-  const numberOfPosts = parseInt(moduleAttrs?.numberOfPosts?.desktop?.value);
-  const TitleHeading  = moduleAttrs?.titleFont?.font?.desktop?.value?.headingLevel;
-  const PostTitleHeading  = moduleAttrs?.postTitleFont?.font?.desktop?.value?.headingLevel;
+  const title            = moduleAttrs?.title?.desktop?.value;
+  const numberOfPosts    = parseInt(moduleAttrs?.numberOfPosts?.desktop?.value);
+  const TitleHeading     = moduleAttrs?.titleFont?.font?.desktop?.value?.headingLevel;
+  const PostTitleHeading = moduleAttrs?.postTitleFont?.font?.desktop?.value?.headingLevel;
 
   /**
    * Fetches new Portfolio Posts on parameter changes.

@@ -25,14 +25,22 @@ You should have received a copy of the GNU General Public License
 along with D5 Module Extension Example. If not, see https://www.gnu.org/licenses/gpl-2.0.html.
 */
 
+define( 'D5_MODULE_EXTENSION_EXAMPLE_PATH', plugin_dir_path( __FILE__ ) );
+
+/**
+ * Requires Autoloader.
+ */
+require D5_MODULE_EXTENSION_EXAMPLE_PATH . 'vendor/autoload.php';
+require D5_MODULE_EXTENSION_EXAMPLE_PATH . 'modules/modules.php';
+
 /**
  * Register all Divi 4 modules.
  *
  * @since ??
  */
 function d5_module_extension_example_initialize_d4_modules() {
-    require_once plugin_dir_path( __FILE__ ) . 'divi-4/modules/Divi4Module/Divi4Module.php';
-    require_once plugin_dir_path( __FILE__ ) . 'divi-4/modules/Divi4OnlyModule/Divi4OnlyModule.php';
+    require_once D5_MODULE_EXTENSION_EXAMPLE_PATH . 'divi-4/modules/Divi4Module/Divi4Module.php';
+    require_once D5_MODULE_EXTENSION_EXAMPLE_PATH . 'divi-4/modules/Divi4OnlyModule/Divi4OnlyModule.php';
 }
 add_action( 'et_builder_ready', 'd5_module_extension_example_initialize_d4_modules' );
 
@@ -71,63 +79,3 @@ function d5_module_extension_example_enqueue_frontend_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'd5_module_extension_example_enqueue_frontend_scripts' );
 
-function d5_module_extension_example_dynamic_render_callback( $block_attributes ) {
-    $number_of_posts = isset( $block_attributes['numberOfPosts']['desktop']['value'] ) ? $block_attributes['numberOfPosts']['desktop']['value'] : 3;
-    $title = isset( $block_attributes['title']['desktop']['value'] ) ? $block_attributes['title']['desktop']['value'] : '';
-    $title_tag = isset( $block_attributes['titleFont']['font']['desktop']['value']['headingLevel'] ) ? $block_attributes['titleFont']['font']['desktop']['value']['headingLevel'] : 'h2';
-    $post_title_tag = isset( $block_attributes['postTitleFont']['font']['desktop']['value']['headingLevel'] ) ? $block_attributes['postTitleFont']['font']['desktop']['value']['headingLevel'] : 'h3';
-
-    $posts = get_posts( [
-        'posts_per_page' => $number_of_posts,
-    ] );
-
-    $posts_output = '';
-
-    if ( ! empty( $posts ) ) {
-        foreach( $posts as $post_item ) {
-            $posts_output .= sprintf(
-                '<div className="et_pb_dynamic_module_post_item">
-                    <%1$s className="et_pb_dynamic_module_post_item_title"><a href="%2$s">%3$s</a></%1$s>
-                    <div>%4$s</div>
-                </div>',
-                $post_title_tag,
-                get_permalink( $post_item ),
-                get_the_title( $post_item ),
-                get_the_excerpt( $post_item ),
-            );
-        }
-    } else {
-        $posts_output .= sprintf(
-            '<div className="et_pb_dynamic_module_post_item">%1$s</div>',
-            __('No post found.', 'd5-module-extension-example'),
-        );
-    }
-
-    $module_title = ! empty($title) ? sprintf( '<%1$s class="et_pb_dynamic_module_title">%2$s</%1$s>', $title_tag, $title ) : '';
-
-    $default_classes = [ 'et_pb_module', 'et_pb_bg_layout_light', 'clearfix' ];
-
-    $output = sprintf(
-        '<div class="%1$s">
-            %2$s
-            <div class="et_pb_dynamic_module_post_item">%3$s</div>
-		</div>',
-        esc_attr( join( ' ', $default_classes ) ),
-        $module_title,
-        $posts_output,
-    );
-
-    return $output;
-}
-
-function d5_module_extension_example_register_modules() {
-    if ( class_exists( 'ET\Builder\ModuleLibrary\ModuleRegistration' ) ) {
-        ET\Builder\ModuleLibrary\ModuleRegistration::register_module(
-            __DIR__ . '/src/components/dynamic-module/' ,
-            [
-                'render_callback' => 'd5_module_extension_example_dynamic_render_callback',
-            ]
-        );
-    }
-}
-add_action( 'init', 'd5_module_extension_example_register_modules' );

@@ -1,8 +1,33 @@
 {
-  "name": "example/static-module",
-  "d4Shortcode": "",
-  "title": "Static Module",
-  "titles": "Static Modules",
-  "category": "module",
-  "attributes": {}
+    "name": "example/static-module",
+    "d4Shortcode": "",
+    "title": "Static Module",
+    "titles": "Static Modules",
+    "category": "module",
+    "attributes": {
+        "text": {
+            "type": "object",
+            "default": {
+                "text": {
+                    "desktop": {
+                        "value": {
+                            "color": "light"
+                        }
+                    }
+                }
+            }
+        },
+        "titleFont": {
+            "type": "object",
+            "default": {
+                "font": {
+                    "desktop": {
+                        "value": {
+                            "headingLevel": "h2"
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

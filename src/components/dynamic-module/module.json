@@ -1,8 +1,33 @@
 {
-  "name": "example/dynamic-module",
-  "d4Shortcode": "",
-  "title": "Dynamic Module",
-  "titles": "Dynamic Modules",
-  "category": "module",
-  "attributes": {}
+    "name": "example/dynamic-module",
+    "d4Shortcode": "",
+    "title": "Dynamic Module",
+    "titles": "Dynamic Modules",
+    "category": "module",
+    "attributes": {
+        "titleFont": {
+            "type": "object",
+            "default": {
+                "font": {
+                    "desktop": {
+                        "value": {
+                            "headingLevel": "h2"
+                        }
+                    }
+                }
+            }
+        },
+        "postTitleFont": {
+            "type": "object",
+            "default": {
+                "font": {
+                    "desktop": {
+                        "value": {
+                            "headingLevel": "h3"
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

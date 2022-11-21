@@ -1,8 +1,21 @@
 {
-  "name": "example/parent-module",
-  "d4Shortcode": "",
-  "title": "Parent Module",
-  "titles": "Parent Modules",
-  "category": "module",
-  "attributes": {}
+    "name": "example/parent-module",
+    "d4Shortcode": "",
+    "title": "Parent Module",
+    "titles": "Parent Modules",
+    "category": "module",
+    "attributes": {
+        "icon": {
+            "type": "object",
+            "default": {
+                "desktop": {
+                    "value": {
+                        "unicode": "&#x4e;",
+                        "type": "divi",
+                        "weight": "400"
+                    }
+                }
+            }
+        }
+    }
 }
