@@ -12,3 +12,5 @@ yarn-error.log*
 scripts
 styles
 .env
+
+vendor
