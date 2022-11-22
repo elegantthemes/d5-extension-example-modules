@@ -10,7 +10,7 @@ class DynamicModule implements DependencyInterface {
 	use DynamicModuleTrait\RenderCallbackTrait;
 
 	public function load() {
-		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_PATH . 'src/components/dynamic-module/';
+		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_PATH . 'dynamic-module/';
 
 		add_action(
 			'init',

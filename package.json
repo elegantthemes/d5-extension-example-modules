@@ -67,6 +67,7 @@
     "@wordpress/scripts": "^23.6.0",
     "babel-jest": "^28.1.3",
     "babel-loader": "^8.2.5",
+    "copy-webpack-plugin": "^11.0.0",
     "css-loader": "^5.0.0",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",

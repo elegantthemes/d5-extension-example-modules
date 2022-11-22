@@ -10,7 +10,7 @@ class ChildModule implements DependencyInterface {
 	use ChildModuleTrait\RenderCallbackTrait;
 
 	public function load() {
-		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_PATH . 'src/components/child-module/';
+		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_JSON_PATH . 'child-module/';
 
 		add_action(
 			'init',

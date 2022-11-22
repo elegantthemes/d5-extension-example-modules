@@ -10,7 +10,7 @@ class StaticModule implements DependencyInterface {
 	use StaticModuleTrait\RenderCallbackTrait;
 
 	public function load() {
-		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_PATH . 'src/components/static-module/';
+		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_PATH . 'static-module/';
 
 		add_action(
 			'init',

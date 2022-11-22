@@ -12,6 +12,7 @@ const files = [
     '!node_modules/**',
     '!src/**',
     '!test-config/**',
+    '!storybook-assets/**',
 
     // Ignored files.
     '!**/*.zip',
@@ -23,6 +24,8 @@ const files = [
     '!tsconfig.json',
     '!webpack.config.js',
     '!yarn.lock',
+    '!composer.json',
+    '!composer.lock',
 ];
 
 const zip = () => src( files ).pipe( gulpZip( package.name + '-v' + package.version + '.zip' ) ).pipe( dest( './' ) );

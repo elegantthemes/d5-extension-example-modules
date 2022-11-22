@@ -10,7 +10,7 @@ class D4Module implements DependencyInterface {
 	use D4ModuleTrait\RenderCallbackTrait;
 
 	public function load() {
-		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_PATH . 'src/components/d4-module/';
+		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_JSON_PATH . 'd4-module/';
 
 		add_action(
 			'init',

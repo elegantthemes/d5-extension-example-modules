@@ -10,7 +10,7 @@ class ParentModule implements DependencyInterface {
 	use ParentModuleTrait\RenderCallbackTrait;
 
 	public function load() {
-		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_PATH . 'src/components/parent-module/';
+		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_PATH . 'parent-module/';
 
 		add_action(
 			'init',

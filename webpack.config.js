@@ -1,5 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 
 module.exports = {
   // Webpack starts bundling the assets from the following file.
@@ -163,7 +164,16 @@ module.exports = {
     // @see https://webpack.js.org/plugins/mini-css-extract-plugin/
     new MiniCssExtractPlugin({
       filename: '../styles/[name].css',
-    })
+    }),
+    new CopyWebpackPlugin( {
+      patterns: [
+        {
+          from: '**/module.json',
+          context: 'src/components',
+          to: path.resolve(__dirname, 'modules-json'),
+        },
+      ]
+    } ),
   ],
 
   // Determine how modules are resolved.
@@ -171,7 +181,7 @@ module.exports = {
   resolve: {
     // Allows extension to be leave off when importing.
     // @see https://webpack.js.org/configuration/resolve/#resolveextensions
-    extensions: ['.js', '.jsx', '.tsx', '.ts'],
+    extensions: ['.js', '.jsx', '.tsx', '.ts', '.json'],
   },
 
   // Determine where the created bundles will be outputted.
