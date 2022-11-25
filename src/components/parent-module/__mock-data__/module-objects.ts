@@ -1,14 +1,10 @@
 import Immutable from 'seamless-immutable';
 
-import {
-  EditPostStoreState,
-  MutableEditPostStoreState,
-} from '@divi/edit-post';
-
 import { defaultAttributes, customIcon, iconStyle, titleStyle, contentStyle } from './attrs';
 import {
   defaultAttributes as childDefaultAttributes,
 } from '../../child-module/__mock-data__/attrs';
+import { ExampleEditPostStoreState, ExampleMutableEditPostStoreState } from '../../../types';
 
 // Mutable state. NOTE: Update visualization if you change the mutable state structure.
 /**
@@ -111,7 +107,7 @@ import {
  * **************************************************************************************.
  *
  */
-export const mutableState: MutableEditPostStoreState = {
+export const mutableState: ExampleMutableEditPostStoreState = {
   content: {
     root: {
       id:       'root',
@@ -359,4 +355,4 @@ export const mutableState: MutableEditPostStoreState = {
   },
 };
 
-export const state: EditPostStoreState = Immutable(mutableState);
+export const state: ExampleEditPostStoreState = Immutable(mutableState);

@@ -1,5 +1,4 @@
 // Divi dependencies.
-import { MutableEditPostStoreState } from '@divi/edit-post';
 import { ModuleEditProps } from '@divi/module-library';
 import {
   AdminLabelGroupAttr,
@@ -17,8 +16,6 @@ import {
   IdClassesGroupAttr,
   InternalAttrs,
   LinkGroupAttr,
-  ModuleFlatObjectNamed,
-  ModuleFlatObjects,
   OverflowGroupAttr,
   PositionGroupAttr,
   ScrollGroupAttr,

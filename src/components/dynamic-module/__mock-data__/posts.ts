@@ -40,7 +40,7 @@ export const post = {
   "categories": [
     1
   ],
-  "tags": [],
+  "tags": [] as string[],
   "_links": {
     "self": [
       {

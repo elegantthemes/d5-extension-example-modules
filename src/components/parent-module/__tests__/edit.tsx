@@ -16,13 +16,13 @@ import { registerModals } from '@divi/modal-library';
 import { registerEditPostStore } from '@divi/edit-post';
 import { registerSerializedPostStore } from '@divi/serialized-post';
 import { ParentModuleEdit } from '../edit';
-import { dispatch } from '@divi/data';
 import { parentModule } from '..';
 
 import * as editStories  from '../stories/edit.stories';
 import { state } from '../__mock-data__/module-objects';
 import { childModule } from '../../child-module';
 import { registerAppPreferencesStore } from '@divi/app-preferences';
+import { ExampleEditPostStoreState } from '../../../types';
 
 // Only test story that has description. This naturally excludes `default` export from being included as test.
 const testableStories = pickBy(editStories, story => has(story, 'parameters.docs.description.story')) as Omit<typeof editStories, 'default'>;
@@ -40,7 +40,7 @@ beforeEach(() => {
   registerKeyboardShortcutsStore();
   registerModals();
   registerSerializedPostStore();
-  registerEditPostStore(state);
+  registerEditPostStore<ExampleEditPostStoreState>(state);
 });
 
 describe('<ParentModuleEdit />', () => {
