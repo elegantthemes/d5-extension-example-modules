@@ -40,10 +40,10 @@ import { cssFields } from './custom-css';
   state,
   noStyleTag,
 }: StylesProps<StaticModuleAttrs>): ReactElement => {
-  const imageClass            = `${orderClass} .et_pb_static_module_image img`;
-  const titleClass            = `${orderClass} .et_pb_static_module_title`;
-  const contentContainerClass = `${orderClass} .et_pb_static_module_content_container`;
-  const contentClass          = `${orderClass} .et_pb_static_module_content`;
+  const imageClass            = `${orderClass} .static-module__image img`;
+  const titleClass            = `${orderClass} .static-module__title`;
+  const contentContainerClass = `${orderClass} .static-module__content-container`;
+  const contentClass          = `${orderClass} .static-module__content`;
 
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>

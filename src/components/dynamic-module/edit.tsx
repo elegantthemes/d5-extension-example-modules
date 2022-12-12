@@ -12,6 +12,8 @@ import { defaultAttrs } from './constants';
 import { useGetRecentPosts } from './hooks/get-recent-posts';
 import { map } from 'lodash';
 import { __ } from '@wordpress/i18n';
+import { ModuleScriptData } from './module-script-data';
+import { moduleClassnames } from './module-classnames';
 
 /**
  * Static Module edit component of visual builder.
@@ -56,6 +58,8 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
       id={id}
       name={name}
       stylesComponent={ModuleStyles}
+      classnamesFunction={moduleClassnames}
+      scriptDataComponent={ModuleScriptData}
     >
       {
         ! isLoading && (

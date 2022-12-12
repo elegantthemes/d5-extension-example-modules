@@ -29,5 +29,15 @@
                 }
             }
         }
+    },
+    "customCssFields": {
+        "title": {
+            "subName":        "title",
+            "selectorSuffix": " .d4_module_title"
+        },
+        "content": {
+            "subName":        "content",
+            "selectorSuffix": " .d4_module_content"
+        }
     }
 }

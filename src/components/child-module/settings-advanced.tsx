@@ -7,7 +7,7 @@ import {
   Css,
   IdClasses,
   PositionGroup,
-  ScrollGroup,
+  Scroll,
   Transition,
   Visibility,
 } from '@divi/module';
@@ -24,6 +24,6 @@ export const SettingsAdvanced = (): ReactElement => (
     <Visibility />
     <Transition />
     <PositionGroup />
-    <ScrollGroup />
+    <Scroll />
   </React.Fragment>
 );

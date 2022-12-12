@@ -39,9 +39,9 @@ import { DynamicModuleAttrs } from './types';
   state,
   noStyleTag,
 }: StylesProps<DynamicModuleAttrs>): ReactElement => {
-  const titleClass = `${orderClass} .et_pb_dynamic_module_title`;
-  const postTitleClass = `${orderClass} .et_pb_dynamic_module_post_item_title`;
-  const contentClass = `${orderClass} .et_pb_dynamic_module_post_item_content`;
+  const titleClass = `${orderClass} .dynamic-module__title`;
+  const postTitleClass = `${orderClass} .dynamic-module__post-item-title`;
+  const contentClass = `${orderClass} .dynamic-module__post-item-content`;
 
 
   return (

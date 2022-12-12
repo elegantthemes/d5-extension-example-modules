@@ -4,5 +4,23 @@
   "title": "Child Module",
   "titles": "Child Modules",
   "category": "child-module",
-  "attributes": {}
+  "attributes": {},
+  "customCssFields": {
+    "contentContainer": {
+        "subName":        "contentContainer",
+        "selectorSuffix": " .et_pb_child_module_content_container"
+    },
+    "title": {
+        "subName":        "title",
+        "selectorSuffix": " .et_pb_child_module_title"
+    },
+    "content": {
+        "subName":        "content",
+        "selectorSuffix": " .et_pb_child_module_content"
+    },
+    "icon": {
+        "subName":        "icon",
+        "selectorSuffix": " .et_pb_child_module_icon.et-pb-icon"
+    }
+}
 }

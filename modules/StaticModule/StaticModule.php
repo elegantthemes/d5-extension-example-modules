@@ -1,16 +1,40 @@
 <?php
+/**
+ * Module: Static Module class.
+ *
+ * @package MEE\Modules\StaticModule
+ * @since ??
+ */
 
 namespace MEE\Modules\StaticModule;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	die( 'Direct access forbidden.' );
+}
 
 use ET\Builder\Framework\DependencyManagement\Interfaces\DependencyInterface;
 use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
 use MEE\Modules\StaticModule\StaticModuleTrait;
 
+/**
+ * `StaticModule` is consisted of functions used for Static Module such as Front-End rendering, REST API Endpoints etc.
+ *
+ * This is a dependency class and can be used as a dependency for `DependencyTree`.
+ *
+ * @since ??
+ */
 class StaticModule implements DependencyInterface {
 	use StaticModuleTrait\RenderCallbackTrait;
 
+	/**
+	 * Loads `StaticModule` and registers Front-End render callback and REST API Endpoints.
+	 *
+	 * @since ??
+	 *
+	 * @return void
+	 */
 	public function load() {
-		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_PATH . 'static-module/';
+		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_JSON_PATH . 'static-module/';
 
 		add_action(
 			'init',

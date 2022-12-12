@@ -9,6 +9,8 @@ import { mergeAttrs } from '@divi/module-utils';
 import { ParentModuleEditProps } from './types';
 import { defaultAttrs } from './constants';
 import { ModuleStyles } from './styles';
+import { ModuleScriptData } from './module-script-data';
+import { moduleClassnames } from './module-classnames';
 
 /**
  * Static Module edit component of visual builder.
@@ -40,6 +42,8 @@ const ParentModuleEdit = (props: ParentModuleEditProps): ReactElement => {
       id={id}
       name={name}
       stylesComponent={ModuleStyles}
+      scriptDataComponent={ModuleScriptData}
+      classnamesFunction={moduleClassnames}
       tag="ul"
     >
       <ChildModulesContainer ids={childrenIds} parentId={id} />

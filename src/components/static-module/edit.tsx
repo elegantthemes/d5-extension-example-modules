@@ -10,6 +10,8 @@ import { mergeAttrs } from '@divi/module-utils';
 import { StaticModuleEditProps } from './types';
 import { defaultAttrs } from './constants';
 import { ModuleStyles } from './styles';
+import { moduleClassnames } from './module-classnames';
+import { ModuleScriptData } from './module-script-data';
 
 /**
  * Static Module edit component of visual builder.
@@ -38,9 +40,6 @@ const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
   const content                 = moduleAttrs?.content?.desktop?.value;
   const imageSrc                = moduleAttrs?.image?.image?.desktop?.value?.src;
   const imageAlt                = moduleAttrs?.image?.image?.desktop?.value?.alt;
-  const backgroundLayoutDesktop = moduleAttrs?.text?.text?.desktop?.value?.color;
-  const backgroundLayoutTablet  = moduleAttrs?.text?.text?.tablet?.value?.color;
-  const backgroundLayoutPhone   = moduleAttrs?.text?.text?.phone?.value?.color;
 
   return (
     <ModuleContainer
@@ -49,11 +48,8 @@ const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
       id={id}
       name={name}
       stylesComponent={ModuleStyles}
-      className={classnames({
-        [`et_pb_bg_layout_${backgroundLayoutDesktop}`]:       backgroundLayoutDesktop,
-        [`et_pb_bg_layout_${backgroundLayoutTablet}_tablet`]: backgroundLayoutTablet,
-        [`et_pb_bg_layout_${backgroundLayoutPhone}_phone`]:   backgroundLayoutPhone,
-      })}
+      classnamesFunction={moduleClassnames}
+      scriptDataComponent={ModuleScriptData}
     >
       <div className="static-module__image">
         <img src={imageSrc} alt={imageAlt} />

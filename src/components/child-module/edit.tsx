@@ -11,6 +11,7 @@ import { ChildModuleEditProps } from './types';
 import { defaultAttrs } from './constants';
 import { defaultAttrs as parentDefaultAttrs } from '../parent-module/constants';
 import { ModuleStyles } from './styles';
+import { moduleClassnames } from './module-classnames';
 
 /**
  * Static Module edit component of visual builder.
@@ -80,6 +81,7 @@ const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
       id={id}
       name={name}
       stylesComponent={ModuleStyles}
+      classnamesFunction={moduleClassnames}
       tag="li"
     >
       { icon && (

@@ -5,6 +5,14 @@
     "titles": "Dynamic Modules",
     "category": "module",
     "attributes": {
+        "numberOfPosts": {
+            "type": "object",
+            "default": {
+                "desktop": {
+                    "value": "5"
+                }
+            }
+        },
         "titleFont": {
             "type": "object",
             "default": {
