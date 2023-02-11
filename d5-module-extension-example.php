@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: D5 Module Extension Example
+Plugin Name: D5 Extension Example: Modules
 Plugin URI:
 Description: Example modules.
 Version:     1.0.0

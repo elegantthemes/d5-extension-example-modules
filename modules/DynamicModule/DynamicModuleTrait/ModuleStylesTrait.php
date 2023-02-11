@@ -186,8 +186,8 @@ trait ModuleStylesTrait {
 			[
 				'style' => CssStyle::style(
 					[
-						'selector'  => $args['orderClass'],
-						'attr'      => isset( $attrs['css'] ) ? $attrs['css'] : [],
+						'selector' => $args['orderClass'],
+						'attr'     => isset( $attrs['css'] ) ? $attrs['css'] : [],
 					]
 				),
 			]

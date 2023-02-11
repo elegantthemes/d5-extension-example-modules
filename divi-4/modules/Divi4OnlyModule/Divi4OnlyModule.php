@@ -6,28 +6,28 @@
  * @since 1.0.0
  */
 class D4_Only_Module extends ET_Builder_Module {
-    // Module slug (also used as shortcode tag)
-	public $slug       = 'd4_only_module';
+	// Module slug (also used as shortcode tag)
+	public $slug = 'd4_only_module';
 
-    // Visual Builder support (off|partial|on)
+	// Visual Builder support (off|partial|on)
 	public $vb_support = 'on';
 
-    /**
+	/**
 	 * Module properties initialization
 	 *
 	 * @since 1.0.0
 	 */
 	function init() {
 		// Module name
-		$this->name             = esc_html__( 'Divi 4 Only Module', 'dicm-divi-custom-modules' );
+		$this->name = esc_html__( 'Divi 4 Only Module', 'dicm-divi-custom-modules' );
 
 		// Module Icon
 		// Load customized svg icon and use it on builder as module icon. If you don't have svg icon, you can use
 		// $this->icon for using etbuilder font-icon. (See CustomCta / DICM_CTA class)
-		$this->icon_path        =  plugin_dir_path( __FILE__ ) . 'icon.svg';
+		$this->icon_path = plugin_dir_path( __FILE__ ) . 'icon.svg';
 
 		// Toggle settings
-		$this->settings_modal_toggles  = array(
+		$this->settings_modal_toggles = array(
 			'general'  => array(
 				'toggles' => array(
 					'main_content' => esc_html__( 'Text', 'dicm-divi-custom-modules' ),
@@ -52,7 +52,7 @@ class D4_Only_Module extends ET_Builder_Module {
 				'header' => array(
 					'label'        => et_builder_i18n( 'Title' ),
 					'css'          => array(
-						'main'      => "%%order_class%% .d4_only_module_title",
+						'main' => '%%order_class%% .d4_only_module_title',
 					),
 					'header_level' => array(
 						'default' => 'h2',
@@ -61,13 +61,13 @@ class D4_Only_Module extends ET_Builder_Module {
 				'body'   => array(
 					'label'          => et_builder_i18n( 'Body' ),
 					'css'            => array(
-						'main' => "%%order_class%% .d4_only_module_content",
+						'main' => '%%order_class%% .d4_only_module_content',
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,
 						'bb_icons_support'  => true,
 						'css'               => array(
-							'main' => "%%order_class%%",
+							'main' => '%%order_class%%',
 						),
 					),
 				),
@@ -87,11 +87,11 @@ class D4_Only_Module extends ET_Builder_Module {
 		);
 
 		$this->custom_css_fields = array(
-			'title' => array(
+			'title'   => array(
 				'label'    => esc_html__( 'Title', 'et_builder' ),
 				'selector' => '.d4_only_module_title',
 			),
-			'content'       => array(
+			'content' => array(
 				'label'    => esc_html__( 'Content', 'et_builder' ),
 				'selector' => '.d4_only_module_content',
 			),
@@ -107,7 +107,7 @@ class D4_Only_Module extends ET_Builder_Module {
 	 */
 	function get_fields() {
 		return array(
-			'title' => array(
+			'title'   => array(
 				'label'           => esc_html__( 'Title', 'dicm-divi-custom-modules' ),
 				'type'            => 'text',
 				'option_category' => 'basic_option',
@@ -137,7 +137,7 @@ class D4_Only_Module extends ET_Builder_Module {
 	 */
 	function render( $attrs, $content = null, $render_slug ) {
 		// Module specific props added on $this->get_fields()
-		$title                 = $this->props['title'];
+		$title        = $this->props['title'];
 		$header_level = et_pb_process_header_level( $this->props['header_level'], 'h2' );
 
 		// Render module content
@@ -153,4 +153,4 @@ class D4_Only_Module extends ET_Builder_Module {
 	}
 }
 
-new D4_Only_Module;
+new D4_Only_Module();
