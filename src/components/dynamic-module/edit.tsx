@@ -72,7 +72,7 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
             <div className="dynamic-module__post-items">
               {
                 map(posts, (post) => (
-                    <div className="dynamic-module__post-item">
+                    <div className="dynamic-module__post-item" key={post?.id}>
                       <PostTitleHeading className="dynamic-module__post-item-title">
                         <a href={post?.link} onClick={() => false}>{post?.title?.rendered}</a>
                       </PostTitleHeading>
