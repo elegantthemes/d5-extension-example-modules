@@ -1,26 +1,14 @@
 // WordPress dependencies.
 import { __ } from '@wordpress/i18n';
 
+import metadata from './module.json';
 
-export const cssFields = {
-  contentContainer: {
-    subName:        'contentContainer',
-    label:          __('Content Container', 'd5-module-extension-example'),
-    selectorSuffix: ' .static-module__content-container',
-  },
-  title: {
-    subName:        'title',
-    label:          __('Title', 'd5-module-extension-example'),
-    selectorSuffix: ' .static-module__title',
-  },
-  content: {
-    subName:        'content',
-    label:          __('Content', 'd5-module-extension-example'),
-    selectorSuffix: ' .static-module__content',
-  },
-  image: {
-    subName:        'image',
-    label:          __('Image', 'd5-module-extension-example'),
-    selectorSuffix: ' .static-module__image img',
-  },
-};
+
+const customCssFields = metadata.customCssFields as Record<'contentContainer' | 'title' | 'content' | 'image', { subName: string, selectorSuffix: string, label: string }>;
+
+customCssFields.contentContainer.label = __('Content Container', 'd5-extension-example-modules');
+customCssFields.title.label            = __('Title', 'd5-extension-example-modules');
+customCssFields.content.label          = __('Content', 'd5-extension-example-modules');
+customCssFields.image.label            = __('Image', 'd5-extension-example-modules');
+
+export const cssFields = { ...customCssFields };

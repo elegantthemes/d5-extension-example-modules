@@ -25,20 +25,20 @@ export const SettingsContent = (): ReactElement => (
   <React.Fragment>
     <GroupContainer
       id="mainContent"
-      title={__('Text', 'd5-module-extension-example')}
+      title={__('Text', 'd5-extension-example-modules')}
     >
       <FieldContainer
         attrName="title"
-        label={__('Title', 'd5-module-extension-example')}
-        description={__('Input your value to action title here.', 'd5-module-extension-example')}
+        label={__('Title', 'd5-extension-example-modules')}
+        description={__('Input your value to action title here.', 'd5-extension-example-modules')}
         sticky={false}
       >
         <TextContainer />
       </FieldContainer>
       <FieldContainer
         attrName="content"
-        label={__('Content', 'd5-module-extension-example')}
-        description={__('Input the main text content for your module here.', 'd5-module-extension-example')}
+        label={__('Content', 'd5-extension-example-modules')}
+        description={__('Input the main text content for your module here.', 'd5-extension-example-modules')}
         sticky={false}
       >
         <RichTextContainer />
@@ -46,13 +46,13 @@ export const SettingsContent = (): ReactElement => (
     </GroupContainer>
     <GroupContainer
       id="image"
-      title={__('Image', 'd5-module-extension-example')}
+      title={__('Image', 'd5-extension-example-modules')}
     >
       <FieldContainer
         attrName="image.image"
         subName="src"
-        label={__('Image', 'd5-module-extension-example')}
-        description={__('Upload an Image', 'd5-module-extension-example')}
+        label={__('Image', 'd5-extension-example-modules')}
+        description={__('Upload an Image', 'd5-extension-example-modules')}
         sticky={false}
       >
         <UploadContainer />

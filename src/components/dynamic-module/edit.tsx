@@ -87,12 +87,12 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
       }
       {
         ! isLoading && posts.length < 1 && (
-          <div>{__('No post found.', 'd5-module-extension-example')}</div>
+          <div>{__('No post found.', 'd5-extension-example-modules')}</div>
         )
       }
       {
         isLoading && (
-          <div>{__('Loading...', 'd5-module-extension-example')}</div>
+          <div>{__('Loading...', 'd5-extension-example-modules')}</div>
         )
       }
     </ModuleContainer>

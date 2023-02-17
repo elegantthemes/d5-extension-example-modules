@@ -1953,9 +1953,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@divi/types@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types::locator=d5-module-extension-example%40workspace%3A.":
+"@divi/types@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@divi/types@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@divi/types@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
@@ -4502,117 +4502,117 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/divi__ajax@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__ajax::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__ajax@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__ajax::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__ajax@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__ajax::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__ajax@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__ajax::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__app-preferences@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__app-preferences::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__app-preferences@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__app-preferences::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__app-preferences@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__app-preferences::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__app-preferences@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__app-preferences::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__app-ui@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__app-ui::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__app-ui@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__app-ui::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__app-ui@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__app-ui::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__app-ui@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__app-ui::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__conversion@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__conversion::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__conversion@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__conversion::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__conversion@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__conversion::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__conversion@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__conversion::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__data@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__data::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__data@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__data::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__data@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__data::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__data@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__data::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__edit-post@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__edit-post::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__edit-post@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__edit-post::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__edit-post@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__edit-post::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__edit-post@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__edit-post::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__error-boundary@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__error-boundary::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__error-boundary@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__error-boundary::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__error-boundary@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__error-boundary::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__error-boundary@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__error-boundary::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__events@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__events::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__events@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__events::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__events@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__events::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__events@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__events::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__field-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__field-library::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__field-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__field-library::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__field-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__field-library::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__field-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__field-library::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__history@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__history::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__history@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__history::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__history@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__history::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__history@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__history::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__icon-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__icon-library::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__icon-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__icon-library::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__icon-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__icon-library::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__icon-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__icon-library::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__keyboard-shortcuts@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__keyboard-shortcuts::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__keyboard-shortcuts@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__keyboard-shortcuts::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__keyboard-shortcuts@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__keyboard-shortcuts::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__keyboard-shortcuts@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__keyboard-shortcuts::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__modal-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__modal-library::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__modal-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__modal-library::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__modal-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__modal-library::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__modal-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__modal-library::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__modal@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__modal::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__modal@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__modal::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__modal@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__modal::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__modal@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__modal::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__module-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module-library::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__module-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module-library::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__module-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module-library::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__module-library@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module-library::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__module-utils@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module-utils::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__module-utils@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module-utils::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__module-utils@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module-utils::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__module-utils@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module-utils::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__module@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__module@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__module@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__module@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__serialized-post@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__serialized-post::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__serialized-post@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__serialized-post::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__serialized-post@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__serialized-post::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__serialized-post@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__serialized-post::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
-"@types/divi__settings@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__settings::locator=d5-module-extension-example%40workspace%3A.":
+"@types/divi__settings@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__settings::locator=d5-extension-example-modules%40workspace%3A.":
   version: 0.0.0-use.local
-  resolution: "@types/divi__settings@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__settings::locator=d5-module-extension-example%40workspace%3A."
+  resolution: "@types/divi__settings@link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__settings::locator=d5-extension-example-modules%40workspace%3A."
   languageName: node
   linkType: soft
 
@@ -9085,9 +9085,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"d5-module-extension-example@workspace:.":
+"d5-extension-example-modules@workspace:.":
   version: 0.0.0-use.local
-  resolution: "d5-module-extension-example@workspace:."
+  resolution: "d5-extension-example-modules@workspace:."
   dependencies:
     "@babel/core": ^7.18.9
     "@babel/plugin-proposal-class-properties": ^7.18.6

@@ -8,7 +8,7 @@ Author:      Elegant Themes
 Author URI:  https://elegantthemes.com
 License:     GPL2
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: d5-module-extension-example
+Text Domain: d5-extension-example-modules
 Domain Path: /languages
 
 D5 Module Extension Example is free software: you can redistribute it and/or modify
@@ -59,7 +59,7 @@ function d5_module_extension_example_enqueue_vb_scripts() {
 		$plugin_dir_url = plugin_dir_url( __FILE__ );
 
 		wp_enqueue_script(
-			'd5-module-extension-example-builder-bundle-script',
+			'd5-extension-example-modules-builder-bundle-script',
 			"{$plugin_dir_url}scripts/bundle.js",
 			array(
 				'divi-module-library',
@@ -68,7 +68,7 @@ function d5_module_extension_example_enqueue_vb_scripts() {
 			'1.0.0',
 			true
 		);
-		wp_enqueue_style( 'd5-module-extension-example-builder-vb-bundle-style', "{$plugin_dir_url}styles/vb-bundle.css", array(), '1.0.0' );
+		wp_enqueue_style( 'd5-extension-example-modules-builder-vb-bundle-style', "{$plugin_dir_url}styles/vb-bundle.css", array(), '1.0.0' );
 	}
 }
 add_action( 'et_vb_assets_before_enqueue_packages', 'd5_module_extension_example_enqueue_vb_scripts' );
@@ -80,6 +80,6 @@ add_action( 'et_vb_assets_before_enqueue_packages', 'd5_module_extension_example
  */
 function d5_module_extension_example_enqueue_frontend_scripts() {
 	$plugin_dir_url = plugin_dir_url( __FILE__ );
-	wp_enqueue_style( 'd5-module-extension-example-builder-bundle-style', "{$plugin_dir_url}styles/bundle.css", array(), '1.0.0' );
+	wp_enqueue_style( 'd5-extension-example-modules-builder-bundle-style', "{$plugin_dir_url}styles/bundle.css", array(), '1.0.0' );
 }
 add_action( 'wp_enqueue_scripts', 'd5_module_extension_example_enqueue_frontend_scripts' );

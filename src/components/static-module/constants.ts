@@ -34,7 +34,7 @@ export const defaultAttrs: StaticModuleAttrs = {
   },
   adminLabel: {
     desktop: {
-      value: __('Static Module', 'd5-module-extension-example')
+      value: __('Static Module', 'd5-extension-example-modules')
     }
   }
 };

@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use ET\Builder\Packages\Module\Options\Sticky\StickyScriptData;
-use ET\Builder\Framework\Utility\ArrayUtility;
 
 trait ModuleScriptDataTrait {
 
@@ -46,10 +45,10 @@ trait ModuleScriptDataTrait {
 				'id'             => $args['id'],
 				'selector'       => $args['selector'],
 				'affectingAttrs' => [
-					'position' => ArrayUtility::get_value( $args['attrs'], [ 'position' ], [] ),
-					'scroll'   => ArrayUtility::get_value( $args['attrs'], [ 'scroll' ], [] ),
+					'position' => $args['attrs']['position'] ?? [],
+					'scroll'   => $args['attrs']['scroll'] ?? [],
 				],
-				'attr'           => ArrayUtility::get_value( $args['attrs'], [ 'sticky' ] ),
+				'attr'           => $args['attrs']['sticky'] ?? null,
 			]
 		);
 	}

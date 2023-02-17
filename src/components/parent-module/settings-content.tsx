@@ -31,12 +31,12 @@ export const SettingsContent = (): ReactElement => (
     </DraggableChildModuleListContainer>
     <GroupContainer
       id="icon"
-      title={__('Icon', 'd5-module-extension-example')}
+      title={__('Icon', 'd5-extension-example-modules')}
     >
       <FieldContainer
         attrName="icon"
-        label={__('Icon', 'd5-module-extension-example')}
-        description={__('Upload an Image', 'd5-module-extension-example')}
+        label={__('Icon', 'd5-extension-example-modules')}
+        description={__('Upload an Image', 'd5-extension-example-modules')}
         sticky={false}
         defaultAttr={defaultSettingsAttrs?.icon}
       >

@@ -25,7 +25,7 @@ export const defaultAttrs: ParentModuleAttrs = {
   },
   adminLabel: {
     desktop: {
-      value: __('Parent Module', 'd5-module-extension-example')
+      value: __('Parent Module', 'd5-extension-example-modules')
     }
   }
 };

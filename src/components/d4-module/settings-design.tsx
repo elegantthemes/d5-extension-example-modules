@@ -27,9 +27,9 @@ export const SettingsDesign = (): ReactElement => (
       defaultGroupAttr={defaultSettingsAttrs?.text}
     />
     <Font
-      groupLabel={__('Title Text', 'd5-module-extension-example')}
+      groupLabel={__('Title Text', 'd5-extension-example-modules')}
       attrName="titleFont"
-      fieldLabel={__('Title', 'd5-module-extension-example')}
+      fieldLabel={__('Title', 'd5-extension-example-modules')}
       hideElements={{
         headingLevel: false,
       }}

@@ -77,7 +77,7 @@ It will build the storybook to host it into your server.
 
 ## Folder Structure
 ```
-d5-module-extension-example
+d5-extension-example-modules
 ├── .storybook
 │   ├── main.js
 │   ├── preview-head.html
@@ -128,7 +128,7 @@ d5-module-extension-example
 │   ├── global-mocks.js
 │   ├── jest.config.js
 │   └── override-react-use-layout-effect.js
-├── d5-module-extension-example.php
+├── d5-extension-example-modules.php
 ├── gulpfile.js
 ├── package.json
 ├── README.md

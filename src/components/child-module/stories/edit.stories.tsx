@@ -19,7 +19,7 @@ import { childModule } from '..';
 import { isNull, isUndefined, omit } from 'lodash';
 import { registerModule, registerModuleLibraryStore } from '@divi/module-library';
 import { registerEventsStore } from '@divi/events';
-import { registerModals } from '@divi/modal-library';
+import { registerModalLibraryStore, registerModals } from '@divi/modal-library';
 import { registerAppUiStore } from '@divi/app-ui';
 import { registerKeyboardShortcutsStore } from '@divi/keyboard-shortcuts';
 import { registerSerializedPostStore } from '@divi/serialized-post';
@@ -27,6 +27,7 @@ import { registerEditPostStore } from '@divi/edit-post';
 import { registerSettingsStore } from '@divi/settings';
 import { registerHistoryStore } from '@divi/history';
 import { registerAppPreferencesStore } from '@divi/app-preferences';
+import { registerModuleStore } from '@divi/module';
 
 // Create template to render argument given.
 const templateDividerEdit: Story<ChildModuleEditProps> = args => createElement(ChildModuleEdit, args);
@@ -118,18 +119,20 @@ export default {
   title: 'Modules/Child Module/Edit',
   decorators: [
     ((story: () => ReactElement): ReactElement => {
+      registerSettingsStore();
       registerAppPreferencesStore();
       registerAppUiStore();
       registerEventsStore();
       registerKeyboardShortcutsStore();
+      registerModalLibraryStore();
       registerModals();
-      registerSettingsStore();
+      registerModuleStore();
+      if (isNull(select('divi/module-library')) || isUndefined(select('divi/module-library'))) {
+        registerModuleLibraryStore();
+      }
       registerSerializedPostStore();
       registerEditPostStore();
       registerHistoryStore();
-      if (isNull(select('divi/module-library'))) {
-        registerModuleLibraryStore();
-      }
       const theChildModule  = select('divi/module-library').getModule(childModule?.metadata?.name);
 
       if (isUndefined(theChildModule)) {

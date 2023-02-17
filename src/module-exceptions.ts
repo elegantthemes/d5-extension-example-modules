@@ -1,6 +1,6 @@
 import { addFilter } from '@wordpress/hooks';
 
-addFilter('et_vb_module_exceptions_attr_map', 'd5-module-extension-example', (moduleExceptions) => {
+addFilter('et_vb_module_exceptions_attr_map', 'd5-extension-example-modules', (moduleExceptions) => {
   return {
       ...moduleExceptions,
       'example/d4-module': {
