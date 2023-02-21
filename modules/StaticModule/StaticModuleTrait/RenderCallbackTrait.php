@@ -83,8 +83,8 @@ trait RenderCallbackTrait {
 		);
 
 		// Title.
-		$title_text    = $module_attrs['title.desktop.value'] ?? '';
-		$heading_level = $module_attrs['titleFont.font.desktop.value.headingLevel'] ?? 'h2';
+		$title_text    = $module_attrs['title']['desktop']['value'] ?? '';
+		$heading_level = $module_attrs['titleFont']['font']['desktop']['value']['headingLevel'] ?? 'h2';
 		$title         = HTMLUtility::render(
 			[
 				'tag'               => $heading_level,
@@ -97,7 +97,7 @@ trait RenderCallbackTrait {
 		);
 
 		// Content.
-		$content_text = $module_attrs['content.desktop.value'] ?? '';
+		$content_text = $module_attrs['content']['desktop']['value'] ?? '';
 		$content      = HTMLUtility::render(
 			[
 				'tag'               => 'div',
