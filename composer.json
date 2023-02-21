@@ -1,5 +1,5 @@
 {
-    "name": "divi/d5-module-extension-example",
+    "name": "divi/d5-extension-example-modules",
     "autoload": {
         "psr-4": {
             "MEE\\Modules\\": "modules/"

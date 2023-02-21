@@ -24,7 +24,7 @@ import { defaultSettingsAttrs } from './constants';
 
 export const SettingsDesign = (): ReactElement => (
   <React.Fragment>
-    <GroupContainer id="imageStyle" title={__('Image Style', 'd5-module-extension-example')}>
+    <GroupContainer id="imageStyle" title={__('Image Style', 'd5-extension-example-modules')}>
       <Border
         attrName="image.border"
         grouped={false}
@@ -46,9 +46,9 @@ export const SettingsDesign = (): ReactElement => (
       defaultGroupAttr={defaultSettingsAttrs?.text}
     />
     <Font
-      groupLabel={__('Title Text', 'd5-module-extension-example')}
+      groupLabel={__('Title Text', 'd5-extension-example-modules')}
       attrName="titleFont"
-      fieldLabel={__('Title', 'd5-module-extension-example')}
+      fieldLabel={__('Title', 'd5-extension-example-modules')}
       hideElements={{
         headingLevel: false,
       }}

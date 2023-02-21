@@ -29,5 +29,23 @@
                 }
             }
         }
+    },
+    "customCssFields": {
+        "contentContainer": {
+            "subName":        "contentContainer",
+            "selectorSuffix": " .static-module__content-container"
+        },
+        "title": {
+            "subName":        "title",
+            "selectorSuffix": " .static-module__title"
+        },
+        "content": {
+            "subName":        "content",
+            "selectorSuffix": " .static-module__content"
+        },
+        "image": {
+            "subName":        "image",
+            "selectorSuffix": " .static-module__image img"
+        }
     }
 }

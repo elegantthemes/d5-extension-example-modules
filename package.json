@@ -1,8 +1,8 @@
 {
-  "name": "d5-module-extension-example",
+  "name": "d5-extension-example-modules",
   "version": "1.0.0",
   "private": true,
-  "repository": "https://github.com/elegantthemes/d5-module-extension-example",
+  "repository": "https://github.com/elegantthemes/d5-extension-example-modules",
   "author": "Elegant Themes",
   "packageManager": "yarn@3.2.0",
   "scripts": {

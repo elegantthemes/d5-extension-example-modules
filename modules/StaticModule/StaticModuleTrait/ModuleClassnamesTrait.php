@@ -13,7 +13,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use ET\Builder\Packages\Module\Options\Text\TextClassnames;
-use ET\Builder\Framework\Utility\ArrayUtility;
 
 trait ModuleClassnamesTrait {
 
@@ -36,7 +35,7 @@ trait ModuleClassnamesTrait {
 		$classnames_instance = $args['classnamesInstance'];
 		$attrs               = $args['attrs'];
 
-		$text_options_classnames = TextClassnames::text_options_classnames( ArrayUtility::get_value( $attrs, 'text', [] ) );
+		$text_options_classnames = TextClassnames::text_options_classnames( $attrs['text'] ?? [] );
 
 		if ( $text_options_classnames ) {
 			$classnames_instance->add( $text_options_classnames, true );

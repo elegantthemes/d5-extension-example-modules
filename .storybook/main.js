@@ -152,6 +152,7 @@ module.exports = {
       '@divi/serialized-post': 'window.divi.serializedPost',
       '@divi/object-renderer': 'window.divi.objectRenderer',
       '@divi/defaults': 'window.divi.defaults',
+      '@divi/shortcode-module': 'window.divi.shortcodeModule',
     }
 
     // D5i uses external React and react-dom enqueued from WordPress' wp-includes. Thus storybook

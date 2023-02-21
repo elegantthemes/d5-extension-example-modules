@@ -15,10 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
 use ET\Builder\Packages\Module\Module;
-use ET\Builder\Framework\Utility\ArrayUtility;
 use ET\Builder\Packages\Module\Options\Background\BackgroundComponents;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
 use ET\Builder\Framework\Utility\HTMLUtility;
+use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
 
 trait RenderCallbackTrait {
 	use ModuleClassnamesTrait;
@@ -37,12 +37,15 @@ trait RenderCallbackTrait {
 	 * @return string HTML rendered of Blurb module.
 	 */
 	public static function render_callback( $block_attributes, $content, $block ) {
-		$post_heading_level = ArrayUtility::get_value( $block_attributes, 'postTitleFont.font.desktop.value.headingLevel', 'h3' );
-		$posts_per_page     = ArrayUtility::get_value( $block_attributes, 'numberOfPosts.desktop.value', 5 );
+		$default_attributes = ModuleRegistration::get_default_attrs( 'example/dynamic-module' );
+		$module_attrs       = array_replace_recursive( $default_attributes, $block_attributes );
+
+		$post_heading_level = $module_attrs['postTitleFont']['font']['desktop']['value']['headingLevel'] ?? 'h3';
+		$posts_per_page     = $module_attrs['numberOfPosts']['desktop']['value'] ?? 5;
 
 		$background_component = BackgroundComponents::component(
 			[
-				'attr'          => $block_attributes['background'] ?? [],
+				'attr'          => $module_attrs['background'] ?? [],
 				'id'            => $block->parsed_block['id'],
 
 				// FE only.
@@ -114,8 +117,8 @@ trait RenderCallbackTrait {
 		}
 
 		// Title.
-		$title_text    = ArrayUtility::get_value( $block_attributes, 'title.desktop.value' );
-		$heading_level = ArrayUtility::get_value( $block_attributes, 'titleFont.font.desktop.value.headingLevel', 'h2' );
+		$title_text    = $module_attrs['title']['desktop']['value'] ?? '';
+		$heading_level = $module_attrs['titleFont']['font']['desktop']['value']['headingLevel'] ?? 'h2';
 		$title         = HTMLUtility::render(
 			[
 				'tag'               => $heading_level,
@@ -144,7 +147,7 @@ trait RenderCallbackTrait {
 				[
 					'tag'               => 'div',
 					'childrenSanitizer' => 'esc_html',
-					'children'          => __( 'No post found.', 'd5-module-extension-example' ),
+					'children'          => __( 'No post found.', 'd5-extension-example-modules' ),
 				]
 			);
 		}
@@ -162,7 +165,7 @@ trait RenderCallbackTrait {
 				'id'                  => $block->parsed_block['id'],
 				'name'                => $block->block_type->name,
 				'moduleCategory'      => $block->block_type->category,
-				'attrs'               => $block_attributes,
+				'attrs'               => $module_attrs,
 				'classnamesFunction'  => [ self::class, 'module_classnames' ],
 				'stylesComponent'     => [ self::class, 'module_styles' ],
 				'scriptDataComponent' => [ self::class, 'module_script_data' ],

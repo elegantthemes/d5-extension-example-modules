@@ -15,11 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
 use ET\Builder\Packages\Module\Module;
-use ET\Builder\Framework\Utility\ArrayUtility;
 use ET\Builder\Packages\Module\Options\Background\BackgroundComponents;
 use ET\Builder\Framework\Utility\HTMLUtility;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
 use ET\Builder\Packages\IconLibrary\IconFont\Utils;
+use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
 
 trait RenderCallbackTrait {
 	use ModuleClassnamesTrait;
@@ -41,20 +41,23 @@ trait RenderCallbackTrait {
 
 		$parent_attrs = $parent->attrs ?? [];
 
-		$parent_selected_attrs = [
-			'icon'      => $parent_attrs['icon'] ?? [],
-			'iconColor' => $parent_attrs['iconColor'] ?? [],
-			'iconSize'  => $parent_attrs['iconSize'] ?? [],
-			'titleFont' => $parent_attrs['titleFont'] ?? [],
-			'text'      => $parent_attrs['text'] ?? [],
-			'bodyFont'  => $parent_attrs['bodyFont'] ?? [],
+		$parent_default_attributes = ModuleRegistration::get_default_attrs( 'example/parent-module' );
+		$parent_attrs_with_default = array_replace_recursive( $parent_default_attributes, $parent_attrs );
+		$parent_attrs_to_merge     = [
+			'icon'      => $parent_attrs_with_default['icon'] ?? [],
+			'iconColor' => $parent_attrs_with_default['iconColor'] ?? [],
+			'iconSize'  => $parent_attrs_with_default['iconSize'] ?? [],
+			'titleFont' => $parent_attrs_with_default['titleFont'] ?? [],
+			'text'      => $parent_attrs_with_default['text'] ?? [],
+			'bodyFont'  => $parent_attrs_with_default['bodyFont'] ?? [],
 		];
 
-		$block_parent_child_attrs = array_merge( $parent_selected_attrs, $block_attributes );
+		$default_attributes = ModuleRegistration::get_default_attrs( 'example/child-module' );
+		$module_attrs       = array_replace_recursive( $parent_attrs_to_merge, $default_attributes, $block_attributes );
 
 		$background_component = BackgroundComponents::component(
 			[
-				'attr'          => $block_parent_child_attrs['background'] ?? [],
+				'attr'          => $module_attrs['background'] ?? [],
 				'id'            => $block->parsed_block['id'],
 
 				// FE only.
@@ -64,7 +67,7 @@ trait RenderCallbackTrait {
 		);
 
 		// Icon.
-		$icon_value = ArrayUtility::get_value( $block_parent_child_attrs, 'icon.desktop.value' );
+		$icon_value = $module_attrs['icon']['desktop']['value'] ?? [];
 		$icon       = HTMLUtility::render(
 			[
 				'tag'               => 'div',
@@ -77,7 +80,7 @@ trait RenderCallbackTrait {
 		);
 
 		// Title.
-		$title_text = ArrayUtility::get_value( $block_parent_child_attrs, 'title.desktop.value' );
+		$title_text = $module_attrs['title']['desktop']['value'] ?? '';
 		$title      = HTMLUtility::render(
 			[
 				'tag'               => 'div',
@@ -90,7 +93,7 @@ trait RenderCallbackTrait {
 		);
 
 		// Content.
-		$content_text = ArrayUtility::get_value( $block_parent_child_attrs, 'content.desktop.value' );
+		$content_text = $module_attrs['content']['desktop']['value'] ?? '';
 		$content      = HTMLUtility::render(
 			[
 				'tag'               => 'div',
@@ -124,7 +127,7 @@ trait RenderCallbackTrait {
 				'id'                 => $block->parsed_block['id'],
 				'name'               => $block->block_type->name,
 				'moduleCategory'     => $block->block_type->category,
-				'attrs'              => $block_parent_child_attrs,
+				'attrs'              => $module_attrs,
 				'classnamesFunction' => [ self::class, 'module_classnames' ],
 				'stylesComponent'    => [ self::class, 'module_styles' ],
 				'parentAttrs'        => $parent_attrs,

@@ -17,5 +17,23 @@
                 }
             }
         }
+    },
+    "customCssFields": {
+        "contentContainer": {
+            "subName":        "contentContainer",
+            "selectorSuffix": " .child-module__content-container"
+        },
+        "title": {
+            "subName":        "title",
+            "selectorSuffix": " .child-module__title"
+        },
+        "content": {
+            "subName":        "content",
+            "selectorSuffix": " .child-module__content"
+        },
+        "icon": {
+            "subName":        "icon",
+            "selectorSuffix": " .child-module__icon.et-pb-icon"
+        }
     }
 }

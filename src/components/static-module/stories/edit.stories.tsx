@@ -28,6 +28,7 @@ import { registerSettingsStore } from '@divi/settings';
 import { registerHistoryStore } from '@divi/history';
 import { registerAppPreferencesStore } from '@divi/app-preferences';
 import { select } from '@divi/data';
+import { registerModuleStore } from '@divi/module';
 
 // Create template to render argument given.
 const templateDividerEdit: Story<StaticModuleEditProps> = args => createElement(StaticModuleEdit, args);
@@ -133,18 +134,20 @@ export default {
   title: 'Modules/Static Module/Edit',
   decorators: [
     ((story: () => ReactElement): ReactElement => {
+      registerSettingsStore();
       registerAppPreferencesStore();
       registerAppUiStore();
       registerEventsStore();
       registerKeyboardShortcutsStore();
+      registerModalLibraryStore();
       registerModals();
-      registerSettingsStore();
+      registerModuleStore();
+      if (isNull(select('divi/module-library')) || isUndefined(select('divi/module-library'))) {
+        registerModuleLibraryStore();
+      }
       registerSerializedPostStore();
       registerEditPostStore();
       registerHistoryStore();
-      if (isNull(select('divi/module-library'))) {
-        registerModuleLibraryStore();
-      }
 
       const theModule = select('divi/module-library').getModule(staticModule?.metadata?.name);
 

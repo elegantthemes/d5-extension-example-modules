@@ -65,11 +65,11 @@ export const SettingsDesign = ({
 
   return (
     <React.Fragment>
-      <GroupContainer id="icon" title={__('Icon Style', 'd5-module-extension-example')}>
+      <GroupContainer id="icon" title={__('Icon Style', 'd5-extension-example-modules')}>
         <FieldContainer
           attrName="iconColor"
-          label={__('Icon Color', 'd5-module-extension-example')}
-          description={__('Input your value to action title here.', 'd5-module-extension-example')}
+          label={__('Icon Color', 'd5-extension-example-modules')}
+          description={__('Input your value to action title here.', 'd5-extension-example-modules')}
           sticky={false}
           defaultAttr={defaultIconColor}
         >
@@ -77,8 +77,8 @@ export const SettingsDesign = ({
         </FieldContainer>
         <FieldContainer
           attrName="iconSize"
-          label={__('Icon Size', 'd5-module-extension-example')}
-          description={__('Input your value to action title here.', 'd5-module-extension-example')}
+          label={__('Icon Size', 'd5-extension-example-modules')}
+          description={__('Input your value to action title here.', 'd5-extension-example-modules')}
           sticky={false}
           defaultAttr={defaultIconSize}
         >
@@ -92,9 +92,9 @@ export const SettingsDesign = ({
         }}
       />
       <Font
-        groupLabel={__('Title Text', 'd5-module-extension-example')}
+        groupLabel={__('Title Text', 'd5-extension-example-modules')}
         attrName="titleFont"
-        fieldLabel={__('Title', 'd5-module-extension-example')}
+        fieldLabel={__('Title', 'd5-extension-example-modules')}
         defaultGroupAttr={defaultTitleFont}
       />
       <FontBodyGroup

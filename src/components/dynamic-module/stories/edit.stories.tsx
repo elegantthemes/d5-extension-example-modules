@@ -18,7 +18,7 @@ import { dynamicModule } from '..';
 import { isNull, isUndefined, omit, times } from 'lodash';
 import { registerModule, registerModuleLibraryStore } from '@divi/module-library';
 import { registerEventsStore } from '@divi/events';
-import { registerModals } from '@divi/modal-library';
+import { registerModalLibraryStore, registerModals } from '@divi/modal-library';
 import { registerAppUiStore } from '@divi/app-ui';
 import { registerKeyboardShortcutsStore } from '@divi/keyboard-shortcuts';
 import { registerSerializedPostStore } from '@divi/serialized-post';
@@ -27,6 +27,7 @@ import { registerHistoryStore } from '@divi/history';
 import { registerAppPreferencesStore } from '@divi/app-preferences';
 import { registerAjaxStore } from '@divi/ajax';
 import { post } from '../__mock-data__/posts';
+import { registerModuleStore } from '@divi/module';
 
 // Create template to render argument given.
 const templateDividerEdit: Story<DynamicModuleEditProps> = args => createElement(DynamicModuleEdit, args);
@@ -130,19 +131,20 @@ export default {
   title: 'Modules/Dynamic Module/Edit',
   decorators: [
     ((story: () => ReactElement): ReactElement => {
+      registerSettingsStore();
       registerAppPreferencesStore();
       registerAppUiStore();
       registerEventsStore();
       registerKeyboardShortcutsStore();
+      registerModalLibraryStore();
       registerModals();
-      registerSettingsStore();
-      registerAjaxStore();
+      registerModuleStore();
+      if (isNull(select('divi/module-library')) || isUndefined(select('divi/module-library'))) {
+        registerModuleLibraryStore();
+      }
       registerSerializedPostStore();
       registerEditPostStore();
       registerHistoryStore();
-      if (isNull(select('divi/module-library'))) {
-        registerModuleLibraryStore();
-      }
 
       const theModule  = select('divi/module-library').getModule(dynamicModule?.metadata?.name);
 

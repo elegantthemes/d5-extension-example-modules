@@ -15,10 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
 use ET\Builder\Packages\Module\Module;
-use ET\Builder\Framework\Utility\ArrayUtility;
 use ET\Builder\FrontEnd\ModuleOrderIndex\ModuleOrderIndex;
 use ET\Builder\Packages\Module\Options\Background\BackgroundComponents;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
+use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
 
 trait RenderCallbackTrait {
 	use ModuleClassnamesTrait;
@@ -36,6 +36,9 @@ trait RenderCallbackTrait {
 	 * @return string HTML rendered of Blurb module.
 	 */
 	public static function render_callback( $block_attributes, $content, $block ) {
+		$default_attributes = ModuleRegistration::get_default_attrs( 'example/parent-module' );
+		$module_attrs       = array_replace_recursive( $default_attributes, $block_attributes );
+
 		$children_ids = $block->parsed_block['innerBlocks'] ? array_map(
 			function( $inner_block ) {
 				return $inner_block['id'];
@@ -47,7 +50,7 @@ trait RenderCallbackTrait {
 
 		$background_component = BackgroundComponents::component(
 			[
-				'attr'          => $block_attributes['background'] ?? [],
+				'attr'          => $module_attrs['background'] ?? [],
 				'id'            => $block->parsed_block['id'],
 
 				// FE only.
@@ -75,7 +78,7 @@ trait RenderCallbackTrait {
 				'id'                  => $block->parsed_block['id'],
 				'name'                => $block->block_type->name,
 				'moduleCategory'      => $block->block_type->category,
-				'attrs'               => $block_attributes,
+				'attrs'               => $module_attrs,
 				'classnamesFunction'  => [ self::class, 'module_classnames' ],
 				'scriptDataComponent' => [ self::class, 'module_script_data' ],
 				'stylesComponent'     => [ self::class, 'module_styles' ],

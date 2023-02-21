@@ -21,20 +21,20 @@ export const SettingsContent = (): ReactElement => (
   <React.Fragment>
     <GroupContainer
       id="posts"
-      title={__('Posts', 'd5-module-extension-example')}
+      title={__('Posts', 'd5-extension-example-modules')}
     >
       <FieldContainer
         attrName="title"
-        label={__('Title', 'd5-module-extension-example')}
-        description={__('Title to show for module.', 'd5-module-extension-example')}
+        label={__('Title', 'd5-extension-example-modules')}
+        description={__('Title to show for module.', 'd5-extension-example-modules')}
         sticky={false}
       >
         <TextContainer />
       </FieldContainer>
       <FieldContainer
         attrName="numberOfPosts"
-        label={__('Number of posts', 'd5-module-extension-example')}
-        description={__('Number of posts you want to show.', 'd5-module-extension-example')}
+        label={__('Number of posts', 'd5-extension-example-modules')}
+        description={__('Number of posts you want to show.', 'd5-extension-example-modules')}
         sticky={false}
         defaultAttr={defaultSettingsAttrs?.numberOfPosts}
       >

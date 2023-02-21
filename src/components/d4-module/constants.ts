@@ -34,7 +34,7 @@ export const defaultAttrs: D4ModuleAttrs = {
   },
   adminLabel: {
     desktop: {
-      value: __('Divi 4 Module', 'd5-module-extension-example')
+      value: __('Divi 4 Module', 'd5-extension-example-modules')
     }
   }
 };

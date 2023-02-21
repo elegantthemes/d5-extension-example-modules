@@ -1,5 +1,5 @@
 # Dynamic Module
-It is an example of the Dynamic module. But this folder only contains the VB related files. The php callback functions are containing in the `d5-module-extension-example.php` file.
+It is an example of the Dynamic module. But this folder only contains the VB related files. The php callback functions are containing in the `d5-extension-example-modules.php` file.
 
 ## Folder Structure
 ```
