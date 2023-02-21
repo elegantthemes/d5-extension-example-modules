@@ -36,7 +36,7 @@ define( 'D5_MODULE_EXTENSION_EXAMPLE_JSON_PATH', D5_MODULE_EXTENSION_EXAMPLE_PAT
  * Requires Autoloader.
  */
 require D5_MODULE_EXTENSION_EXAMPLE_PATH . 'vendor/autoload.php';
-require D5_MODULE_EXTENSION_EXAMPLE_PATH . 'modules/modules.php';
+require D5_MODULE_EXTENSION_EXAMPLE_PATH . 'modules/Modules.php';
 
 /**
  * Register all Divi 4 modules.
