@@ -51,6 +51,7 @@
     "@types/divi__module": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module",
     "@types/divi__module-library": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module-library",
     "@types/divi__module-utils": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__module-utils",
+    "@types/divi__script-library": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__script-library",
     "@types/divi__serialized-post": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__serialized-post",
     "@types/divi__settings": "link:../../themes/Divi/includes/builder-5/visual-builder/packages/types-divi__settings",
     "@types/enzyme": "^3.10.12",

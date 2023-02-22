@@ -1,5 +1,5 @@
 import { omit } from 'lodash';
-import { addAction, addFilter } from '@wordpress/hooks';
+import { addAction } from '@wordpress/hooks';
 import { registerModule } from '@divi/module-library';
 import { dynamicModule } from './components/dynamic-module';
 import { staticModule } from './components/static-module';
@@ -8,7 +8,9 @@ import { parentModule } from './components/parent-module';
 import { d4Module } from './components/d4-module';
 
 import './module-exceptions';
+import './module-icons';
 
+// Register modules.
 addAction('moduleLibrary.registerModuleLibraryStore.after', 'extensionExample', () => {
   registerModule(staticModule.metadata, omit(staticModule, 'metadata'));
   registerModule(dynamicModule.metadata, omit(dynamicModule, 'metadata'));

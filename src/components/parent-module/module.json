@@ -3,6 +3,7 @@
     "d4Shortcode": "",
     "title": "Parent Module",
     "titles": "Parent Modules",
+    "moduleIcon": "example/module-parent",
     "category": "module",
     "attributes": {
         "icon": {

@@ -3,6 +3,7 @@
     "d4Shortcode": "",
     "title": "Dynamic Module",
     "titles": "Dynamic Modules",
+    "moduleIcon": "example/module-dynamic",
     "category": "module",
     "attributes": {
         "numberOfPosts": {

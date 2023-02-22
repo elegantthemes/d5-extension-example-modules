@@ -34,7 +34,7 @@ class ChildModule implements DependencyInterface {
 	 * @return void
 	 */
 	public function load() {
-		$module_json_folder_path = D5_MODULE_EXTENSION_EXAMPLE_JSON_PATH . 'child-module/';
+		$module_json_folder_path = D5_EXTENSION_EXAMPLE_MODULES_JSON_PATH . 'child-module/';
 
 		add_action(
 			'init',
