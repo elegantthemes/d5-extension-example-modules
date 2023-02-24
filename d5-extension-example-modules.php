@@ -29,32 +29,32 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Direct access forbidden.' );
 }
 
-define( 'D5_MODULE_EXTENSION_EXAMPLE_PATH', plugin_dir_path( __FILE__ ) );
-define( 'D5_MODULE_EXTENSION_EXAMPLE_JSON_PATH', D5_MODULE_EXTENSION_EXAMPLE_PATH . 'modules-json/' );
+define( 'D5_EXTENSION_EXAMPLE_MODULES_PATH', plugin_dir_path( __FILE__ ) );
+define( 'D5_EXTENSION_EXAMPLE_MODULES_JSON_PATH', D5_EXTENSION_EXAMPLE_MODULES_PATH . 'modules-json/' );
 
 /**
  * Requires Autoloader.
  */
-require D5_MODULE_EXTENSION_EXAMPLE_PATH . 'vendor/autoload.php';
-require D5_MODULE_EXTENSION_EXAMPLE_PATH . 'modules/Modules.php';
+require D5_EXTENSION_EXAMPLE_MODULES_PATH . 'vendor/autoload.php';
+require D5_EXTENSION_EXAMPLE_MODULES_PATH . 'modules/Modules.php';
 
 /**
  * Register all Divi 4 modules.
  *
  * @since ??
  */
-function d5_module_extension_example_initialize_d4_modules() {
-	require_once D5_MODULE_EXTENSION_EXAMPLE_PATH . 'divi-4/modules/Divi4Module/Divi4Module.php';
-	require_once D5_MODULE_EXTENSION_EXAMPLE_PATH . 'divi-4/modules/Divi4OnlyModule/Divi4OnlyModule.php';
+function d5_extension_example_module_initialize_d4_modules() {
+	require_once D5_EXTENSION_EXAMPLE_MODULES_PATH . 'divi-4/modules/Divi4Module/Divi4Module.php';
+	require_once D5_EXTENSION_EXAMPLE_MODULES_PATH . 'divi-4/modules/Divi4OnlyModule/Divi4OnlyModule.php';
 }
-add_action( 'et_builder_ready', 'd5_module_extension_example_initialize_d4_modules' );
+add_action( 'et_builder_ready', 'd5_extension_example_module_initialize_d4_modules' );
 
 /**
  * Enqueue style and scripts of Module Extension Example for Visual Builder.
  *
  * @since ??
  */
-function d5_module_extension_example_enqueue_vb_scripts() {
+function d5_extension_example_module_enqueue_vb_scripts() {
 	if ( et_builder_d5_enabled() && et_core_is_fb_enabled() ) {
 		$plugin_dir_url = plugin_dir_url( __FILE__ );
 
@@ -71,15 +71,15 @@ function d5_module_extension_example_enqueue_vb_scripts() {
 		wp_enqueue_style( 'd5-extension-example-modules-builder-vb-bundle-style', "{$plugin_dir_url}styles/vb-bundle.css", array(), '1.0.0' );
 	}
 }
-add_action( 'et_vb_assets_before_enqueue_packages', 'd5_module_extension_example_enqueue_vb_scripts' );
+add_action( 'et_vb_assets_before_enqueue_packages', 'd5_extension_example_module_enqueue_vb_scripts' );
 
 /**
  * Enqueue style and scripts of Module Extension Example
  *
  * @since ??
  */
-function d5_module_extension_example_enqueue_frontend_scripts() {
+function d5_extension_example_module_enqueue_frontend_scripts() {
 	$plugin_dir_url = plugin_dir_url( __FILE__ );
 	wp_enqueue_style( 'd5-extension-example-modules-builder-bundle-style', "{$plugin_dir_url}styles/bundle.css", array(), '1.0.0' );
 }
-add_action( 'wp_enqueue_scripts', 'd5_module_extension_example_enqueue_frontend_scripts' );
+add_action( 'wp_enqueue_scripts', 'd5_extension_example_module_enqueue_frontend_scripts' );

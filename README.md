@@ -48,6 +48,12 @@ This modules is converted from Divi 4 to Divi 5. It will help you to understand 
 ## Divi 4 Modules
 You can find the Divi 4 modules in the `divi-4/modules` folder. You can use these modules as a reference for your migration process. Currently, we have converted the `Divi4Module` module from Divi 4 to Divi 5 and `Divi4OnlyModule` module is only for Divi 4.
 
+## Module Conversion
+You can find the module conversion process in the `src/components/d4-module` folder. You can use this process for your migration process. Also, maybe you need to convert the module attributes to new format. Most of will be done automatically. But some conversion need to be declare in the `src/module-exceptions.ts` file.
+
+## Module Icons
+You can find the module icons in the `src/icons` folder. You can use these icons for module icon. You can also add your own icons in this folder.
+
 ## Storybook
 All modules have storybook examples. You will find all story declarations in the `stories` folder. The configuration for the storybook contains the `.storybook` folder. You must need to add a `.env` file to start the storybook. You can see the `.env.example` file for reference. You need to add only `STORYBOOK_SITE_URL` variable with the WordPress site URL.
 
@@ -98,29 +104,35 @@ d5-extension-example-modules
 │   └── Modules.php
 ├── src
 │   ├── components
-│   │   ├── module-name
-│   │   │   ├── __mock-data__
-│   │   │   │   └── attrs.ts
-│   │   │   ├── __tests__
-│   │   │   │   ├── __snapshots__
-│   │   │   │   │   └── edit.tsx.snap
-│   │   │   │   └── edit.tsx
-│   │   │   ├── stories
-│   │   │   │   └── edit.stories.tsx
-│   │   │   ├── constants.ts
-│   │   │   ├── custom-css.ts
-│   │   │   ├── edit.tsx
-│   │   │   ├── index.ts
-│   │   │   ├── module.json
-│   │   │   ├── module.scss
-│   │   │   ├── placeholder-content.ts
-│   │   │   ├── settings-advanced.tsx
-│   │   │   ├── settings-content.tsx
-│   │   │   ├── settings-design.tsx
-│   │   │   ├── style.scss
-│   │   │   ├── styles.tsx
-│   │   │   └── types.ts
-│   └── index.ts
+│   │   └── module-name
+│   │       ├── __mock-data__
+│   │       │   └── attrs.ts
+│   │       ├── __tests__
+│   │       │   ├── __snapshots__
+│   │       │   │   └── edit.tsx.snap
+│   │       │   └── edit.tsx
+│   │       ├── stories
+│   │       │   └── edit.stories.tsx
+│   │       ├── constants.ts
+│   │       ├── custom-css.ts
+│   │       ├── edit.tsx
+│   │       ├── index.ts
+│   │       ├── module.json
+│   │       ├── module.scss
+│   │       ├── placeholder-content.ts
+│   │       ├── settings-advanced.tsx
+│   │       ├── settings-content.tsx
+│   │       ├── settings-design.tsx
+│   │       ├── style.scss
+│   │       ├── styles.tsx
+│   │       └── types.ts
+|   ├── icons
+|   |   ├── icon-name
+|   |   |   └── index.tsx
+│   │   └── index.ts
+│   ├── index.ts
+│   ├── module-exceptions.ts
+│   └── module-icons.ts
 ├── storybook-assets
 │   └── mockServiceWorker.js
 ├── test-config

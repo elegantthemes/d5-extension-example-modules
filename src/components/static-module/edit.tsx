@@ -35,6 +35,7 @@ const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
     attrs,
   });
 
+  // Get module attributes.
   const HeadingLevel            = moduleAttrs?.titleFont?.font?.desktop?.value?.headingLevel;
   const title                   = moduleAttrs?.title?.desktop?.value;
   const content                 = moduleAttrs?.content?.desktop?.value;

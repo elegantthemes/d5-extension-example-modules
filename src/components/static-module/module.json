@@ -3,6 +3,7 @@
     "d4Shortcode": "",
     "title": "Static Module",
     "titles": "Static Modules",
+    "moduleIcon": "example/module-static",
     "category": "module",
     "attributes": {
         "text": {
