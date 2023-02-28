@@ -11,10 +11,6 @@ yarn-debug.log*
 yarn-error.log*
 .yarn
 .yarnrc.yml
-
-# Build files
-scripts
-styles
 .env
 
 vendor
