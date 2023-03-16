@@ -17,7 +17,6 @@ use ET\Builder\Packages\Module\Options\Background\BackgroundStyle;
 use ET\Builder\Packages\Module\Options\Text\TextStyle;
 use ET\Builder\Packages\Module\Options\Font\FontStyle;
 use ET\Builder\Packages\Module\Options\FontBodyGroup\FontBodyStyle;
-use ET\Builder\Packages\Module\Options\Button\ButtonStyle;
 use ET\Builder\Packages\Module\Options\Sizing\SizingStyle;
 use ET\Builder\Packages\Module\Options\Spacing\SpacingStyle;
 use ET\Builder\Packages\Module\Options\Border\BorderStyle;
@@ -29,7 +28,6 @@ use ET\Builder\Packages\Module\Options\DisabledOn\DisabledOnStyle;
 use ET\Builder\Packages\Module\Options\Overflow\OverflowStyle;
 use ET\Builder\Packages\Module\Options\Position\PositionStyle;
 use ET\Builder\Packages\Module\Options\ZIndex\ZIndexStyle;
-use ET\Builder\Packages\Module\Layout\Components\StyleCommon\CommonStyle;
 
 trait ModuleStylesTrait {
 
@@ -63,169 +61,105 @@ trait ModuleStylesTrait {
 
 		Style::add(
 			[
-				'style' => BackgroundStyle::style(
-					[
-						'selector' => $args['orderClass'],
-						'attr'     => isset( $attrs['background'] ) ? $attrs['background'] : [],
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => TextStyle::style(
-					[
-						'selector' => $args['orderClass'],
-						'attr'     => isset( $attrs['text'] ) ? $attrs['text'] : [],
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => FontStyle::style(
-					[
-						'selector'     => "{$args['orderClass']} .d4_module_title",
-						'attr'         => isset( $attrs['titleFont'] ) ? $attrs['titleFont'] : [],
-						'headingLevel' => 'h2',
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => FontBodyStyle::font_body_style(
-					[
-						'selector' => "{$args['orderClass']} .d4_module_content",
-						'attr'     => isset( $attrs['bodyFont'] ) ? $attrs['bodyFont'] : [],
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => SizingStyle::style(
-					[
-						'selector' => $args['orderClass'],
-						'attr'     => isset( $attrs['sizing'] ) ? $attrs['sizing'] : [],
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => SpacingStyle::style(
-					[
-						'selector' => $args['orderClass'],
-						'attr'     => isset( $attrs['spacing'] ) ? $attrs['spacing'] : [],
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => BorderStyle::style(
-					[
-						'selector' => $args['orderClass'],
-						'attr'     => isset( $attrs['border'] ) ? $attrs['border'] : [],
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => BoxShadowStyle::style(
-					[
-						'selector' => $args['orderClass'],
-						'attr'     => isset( $attrs['boxShadow'] ) ? $attrs['boxShadow'] : [],
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => FiltersStyle::style(
-					[
-						'selector' => $args['orderClass'],
-						'attr'     => isset( $attrs['filter'] ) ? $attrs['filter'] : [],
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => TransformStyle::style(
-					[
-						'selector' => $args['orderClass'],
-						'attr'     => isset( $attrs['transform'] ) ? $attrs['transform'] : [],
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => CssStyle::style(
-					[
-						'selector'  => $args['orderClass'],
-						'attr'      => isset( $attrs['css'] ) ? $attrs['css'] : [],
-						'cssFields' => self::custom_css(),
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => DisabledOnStyle::style(
-					[
-						'selector'                 => $args['orderClass'],
-						'attr'                     => isset( $attrs['disabledOn'] ) ? $attrs['disabledOn'] : [],
-						'disabledModuleVisibility' => isset( $args['settings']['disabledModuleVisibility'] ) ? $args['settings']['disabledModuleVisibility'] : null,
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => OverflowStyle::style(
-					[
-						'selector' => $args['orderClass'],
-						'attr'     => isset( $attrs['overflow'] ) ? $attrs['overflow'] : [],
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => PositionStyle::style(
-					[
-						'selector' => $args['orderClass'],
-						'attr'     => isset( $attrs['position'] ) ? $attrs['position'] : [],
-					]
-				),
-			]
-		);
-
-		Style::add(
-			[
-				'style' => ZIndexStyle::style(
-					[
-						'selector' => $args['orderClass'],
-						'attr'     => isset( $attrs['zIndex'] ) ? $attrs['zIndex'] : [],
-					]
-				),
+				'id'            => $args['id'],
+				'name'          => $args['name'],
+				'orderIndex'    => $args['orderIndex'],
+				'storeInstance' => $args['storeInstance'],
+				'styles'        => [
+					BackgroundStyle::style(
+						[
+							'selector' => $args['orderClass'],
+							'attr'     => isset( $attrs['background'] ) ? $attrs['background'] : [],
+						]
+					),
+					TextStyle::style(
+						[
+							'selector' => $args['orderClass'],
+							'attr'     => isset( $attrs['text'] ) ? $attrs['text'] : [],
+						]
+					),
+					FontStyle::style(
+						[
+							'selector'     => "{$args['orderClass']} .d4_module_title",
+							'attr'         => isset( $attrs['titleFont'] ) ? $attrs['titleFont'] : [],
+							'headingLevel' => 'h2',
+						]
+					),
+					FontBodyStyle::font_body_style(
+						[
+							'selector' => "{$args['orderClass']} .d4_module_content",
+							'attr'     => isset( $attrs['bodyFont'] ) ? $attrs['bodyFont'] : [],
+						]
+					),
+					SizingStyle::style(
+						[
+							'selector' => $args['orderClass'],
+							'attr'     => isset( $attrs['sizing'] ) ? $attrs['sizing'] : [],
+						]
+					),
+					SpacingStyle::style(
+						[
+							'selector' => $args['orderClass'],
+							'attr'     => isset( $attrs['spacing'] ) ? $attrs['spacing'] : [],
+						]
+					),
+					BorderStyle::style(
+						[
+							'selector' => $args['orderClass'],
+							'attr'     => isset( $attrs['border'] ) ? $attrs['border'] : [],
+						]
+					),
+					BoxShadowStyle::style(
+						[
+							'selector' => $args['orderClass'],
+							'attr'     => isset( $attrs['boxShadow'] ) ? $attrs['boxShadow'] : [],
+						]
+					),
+					FiltersStyle::style(
+						[
+							'selector' => $args['orderClass'],
+							'attr'     => isset( $attrs['filter'] ) ? $attrs['filter'] : [],
+						]
+					),
+					TransformStyle::style(
+						[
+							'selector' => $args['orderClass'],
+							'attr'     => isset( $attrs['transform'] ) ? $attrs['transform'] : [],
+						]
+					),
+					CssStyle::style(
+						[
+							'selector'  => $args['orderClass'],
+							'attr'      => isset( $attrs['css'] ) ? $attrs['css'] : [],
+							'cssFields' => self::custom_css(),
+						]
+					),
+					DisabledOnStyle::style(
+						[
+							'selector'                 => $args['orderClass'],
+							'attr'                     => isset( $attrs['disabledOn'] ) ? $attrs['disabledOn'] : [],
+							'disabledModuleVisibility' => isset( $args['settings']['disabledModuleVisibility'] ) ? $args['settings']['disabledModuleVisibility'] : null,
+						]
+					),
+					OverflowStyle::style(
+						[
+							'selector' => $args['orderClass'],
+							'attr'     => isset( $attrs['overflow'] ) ? $attrs['overflow'] : [],
+						]
+					),
+					PositionStyle::style(
+						[
+							'selector' => $args['orderClass'],
+							'attr'     => isset( $attrs['position'] ) ? $attrs['position'] : [],
+						]
+					),
+					ZIndexStyle::style(
+						[
+							'selector' => $args['orderClass'],
+							'attr'     => isset( $attrs['zIndex'] ) ? $attrs['zIndex'] : [],
+						]
+					),
+				],
 			]
 		);
 	}

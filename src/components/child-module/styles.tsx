@@ -41,10 +41,10 @@ import { cssFields } from './custom-css';
   state,
   noStyleTag,
 }: StylesProps<ChildModuleAttrs>): ReactElement => {
-  const iconClass             = `${orderClass} .et_pb_child_module_icon.et-pb-icon`;
-  const titleClass            = `${orderClass} .et_pb_child_module_title`;
-  const contentContainerClass = `${orderClass} .et_pb_child_module_content_container`;
-  const contentClass          = `${orderClass} .et_pb_child_module_content`;
+   const iconClass             = `${orderClass} .child-module__icon.et-pb-icon`;
+   const titleClass            = `${orderClass} .child-module__title`;
+   const contentContainerClass = `${orderClass} .child-module__content-container`;
+   const contentClass          = `${orderClass} .child-module__content`;
 
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>

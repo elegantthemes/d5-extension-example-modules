@@ -69,7 +69,7 @@ const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
       attrs: childModuleAttrs?.bodyFont,
     }),
   };
-  
+
   const icon    = moduleAttrs?.icon?.desktop?.value;
   const title   = moduleAttrs?.title?.desktop?.value;
   const content = moduleAttrs?.content?.desktop?.value;
