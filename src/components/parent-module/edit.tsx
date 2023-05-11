@@ -46,7 +46,7 @@ const ParentModuleEdit = (props: ParentModuleEditProps): ReactElement => {
       classnamesFunction={moduleClassnames}
       tag="ul"
     >
-      <ChildModulesContainer ids={childrenIds} parentId={id} />
+      <ChildModulesContainer ids={childrenIds} />
     </ModuleContainer>
   );
 }
