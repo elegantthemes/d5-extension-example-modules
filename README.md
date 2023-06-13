@@ -2,24 +2,19 @@
 This extension is a collection of example modules. You can use these modules as a reference for your development. This extension uses composer to autoload the modules in PHP. You can find the example modules in the `src/components` folder for Visual Builder and in the `modules` folder for Front-end rendering.
 
 ## Installation
-You need to install **Yarn 3.2.0** and set the `nodeLinker` to `node-modules`
+You need to have **npm** available in your node.js environment.
 ```
-yarn set version 3.2.0 && yarn config set nodeLinker node-modules
-```
-
-Then, install the project dependencies:
-```
-yarn
+npm install
 ```
 
 Install the composer dependencies:
 ```
-yarn composer
+npm run composer
 ```
 
 Now, start the project:
 ```
-yarn start
+npm run start
 ```
 
 ## Example Modules
@@ -61,24 +56,24 @@ All modules have storybook examples. You will find all story declarations in the
 In Divi 5 we always use testing. The `test-config` folder contains the configuration of js testing. The testing for the module is setup in `__tests__` folder and all mock data related to the tests are in `__mock-data__` folder.
 
 ## Available Commands
-Some `yarn` commands are available for your development and tests.
+Some `npm` commands are available for your development and tests.
 
-### `yarn start`
+### `npm run start`
 It will start the webpack compiler for development with watch mode.
 
-### `yarn build`
+### `npm run build`
 It will build all JS and CSS assets for production.
 
-### `yarn test`
+### `npm run test`
 It will run all tests for the module.
 
-### `yarn zip`
+### `npm run zip`
 It will zip all assets and files without the `src` folder for distribution.
 
-### `yarn storybook`
+### `npm run storybook`
 It will run the storybook server
 
-### `yarn build-storybook`
+### `npm run build-storybook`
 It will build the storybook to host it into your server.
 
 ## Folder Structure
@@ -143,8 +138,8 @@ d5-extension-example-modules
 ├── d5-extension-example-modules.php
 ├── gulpfile.js
 ├── package.json
+├── package-lock.json
 ├── README.md
 ├── tsconfig.json
-├── webpack.config.js
-└── yarn.lock
+└── webpack.config.js
 ```

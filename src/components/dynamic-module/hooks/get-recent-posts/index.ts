@@ -1,4 +1,4 @@
-import { fetch } from '@divi/ajax';
+import { fetch } from '@divi/rest';
 import { useEffect, useState } from 'react';
 
 export const useGetRecentPosts = () => {

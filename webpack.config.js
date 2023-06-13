@@ -28,7 +28,7 @@ module.exports = {
     '@wordpress/hooks': ['wp', 'hooks'],
 
     // Divi dependencies.
-    '@divi/ajax': ['divi', 'ajax'],
+    '@divi/rest': ['divi', 'rest'],
     '@divi/data': ['divi', 'data'],
     '@divi/module': ['divi', 'module'],
     '@divi/module-utils': ['divi', 'moduleUtils'],

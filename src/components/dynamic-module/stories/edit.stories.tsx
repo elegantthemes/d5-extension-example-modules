@@ -25,7 +25,7 @@ import { registerSerializedPostStore } from '@divi/serialized-post';
 import { registerSettingsStore } from '@divi/settings';
 import { registerHistoryStore } from '@divi/history';
 import { registerAppPreferencesStore } from '@divi/app-preferences';
-import { registerAjaxStore } from '@divi/ajax';
+import { registerAjaxStore } from '@divi/rest';
 import { post } from '../__mock-data__/posts';
 import { registerModuleStore } from '@divi/module';
 
