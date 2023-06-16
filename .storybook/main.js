@@ -109,7 +109,7 @@ module.exports = {
       
       '@divi/data': 'window.divi.data',
       '@divi/middleware': 'window.divi.middleware',
-      '@divi/ajax': 'window.divi.ajax',
+      '@divi/rest': 'window.divi.ajax',
       '@divi/constant-library': 'window.divi.constantLibrary',
       '@divi/divider-library': 'window.divi.dividerLibrary',
       '@divi/window': 'window.divi.window',

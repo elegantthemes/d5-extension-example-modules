@@ -32,7 +32,7 @@
     "@storybook/manager-webpack5": "^6.5.10",
     "@storybook/react": "^6.5.10",
     "@storybook/testing-library": "^0.0.13",
-    "@types/divi__ajax": "npm:divi-types-ajax@^1.0.0",
+    "@types/divi__rest": "npm:divi-types-rest@^1.0.0",
     "@types/divi__app-preferences": "npm:divi-types-app-preferences@^1.0.0",
     "@types/divi__app-ui": "npm:divi-types-app-ui@^1.0.0",
     "@types/divi__conversion": "npm:divi-types-conversion@^1.0.0",
