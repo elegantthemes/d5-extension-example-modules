@@ -28,9 +28,9 @@ const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
     name,
   } = props;
 
-  // Get module attributes.
-  const imageSrc                = attrs?.image?.innerContent?.desktop?.value?.src;
-  const imageAlt                = attrs?.image?.innerContent?.desktop?.value?.alt;
+  // Get image attributes.
+  const imageSrc = attrs?.image?.innerContent?.desktop?.value?.src ?? ''
+  const imageAlt = attrs?.image?.innerContent?.desktop?.value?.alt ?? '';
 
   return (
     <ModuleContainer
