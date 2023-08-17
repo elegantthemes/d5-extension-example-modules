@@ -1,78 +1,53 @@
 // Divi dependencies.
 import { ModuleEditProps } from '@divi/module-library';
 import {
-  AdminLabelGroupAttr,
-  AnimationGroupAttr,
-  BackgroundGroupAttr,
-  BorderGroupAttr,
-  BoxShadowGroupAttr,
-  CssAttr,
-  DisabledOnGroupAttr,
-  FiltersGroupAttr,
-  FontBodyGroupAttr,
-  FontGroupAttr,
-  FormatAttr,
+  FormatBreakpointStateAttr,
   IdClassesGroupAttr,
   InternalAttrs,
   LinkGroupAttr,
-  OverflowGroupAttr,
-  PositionGroupAttr,
-  ScrollGroupAttr,
-  SizingGroupAttr,
-  SpacingGroupAttr,
-  StickyGroupAttr,
   TextGroupAttr,
-  TransformGroupAttr,
-  TransitionGroupAttr,
-  ZIndexGroupAttr,
+  PickedElementAttrs,
+  ModuleMetaAttrs,
 } from '@divi/types';
 
-export interface Image {
-  src?: string;
-  alt?: string;
-}
-
-export interface DynamicModuleCssAttr extends CssAttr {
-  contentContainer?: string;
-  title?: string;
-  content?: string;
-  image?: string;
-}
-
-export type DynamicModuleCssGroupAttr = FormatAttr<DynamicModuleCssAttr>;
-
 export interface DynamicModuleAttrs extends InternalAttrs {
-
-  // Content tab.
-  title?: FormatAttr<string>;
-  numberOfPosts?: FormatAttr<string>;
-  link?: LinkGroupAttr;
-  background?: BackgroundGroupAttr;
-  adminLabel?: AdminLabelGroupAttr;
-
-  // Design tab.
-  text?: TextGroupAttr;
-  titleFont?: FontGroupAttr;
-  postTitleFont?: FontGroupAttr;
-  bodyFont?: FontBodyGroupAttr;
-  sizing?: SizingGroupAttr;
-  spacing?: SpacingGroupAttr;
-  border?: BorderGroupAttr;
-  boxShadow?: BoxShadowGroupAttr;
-  filter?: FiltersGroupAttr;
-  transform?: TransformGroupAttr;
-  animation?: AnimationGroupAttr;
-
-  // Advanced tab.
-  module?: IdClassesGroupAttr;
-  css?: DynamicModuleCssGroupAttr;
-  disabledOn?: DisabledOnGroupAttr;
-  overflow?: OverflowGroupAttr;
-  transition?: TransitionGroupAttr;
-  position?: PositionGroupAttr;
-  zIndex?: ZIndexGroupAttr;
-  sticky?: StickyGroupAttr;
-  scroll?: ScrollGroupAttr;
+  module?: {
+    meta?: ModuleMetaAttrs;
+    advanced?: {
+      link?: LinkGroupAttr;
+      htmlAttributes?: IdClassesGroupAttr;
+      text?: TextGroupAttr;
+    };
+    decoration?: PickedElementAttrs<
+      'animation' |
+      'background' |
+      'border' |
+      'boxShadow' |
+      'disabledOn' |
+      'filters' |
+      'overflow' |
+      'position' |
+      'scroll' |
+      'sizing' |
+      'spacing' |
+      'sticky' |
+      'transform' |
+      'transition' |
+      'zIndex'
+    >;
+  };
+  title?: {
+    innerContent?: FormatBreakpointStateAttr<string>;
+    decoration?: PickedElementAttrs<'font'>;
+  };
+  postItems?: {
+    innerContent?: FormatBreakpointStateAttr<{
+      postsNumber?:string;
+    }>;
+  };
+  postTitle?: {
+    decoration?: PickedElementAttrs<'font'>;
+  };
 }
 
 export type DynamicModuleEditProps = ModuleEditProps<DynamicModuleAttrs>;

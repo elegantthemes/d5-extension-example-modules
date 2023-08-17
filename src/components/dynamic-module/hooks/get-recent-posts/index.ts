@@ -11,11 +11,15 @@ export const useGetRecentPosts = () => {
     apiFetchController.abort();
   }, []);
 
-  const getPosts = (postsPerPage = 5) => {
+  const getPosts = (postsPerPage:number) => {
+    if(Number.isNaN(postsPerPage)){
+      postsPerPage = 5;
+    }
+    
     setLoading(true);
     
     fetch({
-      restRoute: `wp/v2/posts?context=view&per_page=${postsPerPage}`,
+      restRoute: `/wp/v2/posts?context=view&per_page=${postsPerPage}`,
       method:    'GET',
       signal: apiFetchController.signal, 
     }).then((res) => {

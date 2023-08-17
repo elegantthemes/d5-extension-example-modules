@@ -3,12 +3,10 @@ import React, { ReactElement, useEffect } from 'react';
 
 // Divi Dependencies.
 import { ModuleContainer } from '@divi/module';
-import { mergeAttrs } from '@divi/module-utils';
 
 // Local Dependencies.
 import { DynamicModuleEditProps } from './types';
 import { ModuleStyles } from './styles';
-import { defaultAttrs } from './constants';
 import { useGetRecentPosts } from './hooks/get-recent-posts';
 import { map } from 'lodash';
 import { __ } from '@wordpress/i18n';
@@ -29,31 +27,25 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
     attrs,
     id,
     name,
+    elements,
   } = props;
-
-  // Merge module default values with module attributes.
-  const moduleAttrs = mergeAttrs({
-    defaultAttrs,
-    attrs,
-  });
 
   const {getPosts, posts, isLoading} = useGetRecentPosts();
 
-  const title            = moduleAttrs?.title?.desktop?.value;
-  const numberOfPosts    = parseInt(moduleAttrs?.numberOfPosts?.desktop?.value);
-  const TitleHeading     = moduleAttrs?.titleFont?.font?.desktop?.value?.headingLevel;
-  const PostTitleHeading = moduleAttrs?.postTitleFont?.font?.desktop?.value?.headingLevel;
+  const PostTitleHeading = attrs?.postTitle?.decoration?.font?.font?.desktop?.value?.headingLevel;
+  const postsNumber = parseInt(attrs?.postItems?.innerContent?.desktop?.value?.postsNumber);
 
   /**
    * Fetches new Portfolio Posts on parameter changes.
    */
-   useEffect(() => {
-    getPosts(numberOfPosts);
-  }, [numberOfPosts]);
+  useEffect(() => {
+    getPosts(postsNumber);
+  }, [postsNumber]);
 
   return (
     <ModuleContainer
-      attrs={moduleAttrs}
+      attrs={attrs}
+      elements={elements}
       componentType="edit"
       id={id}
       name={name}
@@ -64,11 +56,9 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
       {
         ! isLoading && (
           <>
-            {
-              title && (
-                <TitleHeading className="dynamic-module__title">{title}</TitleHeading>
-              )
-            }
+            {elements.render({
+              attrName: 'title',
+            })}
             <div className="dynamic-module__post-items">
               {
                 map(posts, (post) => (

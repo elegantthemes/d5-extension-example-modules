@@ -1,42 +1,75 @@
 {
-    "name": "example/dynamic-module",
-    "d4Shortcode": "",
-    "title": "Dynamic Module",
-    "titles": "Dynamic Modules",
-    "moduleIcon": "example/module-dynamic",
-    "category": "module",
-    "attributes": {
-        "numberOfPosts": {
-            "type": "object",
-            "default": {
-                "desktop": {
-                    "value": "5"
-                }
+  "name": "example/dynamic-module",
+  "d4Shortcode": "",
+  "title": "Dynamic Module",
+  "titles": "Dynamic Modules",
+  "moduleIcon": "example/module-dynamic",
+  "category": "module",
+  "attributes": {
+    "module": {
+      "type": "object",
+      "selector": "{{selector}}",
+      "default": {
+        "meta": {
+          "adminLabel": {
+            "desktop": {
+              "value": "Static Module"
             }
-        },
-        "titleFont": {
-            "type": "object",
-            "default": {
-                "font": {
-                    "desktop": {
-                        "value": {
-                            "headingLevel": "h2"
-                        }
-                    }
-                }
-            }
-        },
-        "postTitleFont": {
-            "type": "object",
-            "default": {
-                "font": {
-                    "desktop": {
-                        "value": {
-                            "headingLevel": "h3"
-                        }
-                    }
-                }
-            }
+          }
         }
+      }
+    },
+    "title": {
+      "type": "object",
+      "selector": "{{selector}} .dynamic-module__title",
+      "default": {
+        "decoration": {
+          "font": {
+            "font": {
+              "desktop": {
+                "value": {
+                  "headingLevel": "h2"
+                }
+              }
+            }
+          }
+        }
+      },
+      "inlineEditor": "plainText",
+      "elementType": "heading",
+      "childrenSanitizer": "et_core_esc_previously",
+      "attributes": {
+        "class": "dynamic-module__title"
+      }
+    },
+    "postItems": {
+      "type": "object",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": {
+              "postsNumber": "5"
+            }
+          }
+        }
+      }
+    },
+    "postTitle": {
+      "type": "object",
+      "selector": "{{selector}} .dynamic-module__post-item-title",
+      "default": {
+        "decoration": {
+          "font": {
+            "font": {
+              "desktop": {
+                "value": {
+                  "headingLevel": "h3"
+                }
+              }
+            }
+          }
+        }
+      }
     }
+  }
 }
