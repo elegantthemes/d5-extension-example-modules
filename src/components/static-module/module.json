@@ -98,6 +98,9 @@
         }
       },
       "tagName": "h2",
+      "attributes": {
+        "class": "static-module__title"
+      },
       "inlineEditor": "plainText",
       "elementType": "heading",
       "childrenSanitizer": "et_core_esc_previously"
@@ -106,6 +109,9 @@
       "type": "object",
       "selector": "{{selector}} .static-module__content",
       "tagName": "div",
+      "attributes": {
+        "class": "static-module__content"
+      },
       "inlineEditor": "richText",
       "childrenSanitizer": "et_core_esc_previously",
       "styleProps": {
