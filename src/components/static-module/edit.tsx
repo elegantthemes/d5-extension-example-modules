@@ -4,11 +4,9 @@ import classnames from 'classnames';
 
 // Divi Dependencies.
 import { ModuleContainer } from '@divi/module';
-import { mergeAttrs } from '@divi/module-utils';
 
 // Local Dependencies.
 import { StaticModuleEditProps } from './types';
-import { defaultAttrs } from './constants';
 import { ModuleStyles } from './styles';
 import { moduleClassnames } from './module-classnames';
 import { ModuleScriptData } from './module-script-data';
@@ -25,26 +23,19 @@ import { ModuleScriptData } from './module-script-data';
 const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
   const {
     attrs,
+    elements,
     id,
     name,
   } = props;
 
-  // Merge module default values with module attributes.
-  const moduleAttrs = mergeAttrs({
-    defaultAttrs,
-    attrs,
-  });
-
-  // Get module attributes.
-  const HeadingLevel            = moduleAttrs?.titleFont?.font?.desktop?.value?.headingLevel;
-  const title                   = moduleAttrs?.title?.desktop?.value;
-  const content                 = moduleAttrs?.content?.desktop?.value;
-  const imageSrc                = moduleAttrs?.image?.image?.desktop?.value?.src;
-  const imageAlt                = moduleAttrs?.image?.image?.desktop?.value?.alt;
+  // Get image attributes.
+  const imageSrc = attrs?.image?.innerContent?.desktop?.value?.src ?? ''
+  const imageAlt = attrs?.image?.innerContent?.desktop?.value?.alt ?? '';
 
   return (
     <ModuleContainer
-      attrs={moduleAttrs}
+      attrs={attrs}
+      elements={elements}
       componentType="edit"
       id={id}
       name={name}
@@ -56,11 +47,14 @@ const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
         <img src={imageSrc} alt={imageAlt} />
       </div>
       <div className="static-module__content-container">
-        <HeadingLevel className="static-module__title">{title}</HeadingLevel>
-        <div
-          className="static-module__content"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        {elements.render({
+          attrName: 'title',
+        })}
+        <div className="static-module__content">
+          {elements.render({
+            attrName: 'content',
+          })}
+        </div>
       </div>
     </ModuleContainer>
   );

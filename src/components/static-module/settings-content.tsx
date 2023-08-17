@@ -1,47 +1,51 @@
 // External dependencies.
-import React, { ReactElement } from 'react';
+import React, {ReactElement} from 'react';
 
 // WordPress dependencies
-import { __ } from '@wordpress/i18n';
+import {__} from '@wordpress/i18n';
 
 // Divi dependencies.
 import {
-  AdminLabel,
-  Background,
+  AdminLabelGroup,
+  BackgroundGroup,
   FieldContainer,
-  LinkOptions,
+  LinkGroup,
+  SettingsProps,
 } from '@divi/module';
-import { GroupContainer } from '@divi/modal';
+import {
+  GroupContainer
+} from '@divi/modal';
 import {
   RichTextContainer,
   TextContainer,
   UploadContainer,
 } from '@divi/field-library';
 
-// Local dependencies.
-import { defaultSettingsAttrs } from './constants';
+import {StaticModuleAttrs} from "./types";
 
-export const SettingsContent = (): ReactElement => (
+export const SettingsContent = ({
+    defaultSettingsAttrs,
+  }: SettingsProps<StaticModuleAttrs>): ReactElement => (
   <React.Fragment>
     <GroupContainer
       id="mainContent"
       title={__('Text', 'd5-extension-example-modules')}
     >
       <FieldContainer
-        attrName="title"
+        attrName="title.innerContent"
         label={__('Title', 'd5-extension-example-modules')}
         description={__('Input your value to action title here.', 'd5-extension-example-modules')}
         sticky={false}
       >
-        <TextContainer />
+        <TextContainer/>
       </FieldContainer>
       <FieldContainer
-        attrName="content"
+        attrName="content.innerContent"
         label={__('Content', 'd5-extension-example-modules')}
         description={__('Input the main text content for your module here.', 'd5-extension-example-modules')}
         sticky={false}
       >
-        <RichTextContainer />
+        <RichTextContainer/>
       </FieldContainer>
     </GroupContainer>
     <GroupContainer
@@ -49,19 +53,19 @@ export const SettingsContent = (): ReactElement => (
       title={__('Image', 'd5-extension-example-modules')}
     >
       <FieldContainer
-        attrName="image.image"
+        attrName="image.innerContent"
         subName="src"
         label={__('Image', 'd5-extension-example-modules')}
         description={__('Upload an Image', 'd5-extension-example-modules')}
         sticky={false}
       >
-        <UploadContainer />
+        <UploadContainer/>
       </FieldContainer>
     </GroupContainer>
-    <LinkOptions />
-    <Background
-      defaultGroupAttr={defaultSettingsAttrs?.background}
+    <LinkGroup/>
+    <BackgroundGroup
+      defaultGroupAttr={defaultSettingsAttrs?.module?.decoration?.background?.asMutable({deep: true}) ?? {}}
     />
-    <AdminLabel />
+    <AdminLabelGroup/>
   </React.Fragment>
 );

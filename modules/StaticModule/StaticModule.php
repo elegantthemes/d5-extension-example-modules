@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use ET\Builder\Framework\DependencyManagement\Interfaces\DependencyInterface;
 use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
-use MEE\Modules\StaticModule\StaticModuleTrait;
+
 
 /**
  * `StaticModule` is consisted of functions used for Static Module such as Front-End rendering, REST API Endpoints etc.
@@ -25,6 +25,9 @@ use MEE\Modules\StaticModule\StaticModuleTrait;
  */
 class StaticModule implements DependencyInterface {
 	use StaticModuleTrait\RenderCallbackTrait;
+	use StaticModuleTrait\ModuleClassnamesTrait;
+	use StaticModuleTrait\ModuleStylesTrait;
+	use StaticModuleTrait\ModuleScriptDataTrait;
 
 	/**
 	 * Loads `StaticModule` and registers Front-End render callback and REST API Endpoints.

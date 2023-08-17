@@ -1,52 +1,146 @@
 {
-    "name": "example/static-module",
-    "d4Shortcode": "",
-    "title": "Static Module",
-    "titles": "Static Modules",
-    "moduleIcon": "example/module-static",
-    "category": "module",
-    "attributes": {
-        "text": {
-            "type": "object",
-            "default": {
-                "text": {
-                    "desktop": {
-                        "value": {
-                            "color": "light"
-                        }
-                    }
-                }
+  "name": "example/static-module",
+  "d4Shortcode": "",
+  "title": "Static Module",
+  "titles": "Static Modules",
+  "moduleIcon": "example/module-static",
+  "category": "module",
+  "attributes": {
+    "module": {
+      "type": "object",
+      "selector": "{{selector}}",
+      "default": {
+        "meta": {
+          "adminLabel": {
+            "desktop": {
+              "value": "Static Module"
             }
+          }
         },
-        "titleFont": {
-            "type": "object",
-            "default": {
-                "font": {
-                    "desktop": {
-                        "value": {
-                            "headingLevel": "h2"
-                        }
-                    }
+        "advanced": {
+          "text": {
+            "text": {
+              "desktop": {
+                "value": {
+                  "color": "light"
                 }
+              }
             }
+          }
+        },
+        "decoration": {
+          "background": {
+            "desktop": {
+              "value": {
+                "color": "#ecf4f7"
+              }
+            }
+          }
         }
+      },
+      "styleProps": {
+        "border": {
+          "important": true
+        }
+      }
     },
-    "customCssFields": {
-        "contentContainer": {
-            "subName":        "contentContainer",
-            "selectorSuffix": " .static-module__content-container"
-        },
-        "title": {
-            "subName":        "title",
-            "selectorSuffix": " .static-module__title"
-        },
-        "content": {
-            "subName":        "content",
-            "selectorSuffix": " .static-module__content"
-        },
-        "image": {
-            "subName":        "image",
-            "selectorSuffix": " .static-module__image img"
+    "image": {
+      "type": "object",
+      "selector": "{{selector}} .static-module__image img",
+      "styleProps": {
+        "border": {
+          "important": true
         }
+      }
+    },
+    "title": {
+      "type": "object",
+      "selector": "{{selector}} .static-module__title",
+      "default": {
+        "decoration": {
+          "font": {
+            "font": {
+              "desktop": {
+                "value": {
+                  "headingLevel": "h2"
+                }
+              }
+            }
+          }
+        }
+      },
+      "defaultPrintedStyle": {
+        "decoration": {
+          "font": {
+            "font": {
+              "desktop": {
+                "value": {
+                  "size": "26px",
+                  "lineHeight": "1em",
+                  "weight": "500"
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "font": {
+          "important": {
+            "font": {
+              "desktop": {
+                "value": {
+                  "color": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "tagName": "h2",
+      "attributes": {
+        "class": "static-module__title"
+      },
+      "inlineEditor": "plainText",
+      "elementType": "heading",
+      "childrenSanitizer": "et_core_esc_previously"
+    },
+    "content": {
+      "type": "object",
+      "selector": "{{selector}} .static-module__content",
+      "tagName": "div",
+      "attributes": {
+        "class": "static-module__content"
+      },
+      "inlineEditor": "richText",
+      "childrenSanitizer": "et_core_esc_previously",
+      "styleProps": {
+        "bodyFont": {
+          "selectors": {
+            "desktop": {
+              "value": "{{selector}} .static-module__content"
+            }
+          }
+        }
+      }
     }
+  },
+  "customCssFields": {
+    "contentContainer": {
+      "subName": "contentContainer",
+      "selectorSuffix": " .static-module__content-container"
+    },
+    "title": {
+      "subName": "title",
+      "selectorSuffix": " .static-module__title"
+    },
+    "content": {
+      "subName": "content",
+      "selectorSuffix": " .static-module__content"
+    },
+    "image": {
+      "subName": "image",
+      "selectorSuffix": " .static-module__image img"
+    }
+  }
 }
