@@ -1,30 +1,14 @@
 // Divi dependencies.
 import { ModuleEditProps } from '@divi/module-library';
 import {
-  AdminLabelGroupAttr,
-  AnimationGroupAttr,
-  BackgroundGroupAttr,
-  BorderGroupAttr,
-  BoxShadowGroupAttr,
   CssAttr,
-  DisabledOnGroupAttr,
-  FiltersGroupAttr,
-  FontBodyGroupAttr,
-  FontGroupAttr,
-  FormatAttr,
+  FormatBreakpointStateAttr,
   IdClassesGroupAttr,
   InternalAttrs,
   LinkGroupAttr,
-  OverflowGroupAttr,
-  PositionGroupAttr,
-  ScrollGroupAttr,
-  SizingGroupAttr,
-  SpacingGroupAttr,
-  StickyGroupAttr,
+  ModuleMetaAttrs,
+  PickedElementAttrs,
   TextGroupAttr,
-  TransformGroupAttr,
-  TransitionGroupAttr,
-  ZIndexGroupAttr,
 } from '@divi/types';
 
 export interface Image {
@@ -39,51 +23,63 @@ export interface StaticModuleCssAttr extends CssAttr {
   image?: string;
 }
 
-export type StaticModuleCssGroupAttr = FormatAttr<StaticModuleCssAttr>;
+export type StaticModuleCssGroupAttr = FormatBreakpointStateAttr<StaticModuleCssAttr>;
 
 export interface StaticModuleAttrs extends InternalAttrs {
+  // CSS options is used across multiple elements inside the module thus it deserves its own top property.
+  css?: StaticModuleCssGroupAttr;
 
-  // Mixed tab.
-  image?: {
-    // Content tab.
-    image?: FormatAttr<Image>;
-
-    // Design tab.
-    border?: BorderGroupAttr;
-    spacing?: SpacingGroupAttr;
-    boxShadow?: BoxShadowGroupAttr;
-    filter?: FiltersGroupAttr;
+  // Module
+  module?: {
+    meta?: ModuleMetaAttrs;
+    advanced?: {
+      link?: LinkGroupAttr;
+      htmlAttributes?: IdClassesGroupAttr;
+      text?: TextGroupAttr;
+    };
+    decoration?: PickedElementAttrs<
+      'animation' |
+      'background' |
+      'border' |
+      'boxShadow' |
+      'disabledOn' |
+      'filters' |
+      'overflow' |
+      'position' |
+      'scroll' |
+      'sizing' |
+      'spacing' |
+      'sticky' |
+      'transform' |
+      'transition' |
+      'zIndex'
+    >;
   };
 
-  // Content tab.
-  title?: FormatAttr<string>;
-  content?: FormatAttr<string>;
-  link?: LinkGroupAttr;
-  background?: BackgroundGroupAttr;
-  adminLabel?: AdminLabelGroupAttr;
+  image?: {
+    innerContent?: FormatBreakpointStateAttr<{
+      src?: string;
+      alt?: string;
+    }>;
+    decoration?: PickedElementAttrs<
+      'border' |
+      'boxShadow' |
+      'filters' |
+      'spacing'
+    >;
+  };
 
-  // Design tab.
-  text?: TextGroupAttr;
-  titleFont?: FontGroupAttr;
-  bodyFont?: FontBodyGroupAttr;
-  sizing?: SizingGroupAttr;
-  spacing?: SpacingGroupAttr;
-  border?: BorderGroupAttr;
-  boxShadow?: BoxShadowGroupAttr;
-  filter?: FiltersGroupAttr;
-  transform?: TransformGroupAttr;
-  animation?: AnimationGroupAttr;
+  // Title
+  title?: {
+    innerContent?: FormatBreakpointStateAttr<string>;
+    decoration?: PickedElementAttrs<'font'>;
+  };
 
-  // Advanced tab.
-  module?: IdClassesGroupAttr;
-  css?: StaticModuleCssGroupAttr;
-  disabledOn?: DisabledOnGroupAttr;
-  overflow?: OverflowGroupAttr;
-  transition?: TransitionGroupAttr;
-  position?: PositionGroupAttr;
-  zIndex?: ZIndexGroupAttr;
-  sticky?: StickyGroupAttr;
-  scroll?: ScrollGroupAttr;
+  // Content
+  content?: {
+    innerContent?: FormatBreakpointStateAttr<string>;
+    decoration?: PickedElementAttrs<'bodyFont'>;
+  };
 }
 
 export type StaticModuleEditProps = ModuleEditProps<StaticModuleAttrs>;

@@ -1,11 +1,14 @@
 import { omit } from 'lodash';
+
 import { addAction } from '@wordpress/hooks';
+
 import { registerModule } from '@divi/module-library';
-import { dynamicModule } from './components/dynamic-module';
-import { staticModule } from './components/static-module';
+
 import { childModule } from './components/child-module';
-import { parentModule } from './components/parent-module';
 import { d4Module } from './components/d4-module';
+import { dynamicModule } from './components/dynamic-module';
+import { parentModule } from './components/parent-module';
+import { staticModule } from './components/static-module';
 
 import './module-exceptions';
 import './module-icons';

@@ -8,7 +8,6 @@ import { mergeAttrs } from '@divi/module-utils';
 
 // Local Dependencies.
 import { StaticModuleEditProps } from './types';
-import { defaultAttrs } from './constants';
 import { ModuleStyles } from './styles';
 import { moduleClassnames } from './module-classnames';
 import { ModuleScriptData } from './module-script-data';
@@ -25,26 +24,22 @@ import { ModuleScriptData } from './module-script-data';
 const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
   const {
     attrs,
+    elements,
     id,
     name,
   } = props;
 
-  // Merge module default values with module attributes.
-  const moduleAttrs = mergeAttrs({
-    defaultAttrs,
-    attrs,
-  });
-
   // Get module attributes.
-  const HeadingLevel            = moduleAttrs?.titleFont?.font?.desktop?.value?.headingLevel;
-  const title                   = moduleAttrs?.title?.desktop?.value;
-  const content                 = moduleAttrs?.content?.desktop?.value;
-  const imageSrc                = moduleAttrs?.image?.image?.desktop?.value?.src;
-  const imageAlt                = moduleAttrs?.image?.image?.desktop?.value?.alt;
+  const HeadingLevel            = attrs?.title?.decoration?.font?.font?.desktop?.value?.headingLevel ?? 'h2';
+  const title                   = attrs?.title?.innerContent?.desktop?.value;
+  const content                 = attrs?.content?.innerContent?.desktop?.value;
+  const imageSrc                = attrs?.image?.innerContent?.desktop?.value?.src;
+  const imageAlt                = attrs?.image?.innerContent?.desktop?.value?.alt;
 
   return (
     <ModuleContainer
-      attrs={moduleAttrs}
+      attrs={attrs}
+      elements={elements}
       componentType="edit"
       id={id}
       name={name}
