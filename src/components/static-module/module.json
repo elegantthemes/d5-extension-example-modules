@@ -99,23 +99,20 @@
       },
       "tagName": "h2",
       "inlineEditor": "plainText",
-      "elementType": "headingLink",
+      "elementType": "heading",
       "childrenSanitizer": "et_core_esc_previously"
     },
     "content": {
       "type": "object",
       "selector": "{{selector}} .static-module__content",
-      "attributes": {
-        "class": "et_pb_blurb_description"
-      },
       "tagName": "div",
       "inlineEditor": "richText",
+      "childrenSanitizer": "et_core_esc_previously",
       "styleProps": {
         "bodyFont": {
           "selectors": {
             "desktop": {
-              "value": "{{selector}}, {{selector}} .et_pb_blurb_description",
-              "hover": "{{selector}}:hover, {{selector}}:hover .et_pb_blurb_description"
+              "value": "{{selector}} .static-module__content"
             }
           }
         }

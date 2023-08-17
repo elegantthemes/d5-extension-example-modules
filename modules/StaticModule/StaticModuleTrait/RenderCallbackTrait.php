@@ -15,45 +15,28 @@ if ( ! defined( 'ABSPATH' ) ) {
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
 use ET\Builder\Packages\Module\Module;
-use ET\Builder\Packages\Module\Options\Background\BackgroundComponents;
 use ET\Builder\Framework\Utility\HTMLUtility;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
-use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
+use ET\Builder\Packages\Module\Options\Element\ElementComponents;
+use MEE\Modules\StaticModule\StaticModule;
 
 trait RenderCallbackTrait {
-	use ModuleClassnamesTrait;
-	use ModuleStylesTrait;
-	use ModuleScriptDataTrait;
+
 	/**
 	 * Static module render callback which outputs server side rendered HTML on the Front-End.
 	 *
 	 * @since ??
+	 * @param array          $attrs    Block attributes that were saved by VB.
+	 * @param string         $content  Block content.
+	 * @param WP_Block       $block    Parsed block object that being rendered.
+	 * @param ModuleElements $elements ModuleElements instance.
 	 *
-	 * @param array     $block_attributes Block attributes that were saved by VB.
-	 * @param string    $content          Block content.
-	 * @param \WP_Block $block            Parsed block object that being rendered.
-	 *
-	 * @return string HTML rendered of Blurb module.
+	 * @return string HTML rendered of Static module.
 	 */
-	public static function render_callback( $block_attributes, $content, $block ) {
-		$default_attributes = ModuleRegistration::get_default_attrs( 'example/static-module' );
-		$module_attrs       = array_replace_recursive( $default_attributes, $block_attributes );
-
-		// Background.
-		$background_component = BackgroundComponents::component(
-			[
-				'attr'          => $module_attrs['background'] ?? [],
-				'id'            => $block->parsed_block['id'],
-
-				// FE only.
-				'orderIndex'    => $block->parsed_block['orderIndex'],
-				'storeInstance' => $block->parsed_block['storeInstance'],
-			]
-		);
-
+	public static function render_callback( $attrs, $content, $block, $elements ) {
 		// Image.
-		$image_src = $module_attrs['image']['image']['desktop']['value']['src'] ?? '';
-		$image_alt = $module_attrs['image']['image']['desktop']['value']['alt'] ?? '';
+		$image_src = $attrs['image']['innerContent']['desktop']['value']['src'] ?? '';
+		$image_alt = $attrs['image']['innerContent']['desktop']['value']['alt'] ?? '';
 		$image     = HTMLUtility::render(
 			[
 				'tag'                  => 'img',
@@ -83,29 +66,16 @@ trait RenderCallbackTrait {
 		);
 
 		// Title.
-		$title_text    = $module_attrs['title']['desktop']['value'] ?? '';
-		$heading_level = $module_attrs['titleFont']['font']['desktop']['value']['headingLevel'] ?? 'h2';
-		$title         = HTMLUtility::render(
+		$title = $elements->render(
 			[
-				'tag'               => $heading_level,
-				'attributes'        => [
-					'class' => 'static-module__title',
-				],
-				'childrenSanitizer' => 'esc_html',
-				'children'          => $title_text,
+				'attrName' => 'title',
 			]
 		);
 
 		// Content.
-		$content_text = $module_attrs['content']['desktop']['value'] ?? '';
-		$content      = HTMLUtility::render(
+		$content = $elements->render(
 			[
-				'tag'               => 'div',
-				'attributes'        => [
-					'class' => 'static-module__content',
-				],
-				'childrenSanitizer' => 'wp_kses_post',
-				'children'          => $content_text,
+				'attrName' => 'content',
 			]
 		);
 
@@ -131,17 +101,27 @@ trait RenderCallbackTrait {
 				'storeInstance'       => $block->parsed_block['storeInstance'],
 
 				// VB equivalent.
+				'attrs'               => $attrs,
+				'elements'            => $elements,
 				'id'                  => $block->parsed_block['id'],
 				'name'                => $block->block_type->name,
 				'moduleCategory'      => $block->block_type->category,
-				'attrs'               => $module_attrs,
-				'classnamesFunction'  => [ self::class, 'module_classnames' ],
-				'stylesComponent'     => [ self::class, 'module_styles' ],
-				'scriptDataComponent' => [ self::class, 'module_script_data' ],
+				'classnamesFunction'  => [ StaticModule::class, 'module_classnames' ],
+				'stylesComponent'     => [ StaticModule::class, 'module_styles' ],
+				'scriptDataComponent' => [ StaticModule::class, 'module_script_data' ],
 				'parentAttrs'         => $parent_attrs,
 				'parentId'            => $parent->id ?? '',
 				'parentName'          => $parent->blockName ?? '',
-				'children'            => $background_component . $image_container . $content_container,
+				'children'            => ElementComponents::component(
+					[
+						'attrs'         => $attrs['module']['decoration'] ?? [],
+						'id'            => $block->parsed_block['id'],
+
+						// FE only.
+						'orderIndex'    => $block->parsed_block['orderIndex'],
+						'storeInstance' => $block->parsed_block['storeInstance'],
+					]
+				) . $image_container . $content_container,
 			]
 		);
 	}

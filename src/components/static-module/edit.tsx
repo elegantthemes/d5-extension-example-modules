@@ -4,7 +4,6 @@ import classnames from 'classnames';
 
 // Divi Dependencies.
 import { ModuleContainer } from '@divi/module';
-import { mergeAttrs } from '@divi/module-utils';
 
 // Local Dependencies.
 import { StaticModuleEditProps } from './types';
@@ -30,9 +29,6 @@ const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
   } = props;
 
   // Get module attributes.
-  const HeadingLevel            = attrs?.title?.decoration?.font?.font?.desktop?.value?.headingLevel ?? 'h2';
-  const title                   = attrs?.title?.innerContent?.desktop?.value;
-  const content                 = attrs?.content?.innerContent?.desktop?.value;
   const imageSrc                = attrs?.image?.innerContent?.desktop?.value?.src;
   const imageAlt                = attrs?.image?.innerContent?.desktop?.value?.alt;
 
@@ -51,11 +47,14 @@ const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
         <img src={imageSrc} alt={imageAlt} />
       </div>
       <div className="static-module__content-container">
-        <HeadingLevel className="static-module__title">{title}</HeadingLevel>
-        <div
-          className="static-module__content"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        {elements.render({
+          attrName: 'title',
+        })}
+        <div className="static-module__content">
+          {elements.render({
+            attrName: 'content',
+          })}
+        </div>
       </div>
     </ModuleContainer>
   );
