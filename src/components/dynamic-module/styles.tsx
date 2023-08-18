@@ -24,11 +24,6 @@ import { DynamicModuleAttrs } from './types';
   noStyleTag,
   elements,
 }: StylesProps<DynamicModuleAttrs>): ReactElement => {
-  const titleClass = `${orderClass} .dynamic-module__title`;
-  const postTitleClass = `${orderClass} .dynamic-module__post-item-title`;
-  const contentClass = `${orderClass} .dynamic-module__post-item-content`;
-
-
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
       {elements.style({
