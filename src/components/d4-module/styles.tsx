@@ -5,30 +5,18 @@ import React, { ReactElement } from 'react';
 import {
   StyleContainer,
   StylesProps,
-  BackgroundStyle,
-  SizingStyle,
-  SpacingStyle,
-  BorderStyle,
-  BoxShadowStyle,
-  FiltersStyle,
-  TransformStyle,
-  AnimationStyle,
   CssStyle,
-  DisabledOnStyle,
-  OverflowStyle,
-  PositionStyle,
-  ZIndexStyle,
-  TextStyle,
-  FontStyle,
-  FontBodyStyle,
+  CommonStyle,
 } from '@divi/module';
+
+import { BackgroundAttr } from '@divi/types';
 
 // Local dependencies.
 import { D4ModuleAttrs } from './types';
 import { cssFields } from './custom-css';
 
 /**
- * Blurb Module's style components.
+ * Module's style components.
  *
  * @since ??
  */
@@ -39,80 +27,34 @@ import { cssFields } from './custom-css';
   mode,
   state,
   noStyleTag,
+  elements,
 }: StylesProps<D4ModuleAttrs>): ReactElement => {
-  const titleClass            = `${orderClass} .d4_module_title`;
-  const contentClass          = `${orderClass} .d4_module_content`;
-
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
-      <BackgroundStyle
-        selector={orderClass}
-        attr={attrs?.background}
-      />
-      <TextStyle
-        selector={orderClass}
-        attr={attrs?.text}
-      />
-      <FontStyle
-        selector={titleClass}
-        attr={attrs?.titleFont}
-      />
-      <FontBodyStyle
-        selector={contentClass}
-        attr={attrs?.bodyFont}
-      />
-      <SizingStyle
-        selector={orderClass}
-        attr={attrs?.sizing}
-      />
-      <SpacingStyle
-        selector={orderClass}
-        attr={attrs?.spacing}
-      />
-      <BorderStyle
-        selector={orderClass}
-        attr={attrs?.border}
+      {elements.style({
+        attrName: 'module',
+      })}
+      {elements.style({
+        attrName: 'title',
+      })}
+      {
+        // Set the `.d4_module_inner` element `position` to `relative` if the background image has parallax enabled.
+      }
+      <CommonStyle
+        selector={`${orderClass} .d4_module_inner`}
+        attr={attrs?.module?.decoration?.background}
+        declarationFunction={({attrValue}:{attrValue:BackgroundAttr}) => {
+          if ('on' === attrValue?.image?.parallax?.enabled) {
+            return 'position: relative;';
+          }
 
-        // Once module highlight no longer use border, drop this important.
-        important
-      />
-      <BoxShadowStyle
-        selector={orderClass}
-        attr={attrs?.boxShadow}
-      />
-      <FiltersStyle
-        selector={orderClass}
-        attr={attrs?.filter}
-      />
-      <TransformStyle
-        selector={orderClass}
-        attr={attrs?.transform}
-      />
-      <AnimationStyle
-        selector={orderClass}
-        attr={attrs?.animation}
+          return '';
+        }}
       />
       <CssStyle
         selector={orderClass}
         attr={attrs?.css}
         cssFields={cssFields}
-      />
-      <DisabledOnStyle
-        selector={orderClass}
-        attr={attrs?.disabledOn}
-        disabledModuleVisibility={settings?.disabledModuleVisibility}
-      />
-      <OverflowStyle
-        selector={orderClass}
-        attr={attrs?.overflow}
-      />
-      <PositionStyle
-        selector={orderClass}
-        attr={attrs?.position}
-      />
-      <ZIndexStyle
-        selector={orderClass}
-        attr={attrs?.zIndex}
       />
     </StyleContainer>
   );

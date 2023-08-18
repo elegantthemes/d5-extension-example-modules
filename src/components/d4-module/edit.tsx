@@ -1,14 +1,18 @@
 // External Dependencies.
 import React, { ReactElement } from 'react';
-import classnames from 'classnames';
 
 // Divi Dependencies.
-import { ModuleContainer } from '@divi/module';
-import { mergeAttrs } from '@divi/module-utils';
+import {
+  ModuleContainer,
+  ElementComponents,
+  DynamicData,
+} from '@divi/module';
+import {
+  getAttrByMode,
+} from '@divi/module-utils';
 
 // Local Dependencies.
 import { D4ModuleEditProps } from './types';
-import { defaultAttrs } from './constants';
 import { ModuleStyles } from './styles';
 import { moduleClassnames } from './module-classnames';
 import { ModuleScriptData } from './module-script-data';
@@ -27,21 +31,16 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
     attrs,
     id,
     name,
+    elements,
   } = props;
 
-  // Merge module default values with module attributes.
-  const moduleAttrs = mergeAttrs({
-    defaultAttrs,
-    attrs,
-  });
-
-  const HeadingLevel = moduleAttrs?.titleFont?.font?.desktop?.value?.headingLevel;
-  const title        = moduleAttrs?.title?.desktop?.value;
-  const content      = moduleAttrs?.content?.desktop?.value;
+  const imageAttr  = getAttrByMode(attrs?.image?.innerContent);
+  const imageSrc   = imageAttr?.src;
 
   return (
     <ModuleContainer
-      attrs={moduleAttrs}
+      attrs={attrs}
+      elements={elements}
       componentType="edit"
       id={id}
       name={name}
@@ -49,11 +48,34 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
       classnamesFunction={moduleClassnames}
       scriptDataComponent={ModuleScriptData}
     >
-      <HeadingLevel className="d4_module_title">{title}</HeadingLevel>
-      <div
-        className="d4_module_content"
-        dangerouslySetInnerHTML={{ __html: content }}
+      <ElementComponents
+        attrs={attrs?.module?.decoration ?? {}}
+        id={id}
       />
+      <div className="d4_module_inner">
+        <div className="d4_module_image_wrap">
+          <DynamicData
+            value={imageSrc}
+            loaderType="image"
+          >
+            {({resolvedValue}) => {
+              if (! resolvedValue) {
+                return null;
+              }
+
+              return (
+                <img src={resolvedValue} />
+              );
+            }}
+          </DynamicData>
+        </div>
+        {elements.render({
+          attrName: 'title',
+        })}
+        {elements.render({
+          attrName: 'content',
+        })}
+      </div>
     </ModuleContainer>
   );
 }

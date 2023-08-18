@@ -3,6 +3,7 @@ import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
 import { ModuleRegisterDefinition } from '@divi/module-library';
+import { ModuleMetadata } from '@divi/types';
 
 // Local dependencies.
 import metadata from './module.json';
@@ -15,7 +16,7 @@ import { placeholderContent } from './placeholder-content';
 
 
 export const d4Module: ModuleRegisterDefinition<D4ModuleAttrs> = {
-  metadata,
+  metadata: metadata as ModuleMetadata,
   placeholderContent,
   settings: {
     content:  SettingsContent,
