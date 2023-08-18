@@ -1,82 +1,103 @@
-import { placeholderContent } from '@divi/module';
+import {placeholderContent as placeholder} from '@divi/module';
 
-import { ChildModuleAttrs } from '../types';
+import {ChildModuleAttrs} from '../types';
 
 export const defaultAttributes: ChildModuleAttrs = {
   title: {
-    desktop: {
-      value: placeholderContent.title,
-    },
+    innerContent: {
+      desktop: {
+        value: placeholder.title,
+      },
+    }
   },
   content: {
-    desktop: {
-      value: placeholderContent.body,
-    },
+    innerContent: {
+      desktop: {
+        value: placeholder.body,
+      },
+    }
   },
 };
 
 export const customIcon: ChildModuleAttrs = {
   ...defaultAttributes,
   icon: {
-    desktop: {
-      value: {
-        unicode: '&#x39;',
-        type:    'divi',
-        weight:  '400',
-      },
-    },
+    decoration: {
+      icon: {
+        desktop: {
+          value: {
+            unicode: '&#x39;',
+            type: 'divi',
+            weight: '400',
+          },
+        },
+      }
+    }
   },
 };
 
 export const iconStyle: ChildModuleAttrs = {
-  ...customIcon,
-  iconColor: {
-    desktop: {
-      value: '#ae16f0',
-    },
-  },
-  iconSize: {
-    desktop: {
-      value: '28px',
-    },
+  ...defaultAttributes,
+  icon: {
+    decoration: {
+      icon: {
+        desktop: {
+          value: {
+            unicode: '&#x39;',
+            type: 'divi',
+            weight: '400',
+            color: '#ae16f0',
+            size: '28px',
+          },
+        },
+      }
+    }
   },
 };
 
 export const titleStyle: ChildModuleAttrs = {
   ...defaultAttributes,
-  titleFont: {
-    font: {
-      desktop: {
-        value: {
-          color:  '#ae16f0',
-          weight: '300',
-          size:   '31px',
-          style:  [
-            'italic',
-            'uppercase',
-          ],
+  title: {
+    decoration: {
+      font: {
+        font: {
+          desktop: {
+            value: {
+              color: '#ae16f0',
+              weight: '300',
+              size: '31px',
+              style: [
+                'italic',
+                'uppercase',
+              ],
+            },
+          },
         },
-      },
-    },
+      }
+    }
   },
 };
 
 export const contentStyle: ChildModuleAttrs = {
   ...defaultAttributes,
-  bodyFont: {
-    body: {
-      font: {
-        desktop: {
-          value: {
-            color: '#ae16f0',
-            size: '16px',
-            style: [
-              'capitalize',
-              'underline',
-            ],
+  content: {
+    decoration: {
+      bodyFont: {
+        body: {
+          font: {
+            desktop: {
+              value: {
+                color: '#ae16f0',
+                size: '16px',
+                style: [
+                  'capitalize',
+                  'underline',
+                ],
+              },
+            },
           },
         },
       },
-    },
-  },
+    }
+  }
 };

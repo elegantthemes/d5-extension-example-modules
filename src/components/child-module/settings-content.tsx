@@ -6,9 +6,10 @@ import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
 import {
-  Background,
+  BackgroundGroup,
   FieldContainer,
-  LinkOptions,
+  LinkGroup,
+  SettingsProps,
 } from '@divi/module';
 import { GroupContainer } from '@divi/modal';
 import {
@@ -19,21 +20,16 @@ import {
 import { mergeAttrs } from '@divi/module-utils';
 
 // Local dependencies.
-import { defaultSettingsAttrs as parentDefaultSettingsAttrs } from '../parent-module/constants';
-import { defaultSettingsAttrs } from './constants';
-import { ChildModuleSettingsContent } from './types';
+import {ChildModuleAttrs} from "./types";
+import {ParentModuleAttrs} from "../parent-module/types";
 
 export const SettingsContent = ({
+    defaultSettingsAttrs,
   parentAttrs,
-}: ChildModuleSettingsContent): ReactElement => {
-  const parentModuleAttrs = mergeAttrs({
-    defaultAttrs: parentDefaultSettingsAttrs,
-    attrs:        parentAttrs?.asMutable({ deep: true }),
-  });
-
-  const defaultIcon = mergeAttrs({
+  }: SettingsProps<ChildModuleAttrs, ParentModuleAttrs>): ReactElement => {
+  const defaultIconAttrs = mergeAttrs({
     defaultAttrs: defaultSettingsAttrs?.icon,
-    attrs:        parentModuleAttrs?.icon,
+    attrs:        parentAttrs?.asMutable({ deep: true })?.icon,
   });
 
   return (
@@ -43,7 +39,7 @@ export const SettingsContent = ({
         title={__('Text', 'd5-extension-example-modules')}
       >
         <FieldContainer
-          attrName="title"
+          attrName="title.innerContent"
           label={__('Title', 'd5-extension-example-modules')}
           description={__('Input your value to action title here.', 'd5-extension-example-modules')}
           sticky={false}
@@ -51,7 +47,7 @@ export const SettingsContent = ({
           <TextContainer />
         </FieldContainer>
         <FieldContainer
-          attrName="content"
+          attrName="content.innerContent"
           label={__('Content', 'd5-extension-example-modules')}
           description={__('Input the main text content for your module here.', 'd5-extension-example-modules')}
           sticky={false}
@@ -64,18 +60,18 @@ export const SettingsContent = ({
         title={__('Icon', 'd5-extension-example-modules')}
       >
         <FieldContainer
-          attrName="icon"
+          attrName="icon.decoration.icon"
           label={__('Icon', 'd5-extension-example-modules')}
-          description={__('Upload an Image', 'd5-extension-example-modules')}
+          description={__('Pick an Icon', 'd5-extension-example-modules')}
           sticky={false}
-          defaultAttr={defaultIcon}
+          defaultAttr={defaultIconAttrs}
         >
           <IconPickerContainer />
         </FieldContainer>
       </GroupContainer>
-      <LinkOptions />
-      <Background
-        defaultGroupAttr={defaultSettingsAttrs?.background}
+      <LinkGroup />
+      <BackgroundGroup
+        defaultGroupAttr={defaultSettingsAttrs?.module?.decoration?.background?.asMutable({ deep: true }) ?? {}}
       />
     </React.Fragment>
   );

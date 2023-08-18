@@ -14,7 +14,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use ET\Builder\Framework\DependencyManagement\Interfaces\DependencyInterface;
 use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
-use MEE\Modules\ChildModule\ChildModuleTrait;
 
 /**
  * `ChildModule` is consisted of functions used for Child Module such as Front-End rendering, REST API Endpoints etc.

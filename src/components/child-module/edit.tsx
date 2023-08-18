@@ -3,13 +3,14 @@ import React, { ReactElement } from 'react';
 
 // Divi Dependencies.
 import { ModuleContainer } from '@divi/module';
-import { mergeAttrs } from '@divi/module-utils';
+import {
+  mergeAttrs,
+  getAttrByMode,
+} from '@divi/module-utils';
 import { processFontIcon } from '@divi/icon-library';
 
 // Local Dependencies.
 import { ChildModuleEditProps } from './types';
-import { defaultAttrs } from './constants';
-import { defaultAttrs as parentDefaultAttrs } from '../parent-module/constants';
 import { ModuleStyles } from './styles';
 import { moduleClassnames } from './module-classnames';
 
@@ -25,58 +26,23 @@ import { moduleClassnames } from './module-classnames';
 const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
   const {
     attrs,
+    elements,
     id,
     name,
     parentAttrs,
   } = props;
 
-  // Merge parent module default values with parent module attributes.
-  const parentModuleAttrs = mergeAttrs({
-    defaultAttrs: parentDefaultAttrs,
+  const moduleAttrs = mergeAttrs({
+    defaultAttrs: attrs,
     attrs: parentAttrs,
   });
 
-  // Merge module default values with module attributes.
-  const childModuleAttrs = mergeAttrs({
-    defaultAttrs,
-    attrs,
-  });
-
-  const moduleAttrs = {
-    ...childModuleAttrs,
-    icon: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.icon,
-      attrs: childModuleAttrs?.icon,
-    }),
-    iconColor: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.iconColor,
-      attrs: childModuleAttrs?.iconColor,
-    }),
-    iconSize: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.iconSize,
-      attrs: childModuleAttrs?.iconSize,
-    }),
-    titleFont: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.titleFont,
-      attrs: childModuleAttrs?.titleFont,
-    }),
-    text: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.text,
-      attrs: childModuleAttrs?.text,
-    }),
-    bodyFont: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.bodyFont,
-      attrs: childModuleAttrs?.bodyFont,
-    }),
-  };
-
-  const icon    = moduleAttrs?.icon?.desktop?.value;
-  const title   = moduleAttrs?.title?.desktop?.value;
-  const content = moduleAttrs?.content?.desktop?.value;
+  const icon = getAttrByMode(moduleAttrs?.icon?.decoration?.icon);
 
   return (
     <ModuleContainer
       attrs={moduleAttrs}
+      elements={elements}
       componentType="edit"
       id={id}
       name={name}
@@ -90,11 +56,14 @@ const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
         </div>
       )}
       <div className="child-module__content-container">
-        <div className="child-module__title">{title}</div>
-        <div
-          className="child-module__content"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        {elements.render({
+          attrName: 'title',
+        })}
+        <div className="child-module__content">
+          {elements.render({
+            attrName: 'content',
+          })}
+        </div>
       </div>
     </ModuleContainer>
   );

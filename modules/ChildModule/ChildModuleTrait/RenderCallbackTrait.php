@@ -19,7 +19,7 @@ use ET\Builder\Packages\Module\Options\Background\BackgroundComponents;
 use ET\Builder\Framework\Utility\HTMLUtility;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
 use ET\Builder\Packages\IconLibrary\IconFont\Utils;
-use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
+use ET\Builder\Packages\Module\Options\Element\ElementComponents;
 
 trait RenderCallbackTrait {
 	use ModuleClassnamesTrait;
@@ -30,44 +30,29 @@ trait RenderCallbackTrait {
 	 *
 	 * @since ??
 	 *
-	 * @param array     $block_attributes Block attributes that were saved by VB.
-	 * @param string    $content          Block content.
-	 * @param \WP_Block $block            Parsed block object that being rendered.
+	 * @param array          $attrs Block attributes that were saved by VB.
+	 * @param string         $content          Block content.
+	 * @param WP_Block       $block            Parsed block object that being rendered.
+	 * @param ModuleElements $elements         ModuleElements instance.
 	 *
-	 * @return string HTML rendered of Blurb module.
+	 * @return string HTML rendered of Child module.
 	 */
-	public static function render_callback( $block_attributes, $content, $block ) {
+	public static function render_callback( $attrs, $content, $block, $elements ) {
 		$parent = BlockParserStore::get_parent( $block->parsed_block['id'], $block->parsed_block['storeInstance'] );
 
 		$parent_attrs = $parent->attrs ?? [];
 
-		$parent_default_attributes = ModuleRegistration::get_default_attrs( 'example/parent-module' );
-		$parent_attrs_with_default = array_replace_recursive( $parent_default_attributes, $parent_attrs );
-		$parent_attrs_to_merge     = [
-			'icon'      => $parent_attrs_with_default['icon'] ?? [],
-			'iconColor' => $parent_attrs_with_default['iconColor'] ?? [],
-			'iconSize'  => $parent_attrs_with_default['iconSize'] ?? [],
-			'titleFont' => $parent_attrs_with_default['titleFont'] ?? [],
-			'text'      => $parent_attrs_with_default['text'] ?? [],
-			'bodyFont'  => $parent_attrs_with_default['bodyFont'] ?? [],
+		$parent_attrs_to_merge = [
+			'module'  => $parent_attrs['module'] ?? [],
+			'icon'    => $parent_attrs['icon']['decoration']['icon'] ?? [],
+			'title'   => $parent_attrs['title']['decoration']['font'] ?? [],
+			'content' => $parent_attrs['content']['decoration']['bodyFont'] ?? [],
 		];
 
-		$default_attributes = ModuleRegistration::get_default_attrs( 'example/child-module' );
-		$module_attrs       = array_replace_recursive( $parent_attrs_to_merge, $default_attributes, $block_attributes );
-
-		$background_component = BackgroundComponents::component(
-			[
-				'attr'          => $module_attrs['background'] ?? [],
-				'id'            => $block->parsed_block['id'],
-
-				// FE only.
-				'orderIndex'    => $block->parsed_block['orderIndex'],
-				'storeInstance' => $block->parsed_block['storeInstance'],
-			]
-		);
+		$module_attrs = array_replace_recursive( $parent_attrs_to_merge, $attrs );
 
 		// Icon.
-		$icon_value = $module_attrs['icon']['desktop']['value'] ?? [];
+		$icon_value = $module_attrs['icon']['decoration']['icon']['desktop']['value'] ?? [];
 		$icon       = HTMLUtility::render(
 			[
 				'tag'               => 'div',
@@ -80,28 +65,16 @@ trait RenderCallbackTrait {
 		);
 
 		// Title.
-		$title_text = $module_attrs['title']['desktop']['value'] ?? '';
-		$title      = HTMLUtility::render(
+		$title = $elements->render(
 			[
-				'tag'               => 'div',
-				'attributes'        => [
-					'class' => 'child-module__title',
-				],
-				'childrenSanitizer' => 'esc_html',
-				'children'          => $title_text,
+				'attrName' => 'title',
 			]
 		);
 
 		// Content.
-		$content_text = $module_attrs['content']['desktop']['value'] ?? '';
-		$content      = HTMLUtility::render(
+		$content = $elements->render(
 			[
-				'tag'               => 'div',
-				'attributes'        => [
-					'class' => 'child-module__content',
-				],
-				'childrenSanitizer' => 'wp_kses_post',
-				'children'          => $content_text,
+				'attrName' => 'content',
 			]
 		);
 
@@ -128,12 +101,22 @@ trait RenderCallbackTrait {
 				'name'               => $block->block_type->name,
 				'moduleCategory'     => $block->block_type->category,
 				'attrs'              => $module_attrs,
+				'elements'           => $elements,
 				'classnamesFunction' => [ self::class, 'module_classnames' ],
 				'stylesComponent'    => [ self::class, 'module_styles' ],
 				'parentAttrs'        => $parent_attrs,
 				'parentId'           => $parent->id ?? '',
 				'parentName'         => $parent->blockName ?? '',
-				'children'           => $background_component . $icon . $content_container,
+				'children'           => ElementComponents::component(
+					[
+						'attrs'         => $attrs['module']['decoration'] ?? [],
+						'id'            => $block->parsed_block['id'],
+
+						// FE only.
+						'orderIndex'    => $block->parsed_block['orderIndex'],
+						'storeInstance' => $block->parsed_block['storeInstance'],
+					]
+				) . $icon . $content_container,
 			]
 		);
 	}
