@@ -50,7 +50,7 @@ export const SettingsContent = ({
     <LinkGroup />
     <BackgroundGroup />
     <AdminLabelGroup 
-      defaultGroupAttr={defaultSettingsAttrs?.module.meta?.adminLabel}
+      defaultGroupAttr={defaultSettingsAttrs?.module?.meta?.adminLabel}
     />
   </React.Fragment>
 );

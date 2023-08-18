@@ -6,11 +6,11 @@ import {
   ModuleContainer,
   ElementComponents,
 } from '@divi/module';
+import { useFetch } from '@divi/rest';
 
 // Local Dependencies.
 import { DynamicModuleEditProps } from './types';
 import { ModuleStyles } from './styles';
-import { useGetRecentPosts } from './hooks/get-recent-posts';
 import { map } from 'lodash';
 import { __ } from '@wordpress/i18n';
 import { ModuleScriptData } from './module-script-data';
@@ -33,7 +33,11 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
     elements,
   } = props;
 
-  const {getPosts, posts, isLoading} = useGetRecentPosts();
+  const {
+    fetch,
+    response,
+    isLoading,
+  } = useFetch<any[]>([]);
 
   const PostTitleHeading = attrs?.postTitle?.decoration?.font?.font?.desktop?.value?.headingLevel;
   const postsNumber = parseInt(attrs?.postItems?.innerContent?.desktop?.value?.postsNumber);
@@ -42,7 +46,13 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
    * Fetches new Portfolio Posts on parameter changes.
    */
   useEffect(() => {
-    getPosts(postsNumber);
+    fetch({
+      restRoute: `/wp/v2/posts?context=view&per_page=${postsNumber}`,
+      method:    'GET',
+    }).
+    catch((error) => {
+      console.error(error);
+    });
   }, [postsNumber]);
 
   return (
@@ -69,7 +79,7 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
               })}
               <div className="dynamic-module__post-items">
                 {
-                  map(posts, (post) => (
+                  map(response, (post) => (
                       <div className="dynamic-module__post-item" key={post?.id}>
                         <PostTitleHeading className="dynamic-module__post-item-title">
                           <a href={post?.link} onClick={() => false}>{post?.title?.rendered}</a>
@@ -85,7 +95,7 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
         )
       }
       {
-        ! isLoading && posts.length < 1 && (
+        ! isLoading && response.length < 1 && (
           <div>{__('No post found.', 'd5-extension-example-modules')}</div>
         )
       }

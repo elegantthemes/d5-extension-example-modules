@@ -17,6 +17,11 @@
             }
           }
         }
+      },
+      "styleProps": {
+        "bodyFont": {
+          "selector": "{{selector}} .dynamic-module__post-item-content"
+        }
       }
     },
     "title": {

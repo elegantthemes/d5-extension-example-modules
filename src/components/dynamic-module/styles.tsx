@@ -5,22 +5,6 @@ import React, { ReactElement } from 'react';
 import {
   StyleContainer,
   StylesProps,
-  BackgroundStyle,
-  SizingStyle,
-  SpacingStyle,
-  BorderStyle,
-  BoxShadowStyle,
-  FiltersStyle,
-  TransformStyle,
-  AnimationStyle,
-  CssStyle,
-  DisabledOnStyle,
-  OverflowStyle,
-  PositionStyle,
-  ZIndexStyle,
-  TextStyle,
-  FontStyle,
-  FontBodyStyle,
 } from '@divi/module';
 
 // Local dependencies.
