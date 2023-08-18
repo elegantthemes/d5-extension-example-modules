@@ -1,37 +1,14 @@
-// Divi dependencies.
 import { ModuleEditProps } from '@divi/module-library';
 import {
-  AdminLabelGroupAttr,
-  AnimationGroupAttr,
-  BackgroundGroupAttr,
-  BorderGroupAttr,
-  BoxShadowGroupAttr,
   CssAttr,
-  DisabledOnGroupAttr,
-  FiltersGroupAttr,
-  FontBodyGroupAttr,
-  FontGroupAttr,
-  FormatAttr,
-  IconFontGroupAttr,
+  FormatBreakpointStateAttr,
   IdClassesGroupAttr,
   InternalAttrs,
   LinkGroupAttr,
-  OverflowGroupAttr,
-  PositionGroupAttr,
-  ScrollGroupAttr,
-  SizingGroupAttr,
-  SpacingGroupAttr,
-  StickyGroupAttr,
+  ModuleMetaAttrs,
+  PickedElementAttrs,
   TextGroupAttr,
-  TransformGroupAttr,
-  TransitionGroupAttr,
-  ZIndexGroupAttr,
 } from '@divi/types';
-
-export interface Image {
-  src?: string;
-  alt?: string;
-}
 
 export interface ParentModuleCssAttr extends CssAttr {
   contentContainer?: string;
@@ -40,40 +17,54 @@ export interface ParentModuleCssAttr extends CssAttr {
   icon?: string;
 }
 
-export type ParentModuleCssGroupAttr = FormatAttr<ParentModuleCssAttr>;
+export type ParentModuleCssGroupAttr = FormatBreakpointStateAttr<ParentModuleCssAttr>;
 
 export interface ParentModuleAttrs extends InternalAttrs {
 
-  // Content tab.
-  icon?: IconFontGroupAttr;
-  link?: LinkGroupAttr;
-  background?: BackgroundGroupAttr;
-  adminLabel?: AdminLabelGroupAttr;
-
-  // Design tab.
-  iconColor?: FormatAttr<string>;
-  iconSize?: FormatAttr<string>;
-  text?: TextGroupAttr;
-  titleFont?: FontGroupAttr;
-  bodyFont?: FontBodyGroupAttr;
-  sizing?: SizingGroupAttr;
-  spacing?: SpacingGroupAttr;
-  border?: BorderGroupAttr;
-  boxShadow?: BoxShadowGroupAttr;
-  filter?: FiltersGroupAttr;
-  transform?: TransformGroupAttr;
-  animation?: AnimationGroupAttr;
-
-  // Advanced tab.
-  module?: IdClassesGroupAttr;
+  // CSS options is used across multiple elements inside the module thus it deserves its own top property.
   css?: ParentModuleCssGroupAttr;
-  disabledOn?: DisabledOnGroupAttr;
-  overflow?: OverflowGroupAttr;
-  transition?: TransitionGroupAttr;
-  position?: PositionGroupAttr;
-  zIndex?: ZIndexGroupAttr;
-  sticky?: StickyGroupAttr;
-  scroll?: ScrollGroupAttr;
+
+  // Module
+  module?: {
+    meta?: ModuleMetaAttrs;
+    advanced?: {
+      link?: LinkGroupAttr;
+      htmlAttributes?: IdClassesGroupAttr;
+      text?: TextGroupAttr;
+    };
+    decoration?: PickedElementAttrs<
+      'animation' |
+      'background' |
+      'border' |
+      'boxShadow' |
+      'disabledOn' |
+      'filters' |
+      'overflow' |
+      'position' |
+      'scroll' |
+      'sizing' |
+      'spacing' |
+      'sticky' |
+      'transform' |
+      'transition' |
+      'zIndex'
+    >;
+  };
+
+  // Title
+  title?: {
+    decoration?: PickedElementAttrs<'font'>;
+  };
+
+  // Content
+  content?: {
+    decoration?: PickedElementAttrs<'bodyFont'>;
+  };
+
+  // Icon
+  icon?: {
+    decoration?: PickedElementAttrs<'icon'>;
+  }
 }
 
 export type ParentModuleEditProps = ModuleEditProps<ParentModuleAttrs>;

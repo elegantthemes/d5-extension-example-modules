@@ -24,8 +24,8 @@ import { GroupContainer } from '@divi/modal';
 import {StaticModuleAttrs} from "./types";
 
 export const SettingsDesign = ({
-                                 defaultSettingsAttrs,
-                               }: SettingsProps<StaticModuleAttrs>): ReactElement => (
+   defaultSettingsAttrs,
+ }: SettingsProps<StaticModuleAttrs>): ReactElement => (
   <React.Fragment>
     <GroupContainer id="imageStyle" title={__('Image Style', 'd5-extension-example-modules')}>
       <BorderGroup

@@ -25,7 +25,7 @@ trait CustomCssTrait {
 	 * @since ??
 	 */
 	public static function custom_css() {
-		return \WP_Block_Type_Registry::get_instance()->get_registered( 'example/d4-module' )->customCssFields;
+		return \WP_Block_Type_Registry::get_instance()->get_registered( 'example/parent-module' )->customCssFields;
 	}
 
 }

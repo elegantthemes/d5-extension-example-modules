@@ -5,19 +5,7 @@ import React, { ReactElement } from 'react';
 import {
   StyleContainer,
   StylesProps,
-  BackgroundStyle,
-  SizingStyle,
-  SpacingStyle,
-  BorderStyle,
-  BoxShadowStyle,
-  FiltersStyle,
-  TransformStyle,
-  AnimationStyle,
   CssStyle,
-  DisabledOnStyle,
-  OverflowStyle,
-  PositionStyle,
-  ZIndexStyle,
 } from '@divi/module';
 
 // Local dependencies.
@@ -31,6 +19,7 @@ import { cssFields } from './custom-css';
  */
  const ModuleStyles = ({
   attrs,
+  elements,
   settings,
   orderClass,
   mode,
@@ -38,63 +27,30 @@ import { cssFields } from './custom-css';
   noStyleTag,
 }: StylesProps<ParentModuleAttrs>): ReactElement => (
   <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
-    <BackgroundStyle
-      selector={orderClass}
-      attr={attrs?.background}
-    />
-    <SizingStyle
-      selector={orderClass}
-      attr={attrs?.sizing}
-    />
-    <SpacingStyle
-      selector={orderClass}
-      attr={attrs?.spacing}
-    />
-    <BorderStyle
-      selector={orderClass}
-      attr={attrs?.border}
+      {/* Module */}
+      {elements.style({
+        attrName: 'module',
+        styleProps: {
+          disabledOn: {
+            disabledModuleVisibility: settings?.disabledModuleVisibility,
+          },
+        },
+      })}
+      <CssStyle
+        selector={orderClass}
+        attr={attrs.css}
+        cssFields={cssFields}
+      />
 
-      // Once module highlight no longer use border, drop this important.
-      important
-    />
-    <BoxShadowStyle
-      selector={orderClass}
-      attr={attrs?.boxShadow}
-    />
-    <FiltersStyle
-      selector={orderClass}
-      attr={attrs?.filter}
-    />
-    <TransformStyle
-      selector={orderClass}
-      attr={attrs?.transform}
-    />
-    <AnimationStyle
-      selector={orderClass}
-      attr={attrs?.animation}
-    />
-    <CssStyle
-      selector={orderClass}
-      attr={attrs?.css}
-      cssFields={cssFields}
-    />
-    <DisabledOnStyle
-      selector={orderClass}
-      attr={attrs?.disabledOn}
-      disabledModuleVisibility={settings?.disabledModuleVisibility}
-    />
-    <OverflowStyle
-      selector={orderClass}
-      attr={attrs?.overflow}
-    />
-    <PositionStyle
-      selector={orderClass}
-      attr={attrs?.position}
-    />
-    <ZIndexStyle
-      selector={orderClass}
-      attr={attrs?.zIndex}
-    />
+      {/* Title */}
+      {elements.style({
+        attrName: 'title',
+      })}
+
+      {/* Content */}
+      {elements.style({
+        attrName: 'content',
+      })}
   </StyleContainer>
 );
 

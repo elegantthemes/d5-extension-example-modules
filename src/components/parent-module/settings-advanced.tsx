@@ -3,13 +3,13 @@ import React, { ReactElement } from 'react';
 
 // Divi dependencies.
 import {
-  Attributes,
-  Css,
-  IdClasses,
+  AttributesGroup,
+  CssGroup,
+  IdClassesGroup,
   PositionGroup,
   ScrollGroup,
-  Transition,
-  Visibility,
+  TransitionGroup,
+  VisibilitySettingsGroup,
 } from '@divi/module';
 
 // Local dependencies.
@@ -17,14 +17,14 @@ import { cssFields } from './custom-css';
 
 export const SettingsAdvanced = (): ReactElement => (
   <React.Fragment>
-    <IdClasses />
-    <Css
+    <IdClassesGroup />
+    <CssGroup
       mainSelector=".et_pb_static_module"
       cssFields={cssFields}
     />
-    <Attributes />
-    <Visibility />
-    <Transition />
+    <AttributesGroup />
+    <VisibilitySettingsGroup />
+    <TransitionGroup />
     <PositionGroup />
     <ScrollGroup />
   </React.Fragment>
