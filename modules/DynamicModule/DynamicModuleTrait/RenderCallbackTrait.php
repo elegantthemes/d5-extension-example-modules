@@ -46,11 +46,6 @@ trait RenderCallbackTrait {
 			[
 				'attrs'         => $attrs['module']['decoration'] ?? [],
 				'id'            => $block->parsed_block['id'],
-				'boxShadow'     => [
-					'settings' => [
-						'overlay' => true,
-					],
-				],
 
 				// FE only.
 				'orderIndex'    => $block->parsed_block['orderIndex'],
@@ -170,7 +165,22 @@ trait RenderCallbackTrait {
 				'parentAttrs'         => $parent_attrs,
 				'parentId'            => $parent->id ?? '',
 				'parentName'          => $parent->blockName ?? '',
-				'children'            => $background_component . $title . $posts_container,
+				'children'            => [
+					$background_component,
+					HTMLUtility::render(
+						[
+							'tag'               => 'div',
+							'attributes'        => [
+								'class' => 'dynamic-module__inner',
+							],
+							'childrenSanitizer' => 'et_core_esc_previously',
+							'children'          => [
+								$title,
+								$posts_container,
+							],
+						]
+					),
+				],
 			]
 		);
 	}

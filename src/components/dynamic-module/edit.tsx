@@ -2,7 +2,10 @@
 import React, { ReactElement, useEffect } from 'react';
 
 // Divi Dependencies.
-import { ModuleContainer } from '@divi/module';
+import { 
+  ModuleContainer,
+  ElementComponents,
+} from '@divi/module';
 
 // Local Dependencies.
 import { DynamicModuleEditProps } from './types';
@@ -56,21 +59,27 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
       {
         ! isLoading && (
           <>
-            {elements.render({
-              attrName: 'title',
-            })}
-            <div className="dynamic-module__post-items">
-              {
-                map(posts, (post) => (
-                    <div className="dynamic-module__post-item" key={post?.id}>
-                      <PostTitleHeading className="dynamic-module__post-item-title">
-                        <a href={post?.link} onClick={() => false}>{post?.title?.rendered}</a>
-                      </PostTitleHeading>
-                      <div className="dynamic-module__post-item-content" dangerouslySetInnerHTML={{__html: post?.excerpt?.rendered}} />
-                    </div>
+            <ElementComponents
+              attrs={attrs?.module?.decoration ?? {}}
+              id={id}
+            />
+            <div className="dynamic-module__inner">
+              {elements.render({
+                attrName: 'title',
+              })}
+              <div className="dynamic-module__post-items">
+                {
+                  map(posts, (post) => (
+                      <div className="dynamic-module__post-item" key={post?.id}>
+                        <PostTitleHeading className="dynamic-module__post-item-title">
+                          <a href={post?.link} onClick={() => false}>{post?.title?.rendered}</a>
+                        </PostTitleHeading>
+                        <div className="dynamic-module__post-item-content" dangerouslySetInnerHTML={{__html: post?.excerpt?.rendered}} />
+                      </div>
+                    )
                   )
-                )
-              }
+                }
+              </div>
             </div>
           </>
         )
