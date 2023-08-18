@@ -17,10 +17,10 @@ use ET\Builder\Packages\Module\Options\Text\TextClassnames;
 trait ModuleClassnamesTrait {
 
 	/**
-	 * Module classnames function for call to action module.
+	 * Module classnames function for Parent module.
 	 *
 	 * This function is equivalent of JS function moduleClassnames located in
-	 * visual-builder/packages/module-library/src/components/cta/module-classnames.ts.
+	 * visual-builder/packages/module-library/src/components/parent-module/module-classnames.ts.
 	 *
 	 * @since ??
 	 *

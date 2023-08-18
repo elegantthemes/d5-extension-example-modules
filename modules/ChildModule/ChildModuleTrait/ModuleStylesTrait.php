@@ -21,12 +21,13 @@ use MEE\Modules\ChildModule\ChildModule;
 trait ModuleStylesTrait {
 
 	use CustomCssTrait;
+	use StyleDeclarationTrait;
 
 	/**
 	 * Child Module's style components.
 	 *
 	 * This function is equivalent of JS function ModuleStyles located in
-	 * visual-builder/packages/module-library/src/components/cta/styles.tsx.
+	 * visual-builder/packages/module-library/src/components/child-module/styles.tsx.
 	 *
 	 * @param array $args {
 	 *     An array of arguments.
@@ -51,8 +52,6 @@ trait ModuleStylesTrait {
 		$elements     = $args['elements'];
 		$settings     = $args['settings'] ?? [];
 		$parent_attrs = $args['parentAttrs'] ?? [];
-
-		$icon_attrs = array_replace_recursive( $parent_attrs['icon'] ?? [], $attrs['icon'] ?? [] );
 
 		$icon_selector              = "{$order_class} .child-module__icon.et-pb-icon";
 		$content_container_selector = "{$order_class} .child-module__content-container";
@@ -107,8 +106,22 @@ trait ModuleStylesTrait {
 					CommonStyle::style(
 						[
 							'selector'            => $icon_selector,
-							'attr'                => $icon_attrs['decoration']['icon'] ?? [],
-							'declarationFunction' => [ ChildModule::class, 'icon_style_declaration' ],
+							'attr'                => $attrs['icon']['innerContent'] ?? $parent_attrs['icon']['innerContent'],
+							'declarationFunction' => [ ChildModule::class, 'icon_font_declaration' ],
+						]
+					),
+					CommonStyle::style(
+						[
+							'selector' => $icon_selector,
+							'attr'     => $attrs['icon']['advanced']['color'] ?? $parent_attrs['icon']['advanced']['color'],
+							'property' => 'color',
+						]
+					),
+					CommonStyle::style(
+						[
+							'selector' => $icon_selector,
+							'attr'     => $attrs['icon']['advanced']['size'] ?? $parent_attrs['icon']['advanced']['size'],
+							'property' => 'font-size',
 						]
 					),
 				],

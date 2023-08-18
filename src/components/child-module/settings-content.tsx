@@ -60,7 +60,7 @@ export const SettingsContent = ({
         title={__('Icon', 'd5-extension-example-modules')}
       >
         <FieldContainer
-          attrName="icon.decoration.icon"
+          attrName="icon.innerContent"
           label={__('Icon', 'd5-extension-example-modules')}
           description={__('Pick an Icon', 'd5-extension-example-modules')}
           sticky={false}

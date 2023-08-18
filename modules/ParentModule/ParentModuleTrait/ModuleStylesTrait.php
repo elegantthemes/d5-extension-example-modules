@@ -15,17 +15,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 use ET\Builder\FrontEnd\Module\Style;
 use ET\Builder\Packages\Module\Layout\Components\StyleCommon\CommonStyle;
 use ET\Builder\Packages\Module\Options\Css\CssStyle;
+use ET\Builder\Packages\ModuleLibrary\Portfolio\PortfolioModuleTraits\StyleDeclarationTrait;
 use MEE\Modules\ChildModule\ChildModule;
 
 trait ModuleStylesTrait {
 
 	use CustomCssTrait;
+	use StyleDeclarationTrait;
 
 	/**
 	 * Child Module's style components.
 	 *
 	 * This function is equivalent of JS function ModuleStyles located in
-	 * visual-builder/packages/module-library/src/components/cta/styles.tsx.
+	 * visual-builder/packages/module-library/src/components/parent-module/styles.tsx.
 	 *
 	 * @param array $args {
 	 *     An array of arguments.
@@ -45,10 +47,13 @@ trait ModuleStylesTrait {
 	 * @since ??
 	 */
 	public static function module_styles( $args ) {
-		$attrs       = $args['attrs'] ?? [];
-		$order_class = $args['orderClass'];
-		$elements    = $args['elements'];
-		$settings    = $args['settings'] ?? [];
+		$attrs        = $args['attrs'] ?? [];
+		$parent_attrs = $args['parentAttrs'] ?? [];
+		$order_class  = $args['orderClass'];
+		$elements     = $args['elements'];
+		$settings     = $args['settings'] ?? [];
+
+		$icon_selector = "{$order_class} .et-pb-icon";
 
 		Style::add(
 			[
@@ -87,6 +92,29 @@ trait ModuleStylesTrait {
 					$elements->style(
 						[
 							'attrName' => 'content',
+						]
+					),
+
+					// Icon.
+					CommonStyle::style(
+						[
+							'selector'            => $icon_selector,
+							'attr'                => $attrs['icon']['innerContent'] ?? [],
+							'declarationFunction' => [ ChildModule::class, 'icon_font_declaration' ],
+						]
+					),
+					CommonStyle::style(
+						[
+							'selector' => $icon_selector,
+							'attr'     => $attrs['icon']['advanced']['color'] ?? [],
+							'property' => 'color',
+						]
+					),
+					CommonStyle::style(
+						[
+							'selector' => $icon_selector,
+							'attr'     => $attrs['icon']['advanced']['size'] ?? [],
+							'property' => 'font-size',
 						]
 					),
 				],

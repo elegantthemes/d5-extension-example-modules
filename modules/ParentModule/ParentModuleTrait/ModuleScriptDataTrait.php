@@ -55,30 +55,5 @@ trait ModuleScriptDataTrait {
 				'storeInstance' => $store_instance,
 			]
 		);
-
-		MultiViewScriptData::set(
-			[
-				'id'            => $id,
-				'name'          => $name,
-				'hoverSelector' => $selector,
-				'setContent'    => [
-					[
-						'selector'      => $selector . ' .child-module__title',
-						'data'          => $attrs['title']['innerContent'] ?? [],
-						'valueResolver' => function( $value ) {
-							return $value ?? '';
-						},
-					],
-					[
-						'selector'      => $selector . ' .child-module__content',
-						'data'          => $attrs['content']['innerContent'] ?? [],
-						'valueResolver' => function( $value ) {
-							return $value ?? '';
-						},
-						'sanitizer'     => 'et_core_esc_previously',
-					],
-				],
-			]
-		);
 	}
 }

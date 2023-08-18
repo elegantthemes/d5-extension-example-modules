@@ -4,33 +4,39 @@ export const defaultAttributes: ParentModuleAttrs = {};
 
 export const customIcon: ParentModuleAttrs = {
   icon: {
-    decoration: {
-      icon: {
-        desktop: {
-          value: {
-            unicode: '&#x39;',
-            type: 'divi',
-            weight: '400',
-          },
-        },
+    innerContent: {
+      desktop: {
+        value: {
+          unicode: '&#x39;',
+          type: 'divi',
+          weight: '400',
+        }
       }
-    }
+    },
   },
 };
 
 export const iconStyle: ParentModuleAttrs = {
   ...defaultAttributes,
   icon: {
-    decoration: {
-      icon: {
+    innerContent: {
+      desktop: {
+        value: {
+          unicode: '&#x39;',
+          type: 'divi',
+          weight: '400',
+        }
+      }
+    },
+    advanced: {
+      color: {
         desktop: {
-          value: {
-            unicode: '&#x39;',
-            type: 'divi',
-            weight: '400',
-            color: '#ae16f0',
-            size: '27px',
-          },
+          value: '#ae16f0',
+        },
+      },
+      size: {
+        desktop: {
+          value: '27px',
         },
       }
     }

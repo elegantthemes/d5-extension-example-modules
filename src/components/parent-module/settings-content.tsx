@@ -36,9 +36,9 @@ export const SettingsContent = ({
       title={__('Icon', 'd5-extension-example-modules')}
     >
       <FieldContainer
-        attrName="icon.decoration.icon"
+        attrName="icon.innerContent"
         label={__('Icon', 'd5-extension-example-modules')}
-        description={__('Upload an Image', 'd5-extension-example-modules')}
+        description={__('Upload an Icon', 'd5-extension-example-modules')}
         sticky={false}
         defaultAttr={defaultSettingsAttrs?.icon}
       >

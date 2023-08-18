@@ -2,6 +2,7 @@ import { ModuleEditProps } from '@divi/module-library';
 import {
   CssAttr,
   FormatBreakpointStateAttr,
+  IconFontAttr,
   IdClassesGroupAttr,
   InternalAttrs,
   LinkGroupAttr,
@@ -65,9 +66,14 @@ export interface ChildModuleAttrs extends InternalAttrs {
   };
 
   // Icon
+  // Icon
   icon?: {
-    decoration?: PickedElementAttrs<'icon'>;
-  }
+    innerContent?: FormatBreakpointStateAttr<IconFontAttr>;
+    advanced?: {
+      color?: FormatBreakpointStateAttr<string>;
+      size?: FormatBreakpointStateAttr<string>;
+    };
+  };
 }
 
 export type ChildModuleEditProps = ModuleEditProps<ChildModuleAttrs, ParentModuleAttrs>;

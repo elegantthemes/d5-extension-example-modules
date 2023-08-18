@@ -22,33 +22,39 @@ export const defaultAttributes: ChildModuleAttrs = {
 export const customIcon: ChildModuleAttrs = {
   ...defaultAttributes,
   icon: {
-    decoration: {
-      icon: {
-        desktop: {
-          value: {
-            unicode: '&#x39;',
-            type: 'divi',
-            weight: '400',
-          },
-        },
+    innerContent: {
+      desktop: {
+        value: {
+          unicode: '&#x39;',
+          type: 'divi',
+          weight: '400',
+        }
       }
-    }
+    },
   },
 };
 
 export const iconStyle: ChildModuleAttrs = {
   ...defaultAttributes,
   icon: {
-    decoration: {
-      icon: {
+    innerContent: {
+      desktop: {
+        value: {
+          unicode: '&#x39;',
+          type: 'divi',
+          weight: '400',
+        }
+      }
+    },
+    advanced: {
+      color: {
         desktop: {
-          value: {
-            unicode: '&#x39;',
-            type: 'divi',
-            weight: '400',
-            color: '#ae16f0',
-            size: '28px',
-          },
+          value: '#ae16f0',
+        },
+      },
+      size: {
+        desktop: {
+          value: '28px',
         },
       }
     }

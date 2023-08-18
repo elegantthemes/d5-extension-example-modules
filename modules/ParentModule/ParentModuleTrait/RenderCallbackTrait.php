@@ -14,10 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
-use ET\Builder\Packages\Module\Module;
-use ET\Builder\FrontEnd\ModuleOrderIndex\ModuleOrderIndex;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
+use ET\Builder\FrontEnd\ModuleOrderIndex\ModuleOrderIndex;
+use ET\Builder\Packages\Module\Module;
 use ET\Builder\Packages\Module\Options\Element\ElementComponents;
+use MEE\Modules\ChildModule\ChildModuleTrait\ModuleScriptDataTrait;
 use MEE\Modules\ParentModule\ParentModule;
 
 trait RenderCallbackTrait {

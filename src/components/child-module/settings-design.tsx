@@ -36,8 +36,8 @@ export const SettingsDesign = ({
  }: SettingsProps<ChildModuleAttrs, ParentModuleAttrs>): ReactElement => {
 
   const defaultIconAttrs = mergeAttrs({
-    defaultAttrs: defaultSettingsAttrs?.icon?.decoration?.asMutable({deep: true}) ?? {},
-    attrs: parentAttrs?.icon?.decoration?.asMutable({deep: true}) ?? {},
+    defaultAttrs: defaultSettingsAttrs?.icon?.advanced?.asMutable({deep: true}) ?? {},
+    attrs: parentAttrs?.icon?.advanced?.asMutable({deep: true}) ?? {},
   });
 
   const defaultTextAttrs = mergeAttrs({
@@ -59,8 +59,7 @@ export const SettingsDesign = ({
     <React.Fragment>
       <GroupContainer id="icon" title={__('Icon Style', 'd5-extension-example-modules')}>
         <FieldContainer
-          attrName="icon.decoration.icon"
-          subName="color"
+          attrName="icon.advanced.color"
           label={__('Icon Color', 'd5-extension-example-modules')}
           description={__('Input your value to action title here.', 'd5-extension-example-modules')}
           sticky={false}
@@ -69,8 +68,7 @@ export const SettingsDesign = ({
           <ColorPickerContainer />
         </FieldContainer>
         <FieldContainer
-          attrName="icon.decoration.icon"
-          subName="size"
+          attrName="icon.advanced.size"
           label={__('Icon Size', 'd5-extension-example-modules')}
           description={__('Input your value to action title here.', 'd5-extension-example-modules')}
           sticky={false}

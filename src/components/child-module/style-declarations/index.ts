@@ -1,1 +1,1 @@
-export { iconStyleDeclaration } from './icon-style';
+export { iconFontDeclaration } from './icon-font';

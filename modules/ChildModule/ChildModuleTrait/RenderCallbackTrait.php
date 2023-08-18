@@ -15,14 +15,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
 use ET\Builder\Packages\Module\Module;
-use ET\Builder\Packages\Module\Options\Background\BackgroundComponents;
 use ET\Builder\Framework\Utility\HTMLUtility;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
 use ET\Builder\Packages\IconLibrary\IconFont\Utils;
 use ET\Builder\Packages\Module\Options\Element\ElementComponents;
+use MEE\Modules\ChildModule\ChildModule;
 
 trait RenderCallbackTrait {
 	use ModuleClassnamesTrait;
+	use ModuleScriptDataTrait;
 	use ModuleStylesTrait;
 
 	/**
@@ -42,17 +43,8 @@ trait RenderCallbackTrait {
 
 		$parent_attrs = $parent->attrs ?? [];
 
-		$parent_attrs_to_merge = [
-			'module'  => $parent_attrs['module'] ?? [],
-			'icon'    => $parent_attrs['icon']['decoration']['icon'] ?? [],
-			'title'   => $parent_attrs['title']['decoration']['font'] ?? [],
-			'content' => $parent_attrs['content']['decoration']['bodyFont'] ?? [],
-		];
-
-		$module_attrs = array_replace_recursive( $parent_attrs_to_merge, $attrs );
-
 		// Icon.
-		$icon_value = $module_attrs['icon']['decoration']['icon']['desktop']['value'] ?? [];
+		$icon_value = $attrs['icon']['innerContent']['desktop']['value'] ?? $parent_attrs['icon']['innerContent']['desktop']['value'];
 		$icon       = HTMLUtility::render(
 			[
 				'tag'               => 'div',
@@ -93,21 +85,22 @@ trait RenderCallbackTrait {
 		return Module::render(
 			[
 				// FE only.
-				'orderIndex'         => $block->parsed_block['orderIndex'],
-				'storeInstance'      => $block->parsed_block['storeInstance'],
+				'orderIndex'          => $block->parsed_block['orderIndex'],
+				'storeInstance'       => $block->parsed_block['storeInstance'],
 
 				// VB equivalent.
-				'id'                 => $block->parsed_block['id'],
-				'name'               => $block->block_type->name,
-				'moduleCategory'     => $block->block_type->category,
-				'attrs'              => $module_attrs,
-				'elements'           => $elements,
-				'classnamesFunction' => [ self::class, 'module_classnames' ],
-				'stylesComponent'    => [ self::class, 'module_styles' ],
-				'parentAttrs'        => $parent_attrs,
-				'parentId'           => $parent->id ?? '',
-				'parentName'         => $parent->blockName ?? '',
-				'children'           => ElementComponents::component(
+				'id'                  => $block->parsed_block['id'],
+				'name'                => $block->block_type->name,
+				'moduleCategory'      => $block->block_type->category,
+				'attrs'               => $attrs,
+				'elements'            => $elements,
+				'classnamesFunction'  => [ ChildModule::class, 'module_classnames' ],
+				'scriptDataComponent' => [ ChildModule::class, 'module_script_data' ],
+				'stylesComponent'     => [ ChildModule::class, 'module_styles' ],
+				'parentAttrs'         => $parent_attrs,
+				'parentId'            => $parent->id ?? '',
+				'parentName'          => $parent->blockName ?? '',
+				'children'            => ElementComponents::component(
 					[
 						'attrs'         => $attrs['module']['decoration'] ?? [],
 						'id'            => $block->parsed_block['id'],

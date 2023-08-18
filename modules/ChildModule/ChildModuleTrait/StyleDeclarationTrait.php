@@ -17,9 +17,9 @@ use ET\Builder\Packages\StyleLibrary\Utils\StyleDeclarations;
 
 trait StyleDeclarationTrait {
 	/**
-	 * Icon style declaration.
+	 * Icon Font declaration.
 	 *
-	 * This function will declare icon style for Toggle module.
+	 * This function will declare icon font for Child module.
 	 *
 	 * @param array $params {
 	 *     An array of arguments.
@@ -32,7 +32,7 @@ trait StyleDeclarationTrait {
 	 * @return string
 	 * @since ??
 	 */
-	public static function icon_style_declaration( $params ) {
+	public static function icon_font_declaration( $params ) {
 		$icon_attr = $params['attrValue'] ?? [];
 
 		$style_declarations = new StyleDeclarations(
@@ -45,21 +45,10 @@ trait StyleDeclarationTrait {
 			]
 		);
 
-		if ( ! empty( $icon_attr['unicode'] ) ) {
+		if ( ! empty( $icon_attr ) ) {
 			$style_declarations->add( 'content', '"' . Utils::process_font_icon( $icon_attr ) . '"' );
-		}
-
-		if ( isset( $icon_attr['type'] ) ) {
-			$font_family = 'fa' === $icon_attr['type'] ? 'FontAwesome' : 'ETmodules';
+			$font_family = isset( $icon_attr['type'] ) && 'fa' === $icon_attr['type'] ? 'FontAwesome' : 'ETmodules';
 			$style_declarations->add( 'font-family', $font_family );
-		}
-
-		if ( ! empty( $icon_attr['color'] ) ) {
-			$style_declarations->add( 'color', $icon_attr['color'] );
-		}
-
-		if ( ! empty( $size ) ) {
-			$style_declarations->add( 'font-size', $size );
 		}
 
 		return $style_declarations->value;

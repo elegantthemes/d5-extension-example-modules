@@ -88,18 +88,26 @@
     },
     "icon": {
       "type": "object",
-      "selector": "{{selector}} .child-module__content.et-pb-icon",
+      "selector": "{{selector}} .et-pb-icon",
       "default": {
-        "decoration": {
-          "icon": {
+        "innerContent": {
+          "desktop": {
+            "value": {
+              "unicode": "&#x39;",
+              "type": "divi",
+              "weight": "400"
+            }
+          }
+        },
+        "advanced": {
+          "color": {
             "desktop": {
-              "value": {
-                "unicode": "&#x39;",
-                "type": "divi",
-                "weight": "400",
-                "color": "#ae16f0",
-                "size": "28px"
-              }
+              "value": "#ae16f0"
+            }
+          },
+          "size": {
+            "desktop": {
+              "value": "28px"
             }
           }
         }

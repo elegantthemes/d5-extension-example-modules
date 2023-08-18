@@ -32,16 +32,14 @@ const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
     parentAttrs,
   } = props;
 
-  const moduleAttrs = mergeAttrs({
-    defaultAttrs: attrs,
-    attrs: parentAttrs,
-  });
+  const iconAttrs = attrs?.icon ?? parentAttrs?.icon;
 
-  const icon = getAttrByMode(moduleAttrs?.icon?.decoration?.icon);
+  const icon = getAttrByMode(iconAttrs?.innerContent);
 
   return (
     <ModuleContainer
-      attrs={moduleAttrs}
+      attrs={attrs}
+      parentAttrs={parentAttrs}
       elements={elements}
       componentType="edit"
       id={id}
