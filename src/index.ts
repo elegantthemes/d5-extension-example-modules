@@ -14,7 +14,7 @@ import './module-exceptions';
 import './module-icons';
 
 // Register modules.
-addAction('moduleLibrary.registerModuleLibraryStore.after', 'extensionExample', () => {
+addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'extensionExample', () => {
   registerModule(staticModule.metadata, omit(staticModule, 'metadata'));
   registerModule(dynamicModule.metadata, omit(dynamicModule, 'metadata'));
   registerModule(childModule.metadata, omit(childModule, 'metadata'));
