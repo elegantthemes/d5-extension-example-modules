@@ -19,7 +19,7 @@ use MEE\Modules\ParentModule\ParentModule;
 use MEE\Modules\DynamicModule\DynamicModule;
 
 add_action(
-	'et_module_library_modules_dependency_tree',
+	'divi_module_library_modules_dependency_tree',
 	function ( $dependency_tree ) {
 		$dependency_tree->add_dependency( new ParentModule() );
 		$dependency_tree->add_dependency( new ChildModule() );

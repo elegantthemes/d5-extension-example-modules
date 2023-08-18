@@ -6,45 +6,51 @@ import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
 import {
-  AdminLabel,
-  Background,
+  AdminLabelGroup,
+  BackgroundGroup,
   FieldContainer,
-  LinkOptions,
+  LinkGroup,
+  SettingsProps,
 } from '@divi/module';
 import { GroupContainer } from '@divi/modal';
 import {
   TextContainer,
 } from '@divi/field-library';
-import { defaultSettingsAttrs } from './constants';
+import { DynamicModuleAttrs } from './types';
 
-export const SettingsContent = (): ReactElement => (
+export const SettingsContent = ({
+  defaultSettingsAttrs,
+}: SettingsProps<DynamicModuleAttrs>): ReactElement => (
   <React.Fragment>
     <GroupContainer
       id="posts"
       title={__('Posts', 'd5-extension-example-modules')}
     >
       <FieldContainer
-        attrName="title"
+        attrName="title.innerContent"
         label={__('Title', 'd5-extension-example-modules')}
         description={__('Title to show for module.', 'd5-extension-example-modules')}
         sticky={false}
       >
-        <TextContainer />
+        <TextContainer/>
       </FieldContainer>
       <FieldContainer
-        attrName="numberOfPosts"
+        attrName="postItems.innerContent"
+        subName="postsNumber"
         label={__('Number of posts', 'd5-extension-example-modules')}
         description={__('Number of posts you want to show.', 'd5-extension-example-modules')}
+        hover={false}
         sticky={false}
-        defaultAttr={defaultSettingsAttrs?.numberOfPosts}
+        responsive={false}
+        defaultAttr={defaultSettingsAttrs?.postItems?.innerContent}
       >
         <TextContainer />
       </FieldContainer>
     </GroupContainer>
-    <LinkOptions />
-    <Background
-      defaultGroupAttr={defaultSettingsAttrs?.background}
+    <LinkGroup />
+    <BackgroundGroup />
+    <AdminLabelGroup 
+      defaultGroupAttr={defaultSettingsAttrs?.module?.meta?.adminLabel}
     />
-    <AdminLabel />
   </React.Fragment>
 );

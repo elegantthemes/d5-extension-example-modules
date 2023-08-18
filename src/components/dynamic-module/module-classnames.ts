@@ -3,7 +3,7 @@ import { DynamicModuleAttrs } from './types';
 
 
 /**
- * Module classnames function for Static Module.
+ * Module classnames function for Dynamic Module.
  *
  * @since ??
  *
@@ -14,5 +14,5 @@ export const moduleClassnames = ({
   attrs,
 }: ModuleClassnamesParams<DynamicModuleAttrs>): void => {
   // Text Options.
-  classnamesInstance.add(textOptionsClassnames(attrs?.text));
+  classnamesInstance.add(textOptionsClassnames(attrs?.module?.advanced?.text));
 };

@@ -1,4 +1,5 @@
 import { ModuleRegisterDefinition } from '@divi/module-library';
+import { ModuleMetadata } from '@divi/types';
 import React from 'react';
 import { DynamicModuleEdit } from './edit';
 import metadata from './module.json';
@@ -12,7 +13,8 @@ import './module.scss';
 
 
 export const dynamicModule: ModuleRegisterDefinition<DynamicModuleAttrs> = {
-  metadata,
+  // Imported json has no inferred type hence type-cast is necessary.
+  metadata: metadata as ModuleMetadata,
   placeholderContent,
   settings: {
     content:  SettingsContent,

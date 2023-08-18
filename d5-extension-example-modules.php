@@ -71,7 +71,7 @@ function d5_extension_example_module_enqueue_vb_scripts() {
 		wp_enqueue_style( 'd5-extension-example-modules-builder-vb-bundle-style', "{$plugin_dir_url}styles/vb-bundle.css", array(), '1.0.0' );
 	}
 }
-add_action( 'et_vb_assets_before_enqueue_packages', 'd5_extension_example_module_enqueue_vb_scripts' );
+add_action( 'divi_visual_builder_assets_before_enqueue_packages', 'd5_extension_example_module_enqueue_vb_scripts' );
 
 /**
  * Enqueue style and scripts of Module Extension Example

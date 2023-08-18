@@ -52,10 +52,13 @@ trait ModuleStylesTrait {
 	 *      @type string $settings          Custom settings.
 	 *      @type string $state             Attributes state.
 	 *      @type string $mode              Style mode.
+	 *      @type ModuleElements $elements         ModuleElements instance.
 	 * }
 	 */
 	public static function module_styles( $args ) {
-		$attrs = isset( $args['attrs'] ) ? $args['attrs'] : [];
+		$elements                    = $args['elements'];
+		$settings                    = $args['settings'] ?? [];
+		$default_printed_style_attrs = $args['defaultPrintedStyleAttrs'] ?? [];
 
 		Style::add(
 			[
@@ -64,102 +67,25 @@ trait ModuleStylesTrait {
 				'orderIndex'    => $args['orderIndex'],
 				'storeInstance' => $args['storeInstance'],
 				'styles'        => [
-					BackgroundStyle::style(
+					$elements->style(
 						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['background'] ) ? $attrs['background'] : [],
+							'attrName'   => 'module',
+							'styleProps' => [
+								'defaultPrintedStyleAttrs' => $default_printed_style_attrs['module']['decoration'] ?? [],
+								'disabledOn'               => [
+									'disabledModuleVisibility' => $settings['disabledModuleVisibility'] ?? null,
+								],
+							],
 						]
 					),
-					TextStyle::style(
+					$elements->style(
 						[
-							'selector' => "{$args['orderClass']} .static-module__content-container",
-							'attr'     => isset( $attrs['text'] ) ? $attrs['text'] : [],
+							'attrName' => 'title',
 						]
 					),
-					FontStyle::style(
+					$elements->style(
 						[
-							'selector'     => "{$args['orderClass']} .dynamic-module__title",
-							'attr'         => isset( $attrs['titleFont'] ) ? $attrs['titleFont'] : [],
-						]
-					),
-					FontStyle::style(
-						[
-							'selector'     => "{$args['orderClass']} .dynamic-module__post-item-title",
-							'attr'         => isset( $attrs['postTitleFont'] ) ? $attrs['postTitleFont'] : [],
-							'headingLevel' => 'h3',
-						]
-					),
-					FontBodyStyle::font_body_style(
-						[
-							'selector' => "{$args['orderClass']} .dynamic-module__post-item-content",
-							'attr'     => isset( $attrs['bodyFont'] ) ? $attrs['bodyFont'] : [],
-						]
-					),
-					SizingStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['sizing'] ) ? $attrs['sizing'] : [],
-						]
-					),
-					SpacingStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['spacing'] ) ? $attrs['spacing'] : [],
-						]
-					),
-					BorderStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['border'] ) ? $attrs['border'] : [],
-						]
-					),
-					BoxShadowStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['boxShadow'] ) ? $attrs['boxShadow'] : [],
-						]
-					),
-					FiltersStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['filter'] ) ? $attrs['filter'] : [],
-						]
-					),
-					TransformStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['transform'] ) ? $attrs['transform'] : [],
-						]
-					),
-					CssStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['css'] ) ? $attrs['css'] : [],
-						]
-					),
-					DisabledOnStyle::style(
-						[
-							'selector'                 => $args['orderClass'],
-							'attr'                     => isset( $attrs['disabledOn'] ) ? $attrs['disabledOn'] : [],
-							'disabledModuleVisibility' => isset( $args['settings']['disabledModuleVisibility'] ) ? $args['settings']['disabledModuleVisibility'] : null,
-						]
-					),
-					OverflowStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['overflow'] ) ? $attrs['overflow'] : [],
-						]
-					),
-					PositionStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['position'] ) ? $attrs['position'] : [],
-						]
-					),
-					ZIndexStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['zIndex'] ) ? $attrs['zIndex'] : [],
+							'attrName' => 'postTitle',
 						]
 					),
 				],

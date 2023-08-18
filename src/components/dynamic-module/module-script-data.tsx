@@ -4,7 +4,7 @@ import {
 
 import {
   ModuleScriptDataProps,
-  useStickyScriptDataContainer,
+  useElementScriptData,
 } from '@divi/module';
 import { DynamicModuleAttrs } from './types';
 
@@ -21,14 +21,10 @@ export const ModuleScriptData = ({
   selector,
   id,
 }: ModuleScriptDataProps<DynamicModuleAttrs>): ReactElement => {
-  useStickyScriptDataContainer({
-    affectingAttrs: {
-      position: attrs?.position,
-      sizing:   attrs?.sizing,
-    },
-    attr: attrs?.sticky,
-    id,
+  useElementScriptData({
+    attrs: attrs?.module?.decoration ?? {},
     selector,
+    id,
   });
 
   return null;
