@@ -20,13 +20,4 @@ export const placeholderContent: D4ModuleAttrs = {
       },
     }
   },
-  image: {
-    innerContent: {
-      desktop: {
-        value: {
-          src: placeholder.image.landscape,
-        },
-      },
-    },
-  },
 };

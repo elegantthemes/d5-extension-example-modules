@@ -7,6 +7,7 @@ import {
   StylesProps,
   CssStyle,
   CommonStyle,
+  TextStyle,
 } from '@divi/module';
 
 import { BackgroundAttr } from '@divi/types';
@@ -37,6 +38,10 @@ import { cssFields } from './custom-css';
       {elements.style({
         attrName: 'title',
       })}
+      <TextStyle
+        selector={`${orderClass} .d4_module_inner`}
+        attr={attrs?.module?.advanced?.text}
+      />
       {
         // Set the `.d4_module_inner` element `position` to `relative` if the background image has parallax enabled.
       }

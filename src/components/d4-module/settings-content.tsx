@@ -57,25 +57,6 @@ export const SettingsContent = ({
         <RichTextContainer />
       </FieldContainer>
     </GroupContainer>
-    <GroupContainer
-      id="image"
-      title={__('Image', 'd5-extension-example-modules')}
-    >
-      <FieldContainer
-        attrName="image.innerContent"
-        subName="src"
-        label={__('Image', 'd5-extension-example-modules')}
-        description={__('Upload an Image', 'd5-extension-example-modules')}
-        sticky={false}
-        features={{
-          dynamicContent: {
-            type: 'image',
-          },
-        }}
-      >
-        <UploadContainer />
-      </FieldContainer>
-    </GroupContainer>
     <LinkGroup />
     <BackgroundGroup />
     <AdminLabelGroup 

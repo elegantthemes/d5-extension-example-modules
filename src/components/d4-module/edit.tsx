@@ -34,9 +34,6 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
     elements,
   } = props;
 
-  const imageAttr  = getAttrByMode(attrs?.image?.innerContent);
-  const imageSrc   = imageAttr?.src;
-
   return (
     <ModuleContainer
       attrs={attrs}
@@ -53,22 +50,6 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
         id={id}
       />
       <div className="d4_module_inner">
-        <div className="d4_module_image_wrap">
-          <DynamicData
-            value={imageSrc}
-            loaderType="image"
-          >
-            {({resolvedValue}) => {
-              if (! resolvedValue) {
-                return null;
-              }
-
-              return (
-                <img src={resolvedValue} />
-              );
-            }}
-          </DynamicData>
-        </div>
         {elements.render({
           attrName: 'title',
         })}

@@ -13,11 +13,13 @@ import { SettingsDesign } from './settings-design';
 import { SettingsAdvanced } from './settings-advanced';
 import { D4ModuleAttrs } from './types';
 import { placeholderContent } from './placeholder-content';
+import { conversionOutline } from './conversion-outline';
 
 
 export const d4Module: ModuleRegisterDefinition<D4ModuleAttrs> = {
   metadata: metadata as ModuleMetadata,
   placeholderContent,
+  conversionOutline,
   settings: {
     content:  SettingsContent,
     design:   SettingsDesign,

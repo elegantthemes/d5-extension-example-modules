@@ -54,13 +54,7 @@ export interface D4ModuleAttrs extends InternalAttrs {
   };
   content?: {
     innerContent?: FormatBreakpointStateAttr<string>;
-    decoration?: PickedElementAttrs<'font'>;
-  };
-
-  image?: {
-   innerContent?: FormatBreakpointStateAttr<{
-     src?: string;
-   }>;
+    decoration?: PickedElementAttrs<'bodyFont'>;
   };
 }
 

@@ -15,6 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 use ET\Builder\FrontEnd\Module\Style;
 use ET\Builder\Packages\Module\Layout\Components\StyleCommon\CommonStyle;
 use ET\Builder\Packages\Module\Options\Css\CssStyle;
+use ET\Builder\Packages\Module\Options\Text\TextStyle;
 
 trait ModuleStylesTrait {
 
@@ -72,6 +73,12 @@ trait ModuleStylesTrait {
 					$elements->style(
 						[
 							'attrName' => 'title',
+						]
+					),
+					TextStyle::style(
+						[
+							'selector' => $order_class . ' .d4_module_inner',
+							'attr'     => $attrs['module']['advanced']['text'] ?? [],
 						]
 					),
 					// Set the `.d4_module_inner` element `position` to `relative` if the background image has parallax enabled.

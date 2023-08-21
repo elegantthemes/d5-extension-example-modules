@@ -55,10 +55,6 @@
       },
       "tagName": "div",
       "inlineEditor": "richText"
-    },
-    "image": {
-      "type": "object",
-      "selector": "{{selector}} .d4_module_image_wrap img"
     }
   },
   "customCssFields": {
