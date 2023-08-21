@@ -16,6 +16,7 @@ use ET\Builder\FrontEnd\Module\Style;
 use ET\Builder\Packages\Module\Options\Text\TextStyle;
 use ET\Builder\Packages\Module\Options\Css\CssStyle;
 use ET\Builder\Packages\Module\Layout\Components\StyleCommon\CommonStyle;
+use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
 use MEE\Modules\ChildModule\ChildModule;
 
 trait ModuleStylesTrait {
@@ -52,6 +53,9 @@ trait ModuleStylesTrait {
 		$elements     = $args['elements'];
 		$settings     = $args['settings'] ?? [];
 		$parent_attrs = $args['parentAttrs'] ?? [];
+
+		$parent_default_attributes = ModuleRegistration::get_default_attrs( 'example/parent-module' );
+		$parent_attrs_with_default = array_replace_recursive( $parent_default_attributes, $parent_attrs );
 
 		$icon_selector              = "{$order_class} .child-module__icon.et-pb-icon";
 		$content_container_selector = "{$order_class} .child-module__content-container";
@@ -106,21 +110,21 @@ trait ModuleStylesTrait {
 					CommonStyle::style(
 						[
 							'selector'            => $icon_selector,
-							'attr'                => $attrs['icon']['innerContent'] ?? $parent_attrs['icon']['innerContent'],
+							'attr'                => $attrs['icon']['innerContent'] ?? $parent_attrs_with_default['icon']['innerContent'],
 							'declarationFunction' => [ ChildModule::class, 'icon_font_declaration' ],
 						]
 					),
 					CommonStyle::style(
 						[
 							'selector' => $icon_selector,
-							'attr'     => $attrs['icon']['advanced']['color'] ?? $parent_attrs['icon']['advanced']['color'],
+							'attr'     => $attrs['icon']['advanced']['color'] ?? $parent_attrs_with_default['icon']['advanced']['color'],
 							'property' => 'color',
 						]
 					),
 					CommonStyle::style(
 						[
 							'selector' => $icon_selector,
-							'attr'     => $attrs['icon']['advanced']['size'] ?? $parent_attrs['icon']['advanced']['size'],
+							'attr'     => $attrs['icon']['advanced']['size'] ?? $parent_attrs_with_default['icon']['advanced']['size'],
 							'property' => 'font-size',
 						]
 					),

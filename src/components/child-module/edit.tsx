@@ -2,17 +2,23 @@
 import React, { ReactElement } from 'react';
 
 // Divi Dependencies.
-import { ModuleContainer } from '@divi/module';
 import {
-  mergeAttrs,
-  getAttrByMode,
-} from '@divi/module-utils';
+  ModuleContainer
+} from '@divi/module';
+import { generateDefaultAttrs } from '@divi/module-library';
+import {getAttrByMode} from '@divi/module-utils';
 import { processFontIcon } from '@divi/icon-library';
+import { ModuleMetadata } from '@divi/types';
 
 // Local Dependencies.
 import { ChildModuleEditProps } from './types';
 import { ModuleStyles } from './styles';
 import { moduleClassnames } from './module-classnames';
+import {
+  isEmpty,
+  merge,
+} from "lodash";
+import parentMetadata from '../parent-module/module.json';
 
 /**
  * Child Module edit component of visual builder.
@@ -32,9 +38,13 @@ export const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
     parentAttrs,
   } = props;
 
-  const iconAttrs = attrs?.icon ?? parentAttrs?.icon;
+  const parentDefaultAttrs = generateDefaultAttrs(parentMetadata as ModuleMetadata);
+  const parentAttrsWithDefault = merge(parentDefaultAttrs, parentAttrs);
+  const parentIconContent = getAttrByMode(parentAttrsWithDefault?.icon?.innerContent);
 
-  const icon = getAttrByMode(iconAttrs?.innerContent);
+  const iconContent = getAttrByMode(attrs?.icon?.innerContent);
+
+  const icon = isEmpty(iconContent) ? parentIconContent : iconContent;
 
   return (
     <ModuleContainer
