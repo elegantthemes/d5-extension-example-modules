@@ -20,7 +20,7 @@ trait ModuleClassnamesTrait {
 	 * Module classnames function for Child module.
 	 *
 	 * This function is equivalent of JS function moduleClassnames located in
-	 * visual-builder/packages/module-library/src/components/child-module/module-classnames.ts.
+	 * src/components/child-module/module-classnames.ts.
 	 *
 	 * @since ??
 	 *

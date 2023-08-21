@@ -27,7 +27,7 @@ trait ModuleStylesTrait {
 	 * Child Module's style components.
 	 *
 	 * This function is equivalent of JS function ModuleStyles located in
-	 * visual-builder/packages/module-library/src/components/child-module/styles.tsx.
+	 * src/components/child-module/styles.tsx.
 	 *
 	 * @param array $args {
 	 *     An array of arguments.

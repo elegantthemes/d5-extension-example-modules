@@ -6,8 +6,8 @@ import {
   AttributesGroup,
   CssGroup,
   IdClassesGroup,
-  PositionGroup,
-  ScrollGroup,
+  PositionSettingsGroup,
+  ScrollSettingsGroup,
   TransitionGroup,
   VisibilitySettingsGroup,
 } from '@divi/module';
@@ -23,7 +23,7 @@ export const SettingsAdvanced = (): ReactElement => (
     <AttributesGroup />
     <VisibilitySettingsGroup />
     <TransitionGroup />
-    <PositionGroup />
-    <ScrollGroup />
+    <PositionSettingsGroup />
+    <ScrollSettingsGroup />
   </React.Fragment>
 );

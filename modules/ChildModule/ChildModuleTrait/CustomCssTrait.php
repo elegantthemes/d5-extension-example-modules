@@ -18,7 +18,7 @@ trait CustomCssTrait {
 	 * Custom CSS fields
 	 *
 	 * This function is equivalent of JS const cssFields located in
-	 * visual-builder/packages/module-library/src/components/child-module/custom-css.ts.
+	 * src/components/child-module/custom-css.ts.
 	 *
 	 * A minor difference with the JS const cssFields, this function did not have `label` property on each array item.
 	 *
