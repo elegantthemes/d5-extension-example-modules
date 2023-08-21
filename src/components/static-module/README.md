@@ -11,7 +11,6 @@ static-module
 │   ├── __snapshots__
 │   │   └── edit.tsx.snap
 │   └── edit.tsx
-├── constants.ts
 ├── custom-css.ts
 ├── edit.tsx
 ├── index.ts

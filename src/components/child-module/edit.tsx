@@ -15,7 +15,7 @@ import { ModuleStyles } from './styles';
 import { moduleClassnames } from './module-classnames';
 
 /**
- * Static Module edit component of visual builder.
+ * Child Module edit component of visual builder.
  *
  * @since ??
  *
@@ -23,7 +23,7 @@ import { moduleClassnames } from './module-classnames';
  *
  * @returns {ReactElement}
  */
-const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
+export const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
   const {
     attrs,
     elements,
@@ -48,9 +48,9 @@ const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
       classnamesFunction={moduleClassnames}
       tag="li"
     >
-      { icon && (
+      {icon && (
         <div className="child-module__icon et-pb-icon">
-            {processFontIcon(icon)}
+          {processFontIcon(icon)}
         </div>
       )}
       <div className="child-module__content-container">
@@ -65,8 +65,4 @@ const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
       </div>
     </ModuleContainer>
   );
-}
-
-export {
-  ChildModuleEdit,
 };

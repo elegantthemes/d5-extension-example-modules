@@ -20,7 +20,7 @@ import { ModuleScriptData } from './module-script-data';
  *
  * @returns {ReactElement}
  */
-const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
+export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
   const {
     attrs,
     elements,
@@ -58,8 +58,4 @@ const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => {
       </div>
     </ModuleContainer>
   );
-}
-
-export {
-  StaticModuleEdit,
 };

@@ -15,11 +15,11 @@ import { cssFields } from './custom-css';
 import { iconFontDeclaration } from '../child-module/style-declarations';
 
 /**
- * Blurb Module's style components.
+ * Parent Module's style components.
  *
  * @since ??
  */
- const ModuleStyles = ({
+ export const ModuleStyles = ({
   attrs,
   elements,
   settings,
@@ -73,9 +73,7 @@ import { iconFontDeclaration } from '../child-module/style-declarations';
         attr={attrs?.icon?.advanced?.size}
         property="font-size"
       />
-  </StyleContainer>
-) };
-
-export {
-  ModuleStyles,
+    </StyleContainer>
+  )
 };
+

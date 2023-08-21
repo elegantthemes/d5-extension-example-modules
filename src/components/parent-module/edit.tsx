@@ -3,7 +3,6 @@ import React, { ReactElement } from 'react';
 
 // Divi Dependencies.
 import { ChildModulesContainer, ModuleContainer } from '@divi/module';
-import { mergeAttrs } from '@divi/module-utils';
 
 // Local Dependencies.
 import { ParentModuleEditProps } from './types';
@@ -12,7 +11,7 @@ import { ModuleScriptData } from './module-script-data';
 import { moduleClassnames } from './module-classnames';
 
 /**
- * Static Module edit component of visual builder.
+ * Parent Module edit component of visual builder.
  *
  * @since ??
  *
@@ -20,7 +19,7 @@ import { moduleClassnames } from './module-classnames';
  *
  * @returns {ReactElement}
  */
-const ParentModuleEdit = (props: ParentModuleEditProps): ReactElement => {
+export const ParentModuleEdit = (props: ParentModuleEditProps): ReactElement => {
   const {
     attrs,
     elements,
@@ -45,7 +44,3 @@ const ParentModuleEdit = (props: ParentModuleEditProps): ReactElement => {
     </ModuleContainer>
   );
 }
-
-export {
-  ParentModuleEdit,
-};

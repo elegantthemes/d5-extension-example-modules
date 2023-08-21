@@ -14,14 +14,14 @@ import {
 import { ChildModuleAttrs } from './types';
 import { cssFields } from './custom-css';
 import { iconFontDeclaration } from './style-declarations';
-import {ParentModuleAttrs} from "../parent-module/types";
+import { ParentModuleAttrs } from "../parent-module/types";
 
 /**
- * Blurb Module's style components.
+ * Child Module's style components.
  *
  * @since ??
  */
- const ModuleStyles = ({
+ export const ModuleStyles = ({
   attrs,
   parentAttrs,
   elements,
@@ -31,10 +31,8 @@ import {ParentModuleAttrs} from "../parent-module/types";
   state,
   noStyleTag,
 }: StylesProps<ChildModuleAttrs, ParentModuleAttrs>): ReactElement => {
-   const iconSelector             = `${orderClass} .child-module__icon.et-pb-icon`;
-   const contentContainerSelector = `${orderClass} .child-module__content-container`;
-
-   const iconAttrs = attrs?.icon?.innerContent ?? parentAttrs?.icon;
+  const iconSelector = `${orderClass} .child-module__icon.et-pb-icon`;
+  const contentContainerSelector = `${orderClass} .child-module__content-container`;
 
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
@@ -85,8 +83,4 @@ import {ParentModuleAttrs} from "../parent-module/types";
       />
     </StyleContainer>
   );
-}
-
-export {
-  ModuleStyles,
 };
