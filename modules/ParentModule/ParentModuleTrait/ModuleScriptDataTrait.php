@@ -12,7 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Direct access forbidden.' );
 }
 
-use ET\Builder\Packages\Module\Options\Sticky\StickyScriptData;
+use ET\Builder\Packages\Module\Layout\Components\MultiView\MultiViewScriptData;
+use ET\Builder\Packages\Module\Options\Element\ElementScriptData;
 
 trait ModuleScriptDataTrait {
 
@@ -30,27 +31,29 @@ trait ModuleScriptDataTrait {
 	 * }
 	 */
 	public static function module_script_data( $args ) {
-		$args = wp_parse_args(
-			$args,
-			[
-				'id'       => '',
-				'selector' => '',
-				'attrs'    => [],
-			]
-		);
+		// Assign variables.
+		$id             = $args['id'] ?? '';
+		$name           = $args['name'] ?? '';
+		$selector       = $args['selector'] ?? '';
+		$attrs          = $args['attrs'] ?? [];
+		$store_instance = $args['storeInstance'] ?? null;
 
-		// Sticky Options.
-		StickyScriptData::set(
+		// Module decoration attributes.
+		$module_decoration_attrs = $attrs['module']['decoration'] ?? [];
+
+		// Element Script Data Options.
+		ElementScriptData::set(
 			[
-				'id'             => $args['id'],
-				'selector'       => $args['selector'],
-				'affectingAttrs' => [
-					'position' => $args['attrs']['position'] ?? [],
-					'scroll'   => $args['attrs']['scroll'] ?? [],
-				],
-				'attr'           => $args['attrs']['sticky'] ?? null,
+				'id'            => $id,
+				'selector'      => $selector,
+				'attrs'         => array_merge(
+					$module_decoration_attrs,
+					[
+						'link' => $args['attrs']['module']['advanced']['link'] ?? [],
+					]
+				),
+				'storeInstance' => $store_instance,
 			]
 		);
 	}
-
 }

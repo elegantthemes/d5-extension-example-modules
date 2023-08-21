@@ -14,5 +14,5 @@ export const moduleClassnames = ({
   attrs,
 }: ModuleClassnamesParams<ChildModuleAttrs>): void => {
   // Text Options.
-  classnamesInstance.add(textOptionsClassnames(attrs?.text, {color: false}));
+  classnamesInstance.add(textOptionsClassnames(attrs?.module?.advanced?.text ?? {}, {color: false}));
 };

@@ -7,13 +7,17 @@ import { ChildModuleAttrs } from './types';
 
 export const placeholderContent: ChildModuleAttrs = {
   title: {
-    desktop: {
-      value: placeholder.title,
-    },
+    innerContent: {
+      desktop: {
+        value: placeholder.title,
+      },
+    }
   },
   content: {
-    desktop: {
-      value: placeholder.body,
-    },
+    innerContent: {
+      desktop: {
+        value: placeholder.body,
+      },
+    }
   },
 };

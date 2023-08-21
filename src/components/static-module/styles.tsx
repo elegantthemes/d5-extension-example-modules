@@ -14,11 +14,11 @@ import {StaticModuleAttrs} from './types';
 import {cssFields} from './custom-css';
 
 /**
- * Blurb Module's style components.
+ * Static Module's style components.
  *
  * @since ??
  */
-const ModuleStyles = ({
+export const ModuleStyles = ({
     attrs,
     elements,
     settings,
@@ -67,8 +67,4 @@ const ModuleStyles = ({
 
     </StyleContainer>
   );
-}
-
-export {
-  ModuleStyles,
 };

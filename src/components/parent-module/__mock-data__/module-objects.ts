@@ -127,11 +127,15 @@ export const mutableState: ExampleMutableEditPostStoreState = {
       name:     'divi/row',
       parent:   'section1',
       children: ['column1'],
-      props:    {
+      props: {
         attrs: {
-          columnStructure: {
-            desktop: {
-              value: '4_4',
+          module: {
+            advanced: {
+              columnStructure: {
+                desktop: {
+                  value: '4_4',
+                },
+              },
             },
           },
         },
@@ -142,13 +146,17 @@ export const mutableState: ExampleMutableEditPostStoreState = {
       name:     'divi/column',
       parent:   'row1',
       children: ['module1'],
-      props:    {
+      props: {
         attrs: {
-          type: {
-            desktop: {
-              value: '4_4',
-            },
-          },
+          module: {
+            advanced: {
+              type: {
+                desktop: {
+                  value: '4_4',
+                },
+              },
+            }
+          }
         },
       },
     },

@@ -2,19 +2,26 @@
 import React, { ReactElement } from 'react';
 
 // Divi Dependencies.
-import { ModuleContainer } from '@divi/module';
-import { mergeAttrs } from '@divi/module-utils';
+import {
+  ModuleContainer
+} from '@divi/module';
+import { generateDefaultAttrs } from '@divi/module-library';
+import {getAttrByMode} from '@divi/module-utils';
 import { processFontIcon } from '@divi/icon-library';
+import { ModuleMetadata } from '@divi/types';
 
 // Local Dependencies.
 import { ChildModuleEditProps } from './types';
-import { defaultAttrs } from './constants';
-import { defaultAttrs as parentDefaultAttrs } from '../parent-module/constants';
 import { ModuleStyles } from './styles';
 import { moduleClassnames } from './module-classnames';
+import {
+  isEmpty,
+  merge,
+} from "lodash";
+import parentMetadata from '../parent-module/module.json';
 
 /**
- * Static Module edit component of visual builder.
+ * Child Module edit component of visual builder.
  *
  * @since ??
  *
@@ -22,61 +29,28 @@ import { moduleClassnames } from './module-classnames';
  *
  * @returns {ReactElement}
  */
-const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
+export const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
   const {
     attrs,
+    elements,
     id,
     name,
     parentAttrs,
   } = props;
 
-  // Merge parent module default values with parent module attributes.
-  const parentModuleAttrs = mergeAttrs({
-    defaultAttrs: parentDefaultAttrs,
-    attrs: parentAttrs,
-  });
+  const parentDefaultAttrs = generateDefaultAttrs(parentMetadata as ModuleMetadata);
+  const parentAttrsWithDefault = merge(parentDefaultAttrs, parentAttrs);
+  const parentIconContent = getAttrByMode(parentAttrsWithDefault?.icon?.innerContent);
 
-  // Merge module default values with module attributes.
-  const childModuleAttrs = mergeAttrs({
-    defaultAttrs,
-    attrs,
-  });
+  const iconContent = getAttrByMode(attrs?.icon?.innerContent);
 
-  const moduleAttrs = {
-    ...childModuleAttrs,
-    icon: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.icon,
-      attrs: childModuleAttrs?.icon,
-    }),
-    iconColor: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.iconColor,
-      attrs: childModuleAttrs?.iconColor,
-    }),
-    iconSize: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.iconSize,
-      attrs: childModuleAttrs?.iconSize,
-    }),
-    titleFont: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.titleFont,
-      attrs: childModuleAttrs?.titleFont,
-    }),
-    text: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.text,
-      attrs: childModuleAttrs?.text,
-    }),
-    bodyFont: mergeAttrs({
-      defaultAttrs: parentModuleAttrs?.bodyFont,
-      attrs: childModuleAttrs?.bodyFont,
-    }),
-  };
-
-  const icon    = moduleAttrs?.icon?.desktop?.value;
-  const title   = moduleAttrs?.title?.desktop?.value;
-  const content = moduleAttrs?.content?.desktop?.value;
+  const icon = isEmpty(iconContent) ? parentIconContent : iconContent;
 
   return (
     <ModuleContainer
-      attrs={moduleAttrs}
+      attrs={attrs}
+      parentAttrs={parentAttrs}
+      elements={elements}
       componentType="edit"
       id={id}
       name={name}
@@ -84,22 +58,21 @@ const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
       classnamesFunction={moduleClassnames}
       tag="li"
     >
-      { icon && (
+      {icon && (
         <div className="child-module__icon et-pb-icon">
-            {processFontIcon(icon)}
+          {processFontIcon(icon)}
         </div>
       )}
       <div className="child-module__content-container">
-        <div className="child-module__title">{title}</div>
-        <div
-          className="child-module__content"
-          dangerouslySetInnerHTML={{ __html: content }}
-        />
+        {elements.render({
+          attrName: 'title',
+        })}
+        <div className="child-module__content">
+          {elements.render({
+            attrName: 'content',
+          })}
+        </div>
       </div>
     </ModuleContainer>
   );
-}
-
-export {
-  ChildModuleEdit,
 };

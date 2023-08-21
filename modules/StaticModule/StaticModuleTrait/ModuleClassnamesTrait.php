@@ -17,7 +17,7 @@ use ET\Builder\Packages\Module\Options\Text\TextClassnames;
 trait ModuleClassnamesTrait {
 
 	/**
-	 * Module classnames function for call to action module.
+	 * Module classnames function for Static module.
 	 *
 	 * This function is equivalent of JS function moduleClassnames located in
 	 * src/components/static-module/module-classnames.ts.

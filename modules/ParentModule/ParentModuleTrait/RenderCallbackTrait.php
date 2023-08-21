@@ -14,11 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
-use ET\Builder\Packages\Module\Module;
-use ET\Builder\FrontEnd\ModuleOrderIndex\ModuleOrderIndex;
-use ET\Builder\Packages\Module\Options\Background\BackgroundComponents;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
-use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
+use ET\Builder\Packages\Module\Module;
+use ET\Builder\Packages\Module\Options\Element\ElementComponents;
+use MEE\Modules\ParentModule\ParentModule;
 
 trait RenderCallbackTrait {
 	use ModuleClassnamesTrait;
@@ -29,41 +28,20 @@ trait RenderCallbackTrait {
 	 *
 	 * @since ??
 	 *
-	 * @param array     $block_attributes Block attributes that were saved by VB.
-	 * @param string    $content          Block content.
-	 * @param \WP_Block $block            Parsed block object that being rendered.
+	 * @param array          $attrs Block attributes that were saved by VB.
+	 * @param string         $content          Block content.
+	 * @param \WP_Block      $block            Parsed block object that being rendered.
+	 * @param ModuleElements $elements         ModuleElements instance.
 	 *
-	 * @return string HTML rendered of Blurb module.
+	 * @return string HTML rendered of Parent module.
 	 */
-	public static function render_callback( $block_attributes, $content, $block ) {
-		$default_attributes = ModuleRegistration::get_default_attrs( 'example/parent-module' );
-		$module_attrs       = array_replace_recursive( $default_attributes, $block_attributes );
-
+	public static function render_callback( $attrs, $content, $block, $elements ) {
 		$children_ids = $block->parsed_block['innerBlocks'] ? array_map(
 			function( $inner_block ) {
 				return $inner_block['id'];
 			},
 			$block->parsed_block['innerBlocks']
 		) : [];
-
-		$children = '';
-
-		$background_component = BackgroundComponents::component(
-			[
-				'attr'          => $module_attrs['background'] ?? [],
-				'id'            => $block->parsed_block['id'],
-
-				// FE only.
-				'orderIndex'    => $block->parsed_block['orderIndex'],
-				'storeInstance' => $block->parsed_block['storeInstance'],
-			]
-		);
-
-		if ( $background_component ) {
-			$children .= $background_component;
-		}
-
-		$children .= $content;
 
 		$parent       = BlockParserStore::get_parent( $block->parsed_block['id'], $block->parsed_block['storeInstance'] );
 		$parent_attrs = $parent->attrs ?? [];
@@ -78,14 +56,24 @@ trait RenderCallbackTrait {
 				'id'                  => $block->parsed_block['id'],
 				'name'                => $block->block_type->name,
 				'moduleCategory'      => $block->block_type->category,
-				'attrs'               => $module_attrs,
-				'classnamesFunction'  => [ self::class, 'module_classnames' ],
-				'scriptDataComponent' => [ self::class, 'module_script_data' ],
-				'stylesComponent'     => [ self::class, 'module_styles' ],
+				'attrs'               => $attrs,
+				'elements'            => $elements,
+				'classnamesFunction'  => [ ParentModule::class, 'module_classnames' ],
+				'scriptDataComponent' => [ ParentModule::class, 'module_script_data' ],
+				'stylesComponent'     => [ ParentModule::class, 'module_styles' ],
 				'parentAttrs'         => $parent_attrs,
 				'parentId'            => $parent->id ?? '',
 				'parentName'          => $parent->blockName ?? '',
-				'children'            => $children,
+				'children'            => ElementComponents::component(
+					[
+						'attrs'         => $attrs['module']['decoration'] ?? [],
+						'id'            => $block->parsed_block['id'],
+
+						// FE only.
+						'orderIndex'    => $block->parsed_block['orderIndex'],
+						'storeInstance' => $block->parsed_block['storeInstance'],
+					]
+				) . $content,
 				'childrenIds'         => $children_ids,
 			]
 		);
