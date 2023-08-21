@@ -6,17 +6,18 @@ import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
 import {
-  Animation,
-  Border,
-  BoxShadow,
+  AnimationGroup,
+  BorderGroup,
+  BoxShadowGroup,
   FieldContainer,
-  Filters,
-  Font,
+  FiltersGroup,
+  FontGroup,
   FontBodyGroup,
-  Sizing,
-  Spacing,
-  Text,
-  Transform,
+  SettingsProps,
+  SizingGroup,
+  SpacingGroup,
+  TextGroup,
+  TransformGroup,
 } from '@divi/module';
 import { GroupContainer } from '@divi/modal';
 import {
@@ -24,89 +25,83 @@ import {
   RangeContainer,
 } from '@divi/field-library';
 import { mergeAttrs } from '@divi/module-utils';
+import {ParentModuleAttrs} from "../parent-module/types";
+import {ChildModuleAttrs} from "./types";
 
-// Local dependencies.
-import { defaultSettingsAttrs as parentDefaultSettingsAttrs } from '../parent-module/constants';
-import { defaultSettingsAttrs } from './constants';
-import { ChildModuleSettingsDesign } from './types';
+
 
 export const SettingsDesign = ({
+   defaultSettingsAttrs,
   parentAttrs,
-}:ChildModuleSettingsDesign): ReactElement => {
-  const parentModuleAttrs = mergeAttrs({
-    defaultAttrs: parentDefaultSettingsAttrs,
-    attrs:        parentAttrs?.asMutable({ deep: true }),
+ }: SettingsProps<ChildModuleAttrs, ParentModuleAttrs>): ReactElement => {
+
+  const defaultIconAttrs = mergeAttrs({
+    defaultAttrs: defaultSettingsAttrs?.icon?.advanced?.asMutable({deep: true}) ?? {},
+    attrs: parentAttrs?.icon?.advanced?.asMutable({deep: true}) ?? {},
   });
 
-  const defaultIconColor = mergeAttrs({
-    defaultAttrs: defaultSettingsAttrs?.iconColor,
-    attrs:        parentModuleAttrs?.iconColor,
+  const defaultTextAttrs = mergeAttrs({
+    defaultAttrs: defaultSettingsAttrs?.module?.advanced?.asMutable({deep: true})?.text,
+    attrs: parentAttrs?.module?.advanced?.asMutable({deep: true})?.text,
   });
 
-  const defaultIconSize = mergeAttrs({
-    defaultAttrs: defaultSettingsAttrs?.iconSize,
-    attrs:        parentModuleAttrs?.iconSize,
+  const defaultTitleFontAttrs = mergeAttrs({
+    defaultAttrs: defaultSettingsAttrs?.title?.decoration?.font?.asMutable({deep: true}) ?? {},
+    attrs: parentAttrs?.title?.decoration?.font?.asMutable({deep: true}) ?? {},
   });
 
-  const defaultText = mergeAttrs({
-    defaultAttrs: defaultSettingsAttrs?.text,
-    attrs:        parentModuleAttrs?.text,
-  });
-
-  const defaultTitleFont = mergeAttrs({
-    defaultAttrs: defaultSettingsAttrs?.titleFont,
-    attrs:        parentModuleAttrs?.titleFont,
-  });
-
-  const defaultBodyFont = mergeAttrs({
-    defaultAttrs: defaultSettingsAttrs?.bodyFont,
-    attrs:        parentModuleAttrs?.bodyFont,
+  const defaultBodyFontAttrs = mergeAttrs({
+    defaultAttrs: defaultSettingsAttrs?.content?.decoration?.bodyFont?.asMutable({deep: true}) ?? {},
+    attrs: parentAttrs?.content?.decoration?.bodyFont?.asMutable({deep: true}) ?? {},
   });
 
   return (
     <React.Fragment>
       <GroupContainer id="icon" title={__('Icon Style', 'd5-extension-example-modules')}>
         <FieldContainer
-          attrName="iconColor"
+          attrName="icon.advanced.color"
           label={__('Icon Color', 'd5-extension-example-modules')}
           description={__('Input your value to action title here.', 'd5-extension-example-modules')}
           sticky={false}
-          defaultAttr={defaultIconColor}
+          defaultAttr={defaultIconAttrs}
         >
           <ColorPickerContainer />
         </FieldContainer>
         <FieldContainer
-          attrName="iconSize"
+          attrName="icon.advanced.size"
           label={__('Icon Size', 'd5-extension-example-modules')}
           description={__('Input your value to action title here.', 'd5-extension-example-modules')}
           sticky={false}
-          defaultAttr={defaultIconSize}
+          defaultAttr={defaultIconAttrs}
         >
           <RangeContainer />
         </FieldContainer>
       </GroupContainer>
-      <Text
-        defaultGroupAttr={defaultText}
-        hideElements={{
-          color: true,
+      <TextGroup
+        defaultGroupAttr={defaultTextAttrs}
+        fields={{
+          color: {
+            render: false,
+          },
         }}
       />
-      <Font
+      <FontGroup
         groupLabel={__('Title Text', 'd5-extension-example-modules')}
-        attrName="titleFont"
+        attrName="title.decoration.font"
         fieldLabel={__('Title', 'd5-extension-example-modules')}
-        defaultGroupAttr={defaultTitleFont}
+        defaultGroupAttr={defaultTitleFontAttrs}
       />
       <FontBodyGroup
-        defaultGroupAttr={defaultBodyFont}
+        attrName="content.decoration.bodyFont"
+        defaultGroupAttr={defaultBodyFontAttrs}
       />
-      <Sizing />
-      <Spacing />
-      <Border />
-      <BoxShadow />
-      <Filters />
-      <Transform />
-      <Animation />
+      <SizingGroup />
+      <SpacingGroup />
+      <BorderGroup />
+      <BoxShadowGroup />
+      <FiltersGroup />
+      <TransformGroup />
+      <AnimationGroup />
     </React.Fragment>
   );
 };

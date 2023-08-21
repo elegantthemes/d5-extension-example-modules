@@ -6,22 +6,24 @@ import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
 import {
-  AdminLabel,
-  Background,
+  AdminLabelGroup,
+  BackgroundGroup,
   DraggableChildModuleListContainer,
   FieldContainer,
-  LinkOptions,
+  LinkGroup,
+  SettingsProps,
 } from '@divi/module';
 import {
   DraggableListContainer,
   IconPickerContainer,
 } from '@divi/field-library';
 import { GroupContainer } from '@divi/modal';
+import {ParentModuleAttrs} from "./types";
 
-// Local dependencies.
-import { defaultSettingsAttrs } from './constants';
 
-export const SettingsContent = (): ReactElement => (
+export const SettingsContent = ({
+    defaultSettingsAttrs,
+  }: SettingsProps<ParentModuleAttrs>): ReactElement => (
   <React.Fragment>
     <DraggableChildModuleListContainer
       childModuleName="example/child-module"
@@ -34,17 +36,17 @@ export const SettingsContent = (): ReactElement => (
       title={__('Icon', 'd5-extension-example-modules')}
     >
       <FieldContainer
-        attrName="icon"
+        attrName="icon.innerContent"
         label={__('Icon', 'd5-extension-example-modules')}
-        description={__('Upload an Image', 'd5-extension-example-modules')}
+        description={__('Upload an Icon', 'd5-extension-example-modules')}
         sticky={false}
         defaultAttr={defaultSettingsAttrs?.icon}
       >
         <IconPickerContainer />
       </FieldContainer>
     </GroupContainer>
-    <LinkOptions />
-    <Background />
-    <AdminLabel />
+    <LinkGroup />
+    <BackgroundGroup />
+    <AdminLabelGroup />
   </React.Fragment>
 );

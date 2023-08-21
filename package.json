@@ -52,6 +52,7 @@
     "@types/divi__script-library": "npm:divi-types-script-library@^1.0.0",
     "@types/divi__serialized-post": "npm:divi-types-serialized-post@^1.0.0",
     "@types/divi__settings": "npm:divi-types-settings@^1.0.0",
+    "@types/divi__style-library": "npm:divi-types-style-library@^1.0.0",
     "@types/enzyme": "^3.10.12",
     "@types/jest": "^28.1.6",
     "@types/jquery": "^3.5.14",

@@ -1,38 +1,18 @@
-// Divi dependencies.
 import { ModuleEditProps } from '@divi/module-library';
 import {
-  AnimationGroupAttr,
-  BackgroundGroupAttr,
-  BorderGroupAttr,
-  BoxShadowGroupAttr,
   CssAttr,
-  DisabledOnGroupAttr,
-  FiltersGroupAttr,
-  FontBodyGroupAttr,
-  FontGroupAttr,
-  FormatAttr,
-  IconFontGroupAttr,
+  FormatBreakpointStateAttr,
+  IconFontAttr,
   IdClassesGroupAttr,
   InternalAttrs,
   LinkGroupAttr,
-  OverflowGroupAttr,
-  PositionGroupAttr,
-  ScrollGroupAttr,
-  SizingGroupAttr,
-  SpacingGroupAttr,
-  StickyGroupAttr,
+  ModuleMetaAttrs,
+  PickedElementAttrs,
   TextGroupAttr,
-  TransformGroupAttr,
-  TransitionGroupAttr,
-  ZIndexGroupAttr,
 } from '@divi/types';
-import { ImmutableObject } from 'seamless-immutable';
-import { ParentModuleAttrs } from '../parent-module/types';
-
-export interface Image {
-  src?: string;
-  alt?: string;
-}
+import {
+  ParentModuleAttrs,
+} from "../parent-module/types";
 
 export interface ChildModuleCssAttr extends CssAttr {
   contentContainer?: string;
@@ -41,49 +21,59 @@ export interface ChildModuleCssAttr extends CssAttr {
   icon?: string;
 }
 
-export type ChildModuleCssGroupAttr = FormatAttr<ChildModuleCssAttr>;
+export type ChildModuleCssGroupAttr = FormatBreakpointStateAttr<ChildModuleCssAttr>;
 
 export interface ChildModuleAttrs extends InternalAttrs {
-
-  // Content tab.
-  icon?: IconFontGroupAttr;
-  title?: FormatAttr<string>;
-  content?: FormatAttr<string>;
-  link?: LinkGroupAttr;
-  background?: BackgroundGroupAttr;
-
-  // Design tab.
-  iconColor?: FormatAttr<string>;
-  iconSize?: FormatAttr<string>;
-  text?: TextGroupAttr;
-  titleFont?: FontGroupAttr;
-  bodyFont?: FontBodyGroupAttr;
-  sizing?: SizingGroupAttr;
-  spacing?: SpacingGroupAttr;
-  border?: BorderGroupAttr;
-  boxShadow?: BoxShadowGroupAttr;
-  filter?: FiltersGroupAttr;
-  transform?: TransformGroupAttr;
-  animation?: AnimationGroupAttr;
-
-  // Advanced tab.
-  module?: IdClassesGroupAttr;
+  // CSS options is used across multiple elements inside the module thus it deserves its own top property.
   css?: ChildModuleCssGroupAttr;
-  disabledOn?: DisabledOnGroupAttr;
-  overflow?: OverflowGroupAttr;
-  transition?: TransitionGroupAttr;
-  position?: PositionGroupAttr;
-  zIndex?: ZIndexGroupAttr;
-  sticky?: StickyGroupAttr;
-  scroll?: ScrollGroupAttr;
+
+  // Module
+  module?: {
+    meta?: ModuleMetaAttrs;
+    advanced?: {
+      link?: LinkGroupAttr;
+      htmlAttributes?: IdClassesGroupAttr;
+      text?: TextGroupAttr;
+    };
+    decoration?: PickedElementAttrs<
+      'background' |
+      'border' |
+      'boxShadow' |
+      'disabledOn' |
+      'filters' |
+      'overflow' |
+      'position' |
+      'scroll' |
+      'sizing' |
+      'spacing' |
+      'sticky' |
+      'transform' |
+      'transition' |
+      'zIndex'
+    >;
+  };
+
+  // Title
+  title?: {
+    innerContent?: FormatBreakpointStateAttr<string>;
+    decoration?: PickedElementAttrs<'font'>;
+  };
+
+  // Content
+  content?: {
+    innerContent?: FormatBreakpointStateAttr<string>;
+    decoration?: PickedElementAttrs<'bodyFont'>;
+  };
+
+  // Icon
+  // Icon
+  icon?: {
+    innerContent?: FormatBreakpointStateAttr<IconFontAttr>;
+    advanced?: {
+      color?: FormatBreakpointStateAttr<string>;
+      size?: FormatBreakpointStateAttr<string>;
+    };
+  };
 }
 
 export type ChildModuleEditProps = ModuleEditProps<ChildModuleAttrs, ParentModuleAttrs>;
-
-export interface ChildModuleSettingsDesign {
-  parentAttrs?: ImmutableObject<ParentModuleAttrs>;
-}
-
-export interface ChildModuleSettingsContent {
-  parentAttrs?: ImmutableObject<ParentModuleAttrs>;
-}
