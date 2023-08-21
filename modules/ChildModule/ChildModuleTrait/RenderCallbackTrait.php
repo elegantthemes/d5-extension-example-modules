@@ -19,6 +19,7 @@ use ET\Builder\Framework\Utility\HTMLUtility;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
 use ET\Builder\Packages\IconLibrary\IconFont\Utils;
 use ET\Builder\Packages\Module\Options\Element\ElementComponents;
+use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
 use MEE\Modules\ChildModule\ChildModule;
 
 trait RenderCallbackTrait {
@@ -42,8 +43,11 @@ trait RenderCallbackTrait {
 
 		$parent_attrs = $parent->attrs ?? [];
 
+		$parent_default_attributes = ModuleRegistration::get_default_attrs( 'example/parent-module' );
+		$parent_attrs_with_default = array_replace_recursive( $parent_default_attributes, $parent_attrs );
+
 		// Icon.
-		$icon_value = $attrs['icon']['innerContent']['desktop']['value'] ?? $parent_attrs['icon']['innerContent']['desktop']['value'];
+		$icon_value = $attrs['icon']['innerContent']['desktop']['value'] ?? $parent_attrs_with_default['icon']['innerContent']['desktop']['value'];
 		$icon       = HTMLUtility::render(
 			[
 				'tag'               => 'div',
