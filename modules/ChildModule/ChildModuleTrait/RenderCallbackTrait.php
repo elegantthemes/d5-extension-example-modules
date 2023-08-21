@@ -23,7 +23,6 @@ use MEE\Modules\ChildModule\ChildModule;
 
 trait RenderCallbackTrait {
 	use ModuleClassnamesTrait;
-	use ModuleScriptDataTrait;
 	use ModuleStylesTrait;
 
 	/**
@@ -59,14 +58,16 @@ trait RenderCallbackTrait {
 		// Title.
 		$title = $elements->render(
 			[
-				'attrName' => 'title',
+				'attrName'      => 'title',
+				'hoverSelector' => '{{parentSelector}}',
 			]
 		);
 
 		// Content.
 		$content = $elements->render(
 			[
-				'attrName' => 'content',
+				'attrName'      => 'content',
+				'hoverSelector' => '{{parentSelector}}',
 			]
 		);
 
@@ -85,22 +86,21 @@ trait RenderCallbackTrait {
 		return Module::render(
 			[
 				// FE only.
-				'orderIndex'          => $block->parsed_block['orderIndex'],
-				'storeInstance'       => $block->parsed_block['storeInstance'],
+				'orderIndex'         => $block->parsed_block['orderIndex'],
+				'storeInstance'      => $block->parsed_block['storeInstance'],
 
 				// VB equivalent.
-				'id'                  => $block->parsed_block['id'],
-				'name'                => $block->block_type->name,
-				'moduleCategory'      => $block->block_type->category,
-				'attrs'               => $attrs,
-				'elements'            => $elements,
-				'classnamesFunction'  => [ ChildModule::class, 'module_classnames' ],
-				'scriptDataComponent' => [ ChildModule::class, 'module_script_data' ],
-				'stylesComponent'     => [ ChildModule::class, 'module_styles' ],
-				'parentAttrs'         => $parent_attrs,
-				'parentId'            => $parent->id ?? '',
-				'parentName'          => $parent->blockName ?? '',
-				'children'            => ElementComponents::component(
+				'id'                 => $block->parsed_block['id'],
+				'name'               => $block->block_type->name,
+				'moduleCategory'     => $block->block_type->category,
+				'attrs'              => $attrs,
+				'elements'           => $elements,
+				'classnamesFunction' => [ ChildModule::class, 'module_classnames' ],
+				'stylesComponent'    => [ ChildModule::class, 'module_styles' ],
+				'parentAttrs'        => $parent_attrs,
+				'parentId'           => $parent->id ?? '',
+				'parentName'         => $parent->blockName ?? '',
+				'children'           => ElementComponents::component(
 					[
 						'attrs'         => $attrs['module']['decoration'] ?? [],
 						'id'            => $block->parsed_block['id'],
