@@ -48,29 +48,6 @@ trait RenderCallbackTrait {
 			]
 		);
 
-		$image = $elements->render(
-			[
-				'tagName'    => 'img',
-				'attributes' => [
-					'src' => [
-						'attrName' => 'image',
-						'subName'  => 'src',
-					],
-				],
-			]
-		);
-
-		$image_container = HTMLUtility::render(
-			[
-				'tag'               => 'div',
-				'attributes'        => [
-					'class' => 'd4_module_image_wrap',
-				],
-				'children'          => $image,
-				'childrenSanitizer' => 'et_core_esc_previously',
-			]
-		);
-
 		// Title.
 		$title = $elements->render(
 			[
@@ -94,7 +71,6 @@ trait RenderCallbackTrait {
 				],
 				'childrenSanitizer' => 'et_core_esc_previously',
 				'children'          => [
-					$image_container,
 					$title,
 					$content,
 				],

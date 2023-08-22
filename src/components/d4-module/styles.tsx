@@ -35,9 +35,6 @@ import { cssFields } from './custom-css';
       {elements.style({
         attrName: 'module',
       })}
-      {elements.style({
-        attrName: 'title',
-      })}
       <TextStyle
         selector={`${orderClass} .d4_module_inner`}
         attr={attrs?.module?.advanced?.text}
@@ -61,6 +58,12 @@ import { cssFields } from './custom-css';
         attr={attrs?.css}
         cssFields={cssFields}
       />
+      {elements.style({
+        attrName: 'title',
+      })}
+      {elements.style({
+        attrName: 'content',
+      })}
     </StyleContainer>
   );
 }

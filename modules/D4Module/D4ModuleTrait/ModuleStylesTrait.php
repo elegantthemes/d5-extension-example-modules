@@ -70,11 +70,6 @@ trait ModuleStylesTrait {
 							],
 						]
 					),
-					$elements->style(
-						[
-							'attrName' => 'title',
-						]
-					),
 					TextStyle::style(
 						[
 							'selector' => $order_class . ' .d4_module_inner',
@@ -102,6 +97,20 @@ trait ModuleStylesTrait {
 							'selector'  => $args['orderClass'],
 							'attr'      => $attrs['css'] ?? [],
 							'cssFields' => self::custom_css(),
+						]
+					),
+
+					// Title.
+					$elements->style(
+						[
+							'attrName' => 'title',
+						]
+					),
+
+					// Content.
+					$elements->style(
+						[
+							'attrName' => 'content',
 						]
 					),
 				],

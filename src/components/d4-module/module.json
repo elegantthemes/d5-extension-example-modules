@@ -17,11 +17,6 @@
             }
           }
         }
-      },
-      "styleProps": {
-        "bodyFont": {
-          "selector": "{{selector}} .d4_module_content"
-        }
       }
     },
     "title": {
