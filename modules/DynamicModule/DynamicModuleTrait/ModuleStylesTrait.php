@@ -13,6 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use ET\Builder\FrontEnd\Module\Style;
+use ET\Builder\Packages\Module\Options\Text\TextStyle;
 
 trait ModuleStylesTrait {
 
@@ -44,6 +45,8 @@ trait ModuleStylesTrait {
 		$elements                    = $args['elements'];
 		$settings                    = $args['settings'] ?? [];
 		$default_printed_style_attrs = $args['defaultPrintedStyleAttrs'] ?? [];
+		$attrs                       = $args['attrs'] ?? [];
+		$order_class                 = $args['orderClass'] ?? '';
 
 		Style::add(
 			[
@@ -61,6 +64,12 @@ trait ModuleStylesTrait {
 									'disabledModuleVisibility' => $settings['disabledModuleVisibility'] ?? null,
 								],
 							],
+						]
+					),
+					TextStyle::style(
+						[
+							'selector' => $order_class . ' .dynamic-module__inner',
+							'attr'     => $attrs['module']['advanced']['text'] ?? [],
 						]
 					),
 					$elements->style(

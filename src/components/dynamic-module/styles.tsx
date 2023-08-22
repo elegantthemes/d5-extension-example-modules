@@ -5,6 +5,7 @@ import React, { ReactElement } from 'react';
 import {
   StyleContainer,
   StylesProps,
+  TextStyle,
 } from '@divi/module';
 
 // Local dependencies.
@@ -21,6 +22,8 @@ import { DynamicModuleAttrs } from './types';
   state,
   noStyleTag,
   elements,
+  attrs,
+  orderClass,
 }: StylesProps<DynamicModuleAttrs>): ReactElement => {
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
@@ -32,6 +35,10 @@ import { DynamicModuleAttrs } from './types';
           },
         },
       })}
+      <TextStyle
+        selector={`${orderClass} .dynamic-module__inner`}
+        attr={attrs?.module?.advanced?.text}
+      />
       {elements.style({
         attrName: 'title',
       })}
