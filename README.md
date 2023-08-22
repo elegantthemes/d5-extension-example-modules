@@ -49,14 +49,8 @@ You can find the module conversion process in the `src/components/d4-module` fol
 ## Module Icons
 You can find the module icons in the `src/icons` folder. You can use these icons for module icon. You can also add your own icons in this folder.
 
-## Storybook
-All modules have storybook examples. You will find all story declarations in the `stories` folder. The configuration for the storybook contains the `.storybook` folder. You must need to add a `.env` file to start the storybook. You can see the `.env.example` file for reference. You need to add only `STORYBOOK_SITE_URL` variable with the WordPress site URL.
-
-## Tests
-In Divi 5 we always use testing. The `test-config` folder contains the configuration of js testing. The testing for the module is setup in `__tests__` folder and all mock data related to the tests are in `__mock-data__` folder.
-
 ## Available Commands
-Some `npm` commands are available for your development and tests.
+Some `npm` commands are available for your development.
 
 ### `npm run start`
 It will start the webpack compiler for development with watch mode.
@@ -64,25 +58,13 @@ It will start the webpack compiler for development with watch mode.
 ### `npm run build`
 It will build all JS and CSS assets for production.
 
-### `npm run test`
-It will run all tests for the module.
-
 ### `npm run zip`
 It will zip all assets and files without the `src` folder for distribution.
 
-### `npm run storybook`
-It will run the storybook server
-
-### `npm run build-storybook`
-It will build the storybook to host it into your server.
 
 ## Folder Structure
 ```
 d5-extension-example-modules
-├── .storybook
-│   ├── main.js
-│   ├── preview-head.html
-│   └── preview.js
 ├── divi-4
 │   ├── modules
 │   │   └── divi-4-module-name
@@ -100,15 +82,6 @@ d5-extension-example-modules
 ├── src
 │   ├── components
 │   │   └── module-name
-│   │       ├── __mock-data__
-│   │       │   └── attrs.ts
-│   │       ├── __tests__
-│   │       │   ├── __snapshots__
-│   │       │   │   └── edit.tsx.snap
-│   │       │   └── edit.tsx
-│   │       ├── stories
-│   │       │   └── edit.stories.tsx
-│   │       ├── constants.ts
 │   │       ├── custom-css.ts
 │   │       ├── edit.tsx
 │   │       ├── index.ts
@@ -128,13 +101,6 @@ d5-extension-example-modules
 │   ├── index.ts
 │   ├── module-exceptions.ts
 │   └── module-icons.ts
-├── storybook-assets
-│   └── mockServiceWorker.js
-├── test-config
-│   ├── babel-transformer.js
-│   ├── global-mocks.js
-│   ├── jest.config.js
-│   └── override-react-use-layout-effect.js
 ├── d5-extension-example-modules.php
 ├── gulpfile.js
 ├── package.json

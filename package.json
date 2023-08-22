@@ -7,10 +7,7 @@
   "scripts": {
     "start": "NODE_ENV=development webpack -w --config webpack.config.js --progress",
     "build": "NODE_ENV=production webpack --config webpack.config.js --progress",
-    "test": "wp-scripts test-unit-js --config ./test-config/jest.config.js",
     "zip": "gulp zip",
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook",
     "composer": "composer install"
   },
   "devDependencies": {
