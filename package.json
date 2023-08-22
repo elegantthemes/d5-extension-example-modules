@@ -9,7 +9,7 @@
     "build": "NODE_ENV=production webpack --config webpack.config.js --progress",
     "zip": "gulp zip",
     "composer": "composer install",
-    "reset": "rm -rf ./package-lock.json ./node_modules/"
+    "reset-install": "rm -rf ./package-lock.json ./node_modules/ && npm install"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
