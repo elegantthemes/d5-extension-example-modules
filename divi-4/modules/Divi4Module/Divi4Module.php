@@ -147,8 +147,10 @@ class D4_Module extends ET_Builder_Module {
 
 		// Render module content
 		$output = sprintf(
-			'<%1$s class="d4_module_title">%2$s</%1$s>
-			<div class="d4_module_content">%3$s</div>',
+			'<div class="d4_module_inner">
+				<%1$s class="d4_module_title">%2$s</%1$s>
+				<div class="d4_module_content">%3$s</div>
+			</div>',
 			$header_level,
 			esc_html( $title ),
 			et_sanitized_previously( $this->content )

@@ -15,7 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 use ET\Builder\Framework\DependencyManagement\Interfaces\DependencyInterface;
 use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
-use MEE\Modules\ParentModule\ParentModuleTrait;
 
 /**
  * `ParentModule` is consisted of functions used for Parent Module such as Front-End rendering, REST API Endpoints etc.

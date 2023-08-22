@@ -17,10 +17,10 @@ use ET\Builder\Packages\Module\Options\Text\TextClassnames;
 trait ModuleClassnamesTrait {
 
 	/**
-	 * Module classnames function for call to action module.
+	 * Module classnames function for Dynamic module.
 	 *
 	 * This function is equivalent of JS function moduleClassnames located in
-	 * visual-builder/packages/module-library/src/components/cta/module-classnames.ts.
+	 * src/components/dynamic-module/module-classnames.ts.
 	 *
 	 * @since ??
 	 *
@@ -35,7 +35,7 @@ trait ModuleClassnamesTrait {
 		$classnames_instance = $args['classnamesInstance'];
 		$attrs               = $args['attrs'];
 
-		$text_options_classnames = TextClassnames::text_options_classnames( $attrs['text'] ?? [] );
+		$text_options_classnames = TextClassnames::text_options_classnames( $attrs['module']['advanced']['text'] ?? [] );
 
 		if ( $text_options_classnames ) {
 			$classnames_instance->add( $text_options_classnames, true );

@@ -12,7 +12,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Direct access forbidden.' );
 }
 
-use ET\Builder\Packages\Module\Options\Sticky\StickyScriptData;
+use ET\Builder\Packages\Module\Layout\Components\MultiView\MultiViewScriptData;
+use ET\Builder\Packages\Module\Options\Element\ElementScriptData;
 
 trait ModuleScriptDataTrait {
 
@@ -30,27 +31,66 @@ trait ModuleScriptDataTrait {
 	 * }
 	 */
 	public static function module_script_data( $args ) {
-		$args = wp_parse_args(
-			$args,
+		// Assign variables.
+		$id             = $args['id'] ?? '';
+		$name           = $args['name'] ?? '';
+		$selector       = $args['selector'] ?? '';
+		$attrs          = $args['attrs'] ?? [];
+		$store_instance = $args['storeInstance'] ?? null;
+
+		// Module decoration attributes.
+		$module_decoration_attrs = $attrs['module']['decoration'] ?? [];
+
+		// Element Script Data Options.
+		ElementScriptData::set(
 			[
-				'id'       => '',
-				'selector' => '',
-				'attrs'    => [],
+				'id'            => $id,
+				'selector'      => $selector,
+				'attrs'         => array_merge(
+					$module_decoration_attrs,
+					[
+						'link' => $args['attrs']['module']['advanced']['link'] ?? [],
+					]
+				),
+				'storeInstance' => $store_instance,
 			]
 		);
 
-		// Sticky Options.
-		StickyScriptData::set(
+		MultiViewScriptData::set(
 			[
-				'id'             => $args['id'],
-				'selector'       => $args['selector'],
-				'affectingAttrs' => [
-					'position' => $args['attrs']['position'] ?? [],
-					'scroll'   => $args['attrs']['scroll'] ?? [],
+				'id'            => $id,
+				'name'          => $name,
+				'hoverSelector' => $selector,
+				'setContent'    => [
+					[
+						'selector'      => $selector . ' .static-module__title',
+						'data'          => $attrs['title']['innerContent'] ?? [],
+						'valueResolver' => function( $value ) {
+							return $value ?? '';
+						},
+					],
+					[
+						'selector'      => $selector . ' .static-module__content',
+						'data'          => $attrs['content']['innerContent'] ?? [],
+						'valueResolver' => function( $value ) {
+							return $value ?? '';
+						},
+						'sanitizer'     => 'et_core_esc_previously',
+					],
 				],
-				'attr'           => $args['attrs']['sticky'] ?? null,
+				'setAttrs'      => [
+					[
+						'selector'      => $selector . ' .static-module__image img',
+						'data'          => [
+							'src' => $attrs['image']['innerContent'] ?? [],
+						],
+						'valueResolver' => function( $value ) {
+							return $value['src'] ?? '';
+						},
+						'tag'           => 'img',
+					],
+				],
 			]
 		);
 	}
-
 }

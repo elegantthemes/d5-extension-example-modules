@@ -1,40 +1,135 @@
 {
-    "name": "example/parent-module",
-    "d4Shortcode": "",
-    "title": "Parent Module",
-    "titles": "Parent Modules",
-    "moduleIcon": "example/module-parent",
-    "category": "module",
-    "attributes": {
-        "icon": {
-            "type": "object",
-            "default": {
-                "desktop": {
-                    "value": {
-                        "unicode": "&#x4e;",
-                        "type": "divi",
-                        "weight": "400"
-                    }
-                }
+  "name": "example/parent-module",
+  "d4Shortcode": "",
+  "title": "Parent Module",
+  "titles": "Parent Modules",
+  "moduleIcon": "example/module-parent",
+  "category": "module",
+  "attributes": {
+    "module": {
+      "type": "object",
+      "selector": "{{selector}}",
+      "default": {
+        "meta": {
+          "adminLabel": {
+            "desktop": {
+              "value": "Parent Module"
             }
+          }
         }
+      },
+      "styleProps": {
+        "border": {
+          "important": true
+        }
+      }
     },
-    "customCssFields": {
-        "contentContainer": {
-            "subName":        "contentContainer",
-            "selectorSuffix": " .child-module__content-container"
-        },
-        "title": {
-            "subName":        "title",
-            "selectorSuffix": " .child-module__title"
-        },
-        "content": {
-            "subName":        "content",
-            "selectorSuffix": " .child-module__content"
-        },
-        "icon": {
-            "subName":        "icon",
-            "selectorSuffix": " .child-module__icon.et-pb-icon"
+    "title": {
+      "type": "object",
+      "selector": "{{selector}} .parent-module__title",
+      "defaultPrintedStyle": {
+        "decoration": {
+          "font": {
+            "font": {
+              "desktop": {
+                "value": {
+                  "size": "21px",
+                  "lineHeight": "1em",
+                  "weight": "600"
+                }
+              }
+            }
+          }
         }
+      },
+      "styleProps": {
+        "font": {
+          "important": {
+            "font": {
+              "desktop": {
+                "value": {
+                  "color": true
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "content": {
+      "type": "object",
+      "selector": "{{selector}} .parent-module__content",
+      "defaultPrintedStyle": {
+        "decoration": {
+          "bodyFont": {
+            "body": {
+              "font": {
+                "desktop": {
+                  "value": {
+                    "color": "#868686",
+                    "size": "13px",
+                    "lineHeight": "1.6em"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "bodyFont": {
+          "selectors": {
+            "desktop": {
+              "value": "{{selector}} .child-module__content"
+            }
+          }
+        }
+      }
+    },
+    "icon": {
+      "type": "object",
+      "selector": "{{selector}} .et-pb-icon",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": {
+              "unicode": "&#x39;",
+              "type": "divi",
+              "weight": "400"
+            }
+          }
+        },
+        "advanced": {
+          "color": {
+            "desktop": {
+              "value": "#ae16f0"
+            }
+          },
+          "size": {
+            "desktop": {
+              "value": "28px"
+            }
+          }
+        }
+      }
     }
+  },
+  "customCssFields": {
+    "contentContainer": {
+      "subName": "contentContainer",
+      "selectorSuffix": " .parent-module__content-container"
+    },
+    "title": {
+      "subName": "title",
+      "selectorSuffix": " .parent-module__title"
+    },
+    "content": {
+      "subName": "content",
+      "selectorSuffix": " .parent-module__content"
+    },
+    "icon": {
+      "subName": "icon",
+      "selectorSuffix": " .parent-module__icon.et-pb-icon"
+    }
+  }
 }

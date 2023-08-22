@@ -7,8 +7,10 @@ import { DynamicModuleAttrs } from './types';
 
 export const placeholderContent: DynamicModuleAttrs = {
   title: {
-    desktop: {
-      value: placeholder.title,
-    },
+    innerContent: {
+      desktop: {
+        value: placeholder.title,
+      }
+    }
   },
 };

@@ -13,31 +13,19 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use ET\Builder\FrontEnd\Module\Style;
-use ET\Builder\Packages\Module\Options\Background\BackgroundStyle;
-use ET\Builder\Packages\Module\Options\Text\TextStyle;
-use ET\Builder\Packages\Module\Options\Font\FontStyle;
-use ET\Builder\Packages\Module\Options\FontBodyGroup\FontBodyStyle;
-use ET\Builder\Packages\Module\Options\Sizing\SizingStyle;
-use ET\Builder\Packages\Module\Options\Spacing\SpacingStyle;
-use ET\Builder\Packages\Module\Options\Border\BorderStyle;
-use ET\Builder\Packages\Module\Options\BoxShadow\BoxShadowStyle;
-use ET\Builder\Packages\Module\Options\Filters\FiltersStyle;
-use ET\Builder\Packages\Module\Options\Transform\TransformStyle;
+use ET\Builder\Packages\Module\Layout\Components\StyleCommon\CommonStyle;
 use ET\Builder\Packages\Module\Options\Css\CssStyle;
-use ET\Builder\Packages\Module\Options\DisabledOn\DisabledOnStyle;
-use ET\Builder\Packages\Module\Options\Overflow\OverflowStyle;
-use ET\Builder\Packages\Module\Options\Position\PositionStyle;
-use ET\Builder\Packages\Module\Options\ZIndex\ZIndexStyle;
+use ET\Builder\Packages\Module\Options\Text\TextStyle;
 
 trait ModuleStylesTrait {
 
 	use CustomCssTrait;
 
 	/**
-	 * Child Module's style components.
+	 * D4 module's style components.
 	 *
 	 * This function is equivalent of JS function ModuleStyles located in
-	 * visual-builder/packages/module-library/src/components/cta/styles.tsx.
+	 * src/components/d4-module/styles.tsx.
 	 *
 	 * @since ??
 	 *
@@ -54,10 +42,15 @@ trait ModuleStylesTrait {
 	 *      @type string $settings          Custom settings.
 	 *      @type string $state             Attributes state.
 	 *      @type string $mode              Style mode.
+	 *      @type ModuleElements $elements         ModuleElements instance.
 	 * }
 	 */
 	public static function module_styles( $args ) {
-		$attrs = isset( $args['attrs'] ) ? $args['attrs'] : [];
+		$attrs                       = $args['attrs'] ?? [];
+		$elements                    = $args['elements'];
+		$settings                    = $args['settings'] ?? [];
+		$default_printed_style_attrs = $args['defaultPrintedStyleAttrs'] ?? [];
+		$order_class                 = $args['orderClass'] ?? '';
 
 		Style::add(
 			[
@@ -66,96 +59,58 @@ trait ModuleStylesTrait {
 				'orderIndex'    => $args['orderIndex'],
 				'storeInstance' => $args['storeInstance'],
 				'styles'        => [
-					BackgroundStyle::style(
+					$elements->style(
 						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['background'] ) ? $attrs['background'] : [],
+							'attrName'   => 'module',
+							'styleProps' => [
+								'defaultPrintedStyleAttrs' => $default_printed_style_attrs['module']['decoration'] ?? [],
+								'disabledOn'               => [
+									'disabledModuleVisibility' => $settings['disabledModuleVisibility'] ?? null,
+								],
+							],
 						]
 					),
 					TextStyle::style(
 						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['text'] ) ? $attrs['text'] : [],
+							'selector' => $order_class . ' .d4_module_inner',
+							'attr'     => $attrs['module']['advanced']['text'] ?? [],
 						]
 					),
-					FontStyle::style(
+					// Set the `.d4_module_inner` element `position` to `relative` if the background image has parallax enabled.
+					CommonStyle::style(
 						[
-							'selector'     => "{$args['orderClass']} .d4_module_title",
-							'attr'         => isset( $attrs['titleFont'] ) ? $attrs['titleFont'] : [],
-						]
-					),
-					FontBodyStyle::font_body_style(
-						[
-							'selector' => "{$args['orderClass']} .d4_module_content",
-							'attr'     => isset( $attrs['bodyFont'] ) ? $attrs['bodyFont'] : [],
-						]
-					),
-					SizingStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['sizing'] ) ? $attrs['sizing'] : [],
-						]
-					),
-					SpacingStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['spacing'] ) ? $attrs['spacing'] : [],
-						]
-					),
-					BorderStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['border'] ) ? $attrs['border'] : [],
-						]
-					),
-					BoxShadowStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['boxShadow'] ) ? $attrs['boxShadow'] : [],
-						]
-					),
-					FiltersStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['filter'] ) ? $attrs['filter'] : [],
-						]
-					),
-					TransformStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['transform'] ) ? $attrs['transform'] : [],
+							'selector'            => $order_class . ' .d4_module_inner',
+							'attr'                => $attrs['module']['decoration']['background'] ?? [],
+							'declarationFunction' => function ( $declaration_function_args ) {
+								$attr_value = $declaration_function_args['attrValue'] ?? [];
+
+								if ( 'on' === ( $attr_value['image']['parallax']['enabled'] ?? 'off' ) ) {
+									return 'position: relative;';
+								}
+
+								return 'position: relative;';
+							},
 						]
 					),
 					CssStyle::style(
 						[
 							'selector'  => $args['orderClass'],
-							'attr'      => isset( $attrs['css'] ) ? $attrs['css'] : [],
+							'attr'      => $attrs['css'] ?? [],
 							'cssFields' => self::custom_css(),
 						]
 					),
-					DisabledOnStyle::style(
+
+					// Title.
+					$elements->style(
 						[
-							'selector'                 => $args['orderClass'],
-							'attr'                     => isset( $attrs['disabledOn'] ) ? $attrs['disabledOn'] : [],
-							'disabledModuleVisibility' => isset( $args['settings']['disabledModuleVisibility'] ) ? $args['settings']['disabledModuleVisibility'] : null,
+							'attrName' => 'title',
 						]
 					),
-					OverflowStyle::style(
+
+					// Content.
+					$elements->style(
 						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['overflow'] ) ? $attrs['overflow'] : [],
-						]
-					),
-					PositionStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['position'] ) ? $attrs['position'] : [],
-						]
-					),
-					ZIndexStyle::style(
-						[
-							'selector' => $args['orderClass'],
-							'attr'     => isset( $attrs['zIndex'] ) ? $attrs['zIndex'] : [],
+							'attrName' => 'content',
 						]
 					),
 				],

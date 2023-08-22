@@ -1,6 +1,3 @@
-// WordPress dependencies.
-import { __ } from '@wordpress/i18n';
-
 // Divi dependencies.
 import { ModuleRegisterDefinition } from '@divi/module-library';
 
@@ -16,6 +13,7 @@ import { placeholderContent } from './placeholder-content';
 // Styles.
 import './style.scss';
 import './module.scss';
+import { ModuleMetadata } from '@divi/types';
 
 /**
  * Call To Action module.
@@ -23,7 +21,8 @@ import './module.scss';
  * @since ??
  */
 export const childModule: ModuleRegisterDefinition<ChildModuleAttrs> = {
-  metadata,
+  // Imported json has no inferred type hence type-cast is necessary.
+  metadata: metadata as ModuleMetadata,
   placeholderContent,
   settings:   {
     content:  SettingsContent,

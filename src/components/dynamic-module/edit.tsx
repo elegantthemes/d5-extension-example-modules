@@ -2,14 +2,15 @@
 import React, { ReactElement, useEffect } from 'react';
 
 // Divi Dependencies.
-import { ModuleContainer } from '@divi/module';
-import { mergeAttrs } from '@divi/module-utils';
+import { 
+  ModuleContainer,
+  ElementComponents,
+} from '@divi/module';
+import { useFetch } from '@divi/rest';
 
 // Local Dependencies.
 import { DynamicModuleEditProps } from './types';
 import { ModuleStyles } from './styles';
-import { defaultAttrs } from './constants';
-import { useGetRecentPosts } from './hooks/get-recent-posts';
 import { map } from 'lodash';
 import { __ } from '@wordpress/i18n';
 import { ModuleScriptData } from './module-script-data';
@@ -29,31 +30,35 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
     attrs,
     id,
     name,
+    elements,
   } = props;
 
-  // Merge module default values with module attributes.
-  const moduleAttrs = mergeAttrs({
-    defaultAttrs,
-    attrs,
-  });
+  const {
+    fetch,
+    response,
+    isLoading,
+  } = useFetch<any[]>([]);
 
-  const {getPosts, posts, isLoading} = useGetRecentPosts();
-
-  const title            = moduleAttrs?.title?.desktop?.value;
-  const numberOfPosts    = parseInt(moduleAttrs?.numberOfPosts?.desktop?.value);
-  const TitleHeading     = moduleAttrs?.titleFont?.font?.desktop?.value?.headingLevel;
-  const PostTitleHeading = moduleAttrs?.postTitleFont?.font?.desktop?.value?.headingLevel;
+  const PostTitleHeading = attrs?.postTitle?.decoration?.font?.font?.desktop?.value?.headingLevel;
+  const postsNumber = parseInt(attrs?.postItems?.innerContent?.desktop?.value?.postsNumber);
 
   /**
    * Fetches new Portfolio Posts on parameter changes.
    */
-   useEffect(() => {
-    getPosts(numberOfPosts);
-  }, [numberOfPosts]);
+  useEffect(() => {
+    fetch({
+      restRoute: `/wp/v2/posts?context=view&per_page=${postsNumber}`,
+      method:    'GET',
+    }).
+    catch((error) => {
+      console.error(error);
+    });
+  }, [postsNumber]);
 
   return (
     <ModuleContainer
-      attrs={moduleAttrs}
+      attrs={attrs}
+      elements={elements}
       componentType="edit"
       id={id}
       name={name}
@@ -64,29 +69,33 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
       {
         ! isLoading && (
           <>
-            {
-              title && (
-                <TitleHeading className="dynamic-module__title">{title}</TitleHeading>
-              )
-            }
-            <div className="dynamic-module__post-items">
-              {
-                map(posts, (post) => (
-                    <div className="dynamic-module__post-item" key={post?.id}>
-                      <PostTitleHeading className="dynamic-module__post-item-title">
-                        <a href={post?.link} onClick={() => false}>{post?.title?.rendered}</a>
-                      </PostTitleHeading>
-                      <div className="dynamic-module__post-item-content" dangerouslySetInnerHTML={{__html: post?.excerpt?.rendered}} />
-                    </div>
+            <ElementComponents
+              attrs={attrs?.module?.decoration ?? {}}
+              id={id}
+            />
+            <div className="dynamic-module__inner">
+              {elements.render({
+                attrName: 'title',
+              })}
+              <div className="dynamic-module__post-items">
+                {
+                  map(response, (post) => (
+                      <div className="dynamic-module__post-item" key={post?.id}>
+                        <PostTitleHeading className="dynamic-module__post-item-title">
+                          <a href={post?.link} onClick={() => false}>{post?.title?.rendered}</a>
+                        </PostTitleHeading>
+                        <div className="dynamic-module__post-item-content" dangerouslySetInnerHTML={{__html: post?.excerpt?.rendered}} />
+                      </div>
+                    )
                   )
-                )
-              }
+                }
+              </div>
             </div>
           </>
         )
       }
       {
-        ! isLoading && posts.length < 1 && (
+        ! isLoading && response.length < 1 && (
           <div>{__('No post found.', 'd5-extension-example-modules')}</div>
         )
       }

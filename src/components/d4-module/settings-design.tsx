@@ -6,42 +6,45 @@ import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
 import {
-  Animation,
-  Border,
-  BoxShadow,
-  Filters,
-  Font,
+  AnimationGroup,
+  BorderGroup,
+  BoxShadowGroup,
+  FiltersGroup,
+  FontGroup,
   FontBodyGroup,
-  Sizing,
-  Spacing,
-  Text,
-  Transform,
+  SizingGroup,
+  SpacingGroup,
+  TextGroup,
+  TransformGroup,
+  SettingsProps,
 } from '@divi/module';
 
 // Local dependencies.
-import { defaultSettingsAttrs } from './constants';
+import { D4ModuleAttrs } from './types';
 
-export const SettingsDesign = (): ReactElement => (
+export const SettingsDesign = ({
+  defaultSettingsAttrs,
+}: SettingsProps<D4ModuleAttrs>): ReactElement => (
   <React.Fragment>
-    <Text
-      defaultGroupAttr={defaultSettingsAttrs?.text}
-    />
-    <Font
+    <TextGroup />
+    <FontGroup
       groupLabel={__('Title Text', 'd5-extension-example-modules')}
-      attrName="titleFont"
+      attrName="title.decoration.font"
       fieldLabel={__('Title', 'd5-extension-example-modules')}
-      hideElements={{
-        headingLevel: false,
+      fields={{
+        headingLevel: {
+          render: true,
+        },
       }}
-      defaultGroupAttr={defaultSettingsAttrs?.titleFont}
+      defaultGroupAttr={defaultSettingsAttrs?.title?.decoration?.font?.asMutable({ deep: true }) ?? {}}
     />
     <FontBodyGroup />
-    <Sizing />
-    <Spacing />
-    <Border />
-    <BoxShadow />
-    <Filters />
-    <Transform />
-    <Animation />
+    <SizingGroup />
+    <SpacingGroup />
+    <BorderGroup />
+    <BoxShadowGroup />
+    <FiltersGroup />
+    <TransformGroup />
+    <AnimationGroup />
   </React.Fragment>
 );

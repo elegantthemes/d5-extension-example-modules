@@ -15,10 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
 use ET\Builder\Packages\Module\Module;
-use ET\Builder\Packages\Module\Options\Background\BackgroundComponents;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
 use ET\Builder\Framework\Utility\HTMLUtility;
-use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
+use ET\Builder\Packages\Module\Layout\Components\ModuleElements\ModuleElements;
+use ET\Builder\Packages\Module\Options\Element\ElementComponents;
 
 trait RenderCallbackTrait {
 	use ModuleClassnamesTrait;
@@ -30,22 +30,20 @@ trait RenderCallbackTrait {
 	 *
 	 * @since ??
 	 *
-	 * @param array     $block_attributes Block attributes that were saved by VB.
-	 * @param string    $content          Block content.
-	 * @param \WP_Block $block            Parsed block object that being rendered.
+	 * @param array          $attrs    Block attributes that were saved by VB.
+	 * @param string         $content  Block content.
+	 * @param \WP_Block      $block    Parsed block object that being rendered.
+	 * @param ModuleElements $elements ModuleElements instance.
 	 *
-	 * @return string HTML rendered of Blurb module.
+	 * @return string HTML rendered of Dynamic module.
 	 */
-	public static function render_callback( $block_attributes, $content, $block ) {
-		$default_attributes = ModuleRegistration::get_default_attrs( 'example/dynamic-module' );
-		$module_attrs       = array_replace_recursive( $default_attributes, $block_attributes );
+	public static function render_callback( $attrs, $content, $block, $elements ) {
+		$post_heading_level = $attrs['postTitle']['decoration']['font']['font']['desktop']['value']['headingLevel'];
+		$posts_per_page     = $attrs['postItems']['innerContent']['desktop']['value']['postsNumber'];
 
-		$post_heading_level = $module_attrs['postTitleFont']['font']['desktop']['value']['headingLevel'] ?? 'h3';
-		$posts_per_page     = $module_attrs['numberOfPosts']['desktop']['value'] ?? 5;
-
-		$background_component = BackgroundComponents::component(
+		$background_component = ElementComponents::component(
 			[
-				'attr'          => $module_attrs['background'] ?? [],
+				'attrs'         => $attrs['module']['decoration'] ?? [],
 				'id'            => $block->parsed_block['id'],
 
 				// FE only.
@@ -97,7 +95,7 @@ trait RenderCallbackTrait {
 						'attributes'        => [
 							'class' => 'dynamic-module__post-item-content',
 						],
-						'childrenSanitizer' => 'wp_kses_post',
+						'childrenSanitizer' => 'et_core_esc_previously',
 						'children'          => get_the_excerpt( $post ),
 					]
 				);
@@ -105,7 +103,7 @@ trait RenderCallbackTrait {
 				// Post item.
 				$post_items .= HTMLUtility::render(
 					[
-						'tag'               => $post_heading_level,
+						'tag'               => 'div',
 						'attributes'        => [
 							'class' => 'dynamic-module__post-item',
 						],
@@ -117,16 +115,9 @@ trait RenderCallbackTrait {
 		}
 
 		// Title.
-		$title_text    = $module_attrs['title']['desktop']['value'] ?? '';
-		$heading_level = $module_attrs['titleFont']['font']['desktop']['value']['headingLevel'] ?? 'h2';
-		$title         = HTMLUtility::render(
+		$title = $elements->render(
 			[
-				'tag'               => $heading_level,
-				'attributes'        => [
-					'class' => 'dynamic-module__title',
-				],
-				'childrenSanitizer' => 'esc_html',
-				'children'          => $title_text,
+				'attrName' => 'title',
 			]
 		);
 
@@ -165,14 +156,30 @@ trait RenderCallbackTrait {
 				'id'                  => $block->parsed_block['id'],
 				'name'                => $block->block_type->name,
 				'moduleCategory'      => $block->block_type->category,
-				'attrs'               => $module_attrs,
+				'attrs'               => $attrs,
+				'elements'            => $elements,
 				'classnamesFunction'  => [ self::class, 'module_classnames' ],
 				'stylesComponent'     => [ self::class, 'module_styles' ],
 				'scriptDataComponent' => [ self::class, 'module_script_data' ],
 				'parentAttrs'         => $parent_attrs,
 				'parentId'            => $parent->id ?? '',
 				'parentName'          => $parent->blockName ?? '',
-				'children'            => $background_component . $title . $posts_container,
+				'children'            => [
+					$background_component,
+					HTMLUtility::render(
+						[
+							'tag'               => 'div',
+							'attributes'        => [
+								'class' => 'dynamic-module__inner',
+							],
+							'childrenSanitizer' => 'et_core_esc_previously',
+							'children'          => [
+								$title,
+								$posts_container,
+							],
+						]
+					),
+				],
 			]
 		);
 	}

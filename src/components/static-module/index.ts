@@ -1,8 +1,6 @@
-// WordPress dependencies.
-import { __ } from '@wordpress/i18n';
-
 // Divi dependencies.
 import { ModuleRegisterDefinition } from '@divi/module-library';
+import { ModuleMetadata } from '@divi/types';
 
 // Local dependencies.
 import metadata from './module.json';
@@ -18,7 +16,8 @@ import './style.scss';
 import './module.scss';
 
 export const staticModule: ModuleRegisterDefinition<StaticModuleAttrs> = {
-  metadata,
+  // Imported json has no inferred type hence type-cast is necessary.
+  metadata: metadata as ModuleMetadata,
   placeholderContent,
   settings: {
     content:  SettingsContent,

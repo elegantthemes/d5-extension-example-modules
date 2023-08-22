@@ -6,65 +6,71 @@ import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
 import {
-  Animation,
-  Border,
-  BoxShadow,
+  AnimationGroup,
+  BorderGroup,
+  BoxShadowGroup,
   FieldContainer,
-  Filters,
-  Font,
+  FiltersGroup,
+  FontGroup,
   FontBodyGroup,
-  Sizing,
-  Spacing,
-  Text,
-  Transform,
+  SizingGroup,
+  SpacingGroup,
+  SettingsProps,
+  TextGroup,
+  TransformGroup,
 } from '@divi/module';
 import { GroupContainer } from '@divi/modal';
 import { ColorPickerContainer, RangeContainer } from '@divi/field-library';
+import {ParentModuleAttrs} from "./types";
 
-// Local dependencies.
-import { defaultSettingsAttrs } from './constants';
 
-export const SettingsDesign = (): ReactElement => (
+export const SettingsDesign = ({
+   defaultSettingsAttrs,
+ }: SettingsProps<ParentModuleAttrs>): ReactElement => (
   <React.Fragment>
     <GroupContainer id="icon" title={__('Icon Style', 'd5-extension-example-modules')}>
       <FieldContainer
-        attrName="iconColor"
+        attrName="icon.advanced.color"
         label={__('Icon Color', 'd5-extension-example-modules')}
         description={__('Input your value to action title here.', 'd5-extension-example-modules')}
         sticky={false}
-        defaultAttr={defaultSettingsAttrs?.iconColor}
+        defaultAttr={defaultSettingsAttrs?.icon}
       >
         <ColorPickerContainer />
       </FieldContainer>
       <FieldContainer
-        attrName="iconSize"
+        attrName="icon.advanced.size"
         label={__('Icon Size', 'd5-extension-example-modules')}
         description={__('Input your value to action title here.', 'd5-extension-example-modules')}
         sticky={false}
-        defaultAttr={defaultSettingsAttrs?.iconSize}
+        defaultAttr={defaultSettingsAttrs}
       >
         <RangeContainer />
       </FieldContainer>
     </GroupContainer>
-    <Text
-      defaultGroupAttr={defaultSettingsAttrs?.text}
-      hideElements={{
-        color: true,
+    <TextGroup
+      defaultGroupAttr={defaultSettingsAttrs?.module?.advanced?.text}
+      fields={{
+        color: {
+          render: false,
+        },
       }}
     />
-    <Font
+    <FontGroup
       groupLabel={__('Title Text', 'd5-extension-example-modules')}
-      attrName="titleFont"
+      attrName="title.decoration.font"
       fieldLabel={__('Title', 'd5-extension-example-modules')}
-      defaultGroupAttr={defaultSettingsAttrs?.titleFont}
+      defaultGroupAttr={defaultSettingsAttrs?.title?.decoration?.font?.asMutable({ deep: true }) ?? {}}
     />
-    <FontBodyGroup />
-    <Sizing />
-    <Spacing />
-    <Border />
-    <BoxShadow />
-    <Filters />
-    <Transform />
-    <Animation />
+    <FontBodyGroup
+      attrName="content.decoration.bodyFont"
+    />
+    <SizingGroup />
+    <SpacingGroup />
+    <BorderGroup />
+    <BoxShadowGroup />
+    <FiltersGroup />
+    <TransformGroup />
+    <AnimationGroup />
   </React.Fragment>
 );

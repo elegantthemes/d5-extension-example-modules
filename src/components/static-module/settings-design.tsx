@@ -6,61 +6,66 @@ import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
 import {
-  Animation,
-  Border,
-  BoxShadow,
-  Filters,
-  Font,
+  AnimationGroup,
+  BorderGroup,
+  BoxShadowGroup,
+  FiltersGroup,
+  FontGroup,
   FontBodyGroup,
-  Sizing,
-  Spacing,
-  Text,
-  Transform,
+  SettingsProps,
+  SizingGroup,
+  SpacingGroup,
+  TextGroup,
+  TransformGroup,
 } from '@divi/module';
 import { GroupContainer } from '@divi/modal';
 
 // Local dependencies.
-import { defaultSettingsAttrs } from './constants';
+import {StaticModuleAttrs} from "./types";
 
-export const SettingsDesign = (): ReactElement => (
+export const SettingsDesign = ({
+   defaultSettingsAttrs,
+ }: SettingsProps<StaticModuleAttrs>): ReactElement => (
   <React.Fragment>
     <GroupContainer id="imageStyle" title={__('Image Style', 'd5-extension-example-modules')}>
-      <Border
-        attrName="image.border"
+      <BorderGroup
+        attrName="image.decoration.border"
         grouped={false}
       />
-      <Spacing
-        attrName="image.spacing"
+      <SpacingGroup
+        attrName="image.decoration.spacing"
         grouped={false}
       />
-      <BoxShadow
-        attrName="image.boxShadow"
+      <BoxShadowGroup
+        attrName="image.decoration.boxShadow"
         grouped={false}
       />
-      <Filters
-        attrName="image.filter"
+      <FiltersGroup
+        attrName="image.decoration.filter"
         grouped={false}
       />
     </GroupContainer>
-    <Text
-      defaultGroupAttr={defaultSettingsAttrs?.text}
+    <TextGroup
+      defaultGroupAttr={defaultSettingsAttrs?.module?.advanced?.text}
     />
-    <Font
+    <FontGroup
       groupLabel={__('Title Text', 'd5-extension-example-modules')}
-      attrName="titleFont"
+      attrName="title.decoration.font"
       fieldLabel={__('Title', 'd5-extension-example-modules')}
-      hideElements={{
-        headingLevel: false,
+      fields={{
+        headingLevel: {
+          render: false,
+        },
       }}
-      defaultGroupAttr={defaultSettingsAttrs?.titleFont}
+      defaultGroupAttr={defaultSettingsAttrs?.title?.decoration?.font?.asMutable({ deep: true }) ?? {}}
     />
     <FontBodyGroup />
-    <Sizing />
-    <Spacing />
-    <Border />
-    <BoxShadow />
-    <Filters />
-    <Transform />
-    <Animation />
+    <SizingGroup />
+    <SpacingGroup />
+    <BorderGroup />
+    <BoxShadowGroup />
+    <FiltersGroup />
+    <TransformGroup />
+    <AnimationGroup />
   </React.Fragment>
 );
