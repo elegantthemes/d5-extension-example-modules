@@ -11,14 +11,12 @@ import {
 import { DynamicModuleAttrs } from './types';
 
 /**
- * Blurb Module's style components.
+ * Dynamic Module's style components.
  *
  * @since ??
  */
  const ModuleStyles = ({
-  attrs,
   settings,
-  orderClass,
   mode,
   state,
   noStyleTag,
@@ -28,6 +26,11 @@ import { DynamicModuleAttrs } from './types';
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
       {elements.style({
         attrName: 'module',
+        styleProps: {
+          disabledOn: {
+            disabledModuleVisibility: settings?.disabledModuleVisibility,
+          },
+        },
       })}
       {elements.style({
         attrName: 'title',

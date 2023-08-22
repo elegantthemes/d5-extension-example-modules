@@ -1,6 +1,6 @@
 <?php
 /**
- * BlurbModule::custom_css().
+ * ChildModule::custom_css().
  *
  * @package Builder\Packages\ModuleLibrary
  * @since ??

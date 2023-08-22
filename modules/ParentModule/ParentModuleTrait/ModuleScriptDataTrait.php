@@ -12,7 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'Direct access forbidden.' );
 }
 
-use ET\Builder\Packages\Module\Layout\Components\MultiView\MultiViewScriptData;
 use ET\Builder\Packages\Module\Options\Element\ElementScriptData;
 
 trait ModuleScriptDataTrait {

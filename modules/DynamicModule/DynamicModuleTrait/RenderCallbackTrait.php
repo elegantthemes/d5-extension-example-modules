@@ -15,7 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
 use ET\Builder\Packages\Module\Module;
-use ET\Builder\Packages\Module\Options\Background\BackgroundComponents;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
 use ET\Builder\Framework\Utility\HTMLUtility;
 use ET\Builder\Packages\Module\Layout\Components\ModuleElements\ModuleElements;
@@ -36,7 +35,7 @@ trait RenderCallbackTrait {
 	 * @param \WP_Block      $block    Parsed block object that being rendered.
 	 * @param ModuleElements $elements ModuleElements instance.
 	 *
-	 * @return string HTML rendered of Blurb module.
+	 * @return string HTML rendered of Dynamic module.
 	 */
 	public static function render_callback( $attrs, $content, $block, $elements ) {
 		$post_heading_level = $attrs['postTitle']['decoration']['font']['font']['desktop']['value']['headingLevel'];

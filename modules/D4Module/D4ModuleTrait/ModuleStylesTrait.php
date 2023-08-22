@@ -22,10 +22,10 @@ trait ModuleStylesTrait {
 	use CustomCssTrait;
 
 	/**
-	 * Child Module's style components.
+	 * D4 module's style components.
 	 *
 	 * This function is equivalent of JS function ModuleStyles located in
-	 * visual-builder/packages/module-library/src/components/cta/styles.tsx.
+	 * src/components/d4-module/styles.tsx.
 	 *
 	 * @since ??
 	 *

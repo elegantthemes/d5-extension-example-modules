@@ -34,6 +34,11 @@ import { cssFields } from './custom-css';
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
       {elements.style({
         attrName: 'module',
+        styleProps: {
+          disabledOn: {
+            disabledModuleVisibility: settings?.disabledModuleVisibility,
+          },
+        },
       })}
       <TextStyle
         selector={`${orderClass} .d4_module_inner`}

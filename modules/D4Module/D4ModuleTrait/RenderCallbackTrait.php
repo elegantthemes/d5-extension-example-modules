@@ -33,7 +33,7 @@ trait RenderCallbackTrait {
 	 * @param \WP_Block      $block            Parsed block object that being rendered.
 	 * @param ModuleElements $elements ModuleElements instance.
 	 *
-	 * @return string HTML rendered of Blurb module.
+	 * @return string HTML rendered of D4 module.
 	 */
 	public static function render_callback( $attrs, $content, $block, $elements ) {
 		// Background component.
