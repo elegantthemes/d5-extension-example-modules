@@ -1,4 +1,4 @@
-# D5 Module Extension Example
+# D5 Extension Example Modules
 This extension is a collection of example modules. You can use these modules as a reference for your development. This extension uses composer to autoload the modules in PHP. You can find the example modules in the `src/components` folder for Visual Builder and in the `modules` folder for Front-end rendering.
 
 ## Installation
