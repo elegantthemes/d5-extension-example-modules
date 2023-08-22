@@ -7,13 +7,17 @@ import { D4ModuleAttrs } from './types';
 
 export const placeholderContent: D4ModuleAttrs = {
   title: {
-    desktop: {
-      value: placeholder.title,
-    },
+    innerContent: {
+      desktop: {
+        value: placeholder.title,
+      },
+    }
   },
   content: {
-    desktop: {
-      value: placeholder.body,
-    },
+    innerContent: {
+      desktop: {
+        value: placeholder.body,
+      },
+    }
   },
 };

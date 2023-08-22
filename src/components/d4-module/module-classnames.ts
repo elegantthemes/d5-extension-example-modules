@@ -3,7 +3,7 @@ import { D4ModuleAttrs } from './types';
 
 
 /**
- * Module classnames function for Divi 4 Module.
+ * Module classnames function for Dynamic Module.
  *
  * @since ??
  *
@@ -14,5 +14,5 @@ export const moduleClassnames = ({
   attrs,
 }: ModuleClassnamesParams<D4ModuleAttrs>): void => {
   // Text Options.
-  classnamesInstance.add(textOptionsClassnames(attrs?.text));
+  classnamesInstance.add(textOptionsClassnames(attrs?.module?.advanced?.text));
 };
