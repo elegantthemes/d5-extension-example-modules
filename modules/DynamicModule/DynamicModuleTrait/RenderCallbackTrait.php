@@ -95,7 +95,7 @@ trait RenderCallbackTrait {
 						'attributes'        => [
 							'class' => 'dynamic-module__post-item-content',
 						],
-						'childrenSanitizer' => 'wp_kses_post',
+						'childrenSanitizer' => 'et_core_esc_previously',
 						'children'          => get_the_excerpt( $post ),
 					]
 				);
@@ -103,7 +103,7 @@ trait RenderCallbackTrait {
 				// Post item.
 				$post_items .= HTMLUtility::render(
 					[
-						'tag'               => $post_heading_level,
+						'tag'               => 'div',
 						'attributes'        => [
 							'class' => 'dynamic-module__post-item',
 						],
