@@ -33,7 +33,9 @@ export const SettingsDesign = ({
         attrName="icon.advanced.color"
         label={__('Icon Color', 'd5-extension-example-modules')}
         description={__('Input your value to action title here.', 'd5-extension-example-modules')}
-        sticky={false}
+        features={{
+          sticky: false,
+        }}
         defaultAttr={defaultSettingsAttrs?.icon}
       >
         <ColorPickerContainer />
@@ -42,7 +44,9 @@ export const SettingsDesign = ({
         attrName="icon.advanced.size"
         label={__('Icon Size', 'd5-extension-example-modules')}
         description={__('Input your value to action title here.', 'd5-extension-example-modules')}
-        sticky={false}
+        features={{
+          sticky: false,
+        }}
         defaultAttr={defaultSettingsAttrs}
       >
         <RangeContainer />

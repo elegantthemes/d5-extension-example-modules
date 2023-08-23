@@ -7,7 +7,7 @@ import {
   InternalAttrs,
   LinkGroupAttr,
   TextGroupAttr,
-  PickedElementAttrs,
+  PickedElementDecorationAttrs,
   ModuleMetaAttrs,
   CssGroupAttr,
 } from '@divi/types';
@@ -30,7 +30,7 @@ export interface D4ModuleAttrs extends InternalAttrs {
       htmlAttributes?: IdClassesGroupAttr;
       text?: TextGroupAttr;
     };
-    decoration?: PickedElementAttrs<
+    decoration?: PickedElementDecorationAttrs<
       'animation' |
       'background' |
       'border' |
@@ -50,11 +50,11 @@ export interface D4ModuleAttrs extends InternalAttrs {
   };
   title?: {
     innerContent?: FormatBreakpointStateAttr<string>;
-    decoration?: PickedElementAttrs<'font'>;
+    decoration?: PickedElementDecorationAttrs<'font'>;
   };
   content?: {
     innerContent?: FormatBreakpointStateAttr<string>;
-    decoration?: PickedElementAttrs<'bodyFont'>;
+    decoration?: PickedElementDecorationAttrs<'bodyFont'>;
   };
 }
 

@@ -30,7 +30,9 @@ export const SettingsContent = ({
         attrName="title.innerContent"
         label={__('Title', 'd5-extension-example-modules')}
         description={__('Title to show for module.', 'd5-extension-example-modules')}
-        sticky={false}
+        features={{
+          sticky: false,
+        }}
       >
         <TextContainer/>
       </FieldContainer>
@@ -39,9 +41,11 @@ export const SettingsContent = ({
         subName="postsNumber"
         label={__('Number of posts', 'd5-extension-example-modules')}
         description={__('Number of posts you want to show.', 'd5-extension-example-modules')}
-        hover={false}
-        sticky={false}
-        responsive={false}
+        features={{
+          sticky: false,
+          hover: false,
+          responsive: false,
+        }}
         defaultAttr={defaultSettingsAttrs?.postItems?.innerContent}
       >
         <TextContainer />

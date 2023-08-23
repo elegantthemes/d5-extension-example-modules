@@ -42,7 +42,9 @@ export const SettingsContent = ({
           attrName="title.innerContent"
           label={__('Title', 'd5-extension-example-modules')}
           description={__('Input your value to action title here.', 'd5-extension-example-modules')}
-          sticky={false}
+          features={{
+            sticky: false,
+          }}
         >
           <TextContainer />
         </FieldContainer>
@@ -50,7 +52,9 @@ export const SettingsContent = ({
           attrName="content.innerContent"
           label={__('Content', 'd5-extension-example-modules')}
           description={__('Input the main text content for your module here.', 'd5-extension-example-modules')}
-          sticky={false}
+          features={{
+            sticky: false,
+          }}
         >
           <RichTextContainer />
         </FieldContainer>
@@ -63,7 +67,9 @@ export const SettingsContent = ({
           attrName="icon.innerContent"
           label={__('Icon', 'd5-extension-example-modules')}
           description={__('Pick an Icon', 'd5-extension-example-modules')}
-          sticky={false}
+          features={{
+            sticky: false,
+          }}
           defaultAttr={defaultIconAttrs}
         >
           <IconPickerContainer />
