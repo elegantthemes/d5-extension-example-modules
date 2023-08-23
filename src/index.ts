@@ -10,7 +10,6 @@ import { dynamicModule } from './components/dynamic-module';
 import { parentModule } from './components/parent-module';
 import { staticModule } from './components/static-module';
 
-import './module-exceptions';
 import './module-icons';
 
 // Register modules.
