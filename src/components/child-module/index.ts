@@ -11,7 +11,6 @@ import { ChildModuleAttrs } from './types';
 import { placeholderContent } from './placeholder-content';
 
 // Styles.
-import './style.scss';
 import './module.scss';
 import { ModuleMetadata } from '@divi/types';
 
