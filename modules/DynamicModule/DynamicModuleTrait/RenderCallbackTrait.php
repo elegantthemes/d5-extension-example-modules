@@ -81,7 +81,7 @@ trait RenderCallbackTrait {
 					[
 						'tag'               => $post_heading_level,
 						'attributes'        => [
-							'class' => 'dynamic-module__post-item-title',
+							'class' => 'example_dynamic_module__post-item-title',
 						],
 						'childrenSanitizer' => 'et_core_esc_previously',
 						'children'          => $post_title,
@@ -93,7 +93,7 @@ trait RenderCallbackTrait {
 					[
 						'tag'               => 'div',
 						'attributes'        => [
-							'class' => 'dynamic-module__post-item-content',
+							'class' => 'example_dynamic_module__post-item-content',
 						],
 						'childrenSanitizer' => 'et_core_esc_previously',
 						'children'          => get_the_excerpt( $post ),
@@ -105,7 +105,7 @@ trait RenderCallbackTrait {
 					[
 						'tag'               => 'div',
 						'attributes'        => [
-							'class' => 'dynamic-module__post-item',
+							'class' => 'example_dynamic_module__post-item',
 						],
 						'childrenSanitizer' => 'et_core_esc_previously',
 						'children'          => $post_title_container . $post_content,
@@ -127,7 +127,7 @@ trait RenderCallbackTrait {
 				[
 					'tag'               => 'div',
 					'attributes'        => [
-						'class' => 'dynamic-module__post-items',
+						'class' => 'example_dynamic_module__post-items',
 					],
 					'childrenSanitizer' => 'et_core_esc_previously',
 					'children'          => $post_items,
@@ -170,7 +170,7 @@ trait RenderCallbackTrait {
 						[
 							'tag'               => 'div',
 							'attributes'        => [
-								'class' => 'dynamic-module__inner',
+								'class' => 'example_dynamic_module__inner',
 							],
 							'childrenSanitizer' => 'et_core_esc_previously',
 							'children'          => [

@@ -26,7 +26,7 @@
     },
     "title": {
       "type": "object",
-      "selector": "{{selector}} .child-module__title",
+      "selector": "{{selector}} .example_child_module__title",
       "defaultPrintedStyle": {
         "decoration": {
           "font": {
@@ -58,7 +58,7 @@
     },
     "content": {
       "type": "object",
-      "selector": "{{selector}} .child-module__content",
+      "selector": "{{selector}} .example_child_module__content",
       "defaultPrintedStyle": {
         "decoration": {
           "bodyFont": {
@@ -80,7 +80,7 @@
         "bodyFont": {
           "selectors": {
             "desktop": {
-              "value": "{{selector}} .child-module__content"
+              "value": "{{selector}} .example_child_module__content"
             }
           }
         }
@@ -117,19 +117,19 @@
   "customCssFields": {
     "contentContainer": {
       "subName": "contentContainer",
-      "selectorSuffix": " .parent-module__content-container"
+      "selectorSuffix": " .example_parent_module__content-container"
     },
     "title": {
       "subName": "title",
-      "selectorSuffix": " .parent-module__title"
+      "selectorSuffix": " .example_parent_module__title"
     },
     "content": {
       "subName": "content",
-      "selectorSuffix": " .parent-module__content"
+      "selectorSuffix": " .example_parent_module__content"
     },
     "icon": {
       "subName": "icon",
-      "selectorSuffix": " .parent-module__icon.et-pb-icon"
+      "selectorSuffix": " .example_parent_module__icon.et-pb-icon"
     }
   }
 }

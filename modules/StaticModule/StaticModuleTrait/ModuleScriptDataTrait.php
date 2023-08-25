@@ -63,14 +63,14 @@ trait ModuleScriptDataTrait {
 				'hoverSelector' => $selector,
 				'setContent'    => [
 					[
-						'selector'      => $selector . ' .static-module__title',
+						'selector'      => $selector . ' .example_static_module__title',
 						'data'          => $attrs['title']['innerContent'] ?? [],
 						'valueResolver' => function( $value ) {
 							return $value ?? '';
 						},
 					],
 					[
-						'selector'      => $selector . ' .static-module__content',
+						'selector'      => $selector . ' .example_static_module__content',
 						'data'          => $attrs['content']['innerContent'] ?? [],
 						'valueResolver' => function( $value ) {
 							return $value ?? '';
@@ -80,7 +80,7 @@ trait ModuleScriptDataTrait {
 				],
 				'setAttrs'      => [
 					[
-						'selector'      => $selector . ' .static-module__image img',
+						'selector'      => $selector . ' .example_static_module__image img',
 						'data'          => [
 							'src' => $attrs['image']['innerContent'] ?? [],
 						],

@@ -8,9 +8,9 @@ class Divi4Module extends Component {
   render() {
     const HeaderLevel = this.props.header_level ? this.props.header_level : 'h2';
     return (
-      <div className="d4_module_inner">
-        <HeaderLevel className="d4_module_title">{this.props.title}</HeaderLevel>
-        <div className="d4_module_content">{this.props.content()}</div>
+      <div className="example_d4_module_inner">
+        <HeaderLevel className="example_d4_module_title">{this.props.title}</HeaderLevel>
+        <div className="example_d4_module_content">{this.props.content()}</div>
       </div>
     );
   }

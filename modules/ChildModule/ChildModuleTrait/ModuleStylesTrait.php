@@ -57,8 +57,8 @@ trait ModuleStylesTrait {
 		$parent_default_attributes = ModuleRegistration::get_default_attrs( 'example/parent-module' );
 		$parent_attrs_with_default = array_replace_recursive( $parent_default_attributes, $parent_attrs );
 
-		$icon_selector              = "{$order_class} .child-module__icon.et-pb-icon";
-		$content_container_selector = "{$order_class} .child-module__content-container";
+		$icon_selector              = "{$order_class} .example_child_module__icon.et-pb-icon";
+		$content_container_selector = "{$order_class} .example_child_module__content-container";
 
 		Style::add(
 			[
