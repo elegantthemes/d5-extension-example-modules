@@ -27,7 +27,7 @@ export const ModuleStyles = ({
     state,
     noStyleTag,
   }: StylesProps<StaticModuleAttrs>): ReactElement => {
-  const textSelector = `${orderClass} .static-module__content-container`;
+  const textSelector = `${orderClass} .example_static_module__content-container`;
 
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
