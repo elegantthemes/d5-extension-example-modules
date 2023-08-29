@@ -9,7 +9,7 @@ npm install
 
 Install the composer dependencies:
 ```
-npm run composer
+composer install
 ```
 
 Now, start the project:
@@ -49,8 +49,11 @@ You can find the module conversion process in the `src/components/d4-module` fol
 ## Module Icons
 You can find the module icons in the `src/icons` folder. You can use these icons for module icon. You can also add your own icons in this folder.
 
+## Tests
+In Divi 5, we always use testing. The `test-config` folder contains the configuration for JavaScript testing. The testing for the module is set up in the `__tests__` folder. We test modules based on `test-cases.json`. Some modules require additional mock data, and this data is stored in the `__mock-data__` folder.
+
 ## Available Commands
-Some `npm` commands are available for your development.
+Some `npm` commands are available for your development and tests.
 
 ### `npm run start`
 It will start the webpack compiler for development with watch mode.
@@ -60,6 +63,14 @@ It will build all JS and CSS assets for production.
 
 ### `npm run zip`
 It will zip all assets and files without the `src` folder for distribution.
+
+### `npm run test`
+It will run all tests for the module.
+
+### `npm run reset-install`
+It will remove node_modules and reinstall all dependencies.
+
+_Note: If you are facing error for divi packages in `npm run install`, then you need to run `npm run reset-install` command._
 
 
 ## Folder Structure
@@ -79,9 +90,18 @@ d5-extension-example-modules
 │   │   │   └── RenderCallbackTrait.php
 │   │   └── ModuleName.php
 │   └── Modules.php
+├── scripts -- (build scripts)
 ├── src
 │   ├── components
 │   │   └── module-name
+│   │       ├── __mock-data__
+│   │       │   └── attrs.ts
+│   │       │   └── shortcodes.ts -- (for converted modules from Divi 4 module)
+│   │       ├── __tests__
+│   │       │   ├── __snapshots__
+│   │       │   │   └── edit.tsx.snap
+│   │       │   └── conversion.ts -- (for converted modules from Divi 4 module)
+│   │       │   └── edit.tsx
 │   │       ├── custom-css.ts
 │   │       ├── edit.tsx
 │   │       ├── index.ts
@@ -99,7 +119,6 @@ d5-extension-example-modules
 |   |   |   └── index.tsx
 │   │   └── index.ts
 │   ├── index.ts
-│   ├── module-exceptions.ts
 │   └── module-icons.ts
 ├── d5-extension-example-modules.php
 ├── gulpfile.js
