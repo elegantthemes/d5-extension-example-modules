@@ -36,7 +36,7 @@ import { DynamicModuleAttrs } from './types';
         },
       })}
       <TextStyle
-        selector={`${orderClass} .dynamic-module__inner`}
+        selector={`${orderClass} .example_dynamic_module__inner`}
         attr={attrs?.module?.advanced?.text}
       />
       {elements.style({

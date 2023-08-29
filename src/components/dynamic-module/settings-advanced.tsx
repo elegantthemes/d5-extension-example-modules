@@ -16,7 +16,7 @@ export const SettingsAdvanced = (): ReactElement => (
   <React.Fragment>
     <IdClassesGroup />
     <CssGroup
-      mainSelector=".et_pb_dynamic_module"
+      mainSelector=".example_dynamic_module"
     />
     <AttributesGroup />
     <VisibilitySettingsGroup />

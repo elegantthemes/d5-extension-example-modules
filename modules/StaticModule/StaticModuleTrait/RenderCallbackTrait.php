@@ -58,7 +58,7 @@ trait RenderCallbackTrait {
 			[
 				'tag'               => 'div',
 				'attributes'        => [
-					'class' => 'static-module__image',
+					'class' => 'example_static_module__image',
 				],
 				'childrenSanitizer' => 'et_core_esc_previously',
 				'children'          => $image,
@@ -84,7 +84,7 @@ trait RenderCallbackTrait {
 			[
 				'tag'               => 'div',
 				'attributes'        => [
-					'class' => 'static-module__content-container',
+					'class' => 'example_static_module__content-container',
 				],
 				'childrenSanitizer' => 'et_core_esc_previously',
 				'children'          => $title . $content,

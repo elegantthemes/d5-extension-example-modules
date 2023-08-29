@@ -43,14 +43,14 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
       classnamesFunction={moduleClassnames}
       scriptDataComponent={ModuleScriptData}
     >
-      <div className="static-module__image">
+      <div className="example_static_module__image">
         <img src={imageSrc} alt={imageAlt} />
       </div>
-      <div className="static-module__content-container">
+      <div className="example_static_module__content-container">
         {elements.render({
           attrName: 'title',
         })}
-        <div className="static-module__content">
+        <div className="example_static_module__content">
           {elements.render({
             attrName: 'content',
           })}

@@ -52,7 +52,7 @@ class D4_Module extends ET_Builder_Module {
 				'header' => array(
 					'label'        => et_builder_i18n( 'Title' ),
 					'css'          => array(
-						'main' => '%%order_class%% .d4_module_title',
+						'main' => '%%order_class%% .example_d4_module_title',
 					),
 					'header_level' => array(
 						'default' => 'h2',
@@ -61,7 +61,7 @@ class D4_Module extends ET_Builder_Module {
 				'body'   => array(
 					'label'          => et_builder_i18n( 'Body' ),
 					'css'            => array(
-						'main' => '%%order_class%% .d4_module_content',
+						'main' => '%%order_class%% .example_d4_module_content',
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,
@@ -94,11 +94,11 @@ class D4_Module extends ET_Builder_Module {
 		$this->custom_css_fields = array(
 			'title'   => array(
 				'label'    => esc_html__( 'Title', 'et_builder' ),
-				'selector' => '.d4_module_title',
+				'selector' => '.example_d4_module_title',
 			),
 			'content' => array(
 				'label'    => esc_html__( 'Content', 'et_builder' ),
-				'selector' => '.d4_module_content',
+				'selector' => '.example_d4_module_content',
 			),
 		);
 	}
@@ -147,9 +147,9 @@ class D4_Module extends ET_Builder_Module {
 
 		// Render module content
 		$output = sprintf(
-			'<div class="d4_module_inner">
-				<%1$s class="d4_module_title">%2$s</%1$s>
-				<div class="d4_module_content">%3$s</div>
+			'<div class="example_d4_module_inner">
+				<%1$s class="example_d4_module_title">%2$s</%1$s>
+				<div class="example_d4_module_content">%3$s</div>
 			</div>',
 			$header_level,
 			esc_html( $title ),

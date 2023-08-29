@@ -17,7 +17,7 @@ export const SettingsAdvanced = (): ReactElement => (
   <React.Fragment>
     <IdClassesGroup />
     <CssGroup
-      mainSelector=".et_pb_child_module"
+      mainSelector=".example_child_module"
       cssFields={cssFields}
     />
     <AttributesGroup />

@@ -72,14 +72,14 @@ trait ModuleStylesTrait {
 					),
 					TextStyle::style(
 						[
-							'selector' => $order_class . ' .d4_module_inner',
+							'selector' => $order_class . ' .example_d4_module_inner',
 							'attr'     => $attrs['module']['advanced']['text'] ?? [],
 						]
 					),
-					// Set the `.d4_module_inner` element `position` to `relative` if the background image has parallax enabled.
+					// Set the `.example_d4_module_inner` element `position` to `relative` if the background image has parallax enabled.
 					CommonStyle::style(
 						[
-							'selector'            => $order_class . ' .d4_module_inner',
+							'selector'            => $order_class . ' .example_d4_module_inner',
 							'attr'                => $attrs['module']['decoration']['background'] ?? [],
 							'declarationFunction' => function ( $declaration_function_args ) {
 								$attr_value = $declaration_function_args['attrValue'] ?? [];

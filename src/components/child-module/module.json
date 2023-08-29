@@ -25,7 +25,7 @@
     },
     "title": {
       "type": "object",
-      "selector": ".parent-module {{selector}} .child-module__title",
+      "selector": ".example_parent_module {{selector}} .example_child_module__title",
       "styleProps": {
         "font": {
           "important": {
@@ -41,7 +41,7 @@
       },
       "tagName": "div",
       "attributes": {
-        "class": "child-module__title"
+        "class": "example_child_module__title"
       },
       "inlineEditor": "plainText",
       "elementType": "heading",
@@ -49,35 +49,35 @@
     },
     "content": {
       "type": "object",
-      "selector": ".parent-module {{selector}} .child-module__content",
+      "selector": ".example_parent_module {{selector}} .example_child_module__content",
       "tagName": "div",
       "attributes": {
-        "class": "child-module__content"
+        "class": "example_child_module__content"
       },
       "inlineEditor": "richText",
       "childrenSanitizer": "et_core_esc_previously"
     },
     "icon": {
       "type": "object",
-      "selector": "{{selector}} .child-module__icon.et-pb-icon"
+      "selector": "{{selector}} .example_child_module__icon.et-pb-icon"
     }
   },
   "customCssFields": {
     "contentContainer": {
       "subName": "contentContainer",
-      "selectorSuffix": " .child-module__content-container"
+      "selectorSuffix": " .example_child_module__content-container"
     },
     "title": {
       "subName": "title",
-      "selectorSuffix": " .child-module__title"
+      "selectorSuffix": " .example_child_module__title"
     },
     "content": {
       "subName": "content",
-      "selectorSuffix": " .child-module__content"
+      "selectorSuffix": " .example_child_module__content"
     },
     "icon": {
       "subName": "icon",
-      "selectorSuffix": " .child-module__icon.et-pb-icon"
+      "selectorSuffix": " .example_child_module__icon.et-pb-icon"
     }
   }
 }
