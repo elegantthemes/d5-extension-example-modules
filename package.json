@@ -7,8 +7,8 @@
   "scripts": {
     "start": "NODE_ENV=development webpack -w --config webpack.config.js --progress",
     "build": "NODE_ENV=production webpack --config webpack.config.js --progress",
+    "test": "wp-scripts test-unit-js --config ./test-config/jest.config.js",
     "zip": "gulp zip",
-    "composer": "composer install",
     "reset-install": "rm -rf ./package-lock.json ./node_modules/ && npm install"
   },
   "devDependencies": {
@@ -51,6 +51,9 @@
     "@types/divi__serialized-post": "npm:divi-types-serialized-post@^1.0.5",
     "@types/divi__settings": "npm:divi-types-settings@^1.0.5",
     "@types/divi__style-library": "npm:divi-types-style-library@^1.0.5",
+    "@types/divi__help": "npm:divi-types-help@^1.0.5",
+    "@types/divi__fonts": "npm:divi-types-fonts@^1.0.5",
+    "@types/divi__shortcode-module": "npm:divi-types-shortcode-module@^1.0.5",
     "@types/enzyme": "^3.10.12",
     "@types/jest": "^28.1.6",
     "@types/jquery": "^3.5.14",
