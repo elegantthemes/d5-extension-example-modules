@@ -66,6 +66,9 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
       classnamesFunction={moduleClassnames}
       scriptDataComponent={ModuleScriptData}
     >
+      {elements.styleComponents({
+        attrName: 'module',
+      })}
       {
         ! isLoading && (
           <>

@@ -45,10 +45,9 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
       classnamesFunction={moduleClassnames}
       scriptDataComponent={ModuleScriptData}
     >
-      <ElementComponents
-        attrs={attrs?.module?.decoration ?? {}}
-        id={id}
-      />
+      {elements.styleComponents({
+        attrName: 'module',
+      })}
       <div className="example_d4_module_inner">
         {elements.render({
           attrName: 'title',
