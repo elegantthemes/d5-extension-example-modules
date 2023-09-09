@@ -21,7 +21,7 @@
     },
     "title": {
       "type": "object",
-      "selector": "{{selector}} .d4_module_title",
+      "selector": "{{selector}} .example_d4_module_title",
       "default": {
         "decoration": {
           "font": {
@@ -39,14 +39,14 @@
       "elementType": "heading",
       "childrenSanitizer": "et_core_esc_previously",
       "attributes": {
-        "class": "d4_module_title"
+        "class": "example_d4_module_title"
       }
     },
     "content": {
       "type": "object",
-      "selector": "{{selector}} .d4_module_content",
+      "selector": "{{selector}} .example_d4_module_content",
       "attributes": {
-        "class": "d4_module_content"
+        "class": "example_d4_module_content"
       },
       "tagName": "div",
       "inlineEditor": "richText"
@@ -55,11 +55,11 @@
   "customCssFields": {
     "title": {
       "subName": "title",
-      "selectorSuffix": " .d4_module_title"
+      "selectorSuffix": " .example_d4_module_title"
     },
     "content": {
       "subName": "content",
-      "selectorSuffix": " .d4_module_content"
+      "selectorSuffix": " .example_d4_module_content"
     }
   }
 }

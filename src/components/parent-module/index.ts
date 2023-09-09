@@ -11,7 +11,6 @@ import { SettingsAdvanced } from './settings-advanced';
 import { ParentModuleAttrs } from './types';
 
 // Styles.
-import './style.scss';
 import './module.scss';
 
 /**

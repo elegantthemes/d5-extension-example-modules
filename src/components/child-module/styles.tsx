@@ -31,8 +31,8 @@ import { ParentModuleAttrs } from "../parent-module/types";
   state,
   noStyleTag,
 }: StylesProps<ChildModuleAttrs, ParentModuleAttrs>): ReactElement => {
-  const iconSelector = `${orderClass} .child-module__icon.et-pb-icon`;
-  const contentContainerSelector = `${orderClass} .child-module__content-container`;
+  const iconSelector = `${orderClass} .example_child_module__icon.et-pb-icon`;
+  const contentContainerSelector = `${orderClass} .example_child_module__content-container`;
 
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>

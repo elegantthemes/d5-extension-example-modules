@@ -1,11 +1,15 @@
 // This style will render on Front-End and Visual Builder.
 
-.static-module {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+.example_static_module {
     padding: 30px;
     background-color: #ecf4f7;
+    
+    &__inner {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        position: relative;
+    }
 
     &__image {
         flex: 0 0 50%;

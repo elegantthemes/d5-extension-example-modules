@@ -48,7 +48,7 @@
     },
     "image": {
       "type": "object",
-      "selector": "{{selector}} .static-module__image img",
+      "selector": "{{selector}} .example_static_module__image img",
       "styleProps": {
         "border": {
           "important": true
@@ -57,7 +57,7 @@
     },
     "title": {
       "type": "object",
-      "selector": "{{selector}} .static-module__title",
+      "selector": "{{selector}} .example_static_module__title",
       "default": {
         "decoration": {
           "font": {
@@ -101,7 +101,7 @@
       },
       "tagName": "h2",
       "attributes": {
-        "class": "static-module__title"
+        "class": "example_static_module__title"
       },
       "inlineEditor": "plainText",
       "elementType": "heading",
@@ -109,10 +109,10 @@
     },
     "content": {
       "type": "object",
-      "selector": "{{selector}} .static-module__content",
+      "selector": "{{selector}} .example_static_module__content",
       "tagName": "div",
       "attributes": {
-        "class": "static-module__content"
+        "class": "example_static_module__content"
       },
       "inlineEditor": "richText",
       "childrenSanitizer": "et_core_esc_previously",
@@ -120,7 +120,7 @@
         "bodyFont": {
           "selectors": {
             "desktop": {
-              "value": "{{selector}} .static-module__content"
+              "value": "{{selector}} .example_static_module__content"
             }
           }
         }
@@ -130,19 +130,19 @@
   "customCssFields": {
     "contentContainer": {
       "subName": "contentContainer",
-      "selectorSuffix": " .static-module__content-container"
+      "selectorSuffix": " .example_static_module__content-container"
     },
     "title": {
       "subName": "title",
-      "selectorSuffix": " .static-module__title"
+      "selectorSuffix": " .example_static_module__title"
     },
     "content": {
       "subName": "content",
-      "selectorSuffix": " .static-module__content"
+      "selectorSuffix": " .example_static_module__content"
     },
     "image": {
       "subName": "image",
-      "selectorSuffix": " .static-module__image img"
+      "selectorSuffix": " .example_static_module__image img"
     }
   }
 }

@@ -40,6 +40,9 @@ export const ParentModuleEdit = (props: ParentModuleEditProps): ReactElement => 
       classnamesFunction={moduleClassnames}
       tag="ul"
     >
+      {elements.styleComponents({
+        attrName: 'module',
+      })}
       <ChildModulesContainer ids={childrenIds} />
     </ModuleContainer>
   );

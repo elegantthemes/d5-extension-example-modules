@@ -20,13 +20,13 @@
       },
       "styleProps": {
         "bodyFont": {
-          "selector": "{{selector}} .dynamic-module__post-item-content"
+          "selector": "{{selector}} .example_dynamic_module__post-item-content"
         }
       }
     },
     "title": {
       "type": "object",
-      "selector": "{{selector}} .dynamic-module__title",
+      "selector": "{{selector}} .example_dynamic_module__title",
       "default": {
         "decoration": {
           "font": {
@@ -44,7 +44,7 @@
       "elementType": "heading",
       "childrenSanitizer": "et_core_esc_previously",
       "attributes": {
-        "class": "dynamic-module__title"
+        "class": "example_dynamic_module__title"
       }
     },
     "postItems": {
@@ -61,7 +61,7 @@
     },
     "postTitle": {
       "type": "object",
-      "selector": "{{selector}} .dynamic-module__post-item-title",
+      "selector": "{{selector}} .example_dynamic_module__post-item-title",
       "default": {
         "decoration": {
           "font": {

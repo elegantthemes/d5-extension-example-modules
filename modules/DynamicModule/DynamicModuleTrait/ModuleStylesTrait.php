@@ -68,7 +68,7 @@ trait ModuleStylesTrait {
 					),
 					TextStyle::style(
 						[
-							'selector' => $order_class . ' .dynamic-module__inner',
+							'selector' => $order_class . ' .example_dynamic_module__inner',
 							'attr'     => $attrs['module']['advanced']['text'] ?? [],
 						]
 					),

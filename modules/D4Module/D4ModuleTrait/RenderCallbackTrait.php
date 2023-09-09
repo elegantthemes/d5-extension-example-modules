@@ -67,7 +67,7 @@ trait RenderCallbackTrait {
 			[
 				'tag'               => 'div',
 				'attributes'        => [
-					'class' => 'd4_module_inner',
+					'class' => 'example_d4_module_inner',
 				],
 				'childrenSanitizer' => 'et_core_esc_previously',
 				'children'          => [

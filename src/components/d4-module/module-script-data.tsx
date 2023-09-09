@@ -1,10 +1,10 @@
-import {
+import React, {
+  Fragment,
   ReactElement,
 } from 'react';
 
 import {
   ModuleScriptDataProps,
-  useElementScriptData,
 } from '@divi/module';
 import { D4ModuleAttrs } from './types';
 
@@ -14,18 +14,17 @@ import { D4ModuleAttrs } from './types';
  *
  * @since ??
  *
+ * @param {ModuleScriptDataProps<D4ModuleAttrs>} props React component props.
+ *
  * @returns {ReactElement}
  */
 export const ModuleScriptData = ({
-  attrs,
-  selector,
-  id,
-}: ModuleScriptDataProps<D4ModuleAttrs>): ReactElement => {
-  useElementScriptData({
-    attrs: attrs?.module?.decoration ?? {},
-    selector,
-    id,
-  });
+  elements,
+}: ModuleScriptDataProps<D4ModuleAttrs>): ReactElement => (
+  <Fragment>
+    {elements.scriptData({
+      attrName: 'module',
+    })}
+  </Fragment>
+);
 
-  return null;
-};

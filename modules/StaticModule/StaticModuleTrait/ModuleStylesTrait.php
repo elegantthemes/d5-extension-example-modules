@@ -70,7 +70,7 @@ trait ModuleStylesTrait {
 					),
 					TextStyle::style(
 						[
-							'selector' => "{$args['orderClass']} .static-module__content-container",
+							'selector' => "{$args['orderClass']} .example_static_module__content-container",
 							'attr'     => $attrs['module']['advanced']['text'] ?? [],
 						]
 					),

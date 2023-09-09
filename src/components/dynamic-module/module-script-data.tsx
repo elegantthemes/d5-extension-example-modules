@@ -1,31 +1,30 @@
-import {
+import React, {
+  Fragment,
   ReactElement,
 } from 'react';
 
 import {
   ModuleScriptDataProps,
-  useElementScriptData,
 } from '@divi/module';
 import { DynamicModuleAttrs } from './types';
 
 
 /**
- * Divi 4 module's script data component.
+ * Dynamic module's script data component.
  *
  * @since ??
+ *
+ * @param {ModuleScriptDataProps<DynamicModuleAttrs>} props React component props.
  *
  * @returns {ReactElement}
  */
 export const ModuleScriptData = ({
-  attrs,
-  selector,
-  id,
-}: ModuleScriptDataProps<DynamicModuleAttrs>): ReactElement => {
-  useElementScriptData({
-    attrs: attrs?.module?.decoration ?? {},
-    selector,
-    id,
-  });
+  elements,
+}: ModuleScriptDataProps<DynamicModuleAttrs>): ReactElement => (
+  <Fragment>
+    {elements.scriptData({
+      attrName: 'module',
+    })}
+  </Fragment>
+);
 
-  return null;
-};
