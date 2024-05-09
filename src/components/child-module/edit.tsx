@@ -51,7 +51,6 @@ export const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
       attrs={attrs}
       parentAttrs={parentAttrs}
       elements={elements}
-      componentType="edit"
       id={id}
       name={name}
       stylesComponent={ModuleStyles}

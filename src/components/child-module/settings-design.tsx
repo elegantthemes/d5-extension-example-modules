@@ -13,7 +13,6 @@ import {
   FiltersGroup,
   FontGroup,
   FontBodyGroup,
-  SettingsProps,
   SizingGroup,
   SpacingGroup,
   TextGroup,
@@ -27,13 +26,16 @@ import {
 import { mergeAttrs } from '@divi/module-utils';
 import {ParentModuleAttrs} from "../parent-module/types";
 import {ChildModuleAttrs} from "./types";
+import {
+  type Module,
+} from '@divi/types';
 
 
 
 export const SettingsDesign = ({
    defaultSettingsAttrs,
   parentAttrs,
- }: SettingsProps<ChildModuleAttrs, ParentModuleAttrs>): ReactElement => {
+ }: Module.Settings.Panel.Props<ChildModuleAttrs, ParentModuleAttrs>): ReactElement => {
 
   const defaultIconAttrs = mergeAttrs({
     defaultAttrs: defaultSettingsAttrs?.icon?.advanced?.asMutable({deep: true}) ?? {},
