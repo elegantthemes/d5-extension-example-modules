@@ -1,6 +1,8 @@
 // Divi dependencies.
-import { ModuleRegisterDefinition } from '@divi/module-library';
-import { ModuleMetadata } from '@divi/types';
+import {
+  type Metadata,
+  type ModuleLibrary,
+} from '@divi/types';
 
 // Local dependencies.
 import metadata from './module.json';
@@ -15,9 +17,9 @@ import { placeholderContent } from './placeholder-content';
 import './style.scss';
 import './module.scss';
 
-export const staticModule: ModuleRegisterDefinition<StaticModuleAttrs> = {
+export const staticModule: ModuleLibrary.Module.RegisterDefinition<StaticModuleAttrs> = {
   // Imported json has no inferred type hence type-cast is necessary.
-  metadata: metadata as ModuleMetadata,
+  metadata: metadata as Metadata.Values<StaticModuleAttrs>,
   placeholderContent,
   settings: {
     content:  SettingsContent,

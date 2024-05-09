@@ -1,14 +1,10 @@
 // Divi dependencies.
 import { ModuleEditProps } from '@divi/module-library';
 import {
-  CssAttr,
   FormatBreakpointStateAttr,
-  IdClassesGroupAttr,
   InternalAttrs,
-  LinkGroupAttr,
-  ModuleMetaAttrs,
-  PickedElementDecorationAttrs,
-  TextGroupAttr,
+  type Element,
+  type Module,
 } from '@divi/types';
 
 export interface Image {
@@ -16,7 +12,7 @@ export interface Image {
   alt?: string;
 }
 
-export interface StaticModuleCssAttr extends CssAttr {
+export interface StaticModuleCssAttr extends Module.Css.AttributeValue {
   contentContainer?: string;
   title?: string;
   content?: string;
@@ -31,13 +27,13 @@ export interface StaticModuleAttrs extends InternalAttrs {
 
   // Module
   module?: {
-    meta?: ModuleMetaAttrs;
+    meta?: Element.Meta.Attributes;
     advanced?: {
-      link?: LinkGroupAttr;
-      htmlAttributes?: IdClassesGroupAttr;
-      text?: TextGroupAttr;
+      link?: Element.Advanced.Link.Attributes;
+      htmlAttributes?: Element.Advanced.IdClasses.Attributes;
+      text?: Element.Advanced.Text.Attributes;
     };
-    decoration?: PickedElementDecorationAttrs<
+    decoration?: Element.Decoration.PickedAttributes<
       'animation' |
       'background' |
       'border' |
@@ -57,29 +53,20 @@ export interface StaticModuleAttrs extends InternalAttrs {
   };
 
   image?: {
-    innerContent?: FormatBreakpointStateAttr<{
-      src?: string;
-      alt?: string;
-    }>;
-    decoration?: PickedElementDecorationAttrs<
-      'border' |
-      'boxShadow' |
-      'filters' |
-      'spacing'
+    innerContent?: Element.Types.Image.InnerContent.Attributes;
+    decoration?: Element.Decoration.PickedAttributes<
+    'border' |
+    'boxShadow' |
+    'filters' |
+    'spacing'
     >;
   };
 
   // Title
-  title?: {
-    innerContent?: FormatBreakpointStateAttr<string>;
-    decoration?: PickedElementDecorationAttrs<'font'>;
-  };
+  title?: Element.Types.Title.Attributes;
 
   // Content
-  content?: {
-    innerContent?: FormatBreakpointStateAttr<string>;
-    decoration?: PickedElementDecorationAttrs<'bodyFont'>;
-  };
+  content?: Element.Types.Content.Attributes;
 }
 
 export type StaticModuleEditProps = ModuleEditProps<StaticModuleAttrs>;
