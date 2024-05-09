@@ -15,18 +15,20 @@ import {
   FontBodyGroup,
   SizingGroup,
   SpacingGroup,
-  SettingsProps,
   TextGroup,
   TransformGroup,
 } from '@divi/module';
 import { GroupContainer } from '@divi/modal';
 import { ColorPickerContainer, RangeContainer } from '@divi/field-library';
+import {
+  type Module,
+} from '@divi/types';
 import {ParentModuleAttrs} from "./types";
 
 
 export const SettingsDesign = ({
    defaultSettingsAttrs,
- }: SettingsProps<ParentModuleAttrs>): ReactElement => (
+ }: Module.Settings.Panel.Props<ParentModuleAttrs>): ReactElement => (
   <React.Fragment>
     <GroupContainer id="icon" title={__('Icon Style', 'd5-extension-example-modules')}>
       <FieldContainer
