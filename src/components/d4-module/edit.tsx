@@ -38,7 +38,6 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
     <ModuleContainer
       attrs={attrs}
       elements={elements}
-      componentType="edit"
       id={id}
       name={name}
       stylesComponent={ModuleStyles}

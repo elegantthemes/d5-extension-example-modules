@@ -10,7 +10,9 @@ import {
   TextStyle,
 } from '@divi/module';
 
-import { BackgroundAttr } from '@divi/types';
+import { 
+  type Element,
+} from '@divi/types';
 
 // Local dependencies.
 import { D4ModuleAttrs } from './types';
@@ -50,7 +52,7 @@ import { cssFields } from './custom-css';
       <CommonStyle
         selector={`${orderClass} .example_d4_module_inner`}
         attr={attrs?.module?.decoration?.background}
-        declarationFunction={({attrValue}:{attrValue:BackgroundAttr}) => {
+        declarationFunction={({attrValue}:{attrValue:Element.Decoration.Background.AttributeValue}) => {
           if ('on' === attrValue?.image?.parallax?.enabled) {
             return 'position: relative;';
           }

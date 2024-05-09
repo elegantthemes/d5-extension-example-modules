@@ -2,8 +2,10 @@
 import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
-import { ModuleRegisterDefinition } from '@divi/module-library';
-import { ModuleMetadata } from '@divi/types';
+import {
+  type Metadata,
+  type ModuleLibrary,
+} from '@divi/types';
 
 // Local dependencies.
 import metadata from './module.json';
@@ -16,8 +18,8 @@ import { placeholderContent } from './placeholder-content';
 import { conversionOutline } from './conversion-outline';
 
 
-export const d4Module: ModuleRegisterDefinition<D4ModuleAttrs> = {
-  metadata: metadata as ModuleMetadata,
+export const d4Module: ModuleLibrary.Module.RegisterDefinition<D4ModuleAttrs> = {
+  metadata: metadata as Metadata.Values<D4ModuleAttrs>,
   placeholderContent,
   conversionOutline,
   settings: {
