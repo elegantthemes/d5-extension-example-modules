@@ -25,7 +25,7 @@ module.exports = {
 
     // WordPress dependencies.
     '@wordpress/i18n': ['wp', 'i18n'],
-    '@wordpress/hooks': ['wp', 'hooks'],
+    '@wordpress/hooks': ['vendor', 'wp', 'hooks'],
 
     // Divi dependencies.
     '@divi/rest': ['divi', 'rest'],
