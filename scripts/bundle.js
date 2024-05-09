@@ -630,16 +630,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _wor
 
 /***/ }),
 
-/***/ "react":
-/*!************************!*\
-  !*** external "React" ***!
-  \************************/
-/***/ ((module) => {
-
-module.exports = React;
-
-/***/ }),
-
 /***/ "lodash":
 /*!*************************!*\
   !*** external "lodash" ***!
@@ -730,6 +720,16 @@ module.exports = divi.styleLibrary;
 
 /***/ }),
 
+/***/ "react":
+/*!***********************************!*\
+  !*** external ["vendor","React"] ***!
+  \***********************************/
+/***/ ((module) => {
+
+module.exports = vendor.React;
+
+/***/ }),
+
 /***/ "@wordpress/hooks":
 /*!****************************************!*\
   !*** external ["vendor","wp","hooks"] ***!
@@ -741,12 +741,12 @@ module.exports = vendor.wp.hooks;
 /***/ }),
 
 /***/ "@wordpress/i18n":
-/*!******************************!*\
-  !*** external ["wp","i18n"] ***!
-  \******************************/
+/*!***************************************!*\
+  !*** external ["vendor","wp","i18n"] ***!
+  \***************************************/
 /***/ ((module) => {
 
-module.exports = wp.i18n;
+module.exports = vendor.wp.i18n;
 
 /***/ }),
 
