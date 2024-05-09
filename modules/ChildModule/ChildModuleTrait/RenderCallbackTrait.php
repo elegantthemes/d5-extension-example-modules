@@ -47,7 +47,7 @@ trait RenderCallbackTrait {
 		$parent_attrs_with_default = array_replace_recursive( $parent_default_attributes, $parent_attrs );
 
 		// Icon.
-		$icon_value = $attrs['icon']['innerContent']['desktop']['value'] ?? $parent_attrs_with_default['icon']['innerContent']['desktop']['value'];
+		$icon_value = $attrs['icon']['innerContent']['desktop']['value'] ?? $parent_attrs_with_default['icon']['innerContent']['desktop']['value'] ?? [];
 		$icon       = HTMLUtility::render(
 			[
 				'tag'               => 'div',
