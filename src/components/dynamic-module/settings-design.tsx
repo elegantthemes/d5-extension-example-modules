@@ -16,14 +16,16 @@ import {
   SpacingGroup,
   TextGroup,
   TransformGroup,
-  SettingsProps,
 } from '@divi/module';
+import {
+  type Module,
+} from '@divi/types';
 import { DynamicModuleAttrs } from './types';
 
 
 export const SettingsDesign = ({
   defaultSettingsAttrs,
-}: SettingsProps<DynamicModuleAttrs>): ReactElement => (
+}: Module.Settings.Panel.Props<DynamicModuleAttrs>): ReactElement => (
   <React.Fragment>
     <TextGroup />
     <FontGroup

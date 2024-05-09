@@ -59,7 +59,6 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
     <ModuleContainer
       attrs={attrs}
       elements={elements}
-      componentType="edit"
       id={id}
       name={name}
       stylesComponent={ModuleStyles}

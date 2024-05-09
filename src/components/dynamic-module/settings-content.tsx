@@ -10,17 +10,19 @@ import {
   BackgroundGroup,
   FieldContainer,
   LinkGroup,
-  SettingsProps,
 } from '@divi/module';
 import { GroupContainer } from '@divi/modal';
 import {
   TextContainer,
 } from '@divi/field-library';
+import {
+  type Module,
+} from '@divi/types';
 import { DynamicModuleAttrs } from './types';
 
 export const SettingsContent = ({
   defaultSettingsAttrs,
-}: SettingsProps<DynamicModuleAttrs>): ReactElement => (
+}: Module.Settings.Panel.Props<DynamicModuleAttrs>): ReactElement => (
   <React.Fragment>
     <GroupContainer
       id="posts"
