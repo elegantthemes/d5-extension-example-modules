@@ -731,12 +731,12 @@ module.exports = divi.styleLibrary;
 /***/ }),
 
 /***/ "@wordpress/hooks":
-/*!*******************************!*\
-  !*** external ["wp","hooks"] ***!
-  \*******************************/
+/*!****************************************!*\
+  !*** external ["vendor","wp","hooks"] ***!
+  \****************************************/
 /***/ ((module) => {
 
-module.exports = wp.hooks;
+module.exports = vendor.wp.hooks;
 
 /***/ }),
 
