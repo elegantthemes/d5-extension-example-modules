@@ -1,18 +1,13 @@
 // Divi dependencies.
 import { ModuleEditProps } from '@divi/module-library';
 import {
-  CssAttr,
   FormatBreakpointStateAttr,
-  IdClassesGroupAttr,
   InternalAttrs,
-  LinkGroupAttr,
-  TextGroupAttr,
-  PickedElementDecorationAttrs,
-  ModuleMetaAttrs,
-  CssGroupAttr,
+  type Element,
+  type Module,
 } from '@divi/types';
 
-export interface D4ModuleCssAttr extends CssAttr {
+export interface D4ModuleCssAttr extends Module.Css.AttributeValue {
   title?: string;
   content?: string;
 }
@@ -21,16 +16,16 @@ export type D4ModuleCssGroupAttr = FormatBreakpointStateAttr<D4ModuleCssAttr>;
 
 export interface D4ModuleAttrs extends InternalAttrs {
   // CSS options is used across multiple elements inside the module thus it deserves its own top property.
-  css?: CssGroupAttr;
+  css?: D4ModuleCssGroupAttr;
 
   module?: {
-    meta?: ModuleMetaAttrs;
+    meta?: Element.Meta.Attributes;
     advanced?: {
-      link?: LinkGroupAttr;
-      htmlAttributes?: IdClassesGroupAttr;
-      text?: TextGroupAttr;
+      link?: Element.Advanced.Link.Attributes;
+      htmlAttributes?: Element.Advanced.IdClasses.Attributes;
+      text?: Element.Advanced.Text.Attributes;
     };
-    decoration?: PickedElementDecorationAttrs<
+    decoration?: Element.Decoration.PickedAttributes<
       'animation' |
       'background' |
       'border' |
@@ -48,14 +43,12 @@ export interface D4ModuleAttrs extends InternalAttrs {
       'zIndex'
     >;
   };
-  title?: {
-    innerContent?: FormatBreakpointStateAttr<string>;
-    decoration?: PickedElementDecorationAttrs<'font'>;
-  };
-  content?: {
-    innerContent?: FormatBreakpointStateAttr<string>;
-    decoration?: PickedElementDecorationAttrs<'bodyFont'>;
-  };
+
+  // Title
+  title?: Element.Types.Title.Attributes;
+
+  // Content
+  content?: Element.Types.Content.Attributes;
 }
 
 export type D4ModuleEditProps = ModuleEditProps<D4ModuleAttrs>;

@@ -1,5 +1,8 @@
 // Divi dependencies.
-import { ModuleRegisterDefinition } from '@divi/module-library';
+import {
+  type Metadata,
+  type ModuleLibrary,
+} from '@divi/types';
 
 // Local dependencies.
 import metadata from './module.json';
@@ -15,13 +18,13 @@ import './module.scss';
 import { ModuleMetadata } from '@divi/types';
 
 /**
- * Call To Action module.
+ * Child module.
  *
  * @since ??
  */
-export const childModule: ModuleRegisterDefinition<ChildModuleAttrs> = {
+export const childModule: ModuleLibrary.Module.RegisterDefinition<ChildModuleAttrs> = {
   // Imported json has no inferred type hence type-cast is necessary.
-  metadata: metadata as ModuleMetadata,
+  metadata: metadata as Metadata.Values<ChildModuleAttrs>,
   placeholderContent,
   settings:   {
     content:  SettingsContent,

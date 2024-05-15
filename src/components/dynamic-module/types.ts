@@ -2,23 +2,19 @@
 import { ModuleEditProps } from '@divi/module-library';
 import {
   FormatBreakpointStateAttr,
-  IdClassesGroupAttr,
   InternalAttrs,
-  LinkGroupAttr,
-  TextGroupAttr,
-  PickedElementDecorationAttrs,
-  ModuleMetaAttrs,
+  type Element,
 } from '@divi/types';
 
 export interface DynamicModuleAttrs extends InternalAttrs {
   module?: {
-    meta?: ModuleMetaAttrs;
+    meta?: Element.Meta.Attributes;
     advanced?: {
-      link?: LinkGroupAttr;
-      htmlAttributes?: IdClassesGroupAttr;
-      text?: TextGroupAttr;
+      link?: Element.Advanced.Link.Attributes;
+      htmlAttributes?: Element.Advanced.IdClasses.Attributes;
+      text?: Element.Advanced.Text.Attributes;
     };
-    decoration?: PickedElementDecorationAttrs<
+    decoration?: Element.Decoration.PickedAttributes<
       'animation' |
       'background' |
       'border' |
@@ -36,17 +32,16 @@ export interface DynamicModuleAttrs extends InternalAttrs {
       'zIndex'
     >;
   };
-  title?: {
-    innerContent?: FormatBreakpointStateAttr<string>;
-    decoration?: PickedElementDecorationAttrs<'font'>;
-  };
+
+  // Title
+  title?: Element.Types.Title.Attributes;
   postItems?: {
     innerContent?: FormatBreakpointStateAttr<{
       postsNumber?:string;
     }>;
   };
   postTitle?: {
-    decoration?: PickedElementDecorationAttrs<'font'>;
+    decoration?: Element.Decoration.PickedAttributes<'font'>;
   };
 }
 

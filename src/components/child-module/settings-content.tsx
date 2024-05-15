@@ -9,7 +9,6 @@ import {
   BackgroundGroup,
   FieldContainer,
   LinkGroup,
-  SettingsProps,
 } from '@divi/module';
 import { GroupContainer } from '@divi/modal';
 import {
@@ -18,6 +17,9 @@ import {
   TextContainer,
 } from '@divi/field-library';
 import { mergeAttrs } from '@divi/module-utils';
+import {
+  type Module,
+} from '@divi/types';
 
 // Local dependencies.
 import {ChildModuleAttrs} from "./types";
@@ -26,7 +28,7 @@ import {ParentModuleAttrs} from "../parent-module/types";
 export const SettingsContent = ({
     defaultSettingsAttrs,
   parentAttrs,
-  }: SettingsProps<ChildModuleAttrs, ParentModuleAttrs>): ReactElement => {
+  }: Module.Settings.Panel.Props<ChildModuleAttrs, ParentModuleAttrs>): ReactElement => {
   const defaultIconAttrs = mergeAttrs({
     defaultAttrs: defaultSettingsAttrs?.icon,
     attrs:        parentAttrs?.asMutable({ deep: true })?.icon,

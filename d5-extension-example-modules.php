@@ -63,7 +63,7 @@ function d5_extension_example_module_enqueue_vb_scripts() {
 			"{$plugin_dir_url}scripts/bundle.js",
 			array(
 				'divi-module-library',
-				'wp-hooks',
+				'divi-vendor-wp-hooks',
 			),
 			'1.0.0',
 			true

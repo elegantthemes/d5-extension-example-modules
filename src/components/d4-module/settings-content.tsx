@@ -10,7 +10,6 @@ import {
   BackgroundGroup,
   FieldContainer,
   LinkGroup,
-  SettingsProps,
 } from '@divi/module';
 import { GroupContainer } from '@divi/modal';
 import {
@@ -18,13 +17,16 @@ import {
   TextContainer,
   UploadContainer,
 } from '@divi/field-library';
+import {
+  type Module,
+} from '@divi/types';
 
 // Local dependencies.
 import { D4ModuleAttrs } from './types';
 
 export const SettingsContent = ({
   defaultSettingsAttrs,
-}: SettingsProps<D4ModuleAttrs>): ReactElement => (
+}: Module.Settings.Panel.Props<D4ModuleAttrs>): ReactElement => (
   <React.Fragment>
     <GroupContainer
       id="mainContent"

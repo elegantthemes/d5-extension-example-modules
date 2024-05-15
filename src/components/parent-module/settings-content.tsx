@@ -11,19 +11,21 @@ import {
   DraggableChildModuleListContainer,
   FieldContainer,
   LinkGroup,
-  SettingsProps,
 } from '@divi/module';
 import {
   DraggableListContainer,
   IconPickerContainer,
 } from '@divi/field-library';
+import {
+  type Module,
+} from '@divi/types';
 import { GroupContainer } from '@divi/modal';
 import {ParentModuleAttrs} from "./types";
 
 
 export const SettingsContent = ({
     defaultSettingsAttrs,
-  }: SettingsProps<ParentModuleAttrs>): ReactElement => (
+  }: Module.Settings.Panel.Props<ParentModuleAttrs>): ReactElement => (
   <React.Fragment>
     <DraggableChildModuleListContainer
       childModuleName="example/child-module"

@@ -1,17 +1,13 @@
 import { ModuleEditProps } from '@divi/module-library';
 import {
-  CssAttr,
   FormatBreakpointStateAttr,
-  IconFontAttr,
-  IdClassesGroupAttr,
   InternalAttrs,
-  LinkGroupAttr,
-  ModuleMetaAttrs,
-  PickedElementDecorationAttrs,
-  TextGroupAttr,
+  type Element,
+  type Icon,
+  type Module,
 } from '@divi/types';
 
-export interface ParentModuleCssAttr extends CssAttr {
+export interface ParentModuleCssAttr extends Module.Css.AttributeValue {
   contentContainer?: string;
   title?: string;
   content?: string;
@@ -27,13 +23,13 @@ export interface ParentModuleAttrs extends InternalAttrs {
 
   // Module
   module?: {
-    meta?: ModuleMetaAttrs;
+    meta?: Element.Meta.Attributes;
     advanced?: {
-      link?: LinkGroupAttr;
-      htmlAttributes?: IdClassesGroupAttr;
-      text?: TextGroupAttr;
+      link?: Element.Advanced.Link.Attributes;
+      htmlAttributes?: Element.Advanced.IdClasses.Attributes;
+      text?: Element.Advanced.Text.Attributes;
     };
-    decoration?: PickedElementDecorationAttrs<
+    decoration?: Element.Decoration.PickedAttributes<
       'animation' |
       'background' |
       'border' |
@@ -53,18 +49,14 @@ export interface ParentModuleAttrs extends InternalAttrs {
   };
 
   // Title
-  title?: {
-    decoration?: PickedElementDecorationAttrs<'font'>;
-  };
+  title?: Element.Types.Title.Attributes;
 
   // Content
-  content?: {
-    decoration?: PickedElementDecorationAttrs<'bodyFont'>;
-  };
+  content?: Element.Types.Content.Attributes;
 
   // Icon
   icon?: {
-    innerContent?: FormatBreakpointStateAttr<IconFontAttr>;
+    innerContent?: FormatBreakpointStateAttr<Icon.Font.AttributeValue>;
     advanced?: {
       color?: FormatBreakpointStateAttr<string>;
       size?: FormatBreakpointStateAttr<string>;

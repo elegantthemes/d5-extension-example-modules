@@ -12,12 +12,14 @@ import {
   FiltersGroup,
   FontGroup,
   FontBodyGroup,
-  SettingsProps,
   SizingGroup,
   SpacingGroup,
   TextGroup,
   TransformGroup,
 } from '@divi/module';
+import {
+  type Module,
+} from '@divi/types';
 import { GroupContainer } from '@divi/modal';
 
 // Local dependencies.
@@ -25,7 +27,7 @@ import {StaticModuleAttrs} from "./types";
 
 export const SettingsDesign = ({
    defaultSettingsAttrs,
- }: SettingsProps<StaticModuleAttrs>): ReactElement => (
+ }: Module.Settings.Panel.Props<StaticModuleAttrs>): ReactElement => (
   <React.Fragment>
     <GroupContainer id="imageStyle" title={__('Image Style', 'd5-extension-example-modules')}>
       <BorderGroup

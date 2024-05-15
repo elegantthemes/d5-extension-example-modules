@@ -1,5 +1,8 @@
-import { EditPostStoreState, MutableEditPostStoreState } from '@divi/edit-post';
-import { ModuleFlatObjectNamed, ModuleFlatObjects } from '@divi/types';
+import { 
+  ModuleFlatObjectNamed, 
+  ModuleFlatObjects,
+  type EditPost
+} from '@divi/types';
 
 export type ModuleFlatObjectItems = (
   ModuleFlatObjectNamed<'example/child-module'> |
@@ -11,6 +14,6 @@ export type ModuleFlatObjectItems = (
 
 export type ExampleModuleFlatObjects = ModuleFlatObjects<ModuleFlatObjectItems>;
 
-export type ExampleMutableEditPostStoreState = MutableEditPostStoreState<ExampleModuleFlatObjects>;
+export type ExampleMutableEditPostStoreState = EditPost.Store.State<ExampleModuleFlatObjects>;
 
-export type ExampleEditPostStoreState = EditPostStoreState<ExampleMutableEditPostStoreState>;
+export type ExampleEditPostStoreState = EditPost.Store.ImmutableState<ExampleModuleFlatObjects>;

@@ -36,7 +36,6 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
     <ModuleContainer
       attrs={attrs}
       elements={elements}
-      componentType="edit"
       id={id}
       name={name}
       stylesComponent={ModuleStyles}

@@ -32,7 +32,6 @@ export const ParentModuleEdit = (props: ParentModuleEditProps): ReactElement => 
     <ModuleContainer
       attrs={attrs}
       elements={elements}
-      componentType="edit"
       id={id}
       name={name}
       stylesComponent={ModuleStyles}
