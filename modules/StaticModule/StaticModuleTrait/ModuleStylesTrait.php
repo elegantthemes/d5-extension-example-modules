@@ -102,6 +102,22 @@ trait ModuleStylesTrait {
 							'attrName' => 'content',
 						]
 					),
+
+					// ATTENTION: The code is intentionally added and commented in FE only as an example of expected value format.
+					// If you have custom style processing, the style output should be passed as an `array` of style declarations
+					// to the `styles` property of the `Style::add` method. For example:
+					// [
+					// 	[
+					// 		'atRules'     => false,
+					// 		'selector'    => "{$args['orderClass']} .example_static_module__content-container",
+					// 		'declaration' => 'color: red;'
+					// 	],
+					// 	[
+					// 		'atRules'     => '@media only screen and (max-width: 767px)',
+					// 		'selector'    => "{$args['orderClass']} .example_static_module__content-container",
+					// 		'declaration' => 'color: green;'
+					// 	],
+					// ],
 				],
 			]
 		);
