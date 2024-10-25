@@ -15,13 +15,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 use ET\Builder\FrontEnd\Module\Style;
 use ET\Builder\Packages\Module\Layout\Components\StyleCommon\CommonStyle;
 use ET\Builder\Packages\Module\Options\Css\CssStyle;
-use ET\Builder\Packages\ModuleLibrary\Portfolio\PortfolioModuleTraits\StyleDeclarationTrait;
 use MEE\Modules\ChildModule\ChildModule;
 
 trait ModuleStylesTrait {
 
 	use CustomCssTrait;
-	use StyleDeclarationTrait;
 
 	/**
 	 * Child Module's style components.
