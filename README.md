@@ -2,7 +2,7 @@
 This extension is a collection of example modules. You can use these modules as a reference for your development. This extension uses composer to autoload the modules in PHP. You can find the example modules in the `src/components` folder for Visual Builder and in the `modules` folder for Front-end rendering.
 
 ## Installation
-You need to have **npm** available in your node.js environment.
+You need to have **npm** available in your node.js environment. And make sure to use **node version : 18.0.0**
 ```
 npm install
 ```
@@ -44,7 +44,7 @@ This modules is converted from Divi 4 to Divi 5. It will help you to understand 
 You can find the Divi 4 modules in the `divi-4/modules` folder. You can use these modules as a reference for your migration process. Currently, we have converted the `Divi4Module` module from Divi 4 to Divi 5 and `Divi4OnlyModule` module is only for Divi 4.
 
 ## Module Conversion
-You can find the module conversion process in the `src/components/d4-module` folder. You can use this process for your migration process. Also, maybe you need to convert the module attributes to new format. Most of will be done automatically. But some conversion need to be declare in the `src/module-exceptions.ts` file.
+You can find the module conversion process in the `src/components/d4-module` folder. You can use this process for your migration process. Also, maybe you need to convert the module attributes to new format. Most of will be done automatically.
 
 ## Module Icons
 You can find the module icons in the `src/icons` folder. You can use these icons for module icon. You can also add your own icons in this folder.
