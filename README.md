@@ -2,7 +2,7 @@
 This extension is a collection of example modules. You can use these modules as a reference for your development. This extension uses composer to autoload the modules in PHP. You can find the example modules in the `src/components` folder for Visual Builder and in the `modules` folder for Front-end rendering.
 
 ## Installation
-You need to have **npm** available in your node.js environment. And make sure to use **node version : 18.0.0**
+You need to have **npm** available in your node.js environment. And make sure to use **node version: 18.0.0 or later**
 ```
 npm install
 ```
