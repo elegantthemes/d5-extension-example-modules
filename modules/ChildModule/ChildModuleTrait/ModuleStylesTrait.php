@@ -128,6 +128,22 @@ trait ModuleStylesTrait {
 							'property' => 'font-size',
 						]
 					),
+
+					// ATTENTION: The code is intentionally added and commented in FE only as an example of expected value format.
+					// If you have custom style processing, the style output should be passed as an `array` of style declarations
+					// to the `styles` property of the `Style::add` method. For example:
+					// [
+					// 	[
+					// 		'atRules'     => false,
+					// 		'selector'    => $icon_selector,
+					// 		'declaration' => 'color: red;'
+					// 	],
+					// 	[
+					// 		'atRules'     => '@media only screen and (max-width: 767px)',
+					// 		'selector'    => $icon_selector,
+					// 		'declaration' => 'color: green;'
+					// 	],
+					// ],
 				],
 			]
 		);
