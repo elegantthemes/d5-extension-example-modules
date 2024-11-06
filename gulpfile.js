@@ -1,5 +1,4 @@
-const { src, dest } = require( 'gulp' );
-const gulpZip = require( 'gulp-zip' );
+const { src, dest } = require('gulp');
 const package = require('./package.json');
 
 const files = [
@@ -28,6 +27,11 @@ const files = [
     '!composer.lock',
 ];
 
-const zip = () => src( files ).pipe( gulpZip( package.name + '-v' + package.version + '.zip' ) ).pipe( dest( './' ) );
+const zip = async () => {
+    const gulpZip = (await import('gulp-zip')).default;
+    return src(files)
+        .pipe(gulpZip(package.name + '-v' + package.version + '.zip'))
+        .pipe(dest('./'));
+};
 
 exports.zip = zip;
