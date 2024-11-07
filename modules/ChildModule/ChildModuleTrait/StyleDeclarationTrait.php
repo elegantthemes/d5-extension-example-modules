@@ -51,7 +51,7 @@ trait StyleDeclarationTrait {
 			$style_declarations->add( 'font-family', $font_family );
 		}
 
-		return $style_declarations->value;
+		return $style_declarations->value();
 	}
 
 }
