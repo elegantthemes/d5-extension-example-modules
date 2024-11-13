@@ -51,8 +51,6 @@ trait ModuleStylesTrait {
 		$elements     = $args['elements'];
 		$settings     = $args['settings'] ?? [];
 
-		$icon_selector = "{$order_class} .et-pb-icon";
-
 		Style::add(
 			[
 				'id'            => $args['id'],
@@ -71,13 +69,6 @@ trait ModuleStylesTrait {
 							],
 						]
 					),
-					CssStyle::style(
-						[
-							'selector'  => $args['orderClass'],
-							'attr'      => $attrs['css'] ?? [],
-							'cssFields' => self::custom_css(),
-						]
-					),
 
 					// Title.
 					$elements->style(
@@ -94,25 +85,47 @@ trait ModuleStylesTrait {
 					),
 
 					// Icon.
-					CommonStyle::style(
+					$elements->style(
 						[
-							'selector'            => $icon_selector,
-							'attr'                => $attrs['icon']['innerContent'] ?? [],
-							'declarationFunction' => [ ChildModule::class, 'icon_font_declaration' ],
+							'attrName'   => 'icon',
+							'styleProps' => [
+								'advancedStyles' => [
+									[
+										'componentName' => 'divi/common',
+										'props'         => [
+											'attr'                => $attrs['icon']['innerContent'] ?? [],
+											'declarationFunction' => [ChildModule::class, 'icon_font_declaration'],
+										]
+									],
+									[
+										'componentName' => 'divi/common',
+										'props'         => [
+											'attr'     => $attrs['icon']['advanced']['color'] ?? [],
+											'property' => 'color',
+										]
+									],
+									[
+										'componentName' => 'divi/common',
+										'props'         => [
+											'attr'     => $attrs['icon']['advanced']['size'] ?? [],
+											'property' => 'font-size',
+										]
+									],
+								]
+							]
 						]
 					),
-					CommonStyle::style(
+
+					/**
+					 * We need to add CssStyle at the very bottom of other
+					 * components so that custom css can override module styles
+					 * till we find a more elegant solution.
+					 */
+					CssStyle::style(
 						[
-							'selector' => $icon_selector,
-							'attr'     => $attrs['icon']['advanced']['color'] ?? [],
-							'property' => 'color',
-						]
-					),
-					CommonStyle::style(
-						[
-							'selector' => $icon_selector,
-							'attr'     => $attrs['icon']['advanced']['size'] ?? [],
-							'property' => 'font-size',
+							'selector'  => $args['orderClass'],
+							'attr'      => $attrs['css'] ?? [],
+							'cssFields' => self::custom_css(),
 						]
 					),
 

@@ -62,23 +62,19 @@ trait ModuleStylesTrait {
 						[
 							'attrName'   => 'module',
 							'styleProps' => [
-								'disabledOn' => [
+								'disabledOn'     => [
 									'disabledModuleVisibility' => $settings['disabledModuleVisibility'] ?? null,
 								],
+								'advancedStyles' => [
+									[
+										'componentName' => 'divi/text',
+										'props'         => [
+											'selector' => "{$args['orderClass']} .example_static_module__content-container",
+											'attr'     => $attrs['module']['advanced']['text'] ?? [],
+										]
+									]
+								]
 							],
-						]
-					),
-					TextStyle::style(
-						[
-							'selector' => "{$args['orderClass']} .example_static_module__content-container",
-							'attr'     => $attrs['module']['advanced']['text'] ?? [],
-						]
-					),
-					CssStyle::style(
-						[
-							'selector'  => $args['orderClass'],
-							'attr'      => $attrs['css'] ?? [],
-							'cssFields' => StaticModule::custom_css(),
 						]
 					),
 
@@ -100,6 +96,19 @@ trait ModuleStylesTrait {
 					$elements->style(
 						[
 							'attrName' => 'content',
+						]
+					),
+
+					/**
+					 * We need to add CssStyle at the very bottom of other
+					 * components so that custom css can override module styles
+					 * till we find a more elegant solution.
+					 */
+					CssStyle::style(
+						[
+							'selector'  => $args['orderClass'],
+							'attr'      => $attrs['css'] ?? [],
+							'cssFields' => StaticModule::custom_css(),
 						]
 					),
 

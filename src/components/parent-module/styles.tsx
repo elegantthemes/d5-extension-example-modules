@@ -28,8 +28,6 @@ import { iconFontDeclaration } from '../child-module/style-declarations';
   state,
   noStyleTag,
 }: StylesProps<ParentModuleAttrs>): ReactElement => {
-  const iconSelector = `${orderClass} .et-pb-icon`;
-
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
       {/* Module */}
@@ -41,11 +39,6 @@ import { iconFontDeclaration } from '../child-module/style-declarations';
           },
         },
       })}
-      <CssStyle
-        selector={orderClass}
-        attr={attrs.css}
-        cssFields={cssFields}
-      />
 
       {/* Title */}
       {elements.style({
@@ -58,20 +51,44 @@ import { iconFontDeclaration } from '../child-module/style-declarations';
       })}
 
       {/* Icon */}
-      <CommonStyle
-        selector={iconSelector}
-        attr={attrs?.icon?.innerContent ?? {}}
-        declarationFunction={iconFontDeclaration}
-      />
-      <CommonStyle
-        selector={iconSelector}
-        attr={attrs?.icon?.advanced?.color}
-        property="color"
-      />
-      <CommonStyle
-        selector={iconSelector}
-        attr={attrs?.icon?.advanced?.size}
-        property="font-size"
+      {elements.style({
+        attrName: 'icon',
+        styleProps: {
+          advancedStyles: [
+            {
+              componentName: "divi/common",
+              props: {
+                attr:attrs?.icon?.innerContent ?? {},
+                declarationFunction:iconFontDeclaration,
+              }
+            },
+            {
+              componentName: "divi/common",
+              props: {
+                attr: attrs?.icon?.advanced?.color,
+                property:"color"
+              }
+            },
+            {
+              componentName: "divi/common",
+              props: {
+                attr:attrs?.icon?.advanced?.size,
+                property:"font-size"
+              }
+            }
+          ]
+        }
+      })}
+
+      {/**
+       * We need to add CssStyle at the very bottom of other
+			 * components so that custom css can override module styles
+			 * till we find a more elegant solution.
+       */}
+      <CssStyle
+        selector={orderClass}
+        attr={attrs.css}
+        cssFields={cssFields}
       />
     </StyleContainer>
   )
