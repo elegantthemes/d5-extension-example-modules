@@ -81,9 +81,9 @@ import { iconFontDeclaration } from '../child-module/style-declarations';
       })}
 
       {/**
-       * We need to add CssStyle at the very bottom of other
-			 * components so that custom css can override module styles
-			 * till we find a more elegant solution.
+       * We need to add CssStyle at the very bottom of other components
+       * so that custom css can override module styles till we find a
+       * more elegant solution.
        */}
       <CssStyle
         selector={orderClass}
