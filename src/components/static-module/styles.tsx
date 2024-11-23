@@ -47,6 +47,7 @@ export const ModuleStyles = ({
       <CssStyle
         selector={orderClass}
         attr={attrs.css}
+        orderClass={orderClass}
         cssFields={cssFields}
       />
 

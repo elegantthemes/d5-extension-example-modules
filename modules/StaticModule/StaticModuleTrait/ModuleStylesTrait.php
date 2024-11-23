@@ -79,6 +79,7 @@ trait ModuleStylesTrait {
 							'selector'  => $args['orderClass'],
 							'attr'      => $attrs['css'] ?? [],
 							'cssFields' => StaticModule::custom_css(),
+							'orderClass' => $args['orderClass'],
 						]
 					),
 
