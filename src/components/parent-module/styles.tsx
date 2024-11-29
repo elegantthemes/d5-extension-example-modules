@@ -41,11 +41,6 @@ import { iconFontDeclaration } from '../child-module/style-declarations';
           },
         },
       })}
-      <CssStyle
-        selector={orderClass}
-        attr={attrs.css}
-        cssFields={cssFields}
-      />
 
       {/* Title */}
       {elements.style({
@@ -72,6 +67,11 @@ import { iconFontDeclaration } from '../child-module/style-declarations';
         selector={iconSelector}
         attr={attrs?.icon?.advanced?.size}
         property="font-size"
+      />
+      <CssStyle
+        selector={orderClass}
+        attr={attrs.css}
+        cssFields={cssFields}
       />
     </StyleContainer>
   )

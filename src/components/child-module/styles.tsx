@@ -49,11 +49,6 @@ import { ParentModuleAttrs } from "../parent-module/types";
         selector={contentContainerSelector}
         attr={attrs?.module?.advanced?.text}
       />
-      <CssStyle
-        selector={orderClass}
-        attr={attrs.css}
-        cssFields={cssFields}
-      />
 
       {/* Title */}
       {elements.style({
@@ -80,6 +75,11 @@ import { ParentModuleAttrs } from "../parent-module/types";
         selector={iconSelector}
         attr={attrs?.icon?.advanced?.size ?? parentAttrs?.icon?.advanced?.size}
         property="font-size"
+      />
+      <CssStyle
+        selector={orderClass}
+        attr={attrs.css}
+        cssFields={cssFields}
       />
     </StyleContainer>
   );

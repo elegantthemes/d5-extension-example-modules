@@ -44,11 +44,6 @@ export const ModuleStyles = ({
         selector={textSelector}
         attr={attrs?.module?.advanced?.text}
       />
-      <CssStyle
-        selector={orderClass}
-        attr={attrs.css}
-        cssFields={cssFields}
-      />
 
       {/* Image */}
       {elements.style({
@@ -64,7 +59,11 @@ export const ModuleStyles = ({
       {elements.style({
         attrName: 'content',
       })}
-
+      <CssStyle
+        selector={orderClass}
+        attr={attrs.css}
+        cssFields={cssFields}
+      />
     </StyleContainer>
   );
 };
