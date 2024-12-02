@@ -64,7 +64,7 @@ export const ModuleStyles = ({
         attrName: 'content',
       })}
 
-      {/**
+      {/*
        * We need to add CssStyle at the very bottom of other components
        * so that custom css can override module styles till we find a
        * more elegant solution.
