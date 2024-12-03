@@ -63,13 +63,16 @@ trait ModuleStylesTrait {
 								'disabledOn'               => [
 									'disabledModuleVisibility' => $settings['disabledModuleVisibility'] ?? null,
 								],
+								'advancedStyles'           => [
+									[
+										'componentName' => 'divi/text',
+										'props'         => [
+											'selector' => $order_class . ' .example_dynamic_module__inner',
+											'attr'     => $attrs['module']['advanced']['text'] ?? [],
+										],
+									],
+								],
 							],
-						]
-					),
-					TextStyle::style(
-						[
-							'selector' => $order_class . ' .example_dynamic_module__inner',
-							'attr'     => $attrs['module']['advanced']['text'] ?? [],
 						]
 					),
 					$elements->style(
