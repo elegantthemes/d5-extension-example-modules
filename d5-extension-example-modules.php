@@ -74,7 +74,18 @@ function d5_extension_example_module_enqueue_vb_scripts() {
 			]
 		);
 
-		wp_enqueue_style( 'd5-extension-example-modules-builder-vb-bundle-style', "{$plugin_dir_url}styles/vb-bundle.css", array(), '1.0.0' );
+		\ET\Builder\VisualBuilder\Assets\PackageBuildManager::register_package_build(
+			[
+				'name'   => 'd5-extension-example-modules-builder-vb-bundle-style',
+				'version' => '1.0.0',
+				'style' => [
+					'src' => "{$plugin_dir_url}styles/vb-bundle.css",
+					'deps'               => [],
+					'enqueue_top_window' => false,
+					'enqueue_app_window' => true,
+				],
+			]
+		);
 	}
 }
 add_action( 'divi_visual_builder_assets_before_enqueue_scripts', 'd5_extension_example_module_enqueue_vb_scripts' );
