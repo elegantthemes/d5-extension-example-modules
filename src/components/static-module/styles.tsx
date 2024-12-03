@@ -6,6 +6,7 @@ import {
   StyleContainer,
   StylesProps,
   CssStyle,
+  TextStyle,
 } from '@divi/module';
 
 // Local dependencies.
