@@ -49,7 +49,6 @@ export const ModuleStyles = ({
           ]
         },
       })}
-
       {/* Image */}
       {elements.style({
         attrName: 'image',
