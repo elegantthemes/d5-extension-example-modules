@@ -33,12 +33,17 @@ import { DynamicModuleAttrs } from './types';
           disabledOn: {
             disabledModuleVisibility: settings?.disabledModuleVisibility,
           },
+          advancedStyles: [
+            {
+              componentName: "divi/text",
+              props: {
+                selector:`${orderClass} .example_dynamic_module__inner`,
+                attr:attrs?.module?.advanced?.text,
+              }
+            }
+          ]
         },
       })}
-      <TextStyle
-        selector={`${orderClass} .example_dynamic_module__inner`}
-        attr={attrs?.module?.advanced?.text}
-      />
       {elements.style({
         attrName: 'title',
       })}

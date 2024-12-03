@@ -31,7 +31,6 @@ import { ParentModuleAttrs } from "../parent-module/types";
   state,
   noStyleTag,
 }: StylesProps<ChildModuleAttrs, ParentModuleAttrs>): ReactElement => {
-  const iconSelector = `${orderClass} .example_child_module__icon.et-pb-icon`;
   const contentContainerSelector = `${orderClass} .example_child_module__content-container`;
 
   return (
@@ -43,17 +42,17 @@ import { ParentModuleAttrs } from "../parent-module/types";
           disabledOn: {
             disabledModuleVisibility: settings?.disabledModuleVisibility,
           },
+          advancedStyles: [
+            {
+              componentName: 'divi/text',
+              props: {
+                selector: contentContainerSelector,
+                attr: attrs?.module?.advanced?.text,
+              }
+            }
+          ]
         },
       })}
-      <TextStyle
-        selector={contentContainerSelector}
-        attr={attrs?.module?.advanced?.text}
-      />
-      <CssStyle
-        selector={orderClass}
-        attr={attrs.css}
-        cssFields={cssFields}
-      />
 
       {/* Title */}
       {elements.style({
@@ -66,20 +65,44 @@ import { ParentModuleAttrs } from "../parent-module/types";
       })}
 
       {/* Icon */}
-      <CommonStyle
-        selector={iconSelector}
-        attr={attrs?.icon?.innerContent ?? parentAttrs?.icon?.innerContent}
-        declarationFunction={iconFontDeclaration}
-      />
-      <CommonStyle
-        selector={iconSelector}
-        attr={attrs?.icon?.advanced?.color ?? parentAttrs?.icon?.advanced?.color}
-        property="color"
-      />
-      <CommonStyle
-        selector={iconSelector}
-        attr={attrs?.icon?.advanced?.size ?? parentAttrs?.icon?.advanced?.size}
-        property="font-size"
+      {elements.style({
+        attrName: 'icon',
+        styleProps: {
+          advancedStyles: [
+            {
+              componentName: "divi/common",
+              props: {
+                attr: attrs?.icon?.innerContent ?? parentAttrs?.icon?.innerContent,
+                declarationFunction: iconFontDeclaration,
+              }
+            },
+            {
+              componentName: "divi/common",
+              props: {
+                attr: attrs?.icon?.advanced?.color ?? parentAttrs?.icon?.advanced?.color,
+                property:"color"
+              }
+            },
+            {
+              componentName: "divi/common",
+              props: {
+                attr:attrs?.icon?.advanced?.size ?? parentAttrs?.icon?.advanced?.size,
+                property:"font-size"
+              }
+            }
+          ]
+        }
+      })}
+
+      {/*
+       * We need to add CssStyle at the very bottom of other components
+       * so that custom css can override module styles till we find a
+       * more elegant solution.
+       */}
+      <CssStyle
+        selector={orderClass}
+        attr={attrs.css}
+        cssFields={cssFields}
       />
     </StyleContainer>
   );
