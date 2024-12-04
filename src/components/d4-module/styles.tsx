@@ -60,17 +60,17 @@ import { cssFields } from './custom-css';
           return '';
         }}
       />
-      <CssStyle
-        selector={orderClass}
-        attr={attrs?.css}
-        cssFields={cssFields}
-      />
       {elements.style({
         attrName: 'title',
       })}
       {elements.style({
         attrName: 'content',
       })}
+      <CssStyle
+        selector={orderClass}
+        attr={attrs?.css}
+        cssFields={cssFields}
+      />
     </StyleContainer>
   );
 }
