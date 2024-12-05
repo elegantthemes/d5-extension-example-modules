@@ -104,6 +104,11 @@ import { ParentModuleAttrs } from "../parent-module/types";
         attr={attrs.css}
         cssFields={cssFields}
       />
+      <CssStyle
+        selector={orderClass}
+        attr={attrs.css}
+        cssFields={cssFields}
+      />
     </StyleContainer>
   );
 };

@@ -90,6 +90,11 @@ import { iconFontDeclaration } from '../child-module/style-declarations';
         attr={attrs.css}
         cssFields={cssFields}
       />
+      <CssStyle
+        selector={orderClass}
+        attr={attrs.css}
+        cssFields={cssFields}
+      />
     </StyleContainer>
   )
 };

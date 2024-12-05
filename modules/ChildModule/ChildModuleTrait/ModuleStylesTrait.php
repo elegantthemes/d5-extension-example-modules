@@ -161,6 +161,15 @@ trait ModuleStylesTrait {
 					// 		'declaration' => 'color: green;'
 					// 	],
 					// ],
+
+					// The code below is an example of how to use the `CssStyle::style` method to generate CSS style.
+					CssStyle::style(
+						[
+							'selector'  => $args['orderClass'],
+							'attr'      => $attrs['css'] ?? [],
+							'cssFields' => self::custom_css(),
+						]
+					),
 				],
 			]
 		);
