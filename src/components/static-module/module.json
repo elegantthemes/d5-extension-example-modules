@@ -134,6 +134,7 @@
     },
     "title": {
       "subName": "title",
+      "selector": "div{{selector}}",
       "selectorSuffix": " .example_static_module__title"
     },
     "content": {
