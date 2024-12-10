@@ -135,7 +135,7 @@ class D4_Only_Module extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-	function render( $attrs, $content = null, $render_slug ) {
+	function render( $attrs, $content, $render_slug ) {
 		// Module specific props added on $this->get_fields()
 		$title        = $this->props['title'];
 		$header_level = et_pb_process_header_level( $this->props['header_level'], 'h2' );
