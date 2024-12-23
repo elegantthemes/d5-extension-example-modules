@@ -63,7 +63,9 @@ export const SettingsDesign = ({
     />
     <FontBodyGroup />
     <SizingGroup />
-    <SpacingGroup />
+    <SpacingGroup
+      defaultGroupAttr={defaultSettingsAttrs?.module?.decoration?.spacing?.asMutable({ deep: true }) ?? {}}
+    />
     <BorderGroup />
     <BoxShadowGroup />
     <FiltersGroup />
