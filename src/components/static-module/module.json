@@ -27,6 +27,20 @@
               }
             }
           }
+        },
+        "decoration": {
+          "spacing": {
+            "desktop": {
+              "value": {
+                "margin": {
+                  "top":    "0px",
+                  "right":  "auto",
+                  "bottom": "30px",
+                  "left":   "auto"
+                }
+              }
+            }
+          }
         }
       },
       "defaultPrintedStyle": {
