@@ -11,6 +11,7 @@ import { parentModule } from './components/parent-module';
 import { staticModule } from './components/static-module';
 
 import './module-icons';
+import './add-bar-builder-buttons';
 
 // Register modules.
 addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'extensionExample', () => {

@@ -36,6 +36,7 @@ module.exports = {
     '@divi/field-library': ['divi', 'fieldLibrary'],
     '@divi/icon-library': ['divi', 'iconLibrary'],
     '@divi/module-library': ['divi', 'moduleLibrary'],
+    '@divi/app-ui': ['divi', 'appUi'],
     '@divi/style-library': ['divi', 'styleLibrary'],
   },
 
