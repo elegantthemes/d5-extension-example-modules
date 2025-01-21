@@ -6,21 +6,22 @@ import {
 } from '@divi/data';
 setTimeout(() => {
 
-  console.log(window.divi.appUi);
   window.divi.appUi.registerBuilderBarButton({
     active: false,
     iconSvg: { name: 'divi/add' },
     label: 'My Button',
     name: 'my-button',
     onClick: () => {
-      console.log('My Button was clicked!');
-    },
+      dispatch('divi/modal-library').open({
+        name: 'example/my-modal',
+      });
   });
 
   window.divi.appUi.registerBuilderBarButton({
     active: false,
     iconSvg: { name: 'divi/move' },
     label: 'My Second Button',
+    order: 20,
     name: 'my-second-button',
     onClick: () => {
       dispatch('divi/modal-library').open({
@@ -31,7 +32,6 @@ setTimeout(() => {
 }, 1000);
 
 window.vendor.wp.hooks.addFilter('divi.modalLibrary.modalMapping', 'divi', modals => {
-  console.log('modals', modals);
   modals.myModal = {
     name: "example/my-modal",
     label: "My Modal",

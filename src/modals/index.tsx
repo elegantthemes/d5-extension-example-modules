@@ -22,7 +22,7 @@ export const MyModal = (): ReactElement => (
       modalName="example/my-modal"
       bodySiblingHeight={null}
     >
-      <Header name={__('My Modal', 'et_builder')} />
+      <Header name={__('My Modal 2', 'et_builder')} />
       <BodyContainer>
         <PanelContainer id="my-modal" opened>
           <p>Hello from my modal</p>
