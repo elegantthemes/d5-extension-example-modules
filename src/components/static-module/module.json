@@ -4,6 +4,8 @@
   "title": "Static Module",
   "titles": "Static Modules",
   "moduleIcon": "example/module-static",
+  "moduleClassName": "example_static_module",
+  "moduleOrderClassName": "example_static_module",
   "category": "module",
   "attributes": {
     "module": {
@@ -159,5 +161,6 @@
       "subName": "image",
       "selectorSuffix": " .example_static_module__image img"
     }
-  }
+  },
+  "settings": {}
 }
