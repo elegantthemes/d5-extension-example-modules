@@ -7,7 +7,6 @@ import {
 // Local dependencies.
 import metadata from './module.json';
 import { StaticModuleEdit } from './edit';
-import { SettingsDesign } from './settings-design';
 import { SettingsAdvanced } from './settings-advanced';
 import { StaticModuleAttrs } from './types';
 import { placeholderContent } from './placeholder-content';
@@ -21,7 +20,6 @@ export const staticModule: ModuleLibrary.Module.RegisterDefinition<StaticModuleA
   metadata: metadata as Metadata.Values<StaticModuleAttrs>,
   placeholderContent,
   settings: {
-    design:   SettingsDesign,
     advanced: SettingsAdvanced,
   },
   renderers: {

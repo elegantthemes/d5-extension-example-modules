@@ -66,10 +66,18 @@
           "adminLabel": {}
         },
         "advanced": {
-          "link": {}
+          "link": {},
+          "text": {}
         },
         "decoration": {
-          "background": {}
+          "background": {},
+          "sizing": {},
+          "spacing": {},
+          "border": {},
+          "boxShadow": {},
+          "filters": {},
+          "transform": {},
+          "animation": {}
         }
       }
     },
@@ -99,6 +107,68 @@
               "component": {
                 "name": "divi/upload",
                 "type": "field"
+              }
+            }
+          }
+        },
+        "decoration": {
+          "border": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designImage",
+              "priority": 10,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/border",
+                "props": {
+                  "grouped": false
+                }
+              }
+            }
+          },
+          "spacing": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designImage",
+              "priority": 20,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/spacing",
+                "props": {
+                  "grouped": false
+                }
+              }
+            }
+          },
+          "boxShadow": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designImage",
+              "priority": 30,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/box-shadow",
+                "props": {
+                  "grouped": false
+                }
+              }
+            }
+          },
+          "filters": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designImage",
+              "priority": 40,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/filters",
+                "props": {
+                  "grouped": false
+                }
               }
             }
           }
@@ -168,6 +238,22 @@
               "type": "field"
             }
           }
+        },
+        "decoration": {
+          "font": {
+            "priority": 10,
+            "component": {
+              "props": {
+                "groupLabel": "Title Text",
+                "fieldLabel": "Title",
+                "fields": {
+                  "headingLevel": {
+                    "render": false
+                  }
+                }
+              }
+            }
+          }
         }
       },
       "tagName": "h2",
@@ -215,6 +301,9 @@
               "type": "field"
             }
           }
+        },
+        "decoration": {
+          "bodyFont": {}
         }
       }
     }
@@ -240,6 +329,7 @@
   },
   "settings": {
     "content": "auto",
+    "design": "auto",
     "groups": {
       "contentImage": {
         "panel": "content",
@@ -250,6 +340,18 @@
           "name": "divi/composite",
           "props": {
             "groupLabel": "Image"
+          }
+        }
+      },
+      "designImage": {
+        "panel": "design",
+        "priority": 10,
+        "groupName": "designImage",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Image Style"
           }
         }
       }
