@@ -6,7 +6,6 @@ import React from 'react';
 import { DynamicModuleEdit } from './edit';
 import metadata from './module.json';
 import { SettingsAdvanced } from './settings-advanced';
-import { SettingsDesign } from './settings-design';
 import { DynamicModuleAttrs } from './types';
 import { placeholderContent } from './placeholder-content';
 
@@ -18,7 +17,6 @@ export const dynamicModule: ModuleLibrary.Module.RegisterDefinition<DynamicModul
   metadata: metadata as Metadata.Values<DynamicModuleAttrs>,
   placeholderContent,
   settings: {
-    design:   SettingsDesign,
     advanced: SettingsAdvanced,
   },
   renderers: {
