@@ -7,7 +7,6 @@ import {
 // Local dependencies.
 import metadata from './module.json';
 import { StaticModuleEdit } from './edit';
-import { SettingsAdvanced } from './settings-advanced';
 import { StaticModuleAttrs } from './types';
 import { placeholderContent } from './placeholder-content';
 
@@ -19,9 +18,6 @@ export const staticModule: ModuleLibrary.Module.RegisterDefinition<StaticModuleA
   // Imported json has no inferred type hence type-cast is necessary.
   metadata: metadata as Metadata.Values<StaticModuleAttrs>,
   placeholderContent,
-  settings: {
-    advanced: SettingsAdvanced,
-  },
   renderers: {
     edit: StaticModuleEdit,
   },
