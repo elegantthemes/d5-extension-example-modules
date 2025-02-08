@@ -31,7 +31,8 @@
         },
         "advanced": {
           "link": {},
-          "text": {}
+          "text": {},
+          "htmlAttributes": {}
         },
         "decoration": {
           "background": {},
@@ -42,7 +43,14 @@
           "boxShadow": {},
           "filters": {},
           "transform": {},
-          "animation": {}
+          "animation": {},
+          "overflow": {},
+          "disabledOn": {},
+          "transition": {},
+          "position": {},
+          "zIndex": {},
+          "scroll": {},
+          "sticky": {}
         }
       }
     },
@@ -167,9 +175,11 @@
       }
     }
   },
+  "customCssFields": {},
   "settings": {
     "content": "auto",
     "design": "auto",
+    "advanced": "auto",
     "groups": {
       "contentPosts": {
         "panel": "content",
