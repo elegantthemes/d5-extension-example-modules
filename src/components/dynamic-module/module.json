@@ -24,6 +24,17 @@
         "bodyFont": {
           "selector": "{{selector}} .example_dynamic_module__post-item-content"
         }
+      },
+      "settings": {
+        "meta": {
+          "adminLabel": {}
+        },
+        "advanced": {
+          "link": {}
+        },
+        "decoration": {
+          "background": {}
+        }
       }
     },
     "title": {
@@ -47,6 +58,27 @@
       "childrenSanitizer": "et_core_esc_previously",
       "attributes": {
         "class": "example_dynamic_module__title"
+      },
+      "settings": {
+        "innerContent": {
+          "groupType": "group-item",
+          "item": {
+            "groupSlug": "contentPosts",
+            "priority": 10,
+            "render": true,
+            "attrName": "title.innerContent",
+            "label": "Title",
+            "description": "Title to show for module.",
+            "features": {
+              "sticky": false,
+              "dynamicContent": false
+            },
+            "component": {
+              "name": "divi/text",
+              "type": "field"
+            }
+          }
+        }
       }
     },
     "postItems": {
@@ -56,6 +88,29 @@
           "desktop": {
             "value": {
               "postsNumber": "5"
+            }
+          }
+        }
+      },
+      "settings": {
+        "innerContent": {
+          "groupType": "group-items",
+          "items": {
+            "src": {
+              "groupSlug": "contentPosts",
+              "priority": 20,
+              "render": true,
+              "subName": "postsNumber",
+              "label": "Number of posts",
+              "description": "Number of posts you want to show.",
+              "features": {
+                "sticky": false,
+                "dynamicContent": false
+              },
+              "component": {
+                "name": "divi/text",
+                "type": "field"
+              }
             }
           }
         }
@@ -79,5 +134,21 @@
       }
     }
   },
-  "settings": {}
+  "settings": {
+    "content": "auto",
+    "groups": {
+      "contentPosts": {
+        "panel": "content",
+        "priority": 10,
+        "groupName": "contentPosts",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Posts"
+          }
+        }
+      }
+    }
+  }
 }
