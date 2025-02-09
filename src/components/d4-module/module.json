@@ -19,6 +19,17 @@
             }
           }
         }
+      },
+      "settings": {
+        "meta": {
+          "adminLabel": {}
+        },
+        "advanced": {
+          "link": {}
+        },
+        "decoration": {
+          "background": {}
+        }
       }
     },
     "title": {
@@ -42,6 +53,29 @@
       "childrenSanitizer": "et_core_esc_previously",
       "attributes": {
         "class": "example_d4_module_title"
+      },
+      "settings": {
+        "innerContent": {
+          "groupType": "group-item",
+          "item": {
+            "groupName": "mainContent",
+            "priority": 10,
+            "render": true,
+            "attrName": "title.innerContent",
+            "label": "Title",
+            "description": "Input your value to action title here.",
+            "features": {
+              "sticky": false,
+              "dynamicContent": {
+                "type": "text"
+              }
+            },
+            "component": {
+              "name": "divi/text",
+              "type": "field"
+            }
+          }
+        }
       }
     },
     "content": {
@@ -51,7 +85,30 @@
         "class": "example_d4_module_content"
       },
       "tagName": "div",
-      "inlineEditor": "richText"
+      "inlineEditor": "richText",
+      "settings": {
+        "innerContent": {
+          "groupType": "group-item",
+          "item": {
+            "groupName": "mainContent",
+            "priority": 20,
+            "render": true,
+            "attrName": "content.innerContent",
+            "label": "Content",
+            "description": "Input the main text content for your module here.",
+            "features": {
+              "sticky": false,
+              "dynamicContent": {
+                "type": "text"
+              }
+            },
+            "component": {
+              "name": "divi/richtext",
+              "type": "field"
+            }
+          }
+        }
+      }
     }
   },
   "customCssFields": {
@@ -64,5 +121,7 @@
       "selectorSuffix": " .example_d4_module_content"
     }
   },
-  "settings": {}
+  "settings": {
+    "content": "auto"
+  }
 }
