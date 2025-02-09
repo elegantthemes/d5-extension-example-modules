@@ -7,7 +7,6 @@ import {
 // Local dependencies.
 import metadata from './module.json';
 import { ParentModuleEdit } from './edit';
-import { SettingsContent } from './settings-content';
 import { SettingsDesign } from './settings-design';
 import { SettingsAdvanced } from './settings-advanced';
 import { ParentModuleAttrs } from './types';
@@ -30,7 +29,6 @@ export const parentModule: ModuleLibrary.Module.RegisterDefinition<ParentModuleA
     ['example/child-module', {}],
   ],
   settings:   {
-    content:  SettingsContent,
     design:   SettingsDesign,
     advanced: SettingsAdvanced,
   },
