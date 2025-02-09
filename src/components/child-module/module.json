@@ -26,10 +26,28 @@
       },
       "settings": {
         "advanced": {
-          "link": {}
+          "link": {},
+          "text": {
+            "component": {
+              "props": {
+                "fields": {
+                  "color": {
+                    "render": false
+                  }
+                }
+              }
+            }
+          }
         },
         "decoration": {
-          "background": {}
+          "background": {},
+          "sizing": {},
+          "spacing": {},
+          "border": {},
+          "boxShadow": {},
+          "filters": {},
+          "transform": {},
+          "animation": {}
         }
       }
     },
@@ -68,6 +86,17 @@
               "type": "field"
             }
           }
+        },
+        "decoration": {
+          "font": {
+            "priority": 10,
+            "component": {
+              "props": {
+                "groupLabel": "Title Text",
+                "fieldLabel": "Title"
+              }
+            }
+          }
         }
       },
       "tagName": "div",
@@ -101,6 +130,11 @@
               "type": "field"
             }
           }
+        },
+        "decoration": {
+          "bodyFont": {
+            "attrName": "content.decoration.bodyFont"
+          }
         }
       },
       "attributes": {
@@ -128,6 +162,60 @@
             "component": {
               "type": "field",
               "name": "divi/icon-picker"
+            }
+          }
+        },
+        "advanced": {
+          "color": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designIcon",
+              "label": "Icon Color",
+              "description": "Here you can define a custom color for your icon.",
+              "render": true,
+              "priority": 10,
+              "features": {
+                "sticky": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/color-picker"
+              }
+            }
+          },
+          "size": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "designIcon",
+              "label": "Icon Size",
+              "description": "Here you can choose icon width.",
+              "render": true,
+              "priority": 20,
+              "features": {
+                "sticky": false
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/range",
+                "props": {
+                  "min": 1,
+                  "max": 120,
+                  "allowedUnits": [
+                    "%",
+                    "em",
+                    "rem",
+                    "px",
+                    "cm",
+                    "mm",
+                    "in",
+                    "pt",
+                    "pc",
+                    "ex",
+                    "vh",
+                    "vw"
+                  ]
+                }
+              }
             }
           }
         }
@@ -163,6 +251,18 @@
           "name": "divi/composite",
           "props": {
             "groupLabel": "Icon"
+          }
+        }
+      },
+      "designIcon": {
+        "panel": "design",
+        "priority": 10,
+        "groupName": "designIcon",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Icon Style"
           }
         }
       }
