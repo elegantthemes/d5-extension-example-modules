@@ -4,6 +4,8 @@
   "title": "Child Module",
   "titles": "Child Modules",
   "category": "child-module",
+  "moduleClassName": "example_child_module",
+  "moduleOrderClassName": "example_child_module",
   "attributes": {
     "module": {
       "type": "object",
@@ -79,5 +81,6 @@
       "subName": "icon",
       "selectorSuffix": " .example_child_module__icon.et-pb-icon"
     }
-  }
+  },
+  "settings": {}
 }
