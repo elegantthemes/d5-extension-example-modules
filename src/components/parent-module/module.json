@@ -46,7 +46,8 @@
                 }
               }
             }
-          }
+          },
+          "htmlAttributes": {}
         },
         "decoration": {
           "background": {},
@@ -56,7 +57,14 @@
           "boxShadow": {},
           "filters": {},
           "transform": {},
-          "animation": {}
+          "animation": {},
+          "overflow": {},
+          "disabledOn": {},
+          "transition": {},
+          "position": {},
+          "zIndex": {},
+          "scroll": {},
+          "sticky": {}
         }
       }
     },
@@ -265,6 +273,7 @@
   "settings": {
     "content": "auto",
     "design": "auto",
+    "advanced": "auto",
     "groups": {
       "contentIcon": {
         "panel": "content",
