@@ -4,6 +4,8 @@
   "title": "Parent Module",
   "titles": "Parent Modules",
   "moduleIcon": "example/module-parent",
+  "moduleClassName": "example_dynamic_module",
+  "moduleOrderClassName": "example_dynamic_module",
   "category": "module",
   "attributes": {
     "module": {
@@ -131,5 +133,6 @@
       "subName": "icon",
       "selectorSuffix": " .example_parent_module__icon.et-pb-icon"
     }
-  }
+  },
+  "settings": {}
 }
