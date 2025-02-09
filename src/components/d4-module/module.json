@@ -25,10 +25,19 @@
           "adminLabel": {}
         },
         "advanced": {
-          "link": {}
+          "link": {},
+          "text": {}
         },
         "decoration": {
-          "background": {}
+          "background": {},
+          "bodyFont": {},
+          "sizing": {},
+          "spacing": {},
+          "border": {},
+          "boxShadow": {},
+          "filters": {},
+          "transform": {},
+          "animation": {}
         }
       }
     },
@@ -73,6 +82,17 @@
             "component": {
               "name": "divi/text",
               "type": "field"
+            }
+          }
+        },
+        "decoration": {
+          "font": {
+            "priority": 10,
+            "component": {
+              "props": {
+                "groupLabel": "Title Text",
+                "fieldLabel": "Title"
+              }
             }
           }
         }
@@ -122,6 +142,7 @@
     }
   },
   "settings": {
-    "content": "auto"
+    "content": "auto",
+    "design": "auto"
   }
 }

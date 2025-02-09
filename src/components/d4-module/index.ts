@@ -10,7 +10,6 @@ import {
 // Local dependencies.
 import metadata from './module.json';
 import { D4ModuleEdit } from './edit';
-import { SettingsDesign } from './settings-design';
 import { SettingsAdvanced } from './settings-advanced';
 import { D4ModuleAttrs } from './types';
 import { placeholderContent } from './placeholder-content';
@@ -22,7 +21,6 @@ export const d4Module: ModuleLibrary.Module.RegisterDefinition<D4ModuleAttrs> = 
   placeholderContent,
   conversionOutline,
   settings: {
-    design:   SettingsDesign,
     advanced: SettingsAdvanced,
   },
   renderers: {
