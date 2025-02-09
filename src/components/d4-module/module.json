@@ -26,7 +26,8 @@
         },
         "advanced": {
           "link": {},
-          "text": {}
+          "text": {},
+          "htmlAttributes": {}
         },
         "decoration": {
           "background": {},
@@ -37,7 +38,14 @@
           "boxShadow": {},
           "filters": {},
           "transform": {},
-          "animation": {}
+          "animation": {},
+          "overflow": {},
+          "disabledOn": {},
+          "transition": {},
+          "position": {},
+          "zIndex": {},
+          "scroll": {},
+          "sticky": {}
         }
       }
     },
@@ -143,6 +151,7 @@
   },
   "settings": {
     "content": "auto",
-    "design": "auto"
+    "design": "auto",
+    "advanced": "auto"
   }
 }
