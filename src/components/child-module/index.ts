@@ -9,13 +9,12 @@ import metadata from './module.json';
 import { ChildModuleEdit } from './edit';
 import { SettingsContent } from './settings-content';
 import { SettingsDesign } from './settings-design';
-import { SettingsAdvanced } from './settings-advanced';
 import { ChildModuleAttrs } from './types';
 import { placeholderContent } from './placeholder-content';
 
 // Styles.
 import './module.scss';
-import { ModuleMetadata } from '@divi/types';
+
 
 /**
  * Child module.
@@ -27,9 +26,8 @@ export const childModule: ModuleLibrary.Module.RegisterDefinition<ChildModuleAtt
   metadata: metadata as Metadata.Values<ChildModuleAttrs>,
   placeholderContent,
   settings:   {
-    content:  SettingsContent,
-    design:   SettingsDesign,
-    advanced: SettingsAdvanced,
+    content: SettingsContent,
+    design:  SettingsDesign,
   },
   renderers: {
     edit: ChildModuleEdit,
