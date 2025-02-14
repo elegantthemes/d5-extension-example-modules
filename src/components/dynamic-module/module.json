@@ -133,6 +133,8 @@
               "description": "Number of posts you want to show.",
               "features": {
                 "sticky": false,
+                "responsive": false,
+                "hover": false,
                 "dynamicContent": false
               },
               "component": {
