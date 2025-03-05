@@ -58,8 +58,12 @@ Some `npm` commands are available for your development and tests.
 ### `npm run start`
 It will start the webpack compiler for development with watch mode.
 
+_Note: If you see error messages for divi packages related to `placeholderContent` in `npm run start`, this known issue and it will be fixed once we update `divi-types` npm packages. You can continue developing despite the error messages._
+
 ### `npm run build`
 It will build all JS and CSS assets for production.
+
+_Note: If you see error messages for divi packages related to `placeholderContent` in `npm run build`, this known issue and it will be fixed once we update `divi-types` npm packages._
 
 ### `npm run zip`
 It will zip all assets and files without the `src` folder for distribution.
