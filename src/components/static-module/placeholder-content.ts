@@ -1,5 +1,5 @@
 // Divi dependencies.
-import {placeholderContent as placeholder} from '@divi/module';
+import {placeholderContent as placeholder} from '@divi/module-utils';
 
 // Local dependencies.
 import {StaticModuleAttrs} from './types';
