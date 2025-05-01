@@ -9,8 +9,8 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "start": "NODE_ENV=development webpack -w --config webpack.config.js --progress",
-    "build": "NODE_ENV=production webpack --config webpack.config.js --progress",
+    "start": "webpack -w --config webpack.config.js --progress --mode=development",
+    "build": "webpack --config webpack.config.js --progress --mode=production",
     "test": "wp-scripts test-unit-js --config ./test-config/jest.config.js",
     "zip": "gulp zip",
     "reset-install": "rm -rf ./package-lock.json ./node_modules/ && npm install"
