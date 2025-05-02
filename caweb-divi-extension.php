@@ -21,10 +21,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 // Setup constants.
 define( 'CAWEB_DIVI_EXT_DIR', str_replace( '\\', '/', __DIR__ . '/' ) );
 define( 'CAWEB_DIVI_EXT_URL', site_url( preg_replace( '/(.*)\/wp-content/', '/wp-content', CAWEB_DIVI_EXT_DIR ) ) );
+define( 'CAWEB_DIVI_EXT_MODULES_PATH', CAWEB_DIVI_EXT_DIR . 'src/modules/' );
 
 
 // Add actions.
 add_action( 'divi_visual_builder_assets_before_enqueue_scripts', 'caweb_divi_visual_builder_assets_before_enqueue_scripts' );
+
+/**
+ * Requires Autoloader.
+ */
+require CAWEB_DIVI_EXT_DIR . 'vendor/autoload.php';
+require CAWEB_DIVI_EXT_DIR . 'build/modules/index.php';
 
 /**
  * Register all Divi 4 modules.

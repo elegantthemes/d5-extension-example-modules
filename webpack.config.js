@@ -1,8 +1,4 @@
-const path = require('path');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
-
-module.exports = {
+export default {
   // Webpack starts bundling the assets from the following file.
   // @see https://webpack.js.org/concepts/#entry
   entry: {
@@ -16,14 +12,15 @@ module.exports = {
   // @see https://webpack.js.org/configuration/externals/#externals
   externals: {
     // Divi dependencies.
-    '@divi/rest': ['divi', 'rest'],
+    '@divi/conversion': ['divi', 'conversion'],
     '@divi/data': ['divi', 'data'],
-    '@divi/module': ['divi', 'module'],
-    '@divi/module-utils': ['divi', 'moduleUtils'],
-    '@divi/modal': ['divi', 'modal'],
     '@divi/field-library': ['divi', 'fieldLibrary'],
     '@divi/icon-library': ['divi', 'iconLibrary'],
+    '@divi/modal': ['divi', 'modal'],
+    '@divi/module': ['divi', 'module'],
+    '@divi/module-utils': ['divi', 'moduleUtils'],
     '@divi/module-library': ['divi', 'moduleLibrary'],
+    '@divi/rest': ['divi', 'rest'],
     '@divi/style-library': ['divi', 'styleLibrary'],
   },
 };

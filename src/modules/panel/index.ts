@@ -22,7 +22,7 @@ import { SettingsAdvanced } from './settings-advanced';
 /**
  * CAWeb Panel Module.
  */
-export const CAWebPanelModule: ModuleLibrary.Module.RegisterDefinition<ModuleAttrs> = {
+export const PanelModule: ModuleLibrary.Module.RegisterDefinition<ModuleAttrs> = {
   // Metadata that is used on Visual Builder and Frontend
   metadata: metadata as Metadata.Values<ModuleAttrs>,
   

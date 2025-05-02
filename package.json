@@ -1,9 +1,10 @@
 {
-  "name": "d5-extension-example-modules",
+  "name": "caweb-divi-extension",
   "version": "1.0.0",
   "private": true,
-  "repository": "https://github.com/elegantthemes/d5-extension-example-modules",
-  "author": "Elegant Themes",
+  "repository": "https://github.com/CAWebPublishing/caweb-divi-extension",
+  "author": "CAWebPublishing",
+  "type": "module",
   "engines": {
     "npm": ">=10.0.0",
     "node": ">=18.0.0"
@@ -12,6 +13,7 @@
     "start": "webpack -w --config webpack.config.js --progress --mode=development",
     "build": "caweb build --progress --mode=development",
     "build:icons": "node ./lib/scripts/icons.js",
+    "build:modules": "node ./lib/scripts/modules.js",
     "test": "wp-scripts test-unit-js --config ./test-config/jest.config.js",
     "zip": "gulp zip",
     "reset-install": "rm -rf ./package-lock.json ./node_modules/ && npm install"

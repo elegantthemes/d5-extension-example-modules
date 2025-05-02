@@ -28087,7 +28087,7 @@ var data = iconData;
 
 /***/ }),
 
-/***/ "./src/modules/child-module/custom-css.ts":
+/***/ "./src/modules/Child/custom-css.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28096,7 +28096,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/child-module/module.json");
+/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/Child/module.json");
 var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -28119,7 +28119,7 @@ var cssFields = __assign({}, customCssFields);
 
 /***/ }),
 
-/***/ "./src/modules/child-module/edit.tsx":
+/***/ "./src/modules/Child/edit.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28136,11 +28136,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _divi_module_utils__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_divi_module_utils__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _divi_icon_library__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("@divi/icon-library");
 /* harmony import */ var _divi_icon_library__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_divi_icon_library__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/modules/child-module/styles.tsx");
-/* harmony import */ var _module_classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/modules/child-module/module-classnames.ts");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/modules/Child/styles.tsx");
+/* harmony import */ var _module_classnames__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/modules/Child/module-classnames.ts");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("lodash");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_7__);
-/* harmony import */ var _parent_module_module_json__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/modules/parent-module/module.json");
+/* harmony import */ var _Parent_module_json__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/modules/Parent/module.json");
 // External Dependencies.
 
 // Divi Dependencies.
@@ -28168,7 +28168,7 @@ var ChildModuleEdit = function (props) {
     id = props.id,
     name = props.name,
     parentAttrs = props.parentAttrs;
-  var parentDefaultAttrs = (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.generateDefaultAttrs)(_parent_module_module_json__WEBPACK_IMPORTED_MODULE_8__);
+  var parentDefaultAttrs = (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.generateDefaultAttrs)(_Parent_module_json__WEBPACK_IMPORTED_MODULE_8__);
   var parentAttrsWithDefault = (0,lodash__WEBPACK_IMPORTED_MODULE_7__.merge)(parentDefaultAttrs, parentAttrs);
   var parentIconContent = (0,_divi_module_utils__WEBPACK_IMPORTED_MODULE_3__.getAttrByMode)((_a = parentAttrsWithDefault === null || parentAttrsWithDefault === void 0 ? void 0 : parentAttrsWithDefault.icon) === null || _a === void 0 ? void 0 : _a.innerContent);
   var iconContent = (0,_divi_module_utils__WEBPACK_IMPORTED_MODULE_3__.getAttrByMode)((_b = attrs === null || attrs === void 0 ? void 0 : attrs.icon) === null || _b === void 0 ? void 0 : _b.innerContent);
@@ -28199,18 +28199,18 @@ var ChildModuleEdit = function (props) {
 
 /***/ }),
 
-/***/ "./src/modules/child-module/index.ts":
+/***/ "./src/modules/Child/index.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   childModule: () => (/* binding */ childModule)
+/* harmony export */   ChildModule: () => (/* binding */ ChildModule)
 /* harmony export */ });
-/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/child-module/module.json");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/child-module/edit.tsx");
-/* harmony import */ var _settings_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/child-module/settings-content.tsx");
-/* harmony import */ var _settings_design__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/child-module/settings-design.tsx");
-/* harmony import */ var _placeholder_content__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/modules/child-module/placeholder-content.ts");
+/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/Child/module.json");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/Child/edit.tsx");
+/* harmony import */ var _settings_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/Child/settings-content.tsx");
+/* harmony import */ var _settings_design__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/Child/settings-design.tsx");
+/* harmony import */ var _placeholder_content__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/modules/Child/placeholder-content.ts");
 // Local dependencies.
 
 
@@ -28224,7 +28224,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @since ??
  */
-var childModule = {
+var ChildModule = {
   // Imported json has no inferred type hence type-cast is necessary.
   metadata: _module_json__WEBPACK_IMPORTED_MODULE_0__,
   placeholderContent: _placeholder_content__WEBPACK_IMPORTED_MODULE_4__.placeholderContent,
@@ -28240,7 +28240,7 @@ var childModule = {
 
 /***/ }),
 
-/***/ "./src/modules/child-module/module-classnames.ts":
+/***/ "./src/modules/Child/module-classnames.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28269,14 +28269,14 @@ var moduleClassnames = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/child-module/module.json":
+/***/ "./src/modules/Child/module.json":
 /***/ ((module) => {
 
 module.exports = /*#__PURE__*/JSON.parse('{"name":"example/child-module","d4Shortcode":"","title":"Child Module","titles":"Child Modules","category":"child-module","moduleClassName":"example_child_module","moduleOrderClassName":"example_child_module","attributes":{"module":{"type":"object","selector":"{{selector}}","default":{"meta":{"adminLabel":{"desktop":{"value":"Child Module"}}}},"styleProps":{"border":{"important":true}},"settings":{"advanced":{"link":{},"text":{"component":{"props":{"fields":{"color":{"render":false}}}}},"htmlAttributes":{}},"decoration":{"background":{},"sizing":{},"spacing":{},"border":{},"boxShadow":{},"filters":{},"transform":{},"animation":{},"overflow":{},"disabledOn":{},"transition":{},"position":{},"zIndex":{},"scroll":{},"sticky":{}}}},"title":{"type":"object","selector":".example_parent_module {{selector}} .example_child_module__title","styleProps":{"font":{"important":{"font":{"desktop":{"value":{"color":true}}}}}},"settings":{"innerContent":{"groupType":"group-item","item":{"groupName":"mainContent","priority":10,"render":true,"attrName":"title.innerContent","label":"Title","description":"Input your value to action title here.","features":{"sticky":false,"dynamicContent":false},"component":{"name":"divi/text","type":"field"}}},"decoration":{"font":{"priority":10,"component":{"props":{"groupLabel":"Title Text","fieldLabel":"Title"}}}}},"tagName":"div","attributes":{"class":"example_child_module__title"},"inlineEditor":"plainText","elementType":"heading","childrenSanitizer":"et_core_esc_previously"},"content":{"type":"object","selector":".example_parent_module {{selector}} .example_child_module__content","tagName":"div","settings":{"innerContent":{"groupType":"group-item","item":{"groupName":"mainContent","priority":20,"render":true,"attrName":"content.innerContent","label":"Content","description":"Input the main text content for your module here.","features":{"sticky":false,"dynamicContent":false},"component":{"name":"divi/richtext","type":"field"}}},"decoration":{"bodyFont":{"attrName":"content.decoration.bodyFont"}}},"attributes":{"class":"example_child_module__content"},"inlineEditor":"richText","childrenSanitizer":"et_core_esc_previously"},"icon":{"type":"object","selector":"{{selector}} .example_child_module__icon.et-pb-icon","settings":{"innerContent":{"groupType":"group-item","item":{"groupSlug":"contentIcon","attrName":"icon.innerContent","label":"Icon","description":"Pick an Icon","render":true,"priority":10,"features":{"sticky":false},"component":{"type":"field","name":"divi/icon-picker"}}},"advanced":{"color":{"groupType":"group-item","item":{"groupSlug":"designIcon","label":"Icon Color","description":"Here you can define a custom color for your icon.","render":true,"priority":10,"features":{"sticky":false},"component":{"type":"field","name":"divi/color-picker"}}},"size":{"groupType":"group-item","item":{"groupSlug":"designIcon","label":"Icon Size","description":"Here you can choose icon width.","render":true,"priority":20,"features":{"sticky":false},"component":{"type":"field","name":"divi/range","props":{"min":1,"max":120,"allowedUnits":["%","em","rem","px","cm","mm","in","pt","pc","ex","vh","vw"]}}}}}}}},"customCssFields":{"contentContainer":{"subName":"contentContainer","selectorSuffix":" .example_child_module__content-container"},"title":{"subName":"title","selectorSuffix":" .example_child_module__title"},"content":{"subName":"content","selectorSuffix":" .example_child_module__content"},"icon":{"subName":"icon","selectorSuffix":" .example_child_module__icon.et-pb-icon"}},"settings":{"advanced":"auto","groups":{"contentIcon":{"panel":"content","priority":20,"groupName":"contentIcon","multiElements":true,"component":{"name":"divi/composite","props":{"groupLabel":"Icon"}}},"designIcon":{"panel":"design","priority":10,"groupName":"designIcon","multiElements":true,"component":{"name":"divi/composite","props":{"groupLabel":"Icon Style"}}}}}}');
 
 /***/ }),
 
-/***/ "./src/modules/child-module/placeholder-content.ts":
+/***/ "./src/modules/Child/placeholder-content.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28302,7 +28302,7 @@ var placeholderContent = {
 
 /***/ }),
 
-/***/ "./src/modules/child-module/settings-content.tsx":
+/***/ "./src/modules/Child/settings-content.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28345,7 +28345,7 @@ var SettingsContent = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/child-module/settings-design.tsx":
+/***/ "./src/modules/Child/settings-design.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28427,7 +28427,7 @@ var SettingsDesign = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/child-module/style-declarations/icon-font/index.ts":
+/***/ "./src/modules/Child/style-declarations/icon-font/index.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28469,19 +28469,19 @@ var iconFontDeclaration = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/child-module/style-declarations/index.ts":
+/***/ "./src/modules/Child/style-declarations/index.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   iconFontDeclaration: () => (/* reexport safe */ _icon_font__WEBPACK_IMPORTED_MODULE_0__.iconFontDeclaration)
 /* harmony export */ });
-/* harmony import */ var _icon_font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/child-module/style-declarations/icon-font/index.ts");
+/* harmony import */ var _icon_font__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/Child/style-declarations/icon-font/index.ts");
 
 
 /***/ }),
 
-/***/ "./src/modules/child-module/styles.tsx":
+/***/ "./src/modules/Child/styles.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28492,8 +28492,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@divi/module");
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _custom_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/child-module/custom-css.ts");
-/* harmony import */ var _style_declarations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/child-module/style-declarations/index.ts");
+/* harmony import */ var _custom_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/Child/custom-css.ts");
+/* harmony import */ var _style_declarations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/Child/style-declarations/index.ts");
 // External dependencies.
 
 // Divi dependencies.
@@ -28574,7 +28574,7 @@ var ModuleStyles = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/d4-module/conversion-outline.ts":
+/***/ "./src/modules/D4/conversion-outline.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28638,7 +28638,7 @@ var conversionOutline = {
 
 /***/ }),
 
-/***/ "./src/modules/d4-module/custom-css.ts":
+/***/ "./src/modules/D4/custom-css.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28647,7 +28647,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/d4-module/module.json");
+/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/D4/module.json");
 var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -28668,7 +28668,7 @@ var cssFields = __assign({}, customCssFields);
 
 /***/ }),
 
-/***/ "./src/modules/d4-module/edit.tsx":
+/***/ "./src/modules/D4/edit.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28679,9 +28679,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@divi/module");
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/d4-module/styles.tsx");
-/* harmony import */ var _module_classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/d4-module/module-classnames.ts");
-/* harmony import */ var _module_script_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/modules/d4-module/module-script-data.tsx");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/D4/styles.tsx");
+/* harmony import */ var _module_classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/D4/module-classnames.ts");
+/* harmony import */ var _module_script_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/modules/D4/module-script-data.tsx");
 // External Dependencies.
 
 // Divi Dependencies.
@@ -28725,23 +28725,23 @@ var D4ModuleEdit = function (props) {
 
 /***/ }),
 
-/***/ "./src/modules/d4-module/index.ts":
+/***/ "./src/modules/D4/index.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   d4Module: () => (/* binding */ d4Module)
+/* harmony export */   D4Module: () => (/* binding */ D4Module)
 /* harmony export */ });
-/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/d4-module/module.json");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/d4-module/edit.tsx");
-/* harmony import */ var _placeholder_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/d4-module/placeholder-content.ts");
-/* harmony import */ var _conversion_outline__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/d4-module/conversion-outline.ts");
+/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/D4/module.json");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/D4/edit.tsx");
+/* harmony import */ var _placeholder_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/D4/placeholder-content.ts");
+/* harmony import */ var _conversion_outline__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/D4/conversion-outline.ts");
 // Local dependencies.
 
 
 
 
-var d4Module = {
+var D4Module = {
   metadata: _module_json__WEBPACK_IMPORTED_MODULE_0__,
   placeholderContent: _placeholder_content__WEBPACK_IMPORTED_MODULE_2__.placeholderContent,
   conversionOutline: _conversion_outline__WEBPACK_IMPORTED_MODULE_3__.conversionOutline,
@@ -28752,7 +28752,7 @@ var d4Module = {
 
 /***/ }),
 
-/***/ "./src/modules/d4-module/module-classnames.ts":
+/***/ "./src/modules/D4/module-classnames.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28779,7 +28779,7 @@ var moduleClassnames = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/d4-module/module-script-data.tsx":
+/***/ "./src/modules/D4/module-script-data.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28807,14 +28807,14 @@ var ModuleScriptData = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/d4-module/module.json":
+/***/ "./src/modules/D4/module.json":
 /***/ ((module) => {
 
 module.exports = /*#__PURE__*/JSON.parse('{"name":"example/d4-module","d4Shortcode":"d4_module","title":"Divi 4 Module","titles":"Divi 4 Modules","moduleIcon":"caweb/caweb","moduleClassName":"example_d4_module","moduleOrderClassName":"example_d4_module","category":"module","attributes":{"module":{"type":"object","selector":"{{selector}}","default":{"meta":{"adminLabel":{"desktop":{"value":"D4 Module"}}}},"settings":{"meta":{"adminLabel":{}},"advanced":{"link":{},"text":{},"htmlAttributes":{}},"decoration":{"background":{},"bodyFont":{},"sizing":{},"spacing":{},"border":{},"boxShadow":{},"filters":{},"transform":{},"animation":{},"overflow":{},"disabledOn":{},"transition":{},"position":{},"zIndex":{},"scroll":{},"sticky":{}}}},"title":{"type":"object","selector":"{{selector}} .example_d4_module_title","default":{"decoration":{"font":{"font":{"desktop":{"value":{"headingLevel":"h2"}}}}}},"inlineEditor":"plainText","elementType":"heading","childrenSanitizer":"et_core_esc_previously","attributes":{"class":"example_d4_module_title"},"settings":{"innerContent":{"groupType":"group-item","item":{"groupName":"mainContent","priority":10,"render":true,"attrName":"title.innerContent","label":"Title","description":"Input your value to action title here.","features":{"sticky":false,"dynamicContent":{"type":"text"}},"component":{"name":"divi/text","type":"field"}}},"decoration":{"font":{"priority":10,"component":{"props":{"groupLabel":"Title Text","fieldLabel":"Title"}}}}}},"content":{"type":"object","selector":"{{selector}} .example_d4_module_content","attributes":{"class":"example_d4_module_content"},"tagName":"div","inlineEditor":"richText","settings":{"innerContent":{"groupType":"group-item","item":{"groupName":"mainContent","priority":20,"render":true,"attrName":"content.innerContent","label":"Content","description":"Input the main text content for your module here.","features":{"sticky":false,"dynamicContent":{"type":"text"}},"component":{"name":"divi/richtext","type":"field"}}}}}},"customCssFields":{"title":{"subName":"title","selectorSuffix":" .example_d4_module_title"},"content":{"subName":"content","selectorSuffix":" .example_d4_module_content"}},"settings":{"content":"auto","design":"auto","advanced":"auto"}}');
 
 /***/ }),
 
-/***/ "./src/modules/d4-module/placeholder-content.ts":
+/***/ "./src/modules/D4/placeholder-content.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28840,7 +28840,7 @@ var placeholderContent = {
 
 /***/ }),
 
-/***/ "./src/modules/d4-module/styles.tsx":
+/***/ "./src/modules/D4/styles.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28851,7 +28851,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@divi/module");
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _custom_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/d4-module/custom-css.ts");
+/* harmony import */ var _custom_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/D4/custom-css.ts");
 // External dependencies.
 
 // Divi dependencies.
@@ -28910,7 +28910,7 @@ var ModuleStyles = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/dynamic-module/edit.tsx":
+/***/ "./src/modules/Dynamic/edit.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -28923,13 +28923,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _divi_rest__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("@divi/rest");
 /* harmony import */ var _divi_rest__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_divi_rest__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/dynamic-module/styles.tsx");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/Dynamic/styles.tsx");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("lodash");
 /* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _module_script_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/modules/dynamic-module/module-script-data.tsx");
-/* harmony import */ var _module_classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/modules/dynamic-module/module-classnames.ts");
+/* harmony import */ var _module_script_data__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/modules/Dynamic/module-script-data.tsx");
+/* harmony import */ var _module_classnames__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/modules/Dynamic/module-classnames.ts");
 // External Dependencies.
 
 // Divi Dependencies.
@@ -29026,21 +29026,21 @@ var DynamicModuleEdit = function (props) {
 
 /***/ }),
 
-/***/ "./src/modules/dynamic-module/index.ts":
+/***/ "./src/modules/Dynamic/index.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   dynamicModule: () => (/* binding */ dynamicModule)
+/* harmony export */   DynamicModule: () => (/* binding */ DynamicModule)
 /* harmony export */ });
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/dynamic-module/edit.tsx");
-/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/dynamic-module/module.json");
-/* harmony import */ var _placeholder_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/dynamic-module/placeholder-content.ts");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/Dynamic/edit.tsx");
+/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/Dynamic/module.json");
+/* harmony import */ var _placeholder_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/Dynamic/placeholder-content.ts");
 
 
 
 //import './module.scss';
-var dynamicModule = {
+var DynamicModule = {
   // Imported json has no inferred type hence type-cast is necessary.
   metadata: _module_json__WEBPACK_IMPORTED_MODULE_1__,
   placeholderContent: _placeholder_content__WEBPACK_IMPORTED_MODULE_2__.placeholderContent,
@@ -29051,7 +29051,7 @@ var dynamicModule = {
 
 /***/ }),
 
-/***/ "./src/modules/dynamic-module/module-classnames.ts":
+/***/ "./src/modules/Dynamic/module-classnames.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29078,7 +29078,7 @@ var moduleClassnames = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/dynamic-module/module-script-data.tsx":
+/***/ "./src/modules/Dynamic/module-script-data.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29106,14 +29106,14 @@ var ModuleScriptData = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/dynamic-module/module.json":
+/***/ "./src/modules/Dynamic/module.json":
 /***/ ((module) => {
 
 module.exports = /*#__PURE__*/JSON.parse('{"name":"example/dynamic-module","d4Shortcode":"","title":"Dynamic Module","titles":"Dynamic Modules","moduleIcon":"caweb/caweb","moduleClassName":"example_dynamic_module","moduleOrderClassName":"example_dynamic_module","category":"module","attributes":{"module":{"type":"object","selector":"{{selector}}","default":{"meta":{"adminLabel":{"desktop":{"value":"Static Module"}}}},"styleProps":{"bodyFont":{"selector":"{{selector}} .example_dynamic_module__post-item-content"}},"settings":{"meta":{"adminLabel":{}},"advanced":{"link":{},"text":{},"htmlAttributes":{}},"decoration":{"background":{},"bodyFont":{},"sizing":{},"spacing":{},"border":{},"boxShadow":{},"filters":{},"transform":{},"animation":{},"overflow":{},"disabledOn":{},"transition":{},"position":{},"zIndex":{},"scroll":{},"sticky":{}}}},"title":{"type":"object","selector":"{{selector}} .example_dynamic_module__title","default":{"decoration":{"font":{"font":{"desktop":{"value":{"headingLevel":"h2"}}}}}},"inlineEditor":"plainText","elementType":"heading","childrenSanitizer":"et_core_esc_previously","attributes":{"class":"example_dynamic_module__title"},"settings":{"innerContent":{"groupType":"group-item","item":{"groupSlug":"contentPosts","priority":10,"render":true,"attrName":"title.innerContent","label":"Title","description":"Title to show for module.","features":{"sticky":false,"dynamicContent":false},"component":{"name":"divi/text","type":"field"}}},"decoration":{"font":{"priority":10,"component":{"props":{"groupLabel":"Title Text","fieldLabel":"Title"}}}}}},"postItems":{"type":"object","default":{"innerContent":{"desktop":{"value":{"postsNumber":"5"}}}},"settings":{"innerContent":{"groupType":"group-items","items":{"src":{"groupSlug":"contentPosts","priority":20,"render":true,"subName":"postsNumber","label":"Number of posts","description":"Number of posts you want to show.","features":{"sticky":false,"responsive":false,"hover":false,"dynamicContent":false},"component":{"name":"divi/text","type":"field"}}}}}},"postTitle":{"type":"object","selector":"{{selector}} .example_dynamic_module__post-item-title","default":{"decoration":{"font":{"font":{"desktop":{"value":{"headingLevel":"h3"}}}}}},"settings":{"decoration":{"font":{"priority":10,"component":{"props":{"groupLabel":"Post Title Text","fieldLabel":"Post Title"}}}}}}},"customCssFields":{},"settings":{"content":"auto","design":"auto","advanced":"auto","groups":{"contentPosts":{"panel":"content","priority":10,"groupName":"contentPosts","multiElements":true,"component":{"name":"divi/composite","props":{"groupLabel":"Posts"}}}}}}');
 
 /***/ }),
 
-/***/ "./src/modules/dynamic-module/placeholder-content.ts":
+/***/ "./src/modules/Dynamic/placeholder-content.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29132,7 +29132,7 @@ var placeholderContent = {
 
 /***/ }),
 
-/***/ "./src/modules/dynamic-module/styles.tsx":
+/***/ "./src/modules/Dynamic/styles.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29189,7 +29189,441 @@ var ModuleStyles = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/parent-module/custom-css.ts":
+/***/ "./src/modules/Panel/conversion-outline.ts":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   conversionOutline: () => (/* binding */ conversionOutline)
+/* harmony export */ });
+/* harmony import */ var _divi_conversion__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@divi/conversion");
+/* harmony import */ var _divi_conversion__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_divi_conversion__WEBPACK_IMPORTED_MODULE_0__);
+/* eslint-disable @typescript-eslint/naming-convention */
+
+// Compare this to wp.data.select('divi/settings').getSetting('shortcodeModuleDefinitions').et_pb_blurb.fields
+// @see https://github.com/elegantthemes/d5-extension-example-modules/blob/main/src/components/d4-module/conversion-outline.ts
+var conversionOutline = {
+  advanced: {
+    admin_label: 'module.meta.adminLabel',
+    animation: 'module.decoration.animation',
+    background: 'module.decoration.background',
+    borders: {
+      default: 'module.decoration.border'
+    },
+    box_shadow: {
+      default: 'module.decoration.boxShadow'
+    },
+    disabled_on: 'module.decoration.disabledOn',
+    filters: {
+      default: 'module.decoration.filters'
+    },
+    fonts: {
+      body: 'content.decoration.bodyFont.body',
+      body_link: 'content.decoration.bodyFont.link',
+      body_ol: 'content.decoration.bodyFont.ol',
+      body_quote: 'content.decoration.bodyFont.quote',
+      body_ul: 'content.decoration.bodyFont.ul',
+      header: 'title.decoration.font'
+    },
+    height: 'module.decoration.sizing',
+    link_options: 'module.advanced.link',
+    margin_padding: 'module.decoration.spacing',
+    max_width: 'module.decoration.sizing',
+    module: 'module.advanced.htmlAttributes',
+    overflow: 'module.decoration.overflow',
+    position_fields: 'module.decoration.position',
+    scroll: 'module.decoration.scroll',
+    sticky: 'module.decoration.sticky',
+    text: 'module.advanced.text',
+    text_shadow: {
+      default: 'module.advanced.text.textShadow'
+    },
+    transform: 'module.decoration.transform',
+    transition: 'module.decoration.transition',
+    z_index: 'module.decoration.zIndex'
+  },
+  css: {
+    after: 'css.*.after',
+    before: 'css.*.before',
+    main_element: 'css.*.mainElement',
+    content: 'css.*.content',
+    title: 'css.*.title'
+  },
+  module: {
+    panel_layout: 'module.advanced.layout.*.style',
+    content: 'content.innerContent.*',
+    title: 'title.innerContent.*',
+    heading_size: 'title.decoration.font.font.*.headingLevel',
+    heading_text_color: 'title.decoration.font.font.*.color',
+    heading_align: 'title.decoration.font.font.*.textAlign',
+    show_button: 'title.readMore.button.*.enable',
+    button_link: 'title.readMore.link.*.url',
+    button_target: 'title.readMore.link.*.target',
+    button_text: 'title.readMore.link.*.text',
+    use_icon: 'title.readMore.icon.*.show',
+    font_icon: 'title.readMore.icon.*.unicode'
+  },
+  valueExpansionFunctionMap: {
+    font_icon: _divi_conversion__WEBPACK_IMPORTED_MODULE_0__.convertFontIcon
+  }
+};
+
+/***/ }),
+
+/***/ "./src/modules/Panel/edit.tsx":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   Edit: () => (/* binding */ Edit)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@divi/module");
+/* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _module_classnames__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/Panel/module-classnames.ts");
+// External Dependencies.
+
+// Divi Dependencies.
+
+
+var Edit = function (props) {
+  var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m, _o, _p, _q, _r, _s, _t, _u, _v, _w, _x, _y, _z, _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _10, _11, _12, _13, _14, _15, _16, _17, _18;
+  var attrs = props.attrs,
+    id = props.id,
+    name = props.name,
+    elements = props.elements;
+  // Module Attributes.
+  var panelLayout = (_e = (_d = (_c = (_b = (_a = attrs === null || attrs === void 0 ? void 0 : attrs.module) === null || _a === void 0 ? void 0 : _a.advanced) === null || _b === void 0 ? void 0 : _b.layout) === null || _c === void 0 ? void 0 : _c.desktop) === null || _d === void 0 ? void 0 : _d.value) === null || _e === void 0 ? void 0 : _e.style.toString();
+  // Title Attributes.
+  var headingAlignment = (_l = (_k = (_j = (_h = (_g = (_f = attrs === null || attrs === void 0 ? void 0 : attrs.title) === null || _f === void 0 ? void 0 : _f.decoration) === null || _g === void 0 ? void 0 : _g.font) === null || _h === void 0 ? void 0 : _h.font) === null || _j === void 0 ? void 0 : _j.desktop) === null || _k === void 0 ? void 0 : _k.value) === null || _l === void 0 ? void 0 : _l.textAlign.toString();
+  var headingColor = (_t = (_s = (_r = (_q = (_p = (_o = (_m = attrs === null || attrs === void 0 ? void 0 : attrs.title) === null || _m === void 0 ? void 0 : _m.decoration) === null || _o === void 0 ? void 0 : _o.font) === null || _p === void 0 ? void 0 : _p.font) === null || _q === void 0 ? void 0 : _q.desktop) === null || _r === void 0 ? void 0 : _r.value) === null || _s === void 0 ? void 0 : _s.color) === null || _t === void 0 ? void 0 : _t.toString();
+  // Read More Button Options.
+  var readMoreText = (_z = (_y = (_x = (_w = (_v = (_u = attrs === null || attrs === void 0 ? void 0 : attrs.title) === null || _u === void 0 ? void 0 : _u.readMore) === null || _v === void 0 ? void 0 : _v.link) === null || _w === void 0 ? void 0 : _w.desktop) === null || _x === void 0 ? void 0 : _x.value) === null || _y === void 0 ? void 0 : _y.text) === null || _z === void 0 ? void 0 : _z.toString();
+  var readMoreLink = (_5 = (_4 = (_3 = (_2 = (_1 = (_0 = attrs === null || attrs === void 0 ? void 0 : attrs.title) === null || _0 === void 0 ? void 0 : _0.readMore) === null || _1 === void 0 ? void 0 : _1.link) === null || _2 === void 0 ? void 0 : _2.desktop) === null || _3 === void 0 ? void 0 : _3.value) === null || _4 === void 0 ? void 0 : _4.url) === null || _5 === void 0 ? void 0 : _5.toString();
+  var readMoreTarget = (_11 = (_10 = (_9 = (_8 = (_7 = (_6 = attrs === null || attrs === void 0 ? void 0 : attrs.title) === null || _6 === void 0 ? void 0 : _6.readMore) === null || _7 === void 0 ? void 0 : _7.link) === null || _8 === void 0 ? void 0 : _8.desktop) === null || _9 === void 0 ? void 0 : _9.value) === null || _10 === void 0 ? void 0 : _10.target) === null || _11 === void 0 ? void 0 : _11.toString();
+  // Panel Icon.
+  var showIcon = (_16 = (_15 = (_14 = (_13 = (_12 = attrs === null || attrs === void 0 ? void 0 : attrs.title) === null || _12 === void 0 ? void 0 : _12.readMore) === null || _13 === void 0 ? void 0 : _13.icon) === null || _14 === void 0 ? void 0 : _14.desktop) === null || _15 === void 0 ? void 0 : _15.value) === null || _16 === void 0 ? void 0 : _16.show.toString();
+  var icon = (_18 = (_17 = attrs === null || attrs === void 0 ? void 0 : attrs.title) === null || _17 === void 0 ? void 0 : _17.readMore) === null || _18 === void 0 ? void 0 : _18.icon;
+  // Use defaultValues if not defined
+  /**
+   * @todo figure out Icon Processing
+   */
+  //console.log( 'icon', icon );
+  // Convert to Bootstrap alignment values.
+  if (!headingAlignment || 'left' === headingAlignment) {
+    headingAlignment = 'start';
+  } else if ('right' === headingAlignment) {
+    headingAlignment = 'end';
+  }
+  // Panel layout default value.
+  if (!panelLayout) {
+    panelLayout = 'default';
+  }
+  // Readmore Target default value.
+  if (!readMoreTarget) {
+    readMoreTarget = 'on';
+  }
+  return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_divi_module__WEBPACK_IMPORTED_MODULE_1__.ModuleContainer, {
+    attrs: attrs,
+    elements: elements,
+    id: id,
+    name: name,
+    //scriptDataComponent={ModuleScriptData}
+    //stylesComponent={ModuleStyles}
+    classnamesFunction: _module_classnames__WEBPACK_IMPORTED_MODULE_2__.moduleClassnames
+  }, elements.styleComponents({
+    attrName: 'module'
+  }), react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: "card-header border-bottom-0 justify-content-".concat(headingAlignment)
+  }, showIcon ? react__WEBPACK_IMPORTED_MODULE_0___default().createElement("span", {
+    className: 'ca-gov-icon-home me-2',
+    style: {
+      verticalAlign: 'sub'
+    }
+  }) : '', elements.render({
+    attrName: 'title',
+    htmlAttributes: {
+      style: {
+        color: headingColor
+      }
+    }
+  }), readMoreLink ? react__WEBPACK_IMPORTED_MODULE_0___default().createElement("div", {
+    className: 'options' + ('end' === headingAlignment ? ' ps-3 ms-0' : '')
+  }, react__WEBPACK_IMPORTED_MODULE_0___default().createElement("a", {
+    href: readMoreLink,
+    className: "btn btn-".concat(panelLayout),
+    target: 'on' === readMoreTarget ? '_blank' : '_self'
+  }, readMoreText)) : ''), elements.render({
+    attrName: 'content'
+  }));
+};
+
+
+/***/ }),
+
+/***/ "./src/modules/Panel/index.ts":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   PanelModule: () => (/* binding */ PanelModule)
+/* harmony export */ });
+/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/Panel/module.json");
+/* harmony import */ var _conversion_outline__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/Panel/conversion-outline.ts");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/Panel/edit.tsx");
+/* harmony import */ var _placeholder_content__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/Panel/placeholder-content.ts");
+/* harmony import */ var _settings_content__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/modules/Panel/settings-content.tsx");
+/* harmony import */ var _settings_design__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/modules/Panel/settings-design.tsx");
+/* harmony import */ var _settings_advanced__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/modules/Panel/settings-advanced.tsx");
+// WordPress package dependencies.
+// Module metadata that is used in both Frontend and Visual Builder.
+
+
+
+
+// Module settings components.
+
+
+
+/**
+ * CAWeb Panel Module.
+ */
+var PanelModule = {
+  // Metadata that is used on Visual Builder and Frontend
+  metadata: _module_json__WEBPACK_IMPORTED_MODULE_0__,
+  // Attribute that is automatically added into the module when the module is inserted
+  // into the layout so that the newly inserted module has some placeholder content
+  placeholderContent: _placeholder_content__WEBPACK_IMPORTED_MODULE_3__.placeholderContent,
+  // Conversion outline for the module.
+  conversionOutline: _conversion_outline__WEBPACK_IMPORTED_MODULE_1__.conversionOutline,
+  // Layout renderer components.
+  renderers: {
+    // React Function Component for rendering module's output on layout area.
+    edit: _edit__WEBPACK_IMPORTED_MODULE_2__.Edit
+  },
+  // Settings panel components.
+  settings: {
+    content: _settings_content__WEBPACK_IMPORTED_MODULE_4__.SettingsContent,
+    design: _settings_design__WEBPACK_IMPORTED_MODULE_5__.SettingsDesign,
+    advanced: _settings_advanced__WEBPACK_IMPORTED_MODULE_6__.SettingsAdvanced
+  }
+};
+
+/***/ }),
+
+/***/ "./src/modules/Panel/module-classnames.ts":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   moduleClassnames: () => (/* binding */ moduleClassnames)
+/* harmony export */ });
+/**
+ * Module classnames function for Dynamic Module.
+ *
+ * @since ??
+ *
+ * @param {ModuleClassnamesParams<ModuleAttrs>} param0 Function parameters.
+ */
+var moduleClassnames = function (_a) {
+  var _b, _c, _d, _e, _f;
+  var classnamesInstance = _a.classnamesInstance,
+    attrs = _a.attrs;
+  var panelLayout = (_f = (_e = (_d = (_c = (_b = attrs === null || attrs === void 0 ? void 0 : attrs.module) === null || _b === void 0 ? void 0 : _b.advanced) === null || _c === void 0 ? void 0 : _c.layout) === null || _d === void 0 ? void 0 : _d.desktop) === null || _e === void 0 ? void 0 : _e.value) === null || _f === void 0 ? void 0 : _f.style.toString();
+  classnamesInstance.add('card');
+  classnamesInstance.add("card-".concat(panelLayout));
+  if ("none" === panelLayout) {
+    classnamesInstance.add('overflow-visible');
+    classnamesInstance.add('border-0');
+  }
+};
+
+/***/ }),
+
+/***/ "./src/modules/Panel/module.json":
+/***/ ((module) => {
+
+module.exports = /*#__PURE__*/JSON.parse('{"name":"caweb/panel","d4Shortcode":"et_pb_ca_panel","title":"Panel Module","titles":"CAWeb Modules","category":"module","moduleIcon":"caweb/caweb","moduleClassName":"et_pb_ca_panel","moduleOrderClassName":"et_pb_ca_panel","attributes":{"module":{"type":"object","selector":"{{selector}}","settings":{"advanced":{"htmlAttributes":{},"layout":{"groupType":"group-item","item":{"groupSlug":"panelLayout","priority":1,"render":true,"attrName":"module.advanced.layout","subName":"style","label":"Style","description":"Here you can choose the style of panel to display.","features":{"dynamicContent":false},"component":{"name":"divi/select","type":"field","props":{"defaultValue":"default","options":{"none":{"label":"None","value":"none"},"default":{"value":"default","label":"Default"},"standout":{"value":"standout","label":"Standout"},"standout highlight":{"value":"standout highlight","label":"Standout Highlight"},"overstated":{"value":"overstated","label":"Overstated"},"understated":{"value":"understated","label":"Understated"}}}}}}}}},"title":{"type":"object","selector":"{{selector}} .card-header","attrName":"title","attributes":{"class":"card-title pb-0"},"inlineEditor":"plainText","elementType":"heading","childrenSanitizer":"et_core_esc_previously","settings":{"innerContent":{"groupType":"group-items","items":{"title":{"groupSlug":"panelHeader","priority":10,"label":"Heading","description":"Here you can enter a Heading Title.","attrName":"title.innerContent","render":true,"features":{"dynamicContent":false},"component":{"name":"divi/text","type":"field"}},"enable":{"groupSlug":"panelHeader","priority":10,"render":true,"attrName":"title.readMore.button","subName":"enable","label":"Read More Button","description":"Here you can choose to display a button.","features":{"dynamicContent":false},"component":{"name":"divi/toggle","type":"field"}},"url":{"groupSlug":"panelHeader","priority":10,"render":true,"attrName":"title.readMore.link","subName":"url","label":"Read More Button URL","description":"Here you can enter the URL for the button.","features":{"dynamicContent":false},"component":{"name":"divi/text","type":"field"}},"text":{"groupSlug":"panelHeader","priority":10,"render":true,"attrName":"title.readMore.link","subName":"text","label":"Read More Button Text","description":"Here you can enter the text for the button.","features":{"dynamicContent":false},"component":{"name":"divi/text","type":"field"}},"target":{"groupSlug":"panelHeader","priority":10,"render":true,"attrName":"title.readMore.link","subName":"target","label":"Read More Button Target","description":"Here you can choose whether or not your link opens in a new window.","features":{"dynamicContent":false},"component":{"name":"divi/select","type":"field","props":{"defaultValue":"on","options":{"off":{"value":"off","label":"In The Current Tab"},"on":{"value":"on","label":"In A New Tab"}}}}}}},"decoration":{"font":{"component":{"props":{"groupLabel":"Header","fields":{"textAlign":{"label":"Heading Alignment","priority":1},"headingLevel":{"label":"Heading Level","priority":2},"color":{"label":"Heading Color","priority":3},"showIcon":{"attrName":"title.readMore.icon","priority":4,"subName":"show","render":true,"label":"Use Icon","description":"Choose whether to display an icon before the Heading.","features":{"dynamicContent":false},"component":{"name":"divi/toggle","type":"field"}},"icon":{"attrName":"title.readMore.icon","priority":4,"render":true,"label":"Icon","description":"Here you can select a Heading Icon.","features":{"dynamicContent":false},"component":{"name":"divi/icon-picker","type":"field"}},"family":{"render":false},"weight":{"render":false},"style":{"render":false},"size":{"render":false},"letterSpacing":{"render":false},"lineHeight":{"render":false},"textShadowGroup":{"render":false}}}}}}}},"content":{"type":"object","selector":"{{selector}} .card-body","attributes":{"class":"card-body"},"tagName":"div","inlineEditor":"richText","childrenSanitizer":"et_core_esc_previously","allowHtml":true,"settings":{"innerContent":{"groupType":"group-item","item":{"groupSlug":"panelBody","priority":20,"render":true,"attrName":"content.innerContent","label":"Content","description":"Content","features":{"dynamicContent":false},"component":{"name":"divi/richtext","type":"field"}}}}}},"settings":{"groups":{"panelBody":{"panel":"content","priority":2,"groupName":"panelBody","component":{"name":"divi/composite","props":{"groupLabel":"Body"}}},"panelHeader":{"groupName":"panelHeader","panel":"content","priority":1,"component":{"name":"divi/composite","props":{"groupLabel":"Header"}}},"panelLayout":{"panel":"design","priority":1,"groupName":"panelLayout","component":{"name":"divi/composite","props":{"groupLabel":"Style"}}}}}}');
+
+/***/ }),
+
+/***/ "./src/modules/Panel/placeholder-content.ts":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   placeholderContent: () => (/* binding */ placeholderContent)
+/* harmony export */ });
+var placeholderContent = {
+  module: {
+    meta: {
+      adminLabel: {
+        desktop: {
+          value: 'Panel Module'
+        }
+      }
+    },
+    advanced: {
+      layout: {
+        desktop: {
+          value: {
+            style: 'default'
+          }
+        }
+      }
+    }
+  },
+  title: {
+    innerContent: {
+      desktop: {
+        value: 'Heading Title'
+      }
+    },
+    decoration: {
+      font: {
+        font: {
+          desktop: {
+            value: {
+              headingLevel: 'h4',
+              textAlign: 'left'
+            }
+          }
+        }
+      }
+    },
+    readMore: {
+      link: {
+        desktop: {
+          value: {
+            url: '#',
+            target: 'on',
+            text: 'Read More'
+          }
+        }
+      },
+      icon: {
+        desktop: {
+          value: {
+            show: 'off'
+          }
+        }
+      }
+    }
+  }
+};
+
+/***/ }),
+
+/***/ "./src/modules/Panel/settings-advanced.tsx":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SettingsAdvanced: () => (/* binding */ SettingsAdvanced)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@divi/module");
+/* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * Content panel component for the Search module settings modal.
+ *
+ * @since ??
+ *
+ * @param {Module.Settings.Panel.Props} param0 Content panel props.
+ *
+ * @returns {ReactElement}
+ */
+var SettingsAdvanced = function (_a) {
+  var attrs = _a.attrs,
+    groupConfiguration = _a.groupConfiguration;
+  return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_divi_module__WEBPACK_IMPORTED_MODULE_1__.ModuleGroups, {
+    groups: groupConfiguration
+  });
+};
+
+/***/ }),
+
+/***/ "./src/modules/Panel/settings-content.tsx":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SettingsContent: () => (/* binding */ SettingsContent)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("@divi/module");
+/* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_2__);
+
+
+
+/**
+ * Content panel component for the Search module settings modal.
+ *
+ * @since ??
+ *
+ * @param {Module.Settings.Panel.Props} param0 Content panel props.
+ *
+ * @returns {ReactElement}
+ */
+var SettingsContent = function (_a) {
+  var _b, _c, _d, _e, _f, _g, _h, _j;
+  var attrs = _a.attrs,
+    groupConfiguration = _a.groupConfiguration;
+  // Show Read More Button Options.
+  var showButton = 'on' === ((_g = (_f = (_e = (_d = (_c = (_b = attrs === null || attrs === void 0 ? void 0 : attrs.title) === null || _b === void 0 ? void 0 : _b.readMore) === null || _c === void 0 ? void 0 : _c.icon) === null || _d === void 0 ? void 0 : _d.desktop) === null || _e === void 0 ? void 0 : _e.value) === null || _f === void 0 ? void 0 : _f.show) === null || _g === void 0 ? void 0 : _g.toString()) ? true : false;
+  // Insert props value to `panelHeader` group.
+  if ((_j = (_h = groupConfiguration === null || groupConfiguration === void 0 ? void 0 : groupConfiguration.panelHeader) === null || _h === void 0 ? void 0 : _h.component) === null || _j === void 0 ? void 0 : _j.props) {
+    (0,lodash__WEBPACK_IMPORTED_MODULE_1__.set)(groupConfiguration, ['panelHeader', 'component', 'props', 'fields', 'url', 'visible'], showButton);
+    (0,lodash__WEBPACK_IMPORTED_MODULE_1__.set)(groupConfiguration, ['panelHeader', 'component', 'props', 'fields', 'text', 'visible'], showButton);
+    (0,lodash__WEBPACK_IMPORTED_MODULE_1__.set)(groupConfiguration, ['panelHeader', 'component', 'props', 'fields', 'target', 'visible'], showButton);
+  }
+  return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_divi_module__WEBPACK_IMPORTED_MODULE_2__.ModuleGroups, {
+    groups: groupConfiguration
+  });
+};
+
+/***/ }),
+
+/***/ "./src/modules/Panel/settings-design.tsx":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SettingsDesign: () => (/* binding */ SettingsDesign)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("react");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@divi/module");
+/* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_1__);
+
+
+/**
+ * Content panel component for the Search module settings modal.
+ *
+ * @since ??
+ *
+ * @param {Module.Settings.Panel.Props} param0 Content panel props.
+ *
+ * @returns {ReactElement}
+ */
+var SettingsDesign = function (_a) {
+  var attrs = _a.attrs,
+    groupConfiguration = _a.groupConfiguration;
+  return react__WEBPACK_IMPORTED_MODULE_0___default().createElement(_divi_module__WEBPACK_IMPORTED_MODULE_1__.ModuleGroups, {
+    groups: groupConfiguration
+  });
+};
+
+/***/ }),
+
+/***/ "./src/modules/Parent/custom-css.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29198,7 +29632,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/parent-module/module.json");
+/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/Parent/module.json");
 var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -29221,7 +29655,7 @@ var cssFields = __assign({}, customCssFields);
 
 /***/ }),
 
-/***/ "./src/modules/parent-module/edit.tsx":
+/***/ "./src/modules/Parent/edit.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29232,9 +29666,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@divi/module");
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/parent-module/styles.tsx");
-/* harmony import */ var _module_script_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/parent-module/module-script-data.tsx");
-/* harmony import */ var _module_classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/modules/parent-module/module-classnames.ts");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/Parent/styles.tsx");
+/* harmony import */ var _module_script_data__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/Parent/module-script-data.tsx");
+/* harmony import */ var _module_classnames__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/modules/Parent/module-classnames.ts");
 // External Dependencies.
 
 // Divi Dependencies.
@@ -29275,15 +29709,15 @@ var ParentModuleEdit = function (props) {
 
 /***/ }),
 
-/***/ "./src/modules/parent-module/index.ts":
+/***/ "./src/modules/Parent/index.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   parentModule: () => (/* binding */ parentModule)
+/* harmony export */   ParentModule: () => (/* binding */ ParentModule)
 /* harmony export */ });
-/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/parent-module/module.json");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/parent-module/edit.tsx");
+/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/Parent/module.json");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/Parent/edit.tsx");
 // Local dependencies.
 
 
@@ -29294,7 +29728,7 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @since ??
  */
-var parentModule = {
+var ParentModule = {
   // Imported json has no inferred type hence type-cast is necessary.
   metadata: _module_json__WEBPACK_IMPORTED_MODULE_0__,
   childrenName: ['example/child-module'],
@@ -29306,7 +29740,7 @@ var parentModule = {
 
 /***/ }),
 
-/***/ "./src/modules/parent-module/module-classnames.ts":
+/***/ "./src/modules/Parent/module-classnames.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29333,7 +29767,7 @@ var moduleClassnames = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/parent-module/module-script-data.tsx":
+/***/ "./src/modules/Parent/module-script-data.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29361,14 +29795,14 @@ var ModuleScriptData = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/parent-module/module.json":
+/***/ "./src/modules/Parent/module.json":
 /***/ ((module) => {
 
 module.exports = /*#__PURE__*/JSON.parse('{"name":"example/parent-module","d4Shortcode":"","title":"Parent Module","titles":"Parent Modules","moduleIcon":"caweb/caweb","moduleClassName":"example_parent_module","moduleOrderClassName":"example_parent_module","category":"module","childModuleName":"example/child-module","childModuleTitle":"Child Module","childrenName":["example/child-module"],"attributes":{"module":{"type":"object","selector":"{{selector}}","default":{"meta":{"adminLabel":{"desktop":{"value":"Parent Module"}}}},"styleProps":{"border":{"important":true}},"settings":{"meta":{"adminLabel":{}},"advanced":{"link":{},"text":{"component":{"props":{"fields":{"color":{"render":false}}}}},"htmlAttributes":{}},"decoration":{"background":{},"sizing":{},"spacing":{},"border":{},"boxShadow":{},"filters":{},"transform":{},"animation":{},"overflow":{},"disabledOn":{},"transition":{},"position":{},"zIndex":{},"scroll":{},"sticky":{}}}},"title":{"type":"object","selector":"{{selector}} .example_child_module__title","defaultPrintedStyle":{"decoration":{"font":{"font":{"desktop":{"value":{"size":"21px","lineHeight":"1em","weight":"600"}}}}}},"styleProps":{"font":{"important":{"font":{"desktop":{"value":{"color":true}}}}}},"settings":{"decoration":{"font":{"priority":10,"component":{"props":{"groupLabel":"Title Text","fieldLabel":"Title"}}}}}},"content":{"type":"object","selector":"{{selector}} .example_child_module__content","defaultPrintedStyle":{"decoration":{"bodyFont":{"body":{"font":{"desktop":{"value":{"color":"#868686","size":"13px","lineHeight":"1.6em"}}}}}}},"styleProps":{"bodyFont":{"selectors":{"desktop":{"value":"{{selector}} .example_child_module__content"}}}},"settings":{"decoration":{"bodyFont":{"attrName":"content.decoration.bodyFont"}}}},"icon":{"type":"object","selector":"{{selector}} .et-pb-icon","default":{"innerContent":{"desktop":{"value":{"unicode":"&#x39;","type":"divi","weight":"400"}}},"advanced":{"color":{"desktop":{"value":"#ae16f0"}},"size":{"desktop":{"value":"28px"}}}},"settings":{"innerContent":{"groupType":"group-item","item":{"groupSlug":"contentIcon","attrName":"icon.innerContent","label":"Icon","description":"Upload an Icon","render":true,"priority":10,"features":{"sticky":false},"component":{"type":"field","name":"divi/icon-picker"}}},"advanced":{"color":{"groupType":"group-item","item":{"groupSlug":"designIcon","label":"Icon Color","description":"Here you can define a custom color for your icon.","render":true,"priority":10,"features":{"sticky":false},"component":{"type":"field","name":"divi/color-picker"}}},"size":{"groupType":"group-item","item":{"groupSlug":"designIcon","label":"Icon Size","description":"Here you can choose icon width.","render":true,"priority":20,"features":{"sticky":false},"component":{"type":"field","name":"divi/range","props":{"min":1,"max":120,"allowedUnits":["%","em","rem","px","cm","mm","in","pt","pc","ex","vh","vw"]}}}}}}}},"customCssFields":{"contentContainer":{"subName":"contentContainer","selectorSuffix":" .example_parent_module__content-container"},"title":{"subName":"title","selectorSuffix":" .example_parent_module__title"},"content":{"subName":"content","selectorSuffix":" .example_parent_module__content"},"icon":{"subName":"icon","selectorSuffix":" .example_parent_module__icon.et-pb-icon"}},"settings":{"content":"auto","design":"auto","advanced":"auto","groups":{"contentIcon":{"panel":"content","priority":20,"groupName":"contentIcon","multiElements":true,"component":{"name":"divi/composite","props":{"groupLabel":"Icon"}}},"designIcon":{"panel":"design","priority":10,"groupName":"designIcon","multiElements":true,"component":{"name":"divi/composite","props":{"groupLabel":"Icon Style"}}}}}}');
 
 /***/ }),
 
-/***/ "./src/modules/parent-module/styles.tsx":
+/***/ "./src/modules/Parent/styles.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29379,8 +29813,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@divi/module");
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _custom_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/parent-module/custom-css.ts");
-/* harmony import */ var _child_module_style_declarations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/child-module/style-declarations/index.ts");
+/* harmony import */ var _custom_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/Parent/custom-css.ts");
+/* harmony import */ var _Child_style_declarations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/Child/style-declarations/index.ts");
 // External dependencies.
 
 // Divi dependencies.
@@ -29423,7 +29857,7 @@ var ModuleStyles = function (_a) {
         componentName: "divi/common",
         props: {
           attr: (_c = (_b = attrs === null || attrs === void 0 ? void 0 : attrs.icon) === null || _b === void 0 ? void 0 : _b.innerContent) !== null && _c !== void 0 ? _c : {},
-          declarationFunction: _child_module_style_declarations__WEBPACK_IMPORTED_MODULE_3__.iconFontDeclaration
+          declarationFunction: _Child_style_declarations__WEBPACK_IMPORTED_MODULE_3__.iconFontDeclaration
         }
       }, {
         componentName: "divi/common",
@@ -29452,7 +29886,7 @@ var ModuleStyles = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/static-module/custom-css.ts":
+/***/ "./src/modules/Static/custom-css.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29461,7 +29895,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("@wordpress/i18n");
 /* harmony import */ var _wordpress_i18n__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/static-module/module.json");
+/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/Static/module.json");
 var __assign = undefined && undefined.__assign || function () {
   __assign = Object.assign || function (t) {
     for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -29484,7 +29918,7 @@ var cssFields = __assign({}, customCssFields);
 
 /***/ }),
 
-/***/ "./src/modules/static-module/edit.tsx":
+/***/ "./src/modules/Static/edit.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29495,9 +29929,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@divi/module");
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/static-module/styles.tsx");
-/* harmony import */ var _module_classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/static-module/module-classnames.ts");
-/* harmony import */ var _module_script_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/modules/static-module/module-script-data.tsx");
+/* harmony import */ var _styles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/Static/styles.tsx");
+/* harmony import */ var _module_classnames__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/Static/module-classnames.ts");
+/* harmony import */ var _module_script_data__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/modules/Static/module-script-data.tsx");
 // External Dependencies.
 
 // Divi Dependencies.
@@ -29553,16 +29987,16 @@ var StaticModuleEdit = function (props) {
 
 /***/ }),
 
-/***/ "./src/modules/static-module/index.ts":
+/***/ "./src/modules/Static/index.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   staticModule: () => (/* binding */ staticModule)
+/* harmony export */   StaticModule: () => (/* binding */ StaticModule)
 /* harmony export */ });
-/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/static-module/module.json");
-/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/static-module/edit.tsx");
-/* harmony import */ var _placeholder_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/static-module/placeholder-content.ts");
+/* harmony import */ var _module_json__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/modules/Static/module.json");
+/* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/Static/edit.tsx");
+/* harmony import */ var _placeholder_content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/Static/placeholder-content.ts");
 // Local dependencies.
 
 
@@ -29570,7 +30004,7 @@ __webpack_require__.r(__webpack_exports__);
 // Styles.
 //import './style.scss';
 //import './module.scss';
-var staticModule = {
+var StaticModule = {
   // Imported json has no inferred type hence type-cast is necessary.
   metadata: _module_json__WEBPACK_IMPORTED_MODULE_0__,
   placeholderContent: _placeholder_content__WEBPACK_IMPORTED_MODULE_2__.placeholderContent,
@@ -29581,7 +30015,7 @@ var staticModule = {
 
 /***/ }),
 
-/***/ "./src/modules/static-module/module-classnames.ts":
+/***/ "./src/modules/Static/module-classnames.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29608,7 +30042,7 @@ var moduleClassnames = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/static-module/module-script-data.tsx":
+/***/ "./src/modules/Static/module-script-data.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29636,14 +30070,14 @@ var ModuleScriptData = function (_a) {
 
 /***/ }),
 
-/***/ "./src/modules/static-module/module.json":
+/***/ "./src/modules/Static/module.json":
 /***/ ((module) => {
 
 module.exports = /*#__PURE__*/JSON.parse('{"name":"example/static-module","d4Shortcode":"","title":"Static Module","titles":"Static Modules","moduleIcon":"caweb/caweb","moduleClassName":"example_static_module","moduleOrderClassName":"example_static_module","category":"module","attributes":{"module":{"type":"object","selector":"{{selector}}","default":{"meta":{"adminLabel":{"desktop":{"value":"Static Module"}}},"advanced":{"text":{"text":{"desktop":{"value":{"color":"light"}}}}},"decoration":{"spacing":{"desktop":{"value":{"margin":{"top":"0px","right":"auto","bottom":"30px","left":"auto"}}}}}},"defaultPrintedStyle":{"decoration":{"background":{"desktop":{"value":{"color":"#ecf4f7"}}}}},"styleProps":{"border":{"important":true}},"settings":{"meta":{"adminLabel":{}},"advanced":{"link":{},"text":{},"htmlAttributes":{}},"decoration":{"background":{},"sizing":{},"spacing":{},"border":{},"boxShadow":{},"filters":{},"transform":{},"animation":{},"overflow":{},"disabledOn":{},"transition":{},"position":{},"zIndex":{},"scroll":{},"sticky":{}}}},"image":{"type":"object","selector":"{{selector}} .example_static_module__image img","styleProps":{"border":{"important":true}},"settings":{"innerContent":{"groupType":"group-items","items":{"src":{"groupSlug":"contentImage","priority":10,"render":true,"subName":"src","label":"Image","description":"Upload an Image","features":{"sticky":false,"dynamicContent":false},"component":{"name":"divi/upload","type":"field"}}}},"decoration":{"border":{"groupType":"group-item","item":{"groupSlug":"designImage","priority":10,"render":true,"component":{"type":"group","name":"divi/border","props":{"grouped":false}}}},"spacing":{"groupType":"group-item","item":{"groupSlug":"designImage","priority":20,"render":true,"component":{"type":"group","name":"divi/spacing","props":{"grouped":false}}}},"boxShadow":{"groupType":"group-item","item":{"groupSlug":"designImage","priority":30,"render":true,"component":{"type":"group","name":"divi/box-shadow","props":{"grouped":false}}}},"filters":{"groupType":"group-item","item":{"groupSlug":"designImage","priority":40,"render":true,"component":{"type":"group","name":"divi/filters","props":{"grouped":false}}}}}}},"title":{"type":"object","selector":"{{selector}} .example_static_module__title","default":{"decoration":{"font":{"font":{"desktop":{"value":{"headingLevel":"h2"}}}}}},"defaultPrintedStyle":{"decoration":{"font":{"font":{"desktop":{"value":{"size":"26px","lineHeight":"1em","weight":"500"}}}}}},"styleProps":{"font":{"important":{"font":{"desktop":{"value":{"color":true}}}}}},"settings":{"innerContent":{"groupType":"group-item","item":{"groupName":"mainContent","priority":10,"render":true,"attrName":"title.innerContent","label":"Title","description":"Input your value to action title here.","features":{"sticky":false,"dynamicContent":false},"component":{"name":"divi/text","type":"field"}}},"decoration":{"font":{"priority":10,"component":{"props":{"groupLabel":"Title Text","fieldLabel":"Title","fields":{"headingLevel":{"render":false}}}}}}},"tagName":"h2","attributes":{"class":"example_static_module__title"},"inlineEditor":"plainText","elementType":"heading","childrenSanitizer":"et_core_esc_previously"},"content":{"type":"object","selector":"{{selector}} .example_static_module__content","tagName":"div","attributes":{"class":"example_static_module__content"},"inlineEditor":"richText","childrenSanitizer":"et_core_esc_previously","styleProps":{"bodyFont":{"selectors":{"desktop":{"value":"{{selector}} .example_static_module__content"}}}},"settings":{"innerContent":{"groupType":"group-item","item":{"groupName":"mainContent","priority":20,"render":true,"attrName":"content.innerContent","label":"Content","description":"Input the main text content for your module here.","features":{"sticky":false,"dynamicContent":false},"component":{"name":"divi/richtext","type":"field"}}},"decoration":{"bodyFont":{}}}}},"customCssFields":{"contentContainer":{"subName":"contentContainer","selectorSuffix":" .example_static_module__content-container"},"title":{"subName":"title","selector":"div{{selector}}","selectorSuffix":" .example_static_module__title"},"content":{"subName":"content","selectorSuffix":" .example_static_module__content"},"image":{"subName":"image","selectorSuffix":" .example_static_module__image img"}},"settings":{"content":"auto","design":"auto","advanced":"auto","groups":{"contentImage":{"panel":"content","priority":20,"groupName":"contentImage","multiElements":true,"component":{"name":"divi/composite","props":{"groupLabel":"Image"}}},"designImage":{"panel":"design","priority":10,"groupName":"designImage","multiElements":true,"component":{"name":"divi/composite","props":{"groupLabel":"Image Style"}}}}}}');
 
 /***/ }),
 
-/***/ "./src/modules/static-module/placeholder-content.ts":
+/***/ "./src/modules/Static/placeholder-content.ts":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29678,7 +30112,7 @@ var placeholderContent = {
 
 /***/ }),
 
-/***/ "./src/modules/static-module/styles.tsx":
+/***/ "./src/modules/Static/styles.tsx":
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -29689,7 +30123,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@divi/module");
 /* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _custom_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/static-module/custom-css.ts");
+/* harmony import */ var _custom_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("./src/modules/Static/custom-css.ts");
 // External dependencies.
 
 // Divi dependencies.
@@ -29740,6 +30174,55 @@ var ModuleStyles = function (_a) {
     cssFields: _custom_css__WEBPACK_IMPORTED_MODULE_2__.cssFields
   }));
 };
+
+/***/ }),
+
+/***/ "./src/modules/index.ts":
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("lodash");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@wordpress/hooks");
+/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _divi_module_library__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("@divi/module-library");
+/* harmony import */ var _divi_module_library__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_divi_module_library__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _Child__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/Child/index.ts");
+/* harmony import */ var _D4__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/modules/D4/index.ts");
+/* harmony import */ var _Dynamic__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/modules/Dynamic/index.ts");
+/* harmony import */ var _Panel__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/modules/Panel/index.ts");
+/* harmony import */ var _Parent__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/modules/Parent/index.ts");
+/* harmony import */ var _Static__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/modules/Static/index.ts");
+// Autogenerated file, do not edit directly
+// External Dependencies.
+
+// WordPress Dependencies.
+
+// Divi Dependencies.
+
+// Modules.
+
+
+
+
+
+
+// Register modules.
+(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addAction)('divi.moduleLibrary.registerModuleLibraryStore.after', 'caweb.registerModuleLibraryStore', function () {
+  (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.registerModule)(_Child__WEBPACK_IMPORTED_MODULE_3__.ChildModule.metadata, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.omit)(_Child__WEBPACK_IMPORTED_MODULE_3__.ChildModule, 'metadata'));
+  (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.registerModule)(_D4__WEBPACK_IMPORTED_MODULE_4__.D4Module.metadata, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.omit)(_D4__WEBPACK_IMPORTED_MODULE_4__.D4Module, 'metadata'));
+  (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.registerModule)(_Dynamic__WEBPACK_IMPORTED_MODULE_5__.DynamicModule.metadata, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.omit)(_Dynamic__WEBPACK_IMPORTED_MODULE_5__.DynamicModule, 'metadata'));
+  (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.registerModule)(_Panel__WEBPACK_IMPORTED_MODULE_6__.PanelModule.metadata, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.omit)(_Panel__WEBPACK_IMPORTED_MODULE_6__.PanelModule, 'metadata'));
+  (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.registerModule)(_Parent__WEBPACK_IMPORTED_MODULE_7__.ParentModule.metadata, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.omit)(_Parent__WEBPACK_IMPORTED_MODULE_7__.ParentModule, 'metadata'));
+  (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.registerModule)(_Static__WEBPACK_IMPORTED_MODULE_8__.StaticModule.metadata, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.omit)(_Static__WEBPACK_IMPORTED_MODULE_8__.StaticModule, 'metadata'));
+});
+
+/***/ }),
+
+/***/ "@divi/conversion":
+/***/ ((module) => {
+
+module.exports = divi.conversion;
 
 /***/ }),
 
@@ -29885,35 +30368,12 @@ var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("lodash");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("@wordpress/hooks");
-/* harmony import */ var _wordpress_hooks__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _divi_module_library__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__("@divi/module-library");
-/* harmony import */ var _divi_module_library__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_divi_module_library__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _modules_child_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__("./src/modules/child-module/index.ts");
-/* harmony import */ var _modules_d4_module__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__("./src/modules/d4-module/index.ts");
-/* harmony import */ var _modules_dynamic_module__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__("./src/modules/dynamic-module/index.ts");
-/* harmony import */ var _modules_parent_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__("./src/modules/parent-module/index.ts");
-/* harmony import */ var _modules_static_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__("./src/modules/static-module/index.ts");
-/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__("./src/icons/index.ts");
+/* harmony import */ var _icons__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__("./src/icons/index.ts");
+/* harmony import */ var _modules__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__("./src/modules/index.ts");
+// Add CAWeb Icon Library to Divi
 
+// Add CAWeb Modules to Divi
 
-
-
-
-
-
-
-
-// Register modules.
-(0,_wordpress_hooks__WEBPACK_IMPORTED_MODULE_1__.addAction)('divi.moduleLibrary.registerModuleLibraryStore.after', 'extensionExample', function () {
-  (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.registerModule)(_modules_static_module__WEBPACK_IMPORTED_MODULE_7__.staticModule.metadata, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.omit)(_modules_static_module__WEBPACK_IMPORTED_MODULE_7__.staticModule, 'metadata'));
-  (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.registerModule)(_modules_dynamic_module__WEBPACK_IMPORTED_MODULE_5__.dynamicModule.metadata, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.omit)(_modules_dynamic_module__WEBPACK_IMPORTED_MODULE_5__.dynamicModule, 'metadata'));
-  (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.registerModule)(_modules_child_module__WEBPACK_IMPORTED_MODULE_3__.childModule.metadata, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.omit)(_modules_child_module__WEBPACK_IMPORTED_MODULE_3__.childModule, 'metadata'));
-  (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.registerModule)(_modules_parent_module__WEBPACK_IMPORTED_MODULE_6__.parentModule.metadata, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.omit)(_modules_parent_module__WEBPACK_IMPORTED_MODULE_6__.parentModule, 'metadata'));
-  (0,_divi_module_library__WEBPACK_IMPORTED_MODULE_2__.registerModule)(_modules_d4_module__WEBPACK_IMPORTED_MODULE_4__.d4Module.metadata, (0,lodash__WEBPACK_IMPORTED_MODULE_0__.omit)(_modules_d4_module__WEBPACK_IMPORTED_MODULE_4__.d4Module, 'metadata'));
-});
 })();
 
 /******/ })()
