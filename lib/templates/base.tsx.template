@@ -1,0 +1,13 @@
+import React, { ReactElement } from 'react';
+import { type Icon } from '@divi/types';
+import IconJson from './{name}.json';
+const iconData = IconJson;
+
+// Icon data.
+export const name      = '{nameSpace}/{name}'; // Unique name.
+export const viewBox   = '{viewBox}'; // You will need to adjust this to match your SVG.
+export const component = (): ReactElement => (
+  <path d="{dimensions}"></path>
+); // Your SVG path. without the svg tag.
+
+export const data = iconData as Icon.Data; 

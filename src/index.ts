@@ -4,13 +4,13 @@ import { addAction } from '@wordpress/hooks';
 
 import { registerModule } from '@divi/module-library';
 
-import { childModule } from './components/child-module';
-import { d4Module } from './components/d4-module';
-import { dynamicModule } from './components/dynamic-module';
-import { parentModule } from './components/parent-module';
-import { staticModule } from './components/static-module';
+import { childModule } from './modules/child-module';
+import { d4Module } from './modules/d4-module';
+import { dynamicModule } from './modules/dynamic-module';
+import { parentModule } from './modules/parent-module';
+import { staticModule } from './modules/static-module';
 
-import './module-icons';
+import './icons';
 
 // Register modules.
 addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'extensionExample', () => {

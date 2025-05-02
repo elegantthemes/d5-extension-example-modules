@@ -3,7 +3,7 @@
   "d4Shortcode": "d4_module",
   "title": "Divi 4 Module",
   "titles": "Divi 4 Modules",
-  "moduleIcon": "example/module-d4",
+  "moduleIcon": "caweb/caweb",
   "moduleClassName": "example_d4_module",
   "moduleOrderClassName": "example_d4_module",
   "category": "module",

@@ -3,7 +3,7 @@
   "d4Shortcode": "",
   "title": "Dynamic Module",
   "titles": "Dynamic Modules",
-  "moduleIcon": "example/module-dynamic",
+  "moduleIcon": "caweb/caweb",
   "moduleClassName": "example_dynamic_module",
   "moduleOrderClassName": "example_dynamic_module",
   "category": "module",

@@ -1,0 +1,13 @@
+import React, { ReactElement } from 'react';
+import { type Icon } from '@divi/types';
+import IconJson from './calendar.json';
+const iconData = IconJson;
+
+// Icon data.
+export const name      = 'caweb/calendar'; // Unique name.
+export const viewBox   = '0 -64 1024 1024'; // You will need to adjust this to match your SVG.
+export const component = (): ReactElement => (
+  <path d="M710.882 800.824v-92.954c0-37.872-30.808-68.592-68.592-68.592-37.874 0-68.634 30.718-68.634 68.592v92.952h-130.456v-92.952c0-37.874-30.718-68.592-68.592-68.592s-68.592 30.718-68.592 68.592v92.952h-216.92v-742.518h848.612v742.518h-226.816zM839.922 159.948h-653.058v414.56h653.058v-414.56zM374.562 690.446c20.324 0 36.876 16.462 36.876 36.876v184.164c0 20.368-16.508 36.876-36.876 36.876s-36.876-16.462-36.876-36.876v-184.206c0.044-20.324 16.508-36.83 36.876-36.83zM642.29 690.534c20.29 0 36.754 16.506 36.754 36.832v184.038c0 20.324-16.462 36.832-36.754 36.832-20.368 0-36.832-16.462-36.832-36.832v-184.038c0-20.324 16.462-36.832 36.832-36.832zM266.68 509.48h116.944v-116.9h-116.944v116.902zM266.68 347.106h116.944v-116.944h-116.944v116.944zM434.134 509.48h116.944v-116.9h-116.944v116.902zM601.422 509.48h116.944v-116.9h-116.944v116.902z"></path>
+); // Your SVG path. without the svg tag.
+
+export const data = iconData as Icon.Data; 

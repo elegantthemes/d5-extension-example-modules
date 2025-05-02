@@ -1,0 +1,13 @@
+import React, { ReactElement } from 'react';
+import { type Icon } from '@divi/types';
+import IconJson from './icon_folder-alt.json';
+const iconData = IconJson;
+
+// Icon data.
+export const name      = 'caweb/icon_folder-alt'; // Unique name.
+export const viewBox   = '0 -64 1024 1024'; // You will need to adjust this to match your SVG.
+export const component = (): ReactElement => (
+  <path d="M960 896h-289.024c-35.328 0-75.968-17.984-94.976-64 0 0-8.32-58.688-64-64h-448c-35.328 0-64-27.648-64-62.976v-577.024c0-35.328 28.672-64 64-64h896c35.328 0 64 28.672 64 64v704c0 35.328-28.672 64-64 64zM960 705.024v-577.024h-896v576h448c2.048 0 4.032 0.128 6.080 0.32 60.032 5.696 97.152 47.68 114.304 90.88 16.64 41.792 45.632 36.8 45.632 36.8h281.984v-126.976z"></path>
+); // Your SVG path. without the svg tag.
+
+export const data = iconData as Icon.Data; 

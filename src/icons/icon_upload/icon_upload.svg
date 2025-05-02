@@ -1,0 +1,4 @@
+<!-- icon_upload icon -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -64 1024 1024">
+  <path d="M192 640h192v-384h256l-1.344 384h193.344l-320 320zM768 128h-512v128h-128v-256h768v256h-128z"/>
+</svg>

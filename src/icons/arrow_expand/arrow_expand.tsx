@@ -1,0 +1,13 @@
+import React, { ReactElement } from 'react';
+import { type Icon } from '@divi/types';
+import IconJson from './arrow_expand.json';
+const iconData = IconJson;
+
+// Icon data.
+export const name      = 'caweb/arrow_expand'; // Unique name.
+export const viewBox   = '0 -64 1024 1024'; // You will need to adjust this to match your SVG.
+export const component = (): ReactElement => (
+  <path d="M957.504 876.224c-3.264 7.808-9.472 14.080-17.28 17.28-3.904 1.664-8.064 2.496-12.224 2.496h-256c-17.664 0-32-14.336-32-32s14.336-32 32-32h178.752l-265.408-265.344c-12.48-12.48-12.48-32.768 0-45.248s32.768-12.48 45.248 0l265.408 265.344v-178.752c0-17.664 14.336-32 32-32s32 14.336 32 32v256c0 4.16-0.832 8.32-2.496 12.224zM96 320c-17.664 0-32-14.336-32-32v-256c0-0.064 0-0.064 0-0.128 0-4.16 0.832-8.256 2.432-12.096 1.536-3.776 3.84-7.168 6.656-10.048 0.128-0.128 0.128-0.256 0.256-0.384 0.064-0.064 0.192-0.064 0.256-0.192 2.88-2.816 6.336-5.184 10.112-6.72 3.968-1.6 8.128-2.432 12.288-2.432h256c17.664 0 32 14.336 32 32s-14.336 32-32 32h-178.752l265.344 265.344c12.48 12.48 12.48 32.768 0 45.248s-32.768 12.48-45.248 0l-265.344-265.344v178.752c0 17.664-14.336 32-32 32z"></path>
+); // Your SVG path. without the svg tag.
+
+export const data = iconData as Icon.Data; 

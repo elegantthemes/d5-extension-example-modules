@@ -1,6 +1,5 @@
 // External Dependencies.
 import React, { ReactElement } from 'react';
-import classnames from 'classnames';
 
 // Divi Dependencies.
 import { ModuleContainer } from '@divi/module';
