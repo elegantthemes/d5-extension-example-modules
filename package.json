@@ -5,12 +5,13 @@
   "repository": "https://github.com/elegantthemes/d5-extension-example-modules",
   "author": "Elegant Themes",
   "engines": {
-    "npm" : ">=10.0.0",
+    "npm": ">=10.0.0",
     "node": ">=18.0.0"
   },
   "scripts": {
     "start": "webpack -w --config webpack.config.js --progress --mode=development",
-    "build": "webpack --config webpack.config.js --progress --mode=production",
+    "build": "caweb build --progress --mode=development",
+    "build1": "webpack --config webpack.config.js --progress --mode=production",
     "test": "wp-scripts test-unit-js --config ./test-config/jest.config.js",
     "zip": "gulp zip",
     "reset-install": "rm -rf ./package-lock.json ./node_modules/ && npm install"
@@ -22,6 +23,7 @@
     "@babel/preset-env": "^7.24.5",
     "@babel/preset-react": "^7.24.1",
     "@babel/preset-typescript": "^7.24.1",
+    "@caweb/cli": "^1.10.7",
     "@divi/types": "npm:divi-types@^1.0.10",
     "@emotion/jest": "^11.11.0",
     "@mdx-js/react": "^3.0.1",

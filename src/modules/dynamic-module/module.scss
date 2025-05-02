@@ -1,0 +1,20 @@
+.example_dynamic_module {
+    padding: 50px;
+    background-color: #f5f5f5;
+
+    &__inner {
+        position: relative;
+    }
+
+    &__title {
+        margin-bottom: 30px;
+    }
+
+    &__post-item {
+        margin-bottom: 20px;
+
+        &-title {
+            font-size: 18px;
+        }
+    }
+}

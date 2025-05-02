@@ -1,0 +1,29 @@
+.example_child_module {
+  display: flex;
+  flex-wrap: wrap;
+
+  &__icon.et-pb-icon {
+    font-size: 21px;
+    padding-top: 6px;
+    color: #29c4a9;
+  }
+
+  &__content-container {
+    flex-grow: 1;
+    flex-basis: 0%;
+    padding-left: 15px;
+  }
+
+  &__title {
+    font-size: 21px;
+    line-height: 1em;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  &__content {
+    font-size: 13px;
+    line-height: 1.6em;
+    color: #868686;
+  }
+}

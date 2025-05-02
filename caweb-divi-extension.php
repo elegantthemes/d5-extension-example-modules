@@ -51,7 +51,7 @@ function caweb_divi_visual_builder_assets_before_enqueue_scripts() {
 				'name'   => 'd5-extension-example-modules-builder-bundle-script',
 				'version' => '1.0.0',
 				'script' => [
-					'src' => CAWEB_DIVI_EXT_URL . "scripts/bundle.js",
+					'src' => CAWEB_DIVI_EXT_URL . "build/bundle.js",
 					'deps'               => [
 						'divi-module-library',
 						'divi-vendor-wp-hooks',
@@ -67,7 +67,7 @@ function caweb_divi_visual_builder_assets_before_enqueue_scripts() {
 				'name'   => 'd5-extension-example-modules-builder-vb-bundle-style',
 				'version' => '1.0.0',
 				'style' => [
-					'src' => CAWEB_DIVI_EXT_URL . "styles/vb-bundle.css",
+					'src' => CAWEB_DIVI_EXT_URL . "build/bundle.css",
 					'deps'               => [],
 					'enqueue_top_window' => false,
 					'enqueue_app_window' => true,
@@ -84,6 +84,6 @@ function caweb_divi_visual_builder_assets_before_enqueue_scripts() {
  */
 function d5_extension_example_module_enqueue_frontend_scripts() {
 	$plugin_dir_url = plugin_dir_url( __FILE__ );
-	wp_enqueue_style( 'd5-extension-example-modules-builder-bundle-style', "{$plugin_dir_url}styles/bundle.css", array(), '1.0.0' );
+	wp_enqueue_style( 'd5-extension-example-modules-builder-bundle-style', "{$plugin_dir_url}build/bundle.css", array(), '1.0.0' );
 }
 //add_action( 'wp_enqueue_scripts', 'd5_extension_example_module_enqueue_frontend_scripts' );
