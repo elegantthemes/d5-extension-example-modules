@@ -53,6 +53,9 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
           {elements.render({
             attrName: 'title',
           })}
+          {elements.render({
+            attrName: 'summary',
+          })}
           <div className="example_static_module__content">
             {elements.render({
               attrName: 'content',

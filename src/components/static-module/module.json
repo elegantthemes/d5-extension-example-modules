@@ -272,6 +272,61 @@
       "elementType": "heading",
       "childrenSanitizer": "et_core_esc_previously"
     },
+    "summary": {
+      "type": "object",
+      "selector": "{{selector}} .example_static_module__summary",
+      "tagName": "div",
+      "attributes": {
+        "class": "example_static_module__summary"
+      },
+      "inlineEditor": "plainText",
+      "childrenSanitizer": "et_core_esc_previously",
+      "styleProps": {
+        "font": {
+          "important": {
+            "font": {
+              "desktop": {
+                "value": {
+                  "color": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "settings": {
+        "innerContent": {
+          "groupType": "group-item",
+          "item": {
+            "groupName": "mainContent",
+            "priority": 15,
+            "render": true,
+            "attrName": "summary.innerContent",
+            "label": "Summary",
+            "description": "Input your summary text here. This field supports multiple lines.",
+            "features": {
+              "sticky": false,
+              "dynamicContent": false
+            },
+            "component": {
+              "name": "divi/textarea",
+              "type": "field"
+            }
+          }
+        },
+        "decoration": {
+          "font": {
+            "priority": 10,
+            "component": {
+              "props": {
+                "groupLabel": "Summary Text",
+                "fieldLabel": "Summary"
+              }
+            }
+          }
+        }
+      }
+    },
     "content": {
       "type": "object",
       "selector": "{{selector}} .example_static_module__content",
@@ -325,6 +380,10 @@
       "subName": "title",
       "selector": "div{{selector}}",
       "selectorSuffix": " .example_static_module__title"
+    },
+    "summary": {
+      "subName": "summary",
+      "selectorSuffix": " .example_static_module__summary"
     },
     "content": {
       "subName": "content",
