@@ -294,6 +294,13 @@
           }
         }
       },
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": "This is a brief summary that provides an overview of the content below. It can span multiple lines to give readers a comprehensive understanding of what to expect in the main content section."
+          }
+        }
+      },
       "settings": {
         "innerContent": {
           "groupType": "group-item",
@@ -310,7 +317,10 @@
             },
             "component": {
               "name": "divi/textarea",
-              "type": "field"
+              "type": "field",
+              "props": {
+                "showPlaceholderOnEmpty": true
+              }
             }
           }
         },
