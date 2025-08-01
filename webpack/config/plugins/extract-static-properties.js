@@ -11,13 +11,30 @@ const { reduce, map, isUndefined, filter } = require('lodash');
  */
 module.exports = function extractStaticProperties(properties) {
   /**
+   * Returns the first defined (non-undefined) value from an array.
+   *
+   * @param {Array} values Array of values to check.
+   * @returns {*} The first defined value or undefined.
+   */
+  function firstDefined(values) {
+    return values.find(val => val !== undefined);
+  }
+
+  /**
    * Extracts the literal value from an AST element.
    *
    * @param {object} element The AST element to extract from.
    * @returns {*} - The extracted literal value or undefined.
    */
   function extractLiteralValue(element) {
-    const isLiteral = element.type.includes('Literal');
+    const validLiteralTypes = [
+      'StringLiteral',
+      'NumericLiteral',
+      'BooleanLiteral',
+      'NullLiteral',
+      'Literal' // For ESTree-style ASTs
+    ];
+    const isLiteral = validLiteralTypes.includes(element.type);
     return isLiteral ? element.value : undefined;
   }
 
@@ -86,7 +103,7 @@ module.exports = function extractStaticProperties(properties) {
         extractTranslationValue(element),
         extractIdentifierValue(element),
       ];
-      return possibleValues.find(val => val !== undefined);
+      return firstDefined(possibleValues);
     });
     return filter(extractedElements, val => val !== undefined);
   }
@@ -107,7 +124,7 @@ module.exports = function extractStaticProperties(properties) {
       extractTranslationValue(value),
       extractIdentifierValue(value),
     ];
-    return possibleValues.find(val => val !== undefined);
+    return firstDefined(possibleValues);
   }
 
   const staticProperties = reduce(properties, (acc, prop) => {

@@ -1,6 +1,7 @@
 /* eslint-disable class-methods-use-this */
 const jscodeshift = require("jscodeshift");
 const fs = require("fs");
+const fsp = fs.promises;
 const path = require("path");
 const glob = require("glob");
 const extractStaticProperties = require("./extract-static-properties");
@@ -31,57 +32,65 @@ class ConversionOutlineJsonPlugin {
         try {
           const files = glob.sync(searchPattern);
 
-          files.forEach((fullFilePath) => {
-            // Read the TypeScript source file
-            fs.readFile(fullFilePath, "utf8", (fsError, source) => {
-              if (fsError) {
-                return callback(fsError);
-              }
+          // Process all files concurrently with Promise.all to avoid race conditions
+          Promise.all(
+            files.map(async (fullFilePath) => {
+              try {
+                // Read the TypeScript source file
+                const source = await fsp.readFile(fullFilePath, "utf8");
 
-              // Parse the TypeScript source into an AST using jscodeshift
-              const root = jscodeshift.withParser("ts")(source);
+                // Parse the TypeScript source into an AST using jscodeshift
+                const root = jscodeshift.withParser("ts")(source);
 
-              // Find variable declarations named `conversionOutline`
-              const outlineCollection = root
-                .find(jscodeshift.VariableDeclarator)
-                .filter(
-                  (astPath) => astPath.value.id.name === "conversionOutline"
+                // Find variable declarations named `conversionOutline`
+                const outlineCollection = root
+                  .find(jscodeshift.VariableDeclarator)
+                  .filter(
+                    (astPath) => astPath.value.id.name === "conversionOutline"
+                  );
+
+                // If no relevant variable declaration is found, skip this file
+                if (0 === outlineCollection.size()) {
+                  return;
+                }
+
+                // Extract the static properties of the `conversionOutline` variable
+                const conversionOutlineProperties = extractStaticProperties(
+                  outlineCollection.get().node.init.properties
                 );
 
-              // If no relevant variable declaration is found, skip this file
-              if (0 === outlineCollection.size()) {
-                return;
+                // Prepare the JSON content
+                const conversionOutlineJson = {
+                  _comment:
+                    "!!! THIS IS AN AUTOMATICALLY GENERATED FILE - DO NOT EDIT !!!",
+                  ...conversionOutlineProperties,
+                };
+
+                const jsonContent = JSON.stringify(
+                  conversionOutlineJson,
+                  null,
+                  2
+                );
+                const outputPath = path.join(
+                  path.dirname(fullFilePath),
+                  "conversion-outline.json"
+                );
+
+                // Write the JSON content to a `conversion-outline.json` file in the same directory
+                await fsp.writeFile(outputPath, jsonContent);
+              } catch (fsError) {
+                // Propagate error to Promise.all
+                throw fsError;
               }
-
-              // Extract the static properties of the `conversionOutline` variable
-              const conversionOutlineProperties = extractStaticProperties(
-                outlineCollection.get().node.init.properties
-              );
-
-              // Prepare the JSON content
-              const conversionOutlineJson = {
-                _comment:
-                  "!!! THIS IS AN AUTOMATICALLY GENERATED FILE - DO NOT EDIT !!!",
-                ...conversionOutlineProperties,
-              };
-
-              const jsonContent = JSON.stringify(
-                conversionOutlineJson,
-                null,
-                2
-              );
-              const outputPath = path.join(
-                path.dirname(fullFilePath),
-                "conversion-outline.json"
-              );
-
-              // Write the JSON content to a `conversion-outline.json` file in the same directory
-              fs.writeFileSync(outputPath, jsonContent);
+            })
+          )
+            .then(() => {
+              // Continue with the build process
+              callback();
+            })
+            .catch((error) => {
+              callback(error);
             });
-          });
-
-          // Continue with the build process
-          callback();
         } catch (error) {
           callback(error);
         }
