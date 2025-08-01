@@ -10,6 +10,56 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/components/child-module/module.scss":
+/*!*************************************************!*\
+  !*** ./src/components/child-module/module.scss ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/child-module/module.scss?");
+
+/***/ }),
+
+/***/ "./src/components/dynamic-module/module.scss":
+/*!***************************************************!*\
+  !*** ./src/components/dynamic-module/module.scss ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/dynamic-module/module.scss?");
+
+/***/ }),
+
+/***/ "./src/components/parent-module/module.scss":
+/*!**************************************************!*\
+  !*** ./src/components/parent-module/module.scss ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/parent-module/module.scss?");
+
+/***/ }),
+
+/***/ "./src/components/static-module/module.scss":
+/*!**************************************************!*\
+  !*** ./src/components/static-module/module.scss ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/static-module/module.scss?");
+
+/***/ }),
+
+/***/ "./src/components/static-module/style.scss":
+/*!*************************************************!*\
+  !*** ./src/components/static-module/style.scss ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/static-module/style.scss?");
+
+/***/ }),
+
 /***/ "./src/components/child-module/custom-css.ts":
 /*!***************************************************!*\
   !*** ./src/components/child-module/custom-css.ts ***!
@@ -47,26 +97,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   moduleClassnames: () => (/* binding */ moduleClassnames)\n/* harmony export */ });\n/* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @divi/module */ \"@divi/module\");\n/* harmony import */ var _divi_module__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_divi_module__WEBPACK_IMPORTED_MODULE_0__);\n\n/**\n * Module classnames function for Divi 4 Module.\n *\n * @since ??\n *\n * @param {ModuleClassnamesParams<ChildModuleAttrs>} param0 Function parameters.\n */\nvar moduleClassnames = function (_a) {\n    var _b, _c, _d;\n    var classnamesInstance = _a.classnamesInstance, attrs = _a.attrs;\n    // Text Options.\n    classnamesInstance.add((0,_divi_module__WEBPACK_IMPORTED_MODULE_0__.textOptionsClassnames)((_d = (_c = (_b = attrs === null || attrs === void 0 ? void 0 : attrs.module) === null || _b === void 0 ? void 0 : _b.advanced) === null || _c === void 0 ? void 0 : _c.text) !== null && _d !== void 0 ? _d : {}, { color: false }));\n};\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/child-module/module-classnames.ts?");
-
-/***/ }),
-
-/***/ "./src/components/child-module/module.json":
-/*!*************************************************!*\
-  !*** ./src/components/child-module/module.json ***!
-  \*************************************************/
-/***/ ((module) => {
-
-eval("module.exports = /*#__PURE__*/JSON.parse('{\"name\":\"example/child-module\",\"d4Shortcode\":\"\",\"title\":\"Child Module\",\"titles\":\"Child Modules\",\"category\":\"child-module\",\"moduleClassName\":\"example_child_module\",\"moduleOrderClassName\":\"example_child_module\",\"attributes\":{\"module\":{\"type\":\"object\",\"selector\":\"{{selector}}\",\"default\":{\"meta\":{\"adminLabel\":{\"desktop\":{\"value\":\"Child Module\"}}}},\"styleProps\":{\"border\":{\"important\":true}},\"settings\":{\"advanced\":{\"link\":{},\"text\":{\"component\":{\"props\":{\"fields\":{\"color\":{\"render\":false}}}}},\"htmlAttributes\":{}},\"decoration\":{\"background\":{},\"sizing\":{},\"spacing\":{},\"border\":{},\"boxShadow\":{},\"filters\":{},\"transform\":{},\"animation\":{},\"overflow\":{},\"disabledOn\":{},\"transition\":{},\"position\":{},\"zIndex\":{},\"scroll\":{},\"sticky\":{}}}},\"title\":{\"type\":\"object\",\"selector\":\".example_parent_module {{selector}} .example_child_module__title\",\"styleProps\":{\"font\":{\"important\":{\"font\":{\"desktop\":{\"value\":{\"color\":true}}}}}},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":10,\"render\":true,\"attrName\":\"title.innerContent\",\"label\":\"Title\",\"description\":\"Input your value to action title here.\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/text\",\"type\":\"field\"}}},\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Title Text\",\"fieldLabel\":\"Title\"}}}}},\"tagName\":\"div\",\"attributes\":{\"class\":\"example_child_module__title\"},\"inlineEditor\":\"plainText\",\"elementType\":\"heading\",\"childrenSanitizer\":\"et_core_esc_previously\"},\"content\":{\"type\":\"object\",\"selector\":\".example_parent_module {{selector}} .example_child_module__content\",\"tagName\":\"div\",\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":20,\"render\":true,\"attrName\":\"content.innerContent\",\"label\":\"Content\",\"description\":\"Input the main text content for your module here.\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/richtext\",\"type\":\"field\"}}},\"decoration\":{\"bodyFont\":{\"attrName\":\"content.decoration.bodyFont\"}}},\"attributes\":{\"class\":\"example_child_module__content\"},\"inlineEditor\":\"richText\",\"childrenSanitizer\":\"et_core_esc_previously\"},\"icon\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_child_module__icon.et-pb-icon\",\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"contentIcon\",\"attrName\":\"icon.innerContent\",\"label\":\"Icon\",\"description\":\"Pick an Icon\",\"render\":true,\"priority\":10,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/icon-picker\"}}},\"advanced\":{\"color\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designIcon\",\"label\":\"Icon Color\",\"description\":\"Here you can define a custom color for your icon.\",\"render\":true,\"priority\":10,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/color-picker\"}}},\"size\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designIcon\",\"label\":\"Icon Size\",\"description\":\"Here you can choose icon width.\",\"render\":true,\"priority\":20,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/range\",\"props\":{\"min\":1,\"max\":120,\"allowedUnits\":[\"%\",\"em\",\"rem\",\"px\",\"cm\",\"mm\",\"in\",\"pt\",\"pc\",\"ex\",\"vh\",\"vw\"]}}}}}}}},\"customCssFields\":{\"contentContainer\":{\"subName\":\"contentContainer\",\"selectorSuffix\":\" .example_child_module__content-container\"},\"title\":{\"subName\":\"title\",\"selectorSuffix\":\" .example_child_module__title\"},\"content\":{\"subName\":\"content\",\"selectorSuffix\":\" .example_child_module__content\"},\"icon\":{\"subName\":\"icon\",\"selectorSuffix\":\" .example_child_module__icon.et-pb-icon\"}},\"settings\":{\"advanced\":\"auto\",\"groups\":{\"contentIcon\":{\"panel\":\"content\",\"priority\":20,\"groupName\":\"contentIcon\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Icon\"}}},\"designIcon\":{\"panel\":\"design\",\"priority\":10,\"groupName\":\"designIcon\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Icon Style\"}}}}}}');\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/child-module/module.json?");
-
-/***/ }),
-
-/***/ "./src/components/child-module/module.scss":
-/*!*************************************************!*\
-  !*** ./src/components/child-module/module.scss ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/child-module/module.scss?");
 
 /***/ }),
 
@@ -190,16 +220,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/components/d4-module/module.json":
-/*!**********************************************!*\
-  !*** ./src/components/d4-module/module.json ***!
-  \**********************************************/
-/***/ ((module) => {
-
-eval("module.exports = /*#__PURE__*/JSON.parse('{\"name\":\"example/d4-module\",\"d4Shortcode\":\"d4_module\",\"title\":\"Divi 4 Module\",\"titles\":\"Divi 4 Modules\",\"moduleIcon\":\"example/module-d4\",\"moduleClassName\":\"example_d4_module\",\"moduleOrderClassName\":\"example_d4_module\",\"category\":\"module\",\"attributes\":{\"module\":{\"type\":\"object\",\"selector\":\"{{selector}}\",\"default\":{\"meta\":{\"adminLabel\":{\"desktop\":{\"value\":\"D4 Module\"}}}},\"settings\":{\"meta\":{\"adminLabel\":{}},\"advanced\":{\"link\":{},\"text\":{},\"htmlAttributes\":{}},\"decoration\":{\"background\":{},\"bodyFont\":{},\"sizing\":{},\"spacing\":{},\"border\":{},\"boxShadow\":{},\"filters\":{},\"transform\":{},\"animation\":{},\"overflow\":{},\"disabledOn\":{},\"transition\":{},\"position\":{},\"zIndex\":{},\"scroll\":{},\"sticky\":{}}}},\"title\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_d4_module_title\",\"default\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"headingLevel\":\"h2\"}}}}}},\"inlineEditor\":\"plainText\",\"elementType\":\"heading\",\"childrenSanitizer\":\"et_core_esc_previously\",\"attributes\":{\"class\":\"example_d4_module_title\"},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":10,\"render\":true,\"attrName\":\"title.innerContent\",\"label\":\"Title\",\"description\":\"Input your value to action title here.\",\"features\":{\"sticky\":false,\"dynamicContent\":{\"type\":\"text\"}},\"component\":{\"name\":\"divi/text\",\"type\":\"field\"}}},\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Title Text\",\"fieldLabel\":\"Title\"}}}}}},\"content\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_d4_module_content\",\"attributes\":{\"class\":\"example_d4_module_content\"},\"tagName\":\"div\",\"inlineEditor\":\"richText\",\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":20,\"render\":true,\"attrName\":\"content.innerContent\",\"label\":\"Content\",\"description\":\"Input the main text content for your module here.\",\"features\":{\"sticky\":false,\"dynamicContent\":{\"type\":\"text\"}},\"component\":{\"name\":\"divi/richtext\",\"type\":\"field\"}}}}}},\"customCssFields\":{\"title\":{\"subName\":\"title\",\"selectorSuffix\":\" .example_d4_module_title\"},\"content\":{\"subName\":\"content\",\"selectorSuffix\":\" .example_d4_module_content\"}},\"settings\":{\"content\":\"auto\",\"design\":\"auto\",\"advanced\":\"auto\"}}');\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/d4-module/module.json?");
-
-/***/ }),
-
 /***/ "./src/components/d4-module/placeholder-content.ts":
 /*!*********************************************************!*\
   !*** ./src/components/d4-module/placeholder-content.ts ***!
@@ -257,26 +277,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   ModuleScriptData: () => (/* binding */ ModuleScriptData)\n/* harmony export */ });\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"react\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n/**\n * Dynamic module's script data component.\n *\n * @since ??\n *\n * @param {ModuleScriptDataProps<DynamicModuleAttrs>} props React component props.\n *\n * @returns {ReactElement}\n */\nvar ModuleScriptData = function (_a) {\n    var elements = _a.elements;\n    return (react__WEBPACK_IMPORTED_MODULE_0___default().createElement(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, elements.scriptData({\n        attrName: 'module',\n    })));\n};\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/dynamic-module/module-script-data.tsx?");
-
-/***/ }),
-
-/***/ "./src/components/dynamic-module/module.json":
-/*!***************************************************!*\
-  !*** ./src/components/dynamic-module/module.json ***!
-  \***************************************************/
-/***/ ((module) => {
-
-eval("module.exports = /*#__PURE__*/JSON.parse('{\"name\":\"example/dynamic-module\",\"d4Shortcode\":\"\",\"title\":\"Dynamic Module\",\"titles\":\"Dynamic Modules\",\"moduleIcon\":\"example/module-dynamic\",\"moduleClassName\":\"example_dynamic_module\",\"moduleOrderClassName\":\"example_dynamic_module\",\"category\":\"module\",\"attributes\":{\"module\":{\"type\":\"object\",\"selector\":\"{{selector}}\",\"default\":{\"meta\":{\"adminLabel\":{\"desktop\":{\"value\":\"Static Module\"}}}},\"styleProps\":{\"bodyFont\":{\"selector\":\"{{selector}} .example_dynamic_module__post-item-content\"}},\"settings\":{\"meta\":{\"adminLabel\":{}},\"advanced\":{\"link\":{},\"text\":{},\"htmlAttributes\":{}},\"decoration\":{\"background\":{},\"bodyFont\":{},\"sizing\":{},\"spacing\":{},\"border\":{},\"boxShadow\":{},\"filters\":{},\"transform\":{},\"animation\":{},\"overflow\":{},\"disabledOn\":{},\"transition\":{},\"position\":{},\"zIndex\":{},\"scroll\":{},\"sticky\":{}}}},\"title\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_dynamic_module__title\",\"default\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"headingLevel\":\"h2\"}}}}}},\"inlineEditor\":\"plainText\",\"elementType\":\"heading\",\"childrenSanitizer\":\"et_core_esc_previously\",\"attributes\":{\"class\":\"example_dynamic_module__title\"},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"contentPosts\",\"priority\":10,\"render\":true,\"attrName\":\"title.innerContent\",\"label\":\"Title\",\"description\":\"Title to show for module.\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/text\",\"type\":\"field\"}}},\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Title Text\",\"fieldLabel\":\"Title\"}}}}}},\"postItems\":{\"type\":\"object\",\"default\":{\"innerContent\":{\"desktop\":{\"value\":{\"postsNumber\":\"5\"}}}},\"settings\":{\"innerContent\":{\"groupType\":\"group-items\",\"items\":{\"src\":{\"groupSlug\":\"contentPosts\",\"priority\":20,\"render\":true,\"subName\":\"postsNumber\",\"label\":\"Number of posts\",\"description\":\"Number of posts you want to show.\",\"features\":{\"sticky\":false,\"responsive\":false,\"hover\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/text\",\"type\":\"field\"}}}}}},\"postTitle\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_dynamic_module__post-item-title\",\"default\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"headingLevel\":\"h3\"}}}}}},\"settings\":{\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Post Title Text\",\"fieldLabel\":\"Post Title\"}}}}}}},\"customCssFields\":{},\"settings\":{\"content\":\"auto\",\"design\":\"auto\",\"advanced\":\"auto\",\"groups\":{\"contentPosts\":{\"panel\":\"content\",\"priority\":10,\"groupName\":\"contentPosts\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Posts\"}}}}}}');\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/dynamic-module/module.json?");
-
-/***/ }),
-
-/***/ "./src/components/dynamic-module/module.scss":
-/*!***************************************************!*\
-  !*** ./src/components/dynamic-module/module.scss ***!
-  \***************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/dynamic-module/module.scss?");
 
 /***/ }),
 
@@ -350,26 +350,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/components/parent-module/module.json":
-/*!**************************************************!*\
-  !*** ./src/components/parent-module/module.json ***!
-  \**************************************************/
-/***/ ((module) => {
-
-eval("module.exports = /*#__PURE__*/JSON.parse('{\"name\":\"example/parent-module\",\"d4Shortcode\":\"\",\"title\":\"Parent Module\",\"titles\":\"Parent Modules\",\"moduleIcon\":\"example/module-parent\",\"moduleClassName\":\"example_parent_module\",\"moduleOrderClassName\":\"example_parent_module\",\"category\":\"module\",\"childModuleName\":\"example/child-module\",\"childModuleTitle\":\"Child Module\",\"childrenName\":[\"example/child-module\"],\"attributes\":{\"module\":{\"type\":\"object\",\"selector\":\"{{selector}}\",\"default\":{\"meta\":{\"adminLabel\":{\"desktop\":{\"value\":\"Parent Module\"}}}},\"styleProps\":{\"border\":{\"important\":true}},\"settings\":{\"meta\":{\"adminLabel\":{}},\"advanced\":{\"link\":{},\"text\":{\"component\":{\"props\":{\"fields\":{\"color\":{\"render\":false}}}}},\"htmlAttributes\":{}},\"decoration\":{\"background\":{},\"sizing\":{},\"spacing\":{},\"border\":{},\"boxShadow\":{},\"filters\":{},\"transform\":{},\"animation\":{},\"overflow\":{},\"disabledOn\":{},\"transition\":{},\"position\":{},\"zIndex\":{},\"scroll\":{},\"sticky\":{}}}},\"title\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_child_module__title\",\"defaultPrintedStyle\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"size\":\"21px\",\"lineHeight\":\"1em\",\"weight\":\"600\"}}}}}},\"styleProps\":{\"font\":{\"important\":{\"font\":{\"desktop\":{\"value\":{\"color\":true}}}}}},\"settings\":{\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Title Text\",\"fieldLabel\":\"Title\"}}}}}},\"content\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_child_module__content\",\"defaultPrintedStyle\":{\"decoration\":{\"bodyFont\":{\"body\":{\"font\":{\"desktop\":{\"value\":{\"color\":\"#868686\",\"size\":\"13px\",\"lineHeight\":\"1.6em\"}}}}}}},\"styleProps\":{\"bodyFont\":{\"selectors\":{\"desktop\":{\"value\":\"{{selector}} .example_child_module__content\"}}}},\"settings\":{\"decoration\":{\"bodyFont\":{\"attrName\":\"content.decoration.bodyFont\"}}}},\"icon\":{\"type\":\"object\",\"selector\":\"{{selector}} .et-pb-icon\",\"default\":{\"innerContent\":{\"desktop\":{\"value\":{\"unicode\":\"&#x39;\",\"type\":\"divi\",\"weight\":\"400\"}}},\"advanced\":{\"color\":{\"desktop\":{\"value\":\"#ae16f0\"}},\"size\":{\"desktop\":{\"value\":\"28px\"}}}},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"contentIcon\",\"attrName\":\"icon.innerContent\",\"label\":\"Icon\",\"description\":\"Upload an Icon\",\"render\":true,\"priority\":10,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/icon-picker\"}}},\"advanced\":{\"color\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designIcon\",\"label\":\"Icon Color\",\"description\":\"Here you can define a custom color for your icon.\",\"render\":true,\"priority\":10,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/color-picker\"}}},\"size\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designIcon\",\"label\":\"Icon Size\",\"description\":\"Here you can choose icon width.\",\"render\":true,\"priority\":20,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/range\",\"props\":{\"min\":1,\"max\":120,\"allowedUnits\":[\"%\",\"em\",\"rem\",\"px\",\"cm\",\"mm\",\"in\",\"pt\",\"pc\",\"ex\",\"vh\",\"vw\"]}}}}}}}},\"customCssFields\":{\"contentContainer\":{\"subName\":\"contentContainer\",\"selectorSuffix\":\" .example_parent_module__content-container\"},\"title\":{\"subName\":\"title\",\"selectorSuffix\":\" .example_parent_module__title\"},\"content\":{\"subName\":\"content\",\"selectorSuffix\":\" .example_parent_module__content\"},\"icon\":{\"subName\":\"icon\",\"selectorSuffix\":\" .example_parent_module__icon.et-pb-icon\"}},\"settings\":{\"content\":\"auto\",\"design\":\"auto\",\"advanced\":\"auto\",\"groups\":{\"contentIcon\":{\"panel\":\"content\",\"priority\":20,\"groupName\":\"contentIcon\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Icon\"}}},\"designIcon\":{\"panel\":\"design\",\"priority\":10,\"groupName\":\"designIcon\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Icon Style\"}}}}}}');\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/parent-module/module.json?");
-
-/***/ }),
-
-/***/ "./src/components/parent-module/module.scss":
-/*!**************************************************!*\
-  !*** ./src/components/parent-module/module.scss ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/parent-module/module.scss?");
-
-/***/ }),
-
 /***/ "./src/components/parent-module/styles.tsx":
 /*!*************************************************!*\
   !*** ./src/components/parent-module/styles.tsx ***!
@@ -430,26 +410,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
 
 /***/ }),
 
-/***/ "./src/components/static-module/module.json":
-/*!**************************************************!*\
-  !*** ./src/components/static-module/module.json ***!
-  \**************************************************/
-/***/ ((module) => {
-
-eval("module.exports = /*#__PURE__*/JSON.parse('{\"name\":\"example/static-module\",\"d4Shortcode\":\"\",\"title\":\"Static Module\",\"titles\":\"Static Modules\",\"moduleIcon\":\"example/module-static\",\"moduleClassName\":\"example_static_module\",\"moduleOrderClassName\":\"example_static_module\",\"category\":\"module\",\"attributes\":{\"module\":{\"type\":\"object\",\"selector\":\"{{selector}}\",\"default\":{\"meta\":{\"adminLabel\":{\"desktop\":{\"value\":\"Static Module\"}}},\"advanced\":{\"text\":{\"text\":{\"desktop\":{\"value\":{\"color\":\"light\"}}}}},\"decoration\":{\"spacing\":{\"desktop\":{\"value\":{\"margin\":{\"top\":\"0px\",\"right\":\"auto\",\"bottom\":\"30px\",\"left\":\"auto\"}}}}}},\"defaultPrintedStyle\":{\"decoration\":{\"background\":{\"desktop\":{\"value\":{\"color\":\"#ecf4f7\"}}}}},\"styleProps\":{\"border\":{\"important\":true}},\"settings\":{\"meta\":{\"adminLabel\":{}},\"advanced\":{\"link\":{},\"text\":{},\"htmlAttributes\":{}},\"decoration\":{\"background\":{},\"sizing\":{},\"spacing\":{},\"border\":{},\"boxShadow\":{},\"filters\":{},\"transform\":{},\"animation\":{},\"overflow\":{},\"disabledOn\":{},\"transition\":{},\"position\":{},\"zIndex\":{},\"scroll\":{},\"sticky\":{}}}},\"image\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_static_module__image img\",\"styleProps\":{\"border\":{\"important\":true}},\"settings\":{\"innerContent\":{\"groupType\":\"group-items\",\"items\":{\"src\":{\"groupSlug\":\"contentImage\",\"priority\":10,\"render\":true,\"subName\":\"src\",\"label\":\"Image\",\"description\":\"Upload an Image\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/upload\",\"type\":\"field\"}}}},\"decoration\":{\"border\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designImage\",\"priority\":10,\"render\":true,\"component\":{\"type\":\"group\",\"name\":\"divi/border\",\"props\":{\"grouped\":false}}}},\"spacing\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designImage\",\"priority\":20,\"render\":true,\"component\":{\"type\":\"group\",\"name\":\"divi/spacing\",\"props\":{\"grouped\":false}}}},\"boxShadow\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designImage\",\"priority\":30,\"render\":true,\"component\":{\"type\":\"group\",\"name\":\"divi/box-shadow\",\"props\":{\"grouped\":false}}}},\"filters\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designImage\",\"priority\":40,\"render\":true,\"component\":{\"type\":\"group\",\"name\":\"divi/filters\",\"props\":{\"grouped\":false}}}}}}},\"title\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_static_module__title\",\"default\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"headingLevel\":\"h2\"}}}}}},\"defaultPrintedStyle\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"size\":\"26px\",\"lineHeight\":\"1em\",\"weight\":\"500\"}}}}}},\"styleProps\":{\"font\":{\"important\":{\"font\":{\"desktop\":{\"value\":{\"color\":true}}}}}},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":10,\"render\":true,\"attrName\":\"title.innerContent\",\"label\":\"Title\",\"description\":\"Input your value to action title here.\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/text\",\"type\":\"field\"}}},\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Title Text\",\"fieldLabel\":\"Title\",\"fields\":{\"headingLevel\":{\"render\":false}}}}}}},\"tagName\":\"h2\",\"attributes\":{\"class\":\"example_static_module__title\"},\"inlineEditor\":\"plainText\",\"elementType\":\"heading\",\"childrenSanitizer\":\"et_core_esc_previously\"},\"content\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_static_module__content\",\"tagName\":\"div\",\"attributes\":{\"class\":\"example_static_module__content\"},\"inlineEditor\":\"richText\",\"childrenSanitizer\":\"et_core_esc_previously\",\"styleProps\":{\"bodyFont\":{\"selectors\":{\"desktop\":{\"value\":\"{{selector}} .example_static_module__content\"}}}},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":20,\"render\":true,\"attrName\":\"content.innerContent\",\"label\":\"Content\",\"description\":\"Input the main text content for your module here.\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/richtext\",\"type\":\"field\"}}},\"decoration\":{\"bodyFont\":{}}}}},\"customCssFields\":{\"contentContainer\":{\"subName\":\"contentContainer\",\"selectorSuffix\":\" .example_static_module__content-container\"},\"title\":{\"subName\":\"title\",\"selector\":\"div{{selector}}\",\"selectorSuffix\":\" .example_static_module__title\"},\"content\":{\"subName\":\"content\",\"selectorSuffix\":\" .example_static_module__content\"},\"image\":{\"subName\":\"image\",\"selectorSuffix\":\" .example_static_module__image img\"}},\"settings\":{\"content\":\"auto\",\"design\":\"auto\",\"advanced\":\"auto\",\"groups\":{\"contentImage\":{\"panel\":\"content\",\"priority\":20,\"groupName\":\"contentImage\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Image\"}}},\"designImage\":{\"panel\":\"design\",\"priority\":10,\"groupName\":\"designImage\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Image Style\"}}}}}}');\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/static-module/module.json?");
-
-/***/ }),
-
-/***/ "./src/components/static-module/module.scss":
-/*!**************************************************!*\
-  !*** ./src/components/static-module/module.scss ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/static-module/module.scss?");
-
-/***/ }),
-
 /***/ "./src/components/static-module/placeholder-content.ts":
 /*!*************************************************************!*\
   !*** ./src/components/static-module/placeholder-content.ts ***!
@@ -457,16 +417,6 @@ eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extr
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   placeholderContent: () => (/* binding */ placeholderContent)\n/* harmony export */ });\n/* harmony import */ var _divi_module_utils__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @divi/module-utils */ \"@divi/module-utils\");\n/* harmony import */ var _divi_module_utils__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_divi_module_utils__WEBPACK_IMPORTED_MODULE_0__);\n// Divi dependencies.\n\nvar placeholderContent = {\n    title: {\n        innerContent: {\n            desktop: {\n                value: _divi_module_utils__WEBPACK_IMPORTED_MODULE_0__.placeholderContent.title,\n            },\n        }\n    },\n    content: {\n        innerContent: {\n            desktop: {\n                value: _divi_module_utils__WEBPACK_IMPORTED_MODULE_0__.placeholderContent.body,\n            },\n        }\n    },\n    image: {\n        innerContent: {\n            desktop: {\n                value: {\n                    src: _divi_module_utils__WEBPACK_IMPORTED_MODULE_0__.placeholderContent.image.landscape,\n                },\n            },\n        },\n    },\n};\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/static-module/placeholder-content.ts?");
-
-/***/ }),
-
-/***/ "./src/components/static-module/style.scss":
-/*!*************************************************!*\
-  !*** ./src/components/static-module/style.scss ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n// extracted by mini-css-extract-plugin\n\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/static-module/style.scss?");
 
 /***/ }),
 
@@ -550,6 +500,16 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _wor
 
 /***/ }),
 
+/***/ "lodash":
+/*!*************************!*\
+  !*** external "lodash" ***!
+  \*************************/
+/***/ ((module) => {
+
+module.exports = lodash;
+
+/***/ }),
+
 /***/ "@divi/icon-library":
 /*!***************************************!*\
   !*** external ["divi","iconLibrary"] ***!
@@ -610,6 +570,16 @@ module.exports = divi.styleLibrary;
 
 /***/ }),
 
+/***/ "react":
+/*!***********************************!*\
+  !*** external ["vendor","React"] ***!
+  \***********************************/
+/***/ ((module) => {
+
+module.exports = vendor.React;
+
+/***/ }),
+
 /***/ "@wordpress/hooks":
 /*!****************************************!*\
   !*** external ["vendor","wp","hooks"] ***!
@@ -630,23 +600,53 @@ module.exports = vendor.wp.i18n;
 
 /***/ }),
 
-/***/ "lodash":
-/*!*************************!*\
-  !*** external "lodash" ***!
-  \*************************/
+/***/ "./src/components/child-module/module.json":
+/*!*************************************************!*\
+  !*** ./src/components/child-module/module.json ***!
+  \*************************************************/
 /***/ ((module) => {
 
-module.exports = lodash;
+eval("module.exports = /*#__PURE__*/JSON.parse('{\"name\":\"example/child-module\",\"d4Shortcode\":\"\",\"title\":\"Child Module\",\"titles\":\"Child Modules\",\"category\":\"child-module\",\"moduleClassName\":\"example_child_module\",\"moduleOrderClassName\":\"example_child_module\",\"attributes\":{\"module\":{\"type\":\"object\",\"selector\":\"{{selector}}\",\"default\":{\"meta\":{\"adminLabel\":{\"desktop\":{\"value\":\"Child Module\"}}}},\"styleProps\":{\"border\":{\"important\":true}},\"settings\":{\"advanced\":{\"link\":{},\"text\":{\"component\":{\"props\":{\"fields\":{\"color\":{\"render\":false}}}}},\"htmlAttributes\":{}},\"decoration\":{\"background\":{},\"sizing\":{},\"spacing\":{},\"border\":{},\"boxShadow\":{},\"filters\":{},\"transform\":{},\"animation\":{},\"overflow\":{},\"disabledOn\":{},\"transition\":{},\"position\":{},\"zIndex\":{},\"scroll\":{},\"sticky\":{}}}},\"title\":{\"type\":\"object\",\"selector\":\".example_parent_module {{selector}} .example_child_module__title\",\"styleProps\":{\"font\":{\"important\":{\"font\":{\"desktop\":{\"value\":{\"color\":true}}}}}},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":10,\"render\":true,\"attrName\":\"title.innerContent\",\"label\":\"Title\",\"description\":\"Input your value to action title here.\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/text\",\"type\":\"field\"}}},\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Title Text\",\"fieldLabel\":\"Title\"}}}}},\"tagName\":\"div\",\"attributes\":{\"class\":\"example_child_module__title\"},\"inlineEditor\":\"plainText\",\"elementType\":\"heading\",\"childrenSanitizer\":\"et_core_esc_previously\"},\"content\":{\"type\":\"object\",\"selector\":\".example_parent_module {{selector}} .example_child_module__content\",\"tagName\":\"div\",\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":20,\"render\":true,\"attrName\":\"content.innerContent\",\"label\":\"Content\",\"description\":\"Input the main text content for your module here.\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/richtext\",\"type\":\"field\"}}},\"decoration\":{\"bodyFont\":{\"attrName\":\"content.decoration.bodyFont\"}}},\"attributes\":{\"class\":\"example_child_module__content\"},\"inlineEditor\":\"richText\",\"childrenSanitizer\":\"et_core_esc_previously\"},\"icon\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_child_module__icon.et-pb-icon\",\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"contentIcon\",\"attrName\":\"icon.innerContent\",\"label\":\"Icon\",\"description\":\"Pick an Icon\",\"render\":true,\"priority\":10,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/icon-picker\"}}},\"advanced\":{\"color\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designIcon\",\"label\":\"Icon Color\",\"description\":\"Here you can define a custom color for your icon.\",\"render\":true,\"priority\":10,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/color-picker\"}}},\"size\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designIcon\",\"label\":\"Icon Size\",\"description\":\"Here you can choose icon width.\",\"render\":true,\"priority\":20,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/range\",\"props\":{\"min\":1,\"max\":120,\"allowedUnits\":[\"%\",\"em\",\"rem\",\"px\",\"cm\",\"mm\",\"in\",\"pt\",\"pc\",\"ex\",\"vh\",\"vw\"]}}}}}}}},\"customCssFields\":{\"contentContainer\":{\"subName\":\"contentContainer\",\"selectorSuffix\":\" .example_child_module__content-container\"},\"title\":{\"subName\":\"title\",\"selectorSuffix\":\" .example_child_module__title\"},\"content\":{\"subName\":\"content\",\"selectorSuffix\":\" .example_child_module__content\"},\"icon\":{\"subName\":\"icon\",\"selectorSuffix\":\" .example_child_module__icon.et-pb-icon\"}},\"settings\":{\"advanced\":\"auto\",\"groups\":{\"contentIcon\":{\"panel\":\"content\",\"priority\":20,\"groupName\":\"contentIcon\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Icon\"}}},\"designIcon\":{\"panel\":\"design\",\"priority\":10,\"groupName\":\"designIcon\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Icon Style\"}}}}}}');\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/child-module/module.json?");
 
 /***/ }),
 
-/***/ "react":
-/*!***********************************!*\
-  !*** external ["vendor","React"] ***!
-  \***********************************/
+/***/ "./src/components/d4-module/module.json":
+/*!**********************************************!*\
+  !*** ./src/components/d4-module/module.json ***!
+  \**********************************************/
 /***/ ((module) => {
 
-module.exports = vendor.React;
+eval("module.exports = /*#__PURE__*/JSON.parse('{\"name\":\"example/d4-module\",\"d4Shortcode\":\"d4_module\",\"title\":\"Divi 4 Module\",\"titles\":\"Divi 4 Modules\",\"moduleIcon\":\"example/module-d4\",\"moduleClassName\":\"example_d4_module\",\"moduleOrderClassName\":\"example_d4_module\",\"category\":\"module\",\"attributes\":{\"module\":{\"type\":\"object\",\"selector\":\"{{selector}}\",\"default\":{\"meta\":{\"adminLabel\":{\"desktop\":{\"value\":\"D4 Module\"}}}},\"settings\":{\"meta\":{\"adminLabel\":{}},\"advanced\":{\"link\":{},\"text\":{},\"htmlAttributes\":{}},\"decoration\":{\"background\":{},\"bodyFont\":{},\"sizing\":{},\"spacing\":{},\"border\":{},\"boxShadow\":{},\"filters\":{},\"transform\":{},\"animation\":{},\"overflow\":{},\"disabledOn\":{},\"transition\":{},\"position\":{},\"zIndex\":{},\"scroll\":{},\"sticky\":{}}}},\"title\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_d4_module_title\",\"default\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"headingLevel\":\"h2\"}}}}}},\"inlineEditor\":\"plainText\",\"elementType\":\"heading\",\"childrenSanitizer\":\"et_core_esc_previously\",\"attributes\":{\"class\":\"example_d4_module_title\"},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":10,\"render\":true,\"attrName\":\"title.innerContent\",\"label\":\"Title\",\"description\":\"Input your value to action title here.\",\"features\":{\"sticky\":false,\"dynamicContent\":{\"type\":\"text\"}},\"component\":{\"name\":\"divi/text\",\"type\":\"field\"}}},\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Title Text\",\"fieldLabel\":\"Title\"}}}}}},\"content\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_d4_module_content\",\"attributes\":{\"class\":\"example_d4_module_content\"},\"tagName\":\"div\",\"inlineEditor\":\"richText\",\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":20,\"render\":true,\"attrName\":\"content.innerContent\",\"label\":\"Content\",\"description\":\"Input the main text content for your module here.\",\"features\":{\"sticky\":false,\"dynamicContent\":{\"type\":\"text\"}},\"component\":{\"name\":\"divi/richtext\",\"type\":\"field\"}}}}}},\"customCssFields\":{\"title\":{\"subName\":\"title\",\"selectorSuffix\":\" .example_d4_module_title\"},\"content\":{\"subName\":\"content\",\"selectorSuffix\":\" .example_d4_module_content\"}},\"settings\":{\"content\":\"auto\",\"design\":\"auto\",\"advanced\":\"auto\"}}');\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/d4-module/module.json?");
+
+/***/ }),
+
+/***/ "./src/components/dynamic-module/module.json":
+/*!***************************************************!*\
+  !*** ./src/components/dynamic-module/module.json ***!
+  \***************************************************/
+/***/ ((module) => {
+
+eval("module.exports = /*#__PURE__*/JSON.parse('{\"name\":\"example/dynamic-module\",\"d4Shortcode\":\"\",\"title\":\"Dynamic Module\",\"titles\":\"Dynamic Modules\",\"moduleIcon\":\"example/module-dynamic\",\"moduleClassName\":\"example_dynamic_module\",\"moduleOrderClassName\":\"example_dynamic_module\",\"category\":\"module\",\"attributes\":{\"module\":{\"type\":\"object\",\"selector\":\"{{selector}}\",\"default\":{\"meta\":{\"adminLabel\":{\"desktop\":{\"value\":\"Static Module\"}}}},\"styleProps\":{\"bodyFont\":{\"selector\":\"{{selector}} .example_dynamic_module__post-item-content\"}},\"settings\":{\"meta\":{\"adminLabel\":{}},\"advanced\":{\"link\":{},\"text\":{},\"htmlAttributes\":{}},\"decoration\":{\"background\":{},\"bodyFont\":{},\"sizing\":{},\"spacing\":{},\"border\":{},\"boxShadow\":{},\"filters\":{},\"transform\":{},\"animation\":{},\"overflow\":{},\"disabledOn\":{},\"transition\":{},\"position\":{},\"zIndex\":{},\"scroll\":{},\"sticky\":{}}}},\"title\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_dynamic_module__title\",\"default\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"headingLevel\":\"h2\"}}}}}},\"inlineEditor\":\"plainText\",\"elementType\":\"heading\",\"childrenSanitizer\":\"et_core_esc_previously\",\"attributes\":{\"class\":\"example_dynamic_module__title\"},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"contentPosts\",\"priority\":10,\"render\":true,\"attrName\":\"title.innerContent\",\"label\":\"Title\",\"description\":\"Title to show for module.\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/text\",\"type\":\"field\"}}},\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Title Text\",\"fieldLabel\":\"Title\"}}}}}},\"postItems\":{\"type\":\"object\",\"default\":{\"innerContent\":{\"desktop\":{\"value\":{\"postsNumber\":\"5\"}}}},\"settings\":{\"innerContent\":{\"groupType\":\"group-items\",\"items\":{\"src\":{\"groupSlug\":\"contentPosts\",\"priority\":20,\"render\":true,\"subName\":\"postsNumber\",\"label\":\"Number of posts\",\"description\":\"Number of posts you want to show.\",\"features\":{\"sticky\":false,\"responsive\":false,\"hover\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/text\",\"type\":\"field\"}}}}}},\"postTitle\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_dynamic_module__post-item-title\",\"default\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"headingLevel\":\"h3\"}}}}}},\"settings\":{\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Post Title Text\",\"fieldLabel\":\"Post Title\"}}}}}}},\"customCssFields\":{},\"settings\":{\"content\":\"auto\",\"design\":\"auto\",\"advanced\":\"auto\",\"groups\":{\"contentPosts\":{\"panel\":\"content\",\"priority\":10,\"groupName\":\"contentPosts\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Posts\"}}}}}}');\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/dynamic-module/module.json?");
+
+/***/ }),
+
+/***/ "./src/components/parent-module/module.json":
+/*!**************************************************!*\
+  !*** ./src/components/parent-module/module.json ***!
+  \**************************************************/
+/***/ ((module) => {
+
+eval("module.exports = /*#__PURE__*/JSON.parse('{\"name\":\"example/parent-module\",\"d4Shortcode\":\"\",\"title\":\"Parent Module\",\"titles\":\"Parent Modules\",\"moduleIcon\":\"example/module-parent\",\"moduleClassName\":\"example_parent_module\",\"moduleOrderClassName\":\"example_parent_module\",\"category\":\"module\",\"childModuleName\":\"example/child-module\",\"childModuleTitle\":\"Child Module\",\"childrenName\":[\"example/child-module\"],\"attributes\":{\"module\":{\"type\":\"object\",\"selector\":\"{{selector}}\",\"default\":{\"meta\":{\"adminLabel\":{\"desktop\":{\"value\":\"Parent Module\"}}}},\"styleProps\":{\"border\":{\"important\":true}},\"settings\":{\"meta\":{\"adminLabel\":{}},\"advanced\":{\"link\":{},\"text\":{\"component\":{\"props\":{\"fields\":{\"color\":{\"render\":false}}}}},\"htmlAttributes\":{}},\"decoration\":{\"background\":{},\"sizing\":{},\"spacing\":{},\"border\":{},\"boxShadow\":{},\"filters\":{},\"transform\":{},\"animation\":{},\"overflow\":{},\"disabledOn\":{},\"transition\":{},\"position\":{},\"zIndex\":{},\"scroll\":{},\"sticky\":{}}}},\"title\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_child_module__title\",\"defaultPrintedStyle\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"size\":\"21px\",\"lineHeight\":\"1em\",\"weight\":\"600\"}}}}}},\"styleProps\":{\"font\":{\"important\":{\"font\":{\"desktop\":{\"value\":{\"color\":true}}}}}},\"settings\":{\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Title Text\",\"fieldLabel\":\"Title\"}}}}}},\"content\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_child_module__content\",\"defaultPrintedStyle\":{\"decoration\":{\"bodyFont\":{\"body\":{\"font\":{\"desktop\":{\"value\":{\"color\":\"#868686\",\"size\":\"13px\",\"lineHeight\":\"1.6em\"}}}}}}},\"styleProps\":{\"bodyFont\":{\"selectors\":{\"desktop\":{\"value\":\"{{selector}} .example_child_module__content\"}}}},\"settings\":{\"decoration\":{\"bodyFont\":{\"attrName\":\"content.decoration.bodyFont\"}}}},\"icon\":{\"type\":\"object\",\"selector\":\"{{selector}} .et-pb-icon\",\"default\":{\"innerContent\":{\"desktop\":{\"value\":{\"unicode\":\"&#x39;\",\"type\":\"divi\",\"weight\":\"400\"}}},\"advanced\":{\"color\":{\"desktop\":{\"value\":\"#ae16f0\"}},\"size\":{\"desktop\":{\"value\":\"28px\"}}}},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"contentIcon\",\"attrName\":\"icon.innerContent\",\"label\":\"Icon\",\"description\":\"Upload an Icon\",\"render\":true,\"priority\":10,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/icon-picker\"}}},\"advanced\":{\"color\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designIcon\",\"label\":\"Icon Color\",\"description\":\"Here you can define a custom color for your icon.\",\"render\":true,\"priority\":10,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/color-picker\"}}},\"size\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designIcon\",\"label\":\"Icon Size\",\"description\":\"Here you can choose icon width.\",\"render\":true,\"priority\":20,\"features\":{\"sticky\":false},\"component\":{\"type\":\"field\",\"name\":\"divi/range\",\"props\":{\"min\":1,\"max\":120,\"allowedUnits\":[\"%\",\"em\",\"rem\",\"px\",\"cm\",\"mm\",\"in\",\"pt\",\"pc\",\"ex\",\"vh\",\"vw\"]}}}}}}}},\"customCssFields\":{\"contentContainer\":{\"subName\":\"contentContainer\",\"selectorSuffix\":\" .example_parent_module__content-container\"},\"title\":{\"subName\":\"title\",\"selectorSuffix\":\" .example_parent_module__title\"},\"content\":{\"subName\":\"content\",\"selectorSuffix\":\" .example_parent_module__content\"},\"icon\":{\"subName\":\"icon\",\"selectorSuffix\":\" .example_parent_module__icon.et-pb-icon\"}},\"settings\":{\"content\":\"auto\",\"design\":\"auto\",\"advanced\":\"auto\",\"groups\":{\"contentIcon\":{\"panel\":\"content\",\"priority\":20,\"groupName\":\"contentIcon\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Icon\"}}},\"designIcon\":{\"panel\":\"design\",\"priority\":10,\"groupName\":\"designIcon\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Icon Style\"}}}}}}');\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/parent-module/module.json?");
+
+/***/ }),
+
+/***/ "./src/components/static-module/module.json":
+/*!**************************************************!*\
+  !*** ./src/components/static-module/module.json ***!
+  \**************************************************/
+/***/ ((module) => {
+
+eval("module.exports = /*#__PURE__*/JSON.parse('{\"name\":\"example/static-module\",\"d4Shortcode\":\"\",\"title\":\"Static Module\",\"titles\":\"Static Modules\",\"moduleIcon\":\"example/module-static\",\"moduleClassName\":\"example_static_module\",\"moduleOrderClassName\":\"example_static_module\",\"category\":\"module\",\"attributes\":{\"module\":{\"type\":\"object\",\"selector\":\"{{selector}}\",\"default\":{\"meta\":{\"adminLabel\":{\"desktop\":{\"value\":\"Static Module\"}}},\"advanced\":{\"text\":{\"text\":{\"desktop\":{\"value\":{\"color\":\"light\"}}}}},\"decoration\":{\"spacing\":{\"desktop\":{\"value\":{\"margin\":{\"top\":\"0px\",\"right\":\"auto\",\"bottom\":\"30px\",\"left\":\"auto\"}}}}}},\"defaultPrintedStyle\":{\"decoration\":{\"background\":{\"desktop\":{\"value\":{\"color\":\"#ecf4f7\"}}}}},\"styleProps\":{\"border\":{\"important\":true}},\"settings\":{\"meta\":{\"adminLabel\":{}},\"advanced\":{\"link\":{},\"text\":{},\"htmlAttributes\":{}},\"decoration\":{\"background\":{},\"sizing\":{},\"spacing\":{},\"border\":{},\"boxShadow\":{},\"filters\":{},\"transform\":{},\"animation\":{},\"overflow\":{},\"disabledOn\":{},\"transition\":{},\"position\":{},\"zIndex\":{},\"scroll\":{},\"sticky\":{}}}},\"image\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_static_module__image img\",\"styleProps\":{\"border\":{\"important\":true}},\"settings\":{\"innerContent\":{\"groupType\":\"group-items\",\"items\":{\"src\":{\"groupSlug\":\"contentImage\",\"priority\":10,\"render\":true,\"subName\":\"src\",\"label\":\"Image\",\"description\":\"Upload an Image\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/upload\",\"type\":\"field\"}}}},\"decoration\":{\"border\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designImage\",\"priority\":10,\"render\":true,\"component\":{\"type\":\"group\",\"name\":\"divi/border\",\"props\":{\"grouped\":false}}}},\"spacing\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designImage\",\"priority\":20,\"render\":true,\"component\":{\"type\":\"group\",\"name\":\"divi/spacing\",\"props\":{\"grouped\":false}}}},\"boxShadow\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designImage\",\"priority\":30,\"render\":true,\"component\":{\"type\":\"group\",\"name\":\"divi/box-shadow\",\"props\":{\"grouped\":false}}}},\"filters\":{\"groupType\":\"group-item\",\"item\":{\"groupSlug\":\"designImage\",\"priority\":40,\"render\":true,\"component\":{\"type\":\"group\",\"name\":\"divi/filters\",\"props\":{\"grouped\":false}}}}}}},\"title\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_static_module__title\",\"default\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"headingLevel\":\"h2\"}}}}}},\"defaultPrintedStyle\":{\"decoration\":{\"font\":{\"font\":{\"desktop\":{\"value\":{\"size\":\"26px\",\"lineHeight\":\"1em\",\"weight\":\"500\"}}}}}},\"styleProps\":{\"font\":{\"important\":{\"font\":{\"desktop\":{\"value\":{\"color\":true}}}}}},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":10,\"render\":true,\"attrName\":\"title.innerContent\",\"label\":\"Title\",\"description\":\"Input your value to action title here.\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/text\",\"type\":\"field\"}}},\"decoration\":{\"font\":{\"priority\":10,\"component\":{\"props\":{\"groupLabel\":\"Title Text\",\"fieldLabel\":\"Title\",\"fields\":{\"headingLevel\":{\"render\":false}}}}}}},\"tagName\":\"h2\",\"attributes\":{\"class\":\"example_static_module__title\"},\"inlineEditor\":\"plainText\",\"elementType\":\"heading\",\"childrenSanitizer\":\"et_core_esc_previously\"},\"content\":{\"type\":\"object\",\"selector\":\"{{selector}} .example_static_module__content\",\"tagName\":\"div\",\"attributes\":{\"class\":\"example_static_module__content\"},\"inlineEditor\":\"richText\",\"childrenSanitizer\":\"et_core_esc_previously\",\"styleProps\":{\"bodyFont\":{\"selectors\":{\"desktop\":{\"value\":\"{{selector}} .example_static_module__content\"}}}},\"settings\":{\"innerContent\":{\"groupType\":\"group-item\",\"item\":{\"groupName\":\"mainContent\",\"priority\":20,\"render\":true,\"attrName\":\"content.innerContent\",\"label\":\"Content\",\"description\":\"Input the main text content for your module here.\",\"features\":{\"sticky\":false,\"dynamicContent\":false},\"component\":{\"name\":\"divi/richtext\",\"type\":\"field\"}}},\"decoration\":{\"bodyFont\":{}}}}},\"customCssFields\":{\"contentContainer\":{\"subName\":\"contentContainer\",\"selectorSuffix\":\" .example_static_module__content-container\"},\"title\":{\"subName\":\"title\",\"selector\":\"div{{selector}}\",\"selectorSuffix\":\" .example_static_module__title\"},\"content\":{\"subName\":\"content\",\"selectorSuffix\":\" .example_static_module__content\"},\"image\":{\"subName\":\"image\",\"selectorSuffix\":\" .example_static_module__image img\"}},\"settings\":{\"content\":\"auto\",\"design\":\"auto\",\"advanced\":\"auto\",\"groups\":{\"contentImage\":{\"panel\":\"content\",\"priority\":20,\"groupName\":\"contentImage\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Image\"}}},\"designImage\":{\"panel\":\"design\",\"priority\":10,\"groupName\":\"designImage\",\"multiElements\":true,\"component\":{\"name\":\"divi/composite\",\"props\":{\"groupLabel\":\"Image Style\"}}}}}}');\n\n//# sourceURL=webpack://d5-extension-example-modules/./src/components/static-module/module.json?");
 
 /***/ })
 
