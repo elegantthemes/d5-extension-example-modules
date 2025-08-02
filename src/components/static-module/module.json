@@ -281,19 +281,6 @@
       },
       "inlineEditor": "plainText",
       "childrenSanitizer": "et_core_esc_previously",
-      "styleProps": {
-        "font": {
-          "important": {
-            "font": {
-              "desktop": {
-                "value": {
-                  "color": true
-                }
-              }
-            }
-          }
-        }
-      },
       "default": {
         "innerContent": {
           "desktop": {
@@ -313,7 +300,8 @@
             "description": "Input your summary text here. This field supports multiple lines.",
             "features": {
               "sticky": false,
-              "dynamicContent": false
+              "dynamicContent": false,
+              "responsive": false
             },
             "component": {
               "name": "divi/textarea",
