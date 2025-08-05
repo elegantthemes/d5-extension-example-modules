@@ -3,7 +3,7 @@
 .example_static_module {
     padding: 30px;
     background-color: #ecf4f7;
-    
+
     &__inner {
         display: flex;
         flex-wrap: wrap;
@@ -21,5 +21,16 @@
         flex: 0 0 50%;
         max-width: 50%;
         padding-left: 20px;
+    }
+
+    &__summary {
+        margin: 10px 0;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #666;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 4px;
+        border-left: 3px solid #007cba;
     }
 }
