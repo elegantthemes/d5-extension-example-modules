@@ -21,4 +21,27 @@ export const staticModule: ModuleLibrary.Module.RegisterDefinition<StaticModuleA
   renderers: {
     edit: StaticModuleEdit,
   },
+  callbacks: {
+    content: {
+      contentImage: {
+        fields: {
+          fieldOne: {
+            visible: ({
+              attrs,
+            }: { attrs: StaticModuleAttrs }) => 'tab1' === attrs?.myCustomAttribute?.innerContent?.desktop?.value?.customTabs,
+          },
+          fieldTwo: {
+            visible: ({
+              attrs,
+            }: { attrs: StaticModuleAttrs }) => 'tab2' === attrs?.myCustomAttribute?.innerContent?.desktop?.value?.customTabs,
+          },
+          fieldThree: {
+            visible: ({
+              attrs,
+            }: { attrs: StaticModuleAttrs }) => 'tab2' === attrs?.myCustomAttribute?.innerContent?.desktop?.value?.customTabs,
+          },
+        },
+      },
+    },
+  },
 };

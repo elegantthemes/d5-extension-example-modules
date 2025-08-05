@@ -35,10 +35,10 @@
             "desktop": {
               "value": {
                 "margin": {
-                  "top":    "0px",
-                  "right":  "auto",
+                  "top": "0px",
+                  "right": "auto",
                   "bottom": "30px",
-                  "left":   "auto"
+                  "left": "auto"
                 }
               }
             }
@@ -312,6 +312,100 @@
         },
         "decoration": {
           "bodyFont": {}
+        }
+      }
+    },
+    "myCustomAttribute": {
+      "type": "object",
+      "selector": "{{selector}} .example_static_module__custom",
+      "default": {
+        "innerContent": {
+          "desktop": {
+            "value": {
+              "customTabs": "tab1"
+            }
+          }
+        }
+      },
+      "settings": {
+        "innerContent": {
+          "groupType": "group-items",
+          "items": {
+            "customTabs": {
+              "attrName": "myCustomAttribute.innerContent",
+              "subName": "customTabs",
+              "groupSlug": "contentImage",
+              "render": true,
+              "priority": 40,
+              "component": {
+                "type": "field",
+                "name": "divi/button-options",
+                "props": {
+                  "name": "mainTabs",
+                  "options": {
+                    "tab1": {
+                      "label": "Tab One",
+                      "tooltip": "Tab One"
+                    },
+                    "tab2": {
+                      "label": "Tab Two",
+                      "tooltip": "Tab Two"
+                    }
+                  },
+                  "showLabel": true,
+                  "tabUi": true
+                }
+              }
+            },
+            "fieldOne": {
+              "attrName": "myCustomAttribute.innerContent",
+              "subName": "fieldOne",
+              "label": "Field One",
+              "description": "Type your text here.",
+              "groupSlug": "contentImage",
+              "priority": 50,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "preset": "content"
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/text"
+              }
+            },
+            "fieldTwo": {
+              "attrName": "myCustomAttribute.innerContent",
+              "subName": "fieldTwo",
+              "label": "Field Two",
+              "description": "Type your text here.",
+              "groupSlug": "contentImage",
+              "priority": 60,
+              "render": true,
+              "features": {
+                "sticky": false,
+                "preset": "content"
+              },
+              "component": {
+                "type": "field",
+                "name": "divi/text"
+              }
+            },
+            "fieldThree": {
+              "attrName": "myCustomAttribute.innerContent",
+              "subName": "fieldThree",
+              "groupSlug": "contentImage",
+              "priority": 70,
+              "render": true,
+              "component": {
+                "name": "divi/font-body",
+                "type": "group",
+                "props": {
+                  "grouped": false
+                }
+              }
+            }
+          }
         }
       }
     }
