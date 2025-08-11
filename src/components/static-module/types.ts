@@ -15,6 +15,7 @@ export interface Image {
 export interface StaticModuleCssAttr extends Module.Css.AttributeValue {
   contentContainer?: string;
   title?: string;
+  summary?: string;
   content?: string;
   image?: string;
 }
@@ -64,6 +65,9 @@ export interface StaticModuleAttrs extends InternalAttrs {
 
   // Title
   title?: Element.Types.Title.Attributes;
+
+  // Summary
+  summary?: Element.Types.Title.Attributes;
 
   // Content
   content?: Element.Types.Content.Attributes;

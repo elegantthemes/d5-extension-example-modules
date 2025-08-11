@@ -59,6 +59,11 @@ export const ModuleStyles = ({
         attrName: 'title',
       })}
 
+      {/* Summary */}
+      {elements.style({
+        attrName: 'summary',
+      })}
+
       {/* Content */}
       {elements.style({
         attrName: 'content',

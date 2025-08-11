@@ -1,6 +1,5 @@
 // External Dependencies.
 import React, { ReactElement } from 'react';
-import classnames from 'classnames';
 
 // Divi Dependencies.
 import { ModuleContainer } from '@divi/module';
@@ -10,6 +9,8 @@ import { StaticModuleEditProps } from './types';
 import { ModuleStyles } from './styles';
 import { moduleClassnames } from './module-classnames';
 import { ModuleScriptData } from './module-script-data';
+
+import staticMetadata from './module.json';
 
 /**
  * Static Module edit component of visual builder.
@@ -32,6 +33,23 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
   const imageSrc = attrs?.image?.innerContent?.desktop?.value?.src ?? ''
   const imageAlt = attrs?.image?.innerContent?.desktop?.value?.alt ?? '';
 
+  // When summary is reset, placeholder is displayed since reset restores default value.
+  // When summary is empty, placeholder is hidden since empty string indicates intentional user action.
+  // To modify this behavior, developers can update the summary attribute with a default value during module render.
+  // if ('' === attrs?.summary?.innerContent?.desktop?.value) {
+  //   elements.attrs = {
+  //     ...elements.attrs,
+  //     summary: {
+  //       ...elements.attrs.summary,
+  //       innerContent: {
+  //         desktop: {
+  //           value: staticMetadata?.attributes?.summary?.default?.innerContent?.desktop?.value ?? '',
+  //         },
+  //       },
+  //     },
+  //   };
+  // }
+
   return (
     <ModuleContainer
       attrs={attrs}
@@ -52,6 +70,9 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
         <div className="example_static_module__content-container">
           {elements.render({
             attrName: 'title',
+          })}
+          {elements.render({
+            attrName: 'summary',
           })}
           <div className="example_static_module__content">
             {elements.render({
