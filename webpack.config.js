@@ -1,6 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
+const ConversionOutlineJsonPlugin = require('./webpack/config/plugins/conversion-outline-json-plugin');
 
 module.exports = {
   // Webpack starts bundling the assets from the following file.
@@ -175,6 +176,9 @@ module.exports = {
         },
       ]
     } ),
+
+    // Generate conversion-outline.json files from conversion-outline.ts files
+    new ConversionOutlineJsonPlugin(),
   ],
 
   // Determine how modules are resolved.
