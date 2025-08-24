@@ -79,6 +79,42 @@ trait RenderCallbackTrait {
 			]
 		);
 
+		// SVG Test Content - This will demonstrate the CSS sanitization bug
+		$svg_test_content = HTMLUtility::render(
+			[
+				'tag'               => 'div',
+				'attributes'        => [
+					'class' => 'example_static_module__svg-test',
+				],
+				'childrenSanitizer' => 'wp_kses_post', // This will trigger the sanitization bug
+				'children'          => '
+					<h4>SVG CSS Properties Test (Frontend) hello</h4>
+					<svg width="200" height="100" viewBox="0 0 200 100" style="border: 1px solid #ccc; margin-bottom: 10px;">
+						<circle 
+							cx="50" 
+							cy="50" 
+							r="30"
+							style="fill: #ff6b6b; stroke: #4ecdc4; stroke-width: 3; stroke-dasharray: 5,5; stroke-linecap: round; opacity: 0.8;"
+						/>
+						<text 
+							x="120" 
+							y="40"
+							style="fill: #2c3e50; text-anchor: middle; dominant-baseline: middle; font-size: 14px; font-family: Arial;"
+						>
+							SVG Text
+						</text>
+						<path 
+							d="M 10 80 Q 95 10 180 80" 
+							style="fill: none; stroke: #e74c3c; stroke-width: 2; stroke-dasharray: 10,5; stroke-linecap: round;"
+						/>
+					</svg>
+					<div style="width: 200px; height: 50px; background-color: #f8f9fa; background-image: linear-gradient(45deg, #e3f2fd 25%, transparent 25%); background-position-x: 10px; background-position-y: 5px; background-size: 20px 20px; opacity: 0.7; border: 1px solid #dee2e6; display: flex; align-items: center; justify-content: center;">
+						<span style="opacity: 0.5; color: #6c757d;">Background Position Test</span>
+					</div>
+				',
+			]
+		);
+
 		// Content container.
 		$content_container = HTMLUtility::render(
 			[
@@ -130,7 +166,7 @@ trait RenderCallbackTrait {
 								'class' => 'example_static_module__inner',
 							],
 							'childrenSanitizer' => 'et_core_esc_previously',
-							'children'          => $image_container . $content_container,
+							'children'          => $image_container . $svg_test_content . $content_container,
 						]
 					),
 				],
