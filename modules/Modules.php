@@ -13,18 +13,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use MEE\Modules\StaticModule\StaticModule;
-use MEE\Modules\D4Module\D4Module;
-use MEE\Modules\ChildModule\ChildModule;
-use MEE\Modules\ParentModule\ParentModule;
-use MEE\Modules\DynamicModule\DynamicModule;
+// Removed unused modules for smart loading test:
+// use MEE\Modules\D4Module\D4Module;
+// use MEE\Modules\ChildModule\ChildModule;
+// use MEE\Modules\ParentModule\ParentModule;
+// use MEE\Modules\DynamicModule\DynamicModule;
 
 add_action(
 	'divi_module_library_modules_dependency_tree',
 	function ( $dependency_tree ) {
-		$dependency_tree->add_dependency( new ParentModule() );
-		$dependency_tree->add_dependency( new ChildModule() );
+		// Smart loading test: Only register StaticModule (D5)
 		$dependency_tree->add_dependency( new StaticModule() );
-		$dependency_tree->add_dependency( new D4Module() );
-		$dependency_tree->add_dependency( new DynamicModule() );
+		
+		// Removed for minimal test environment:
+		// $dependency_tree->add_dependency( new ParentModule() );
+		// $dependency_tree->add_dependency( new ChildModule() );
+		// $dependency_tree->add_dependency( new D4Module() );
+		// $dependency_tree->add_dependency( new DynamicModule() );
 	}
 );

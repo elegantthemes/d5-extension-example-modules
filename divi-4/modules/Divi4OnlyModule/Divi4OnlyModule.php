@@ -146,7 +146,7 @@ class D4_Only_Module extends ET_Builder_Module {
 			<div class="d4_only_module_content">%3$s</div>',
 			$header_level,
 			esc_html( $title ),
-			et_sanitized_previously( $this->content )
+			et_core_esc_previously( $this->content )
 		);
 
 		return $output;
