@@ -44,8 +44,13 @@ require D5_EXTENSION_EXAMPLE_MODULES_PATH . 'modules/Modules.php';
  * @since ??
  */
 function d5_extension_example_module_initialize_d4_modules() {
+	// Debug: Log which hook triggered this function
+	$current_hook = current_action();
+	error_log( "[Smart Loading] D4 modules loading triggered by hook: {$current_hook}" );
+	
 	// Safety check: Ensure ET_Builder_Module class is available
 	if ( ! class_exists( 'ET_Builder_Module' ) ) {
+		error_log( "[Smart Loading] ET_Builder_Module not available yet, fallback to et_builder_ready" );
 		// If not available yet, hook into et_builder_ready as fallback
 		add_action( 'et_builder_ready', __FUNCTION__ );
 		return;
@@ -54,8 +59,10 @@ function d5_extension_example_module_initialize_d4_modules() {
 	// Remove the hook to prevent infinite loops
 	remove_action( 'et_builder_ready', __FUNCTION__ );
 	
+	error_log( "[Smart Loading] Loading D4 modules now via hook: {$current_hook}" );
 	require_once D5_EXTENSION_EXAMPLE_MODULES_PATH . 'divi-4/modules/Divi4Module/Divi4Module.php';
 	require_once D5_EXTENSION_EXAMPLE_MODULES_PATH . 'divi-4/modules/Divi4OnlyModule/Divi4OnlyModule.php';
+	error_log( "[Smart Loading] D4 modules loaded successfully" );
 }
 
 /**
@@ -101,10 +108,14 @@ add_action( 'init', function() {
 	}
 	
 	$is_divi_5 = version_compare( ET_BUILDER_VERSION, '5.0', '>=' );
+	error_log( "[Smart Loading] ET_BUILDER_VERSION: " . ET_BUILDER_VERSION . ", is_divi_5: " . ( $is_divi_5 ? 'true' : 'false' ) );
 	
 	if ( $is_divi_5 ) {
-		// DIVI 5 ENGINE: Load D4 compatibility when shortcode framework loads (following Shohel's pattern)
+		error_log( "[Smart Loading] Divi 5 detected - setting up smart loading hooks" );
+		
+		// DIVI 5 ENGINE: Load D4 compatibility when shortcode framework loads (smart loading)
 		add_action( 'et_will_load_shortcode_framework', function() {
+			error_log( "[Smart Loading] et_will_load_shortcode_framework fired - setting up D4 modules via et_builder_ready" );
 			// D4 modules still needed for backward compatibility in D5
 			add_action( 'et_builder_ready', 'd5_extension_example_module_initialize_d4_modules' );
 		});
@@ -112,10 +123,13 @@ add_action( 'init', function() {
 		// DIVI 5 ENGINE: Load D5 modules when Visual Builder assets are ready (following Shohel's pattern)
 		// This ensures all Divi D5 framework classes are loaded before D5 module initialization
 		add_action( 'divi_visual_builder_assets_before_enqueue_styles', 'd5_extension_example_module_initialize_d5_modules' );
+		error_log( "[Smart Loading] D5 hooks registered: et_will_load_shortcode_framework -> et_builder_ready (smart loading)" );
 	} else {
+		error_log( "[Smart Loading] Pure Divi 4 detected - using direct et_builder_ready hook" );
 		// PURE DIVI 4 ENGINE: Only load D4 modules (no D5 overhead)
 		// Shohel confirmed: "D4 module should be register under et_builder_ready"
 		add_action( 'et_builder_ready', 'd5_extension_example_module_initialize_d4_modules' );
+		error_log( "[Smart Loading] D4 hook registered: et_builder_ready (direct)" );
 	}
 }, 10 );
 
