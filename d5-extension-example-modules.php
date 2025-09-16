@@ -44,6 +44,16 @@ require D5_EXTENSION_EXAMPLE_MODULES_PATH . 'modules/Modules.php';
  * @since ??
  */
 function d5_extension_example_module_initialize_d4_modules() {
+	// Safety check: Ensure ET_Builder_Module class is available
+	if ( ! class_exists( 'ET_Builder_Module' ) ) {
+		// If not available yet, hook into et_builder_ready as fallback
+		add_action( 'et_builder_ready', __FUNCTION__ );
+		return;
+	}
+	
+	// Remove the hook to prevent infinite loops
+	remove_action( 'et_builder_ready', __FUNCTION__ );
+	
 	require_once D5_EXTENSION_EXAMPLE_MODULES_PATH . 'divi-4/modules/Divi4Module/Divi4Module.php';
 	require_once D5_EXTENSION_EXAMPLE_MODULES_PATH . 'divi-4/modules/Divi4OnlyModule/Divi4OnlyModule.php';
 }
