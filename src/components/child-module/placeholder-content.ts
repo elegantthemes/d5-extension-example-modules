@@ -2,10 +2,10 @@
 import {placeholderContent as placeholder} from '@divi/module-utils';
 
 // Local dependencies.
-import {StaticModuleAttrs} from './types';
+import { ChildModuleAttrs } from './types';
 
 
-export const placeholderContent: StaticModuleAttrs = {
+export const placeholderContent: ChildModuleAttrs = {
   title: {
     innerContent: {
       desktop: {
@@ -19,14 +19,5 @@ export const placeholderContent: StaticModuleAttrs = {
         value: placeholder.body,
       },
     }
-  },
-  image: {
-    innerContent: {
-      desktop: {
-        value: {
-          src: placeholder.image.landscape,
-        },
-      },
-    },
   },
 };

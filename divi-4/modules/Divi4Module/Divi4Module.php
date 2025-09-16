@@ -5,9 +5,9 @@
  *
  * @since 1.0.0
  */
-class D4_Only_Module extends ET_Builder_Module {
+class D4_Module extends ET_Builder_Module {
 	// Module slug (also used as shortcode tag)
-	public $slug = 'd4_only_module';
+	public $slug = 'd4_module';
 
 	// Visual Builder support (off|partial|on)
 	public $vb_support = 'on';
@@ -19,7 +19,7 @@ class D4_Only_Module extends ET_Builder_Module {
 	 */
 	function init() {
 		// Module name
-		$this->name = esc_html__( 'Divi 4 Only Module', 'dicm-divi-custom-modules' );
+		$this->name = esc_html__( 'Divi 4 Module', 'dicm-divi-custom-modules' );
 
 		// Module Icon
 		// Load customized svg icon and use it on builder as module icon. If you don't have svg icon, you can use
@@ -52,7 +52,7 @@ class D4_Only_Module extends ET_Builder_Module {
 				'header' => array(
 					'label'        => et_builder_i18n( 'Title' ),
 					'css'          => array(
-						'main' => '%%order_class%% .d4_only_module_title',
+						'main' => '%%order_class%% .example_d4_module_title',
 					),
 					'header_level' => array(
 						'default' => 'h2',
@@ -61,7 +61,7 @@ class D4_Only_Module extends ET_Builder_Module {
 				'body'   => array(
 					'label'          => et_builder_i18n( 'Body' ),
 					'css'            => array(
-						'main' => '%%order_class%% .d4_only_module_content',
+						'main' => '%%order_class%% .example_d4_module_content',
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,
@@ -82,18 +82,23 @@ class D4_Only_Module extends ET_Builder_Module {
 				),
 			),
 			'text'           => array(
-				'use_background_layout' => false,
+				'use_background_layout' => true,
+				'options'               => array(
+					'background_layout' => array(
+						'default' => 'dark',
+					),
+				),
 			),
 		);
 
 		$this->custom_css_fields = array(
 			'title'   => array(
 				'label'    => esc_html__( 'Title', 'et_builder' ),
-				'selector' => '.d4_only_module_title',
+				'selector' => '.example_d4_module_title',
 			),
 			'content' => array(
 				'label'    => esc_html__( 'Content', 'et_builder' ),
-				'selector' => '.d4_only_module_content',
+				'selector' => '.example_d4_module_content',
 			),
 		);
 	}
@@ -135,15 +140,17 @@ class D4_Only_Module extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-	function render( $attrs, $content, $render_slug ) {
+	function render( $attrs, $content = null, $render_slug ) {
 		// Module specific props added on $this->get_fields()
 		$title        = $this->props['title'];
 		$header_level = et_pb_process_header_level( $this->props['header_level'], 'h2' );
 
 		// Render module content
 		$output = sprintf(
-			'<%1$s class="d4_only_module_title">%2$s</%1$s>
-			<div class="d4_only_module_content">%3$s</div>',
+			'<div class="example_d4_module_inner">
+				<%1$s class="example_d4_module_title">%2$s</%1$s>
+				<div class="example_d4_module_content">%3$s</div>
+			</div>',
 			$header_level,
 			esc_html( $title ),
 			et_sanitized_previously( $this->content )
@@ -153,4 +160,4 @@ class D4_Only_Module extends ET_Builder_Module {
 	}
 }
 
-new D4_Only_Module();
+new D4_Module();
