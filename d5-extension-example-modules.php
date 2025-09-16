@@ -59,17 +59,38 @@ function d5_extension_example_module_initialize_d4_modules() {
 }
 
 /**
- * CORRECTED Smart Loading Solution for Third-Party Divi Modules
+ * Initialize Divi 5 Extension
  * 
- * Based on feedback from Josh and Shohel in Slack discussion
- * Issue: D4 module settings not accessible in Visual Builder
- * Fix: Use et_builder_ready for D4 modules, ensure VB compatibility
+ * Called when: divi_visual_builder_assets_before_enqueue_styles hook fires
+ * This ensures all Divi D5 framework classes are available before D5 module initialization
+ * Following Shohel's recommended pattern from issue #45673
+ *
+ * @since ??
+ */
+function d5_extension_example_module_initialize_d5_modules() {
+	// D5 modules are loaded via Modules.php which is already required above
+	// This function exists for consistency with Shohel's pattern and future extensibility
+	// The actual D5 module registration happens via the divi_module_library_modules_dependency_tree action in Modules.php
+}
+
+/**
+ * Comprehensive Divi 4/5 Module Loading Based on Engine Availability
  * 
- * Key Changes from Josh's Original:
- * 1. D4 modules use et_builder_ready (not divi_extensions_init) - confirmed by Shohel
- * 2. In D5 Visual Builder, D4 modules load immediately via et_builder_ready
- * 3. Smart loading still works for frontend rendering
- * 4. All original plugin files preserved (no deletions)
+ * Based on Shohel's official pattern from issue #45673 and Josh's smart loading approach
+ * Combines performance optimization with proper D4/D5 engine detection
+ * 
+ * Why This Pattern Is Essential:
+ * - Detects active Divi engine (D4 vs D5) automatically
+ * - Only loads relevant code for detected engine (performance optimization)
+ * - Ensures proper timing for Divi class availability (prevents fatal errors)
+ * - Provides seamless compatibility across all Divi versions
+ * - Future-proofs plugin against Divi updates
+ * 
+ * Key Implementation:
+ * 1. D4 modules use et_builder_ready (confirmed by Shohel)
+ * 2. D5 modules use divi_visual_builder_assets_before_enqueue_styles (Shohel's pattern)
+ * 3. Smart loading via et_will_load_shortcode_framework (Josh's optimization)
+ * 4. Safety checks for class availability (our enhancement)
  */
 add_action( 'init', function() {
 	// Wait for Divi constants to be defined
@@ -82,19 +103,17 @@ add_action( 'init', function() {
 	$is_divi_5 = version_compare( ET_BUILDER_VERSION, '5.0', '>=' );
 	
 	if ( $is_divi_5 ) {
-		// CORRECTED APPROACH: Check if Visual Builder is active
-		if ( et_core_is_fb_enabled() ) {
-			// Visual Builder: Load D4 modules immediately for settings access
-			// This fixes the "cannot access D4 module settings" issue
+		// DIVI 5 ENGINE: Load D4 compatibility when shortcode framework loads (following Shohel's pattern)
+		add_action( 'et_will_load_shortcode_framework', function() {
+			// D4 modules still needed for backward compatibility in D5
 			add_action( 'et_builder_ready', 'd5_extension_example_module_initialize_d4_modules' );
-		} else {
-			// Frontend: Only load D4 when shortcode framework loads (smart loading)
-			add_action( 'et_will_load_shortcode_framework', 'd5_extension_example_module_initialize_d4_modules' );
-		}
+		});
 		
-		// D5: D5 modules load automatically via Modules.php (no changes needed)
+		// DIVI 5 ENGINE: Load D5 modules when Visual Builder assets are ready (following Shohel's pattern)
+		// This ensures all Divi D5 framework classes are loaded before D5 module initialization
+		add_action( 'divi_visual_builder_assets_before_enqueue_styles', 'd5_extension_example_module_initialize_d5_modules' );
 	} else {
-		// Divi 4: Load D4 extension normally with et_builder_ready (CORRECTED)
+		// PURE DIVI 4 ENGINE: Only load D4 modules (no D5 overhead)
 		// Shohel confirmed: "D4 module should be register under et_builder_ready"
 		add_action( 'et_builder_ready', 'd5_extension_example_module_initialize_d4_modules' );
 	}
