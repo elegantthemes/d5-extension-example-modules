@@ -367,6 +367,54 @@
           "bodyFont": {}
         }
       }
+    },
+    "myCustomAttribute": {
+      "type": "object",
+      "settings": {
+        "innerContent": {
+          "groupType": "group-item",
+          "item": {
+            "groupSlug": "myCustomOptionsGroup",
+            "priority": 10,
+            "render": true,
+            "attrName": "myCustomAttribute.contentTextField",
+            "label": "Content Text Field",
+            "description": "A text field for the content panel group.",
+            "features": {
+              "sticky": false,
+              "dynamicContent": false
+            },
+            "component": {
+              "name": "divi/text",
+              "type": "field"
+            }
+          }
+        }
+      }
+    },
+    "myCustomPanelAttribute": {
+      "type": "object",
+      "settings": {
+        "innerContent": {
+          "groupType": "group-item",
+          "item": {
+            "groupSlug": "myCustomPanelGroup",
+            "priority": 10,
+            "render": true,
+            "attrName": "myCustomPanelAttribute.panelTextField",
+            "label": "Panel Text Field",
+            "description": "A text field for the custom panel group.",
+            "features": {
+              "sticky": false,
+              "dynamicContent": false
+            },
+            "component": {
+              "name": "divi/text",
+              "type": "field"
+            }
+          }
+        }
+      }
     }
   },
   "customCssFields": {
@@ -420,6 +468,35 @@
             "groupLabel": "Image Style"
           }
         }
+      },
+      "myCustomOptionsGroup": {
+        "panel": "content",
+        "priority": 30,
+        "groupName": "myCustomOptionsGroup",
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "My Custom Options Group"
+          }
+        }
+      },
+      "myCustomPanelGroup": {
+        "panel": "custom5",
+        "priority": 10,
+        "groupName": "myCustomPanelGroup",
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "My Custom Panel Group"
+          }
+        }
+      }
+    },
+    "panels": {
+      "custom5": {
+        "panelName": "custom5",
+        "panelLabel": "Custom 5",
+        "priority": 5
       }
     }
   }
