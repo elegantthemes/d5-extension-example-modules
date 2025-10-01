@@ -9,5 +9,9 @@
     "allowJs": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
-  }
+  },
+  "include": [
+    "src/**/*",
+    "types.d.ts"
+  ]
 }

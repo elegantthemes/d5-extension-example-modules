@@ -1,8 +1,8 @@
 // Divi dependencies.
-import {placeholderContent as placeholder} from '@divi/module-utils';
+const placeholder = window?.divi?.moduleUtils?.placeholderContent;
 
 // Local dependencies.
-import {StaticModuleAttrs} from './types';
+import { StaticModuleAttrs } from './types';
 
 
 export const placeholderContent: StaticModuleAttrs = {

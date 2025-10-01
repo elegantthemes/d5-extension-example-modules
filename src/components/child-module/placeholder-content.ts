@@ -1,5 +1,5 @@
 // Divi dependencies.
-import {placeholderContent as placeholder} from '@divi/module-utils';
+const placeholder = window?.divi?.moduleUtils?.placeholderContent;
 
 // Local dependencies.
 import { ChildModuleAttrs } from './types';
