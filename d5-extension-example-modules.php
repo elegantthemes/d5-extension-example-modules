@@ -50,6 +50,25 @@ function d5_extension_example_module_initialize_d4_modules() {
 add_action( 'et_builder_ready', 'd5_extension_example_module_initialize_d4_modules' );
 
 /**
+ * Enqueue Divi 4 Visual Builder Assets
+ *
+ * @since ??
+ */
+function d5_extension_example_module_enqueue_d4_vb_scripts() {
+	if ( et_core_is_fb_enabled() ) {
+		$plugin_dir_url = plugin_dir_url( __FILE__ );
+		wp_enqueue_script(
+			'd5-extension-example-modules-divi4-vb',
+			"{$plugin_dir_url}divi-4/visual-builder/build/d5-extension-example-modules-divi4.js",
+			array( 'react', 'jquery' ),
+			'1.0.0',
+			true
+		);
+	}
+}
+add_action( 'wp_enqueue_scripts', 'd5_extension_example_module_enqueue_d4_vb_scripts' );
+
+/**
  * Enqueue style and scripts of Module Extension Example for Visual Builder.
  *
  * @since ??
