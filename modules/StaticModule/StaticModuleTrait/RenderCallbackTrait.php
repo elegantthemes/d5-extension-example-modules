@@ -72,6 +72,13 @@ trait RenderCallbackTrait {
 			]
 		);
 
+		// Summary.
+		$summary = $elements->render(
+			[
+				'attrName' => 'summary',
+			]
+		);
+
 		// Content.
 		$content = $elements->render(
 			[
@@ -87,7 +94,7 @@ trait RenderCallbackTrait {
 					'class' => 'example_static_module__content-container',
 				],
 				'childrenSanitizer' => 'et_core_esc_previously',
-				'children'          => $title . $content,
+				'children'          => $title . $summary . $content,
 			]
 		);
 
