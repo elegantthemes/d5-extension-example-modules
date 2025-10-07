@@ -35,7 +35,7 @@
             "desktop": {
               "value": {
                 "margin": {
-                  "top":    "0px",
+                  "top":    "5px",
                   "right":  "auto",
                   "bottom": "30px",
                   "left":   "auto"
@@ -53,12 +53,19 @@
                 "color": "#ecf4f7"
               }
             }
+          },
+          "spacing": {
+            "desktop": {
+              "value": {
+                "padding": {
+                  "top":    "30px",
+                  "right":  "30px",
+                  "bottom": "30px",
+                  "left":   "30px"
+                }
+              }
+            }
           }
-        }
-      },
-      "styleProps": {
-        "border": {
-          "important": true
         }
       },
       "settings": {
@@ -192,7 +199,7 @@
             "font": {
               "desktop": {
                 "value": {
-                  "headingLevel": "h2"
+                  "headingLevel": "h4"
                 }
               }
             }
@@ -206,8 +213,8 @@
               "desktop": {
                 "value": {
                   "size": "26px",
-                  "lineHeight": "1em",
-                  "weight": "500"
+                  "lineHeight": "1.2em",
+                  "weight": "700"
                 }
               }
             }
