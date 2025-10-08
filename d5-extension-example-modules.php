@@ -59,7 +59,7 @@ function d5_extension_example_module_enqueue_d4_vb_scripts() {
 		$plugin_dir_url = plugin_dir_url( __FILE__ );
 		wp_enqueue_script(
 			'd5-extension-example-modules-divi4-vb',
-			"{$plugin_dir_url}divi-4/visual-builder/build/d5-extension-example-modules-divi4.js",
+			"{$plugin_dir_url}divi-4/build/d5-extension-example-modules-divi4.js",
 			array( 'react', 'jquery' ),
 			'1.0.0',
 			true
