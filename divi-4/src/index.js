@@ -1,7 +1,7 @@
 import $ from 'jquery';
 
-import Divi4Module from './modules/divi4-module';
-import Divi4OnlyModule from './modules/divi4-only-module';
+import Divi4Module from './components/divi4-module';
+import Divi4OnlyModule from './components/divi4-only-module';
 
 /**
  * Register modules to Visual Builder once the API is ready.

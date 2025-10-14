@@ -14,6 +14,7 @@
     "test": "wp-scripts test-unit-js --config ./test-config/jest.config.js",
     "zip": "gulp zip",
     "reset-install": "rm -rf ./package-lock.json ./node_modules/ && npm install",
+    "reset-install:divi-4": "cd divi-4 && rm -rf ./package-lock.json ./node_modules/ && npm install",
     "install:divi-4": "cd divi-4 && npm install",
     "start:divi-4": "cd divi-4 && npm run start",
     "build:divi-4": "cd divi-4 && npm run build",
