@@ -2,19 +2,50 @@
 This extension is a collection of example modules. You can use these modules as a reference for your development. This extension uses composer to autoload the modules in PHP. You can find the example modules in the `src/components` folder for Visual Builder and in the `modules` folder for Front-end rendering.
 
 ## Installation
-You need to have **npm** available in your node.js environment. And make sure to use **node version: 18.0.0 or later**.
-```
-npm install
-```
+
+### Composer Dependencies
 
 Install the composer dependencies:
 ```
 composer install
 ```
 
-Now, start the project:
+### Node.js Dependencies
+
+You need to have **npm** available in your node.js environment. And make sure to use **node version: 18.0.0 or later**.
+
+For D5 modules only:
+```
+npm install
+```
+
+For D4 modules only:
+```
+npm run install:divi-4
+```
+
+For both of D4 and D5 modules:
+```
+npm run install:all
+```
+
+### Start the Project
+
+Now, start the project.
+
+For D5 modules only:
 ```
 npm run start
+```
+
+For D4 modules only:
+```
+npm run start:divi-4
+```
+
+For both of D4 and D5 modules:
+```
+npm run start:all
 ```
 
 ## Example Modules
@@ -38,7 +69,7 @@ This example is the parent module by using Divi 5 API. This module will contain 
 This example is the child module by using Divi 5 API. This module will be used as a child module. It will help you to understand the child module in Divi 5. You can find the module in the `src/components/child-module` folder for Visual Builder and in the `modules/ChildModule` folder for Front-end rendering.
 
 ### 5. Divi 4 Module
-This modules is converted from Divi 4 to Divi 5. It will help you to understand the migration process. You can find the module for Divi 5 in the `src/components/divi-4-module` folder for Visual Builder and in the `modules/Divi4Module` folder for Front-end rendering. Also, the code for divi 4 module is in the `divi-4/modules/Divi4Module` folder.
+This modules is converted from Divi 4 to Divi 5. It will help you to understand the migration process. You can find the module for Divi 5 in the `src/components/d4-module` folder for Visual Builder and in the `modules/D4Module` folder for Front-end rendering. Also, the code for divi 4 module is in the `divi-4/modules/Divi4Module` folder and its Visual Builder component is in the `divi-4/src/components/divi4-module` folder.
 
 ## Divi 4 Modules
 You can find the Divi 4 modules in the `divi-4/modules` folder. You can use these modules as a reference for your migration process. Currently, we have converted the `Divi4Module` module from Divi 4 to Divi 5 and `Divi4OnlyModule` module is only for Divi 4.
@@ -55,15 +86,23 @@ In Divi 5, we always use testing. The `test-config` folder contains the configur
 ## Available Commands
 Some `npm` commands are available for your development and tests.
 
-### `npm run start`
-It will start the webpack compiler for development with watch mode.
+### `npm install`
+It will install dependencies for Divi 5 modules. For D4 modules, you need to run `npm run install:divi-4`. You can also use `npm run install:all` to install dependencies for both Divi 5 and Divi 4 modules.
 
-_Note: If you see error messages for divi packages related to `placeholderContent` in `npm run start`, this known issue and it will be fixed once we update `divi-types` npm packages. You can continue developing despite the error messages._
+### `npm run start`
+It will start the webpack compiler for development with watch mode. By default, it works for D5 modules. For D4 modules, you need to run `npm run start:divi-4`. You can also use `npm run start:all` to start both D5 and D4 modules.
+
+_Note: If you see error messages for divi packages related to `placeholderContent` in `npm run start` and `npm run start:all`, this is a known issue and it will be fixed once we update `divi-types` npm packages. You can continue developing despite the error messages._
 
 ### `npm run build`
-It will build all JS and CSS assets for production.
+It will build all JS and CSS assets for production. By default, it works for D5 modules. For D4 modules, you need to run `npm run build:divi-4`. You can also use `npm run build:all` to build assets for both Divi 5 and Divi 4 modules.
 
-_Note: If you see error messages for divi packages related to `placeholderContent` in `npm run build`, this known issue and it will be fixed once we update `divi-types` npm packages._
+_Note: If you see error messages for divi packages related to `placeholderContent` in `npm run build` and `npm run build:all`, this is a known issue and it will be fixed once we update `divi-types` npm packages._
+
+### `npm run reset-install`
+It will remove node_modules and reinstall all dependencies for D5 modules. For D4 modules, you need to run `npm run reset-install:divi-4`.
+
+_Note: If you are facing error for divi packages in `npm run install`, then you need to run `npm run reset-install` command._
 
 ### `npm run zip`
 It will zip all assets and files without the `src` folder for distribution.
@@ -71,59 +110,67 @@ It will zip all assets and files without the `src` folder for distribution.
 ### `npm run test`
 It will run all tests for the module.
 
-### `npm run reset-install`
-It will remove node_modules and reinstall all dependencies.
-
-_Note: If you are facing error for divi packages in `npm run install`, then you need to run `npm run reset-install` command._
-
 
 ## Folder Structure
 ```
 d5-extension-example-modules
 ├── divi-4
-│   ├── modules
-│   │   └── divi-4-module-name
-│   │       └── Divi4Module.php
+│   ├── build -- (Divi 4 Visual Builder build output)
+│   │   └── d5-extension-example-modules-divi4.js
+│   ├── modules
+│   │   ├── Divi4Module
+│   │   │   └── Divi4Module.php
+│   │   └── Divi4OnlyModule
+│   │       └── Divi4OnlyModule.php
+│   ├── src -- (Divi 4 Visual Builder components)
+│   │   ├── components
+│   │   │   ├── divi4-module
+│   │   │   │   └── index.jsx
+│   │   │   └── divi4-only-module
+│   │   │       └── index.jsx
+│   │   └── index.js
+│   ├── package.json
+│   └── webpack.config.js
 ├── modules
-│   └── ModuleName
-|   |   ├── ModuleNameTrait
-│   │   │   ├── CustomCssTrait.php
-│   │   │   ├── ModuleClassnamesTrait.php
-│   │   │   ├── ModuleScriptDataTrait.php
-│   │   │   ├── ModuleStylesTrait.php
-│   │   │   └── RenderCallbackTrait.php
-│   │   └── ModuleName.php
-│   └── Modules.php
-├── scripts -- (build scripts)
-├── src
-│   ├── components
-│   │   └── module-name
-│   │       ├── __mock-data__
-│   │       │   └── attrs.ts
-│   │       │   └── shortcodes.ts -- (for converted modules from Divi 4 module)
-│   │       ├── __tests__
-│   │       │   ├── __snapshots__
-│   │       │   │   └── edit.tsx.snap
-│   │       │   └── conversion.ts -- (for converted modules from Divi 4 module)
-│   │       │   └── edit.tsx
-│   │       ├── custom-css.ts
-│   │       ├── edit.tsx
-│   │       ├── index.ts
-│   │       ├── module.json
-│   │       ├── module.scss
-│   │       ├── placeholder-content.ts
-│   │       ├── settings-advanced.tsx
-│   │       ├── settings-content.tsx
-│   │       ├── settings-design.tsx
-│   │       ├── style.scss
-│   │       ├── styles.tsx
-│   │       └── types.ts
-|   ├── icons
-|   |   ├── icon-name
-|   |   |   └── index.tsx
-│   │   └── index.ts
-│   ├── index.ts
-│   └── module-icons.ts
+│   └── ModuleName
+│   │   ├── ModuleNameTrait
+│   │   │   ├── CustomCssTrait.php
+│   │   │   ├── ModuleClassnamesTrait.php
+│   │   │   ├── ModuleScriptDataTrait.php
+│   │   │   ├── ModuleStylesTrait.php
+│   │   │   └── RenderCallbackTrait.php
+│   │   └── ModuleName.php
+│   └── Modules.php
+├── scripts -- (Divi 5 build scripts)
+├── src -- (Divi 5 Visual Builder components)
+│   ├── components
+│   │   └── module-name
+│   │       ├── __mock-data__
+│   │       │   └── attrs.ts
+│   │       │   └── shortcodes.ts -- (for converted modules from Divi 4 module)
+│   │       ├── __tests__
+│   │       │   ├── __snapshots__
+│   │       │   │   └── edit.tsx.snap
+│   │       │   └── conversion.ts -- (for converted modules from Divi 4 module)
+│   │       │   └── edit.tsx
+│   │       ├── custom-css.ts
+│   │       ├── edit.tsx
+│   │       ├── index.ts
+│   │       ├── module.json
+│   │       ├── module.scss
+│   │       ├── placeholder-content.ts
+│   │       ├── settings-advanced.tsx
+│   │       ├── settings-content.tsx
+│   │       ├── settings-design.tsx
+│   │       ├── style.scss
+│   │       ├── styles.tsx
+│   │       └── types.ts
+│   ├── icons
+│   │   ├── icon-name
+│   │   │   └── index.tsx
+│   │   └── index.ts
+│   ├── index.ts
+│   └── module-icons.ts
 ├── d5-extension-example-modules.php
 ├── gulpfile.js
 ├── package.json
