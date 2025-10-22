@@ -1,0 +1,30 @@
+{
+  "_comment": "Default printed style attributes for static module",
+  "module": {
+    "decoration": {
+      "background": {
+        "desktop": {
+          "value": {
+            "color": "#ecf4f7"
+          }
+        }
+      }
+    }
+  },
+  "title": {
+    "decoration": {
+      "font": {
+        "font": {
+          "desktop": {
+            "value": {
+              "size": "26px",
+              "lineHeight": "1em",
+              "weight": "500"
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
