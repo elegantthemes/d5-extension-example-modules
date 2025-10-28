@@ -8,7 +8,7 @@ const files = [
     '!**/.*/**', // Hidden files/dirs on Mac/Linux
     '!**/__*/**', // Hidden dirs on Mac
     '!.yarn/**',
-    '!node_modules/**',
+    '!**/node_modules/**',
     '!src/**',
     '!test-config/**',
     '!storybook-assets/**',
