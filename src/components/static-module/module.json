@@ -94,7 +94,7 @@
     "image": {
       "type": "object",
       "selector": "{{selector}} .example_static_module__image img",
-      "elementType": "image",
+      "elementType": "imageLink",
       "supportsCustomAttributes": true,
       "styleProps": {
         "border": {
