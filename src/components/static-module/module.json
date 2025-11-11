@@ -31,6 +31,7 @@
           }
         },
         "decoration": {
+          "attributes": {},
           "spacing": {
             "desktop": {
               "value": {
@@ -71,6 +72,7 @@
           "htmlAttributes": {}
         },
         "decoration": {
+          "attributes": {},
           "background": {},
           "sizing": {},
           "spacing": {},
@@ -92,6 +94,8 @@
     "image": {
       "type": "object",
       "selector": "{{selector}} .example_static_module__image img",
+      "elementType": "image",
+      "supportsCustomAttributes": true,
       "styleProps": {
         "border": {
           "important": true
@@ -103,9 +107,10 @@
           "items": {
             "src": {
               "groupSlug": "contentImage",
+              "attrName": "image.innerContent",
+              "subName": "src",
               "priority": 10,
               "render": true,
-              "subName": "src",
               "label": "Image",
               "description": "Upload an Image",
               "features": {
@@ -114,12 +119,21 @@
               },
               "component": {
                 "name": "divi/upload",
-                "type": "field"
+                "type": "field",
+                "props": {
+                  "syncImageData": {
+                    "src": true,
+                    "id": true,
+                    "alt": true,
+                    "titleText": true
+                  }
+                }
               }
             }
           }
         },
         "decoration": {
+          "attributes": {},
           "border": {
             "groupType": "group-item",
             "item": {
