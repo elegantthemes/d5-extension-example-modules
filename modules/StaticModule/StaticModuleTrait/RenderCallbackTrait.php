@@ -34,11 +34,22 @@ trait RenderCallbackTrait {
 	 * @return string HTML rendered of Static module.
 	 */
 	public static function render_callback( $attrs, $content, $block, $elements ) {
-		// Image - render using elements->render() with imageWrapperClassName.
-		$image = $elements->render(
+		// Image - render using elements->render() and wrap in div with class.
+		$image_html = $elements->render(
 			[
-				'attrName'              => 'image',
-				'imageWrapperClassName' => 'example_static_module__image',
+				'attrName' => 'image',
+			]
+		);
+
+		// Image container.
+		$image = HTMLUtility::render(
+			[
+				'tag'               => 'div',
+				'attributes'        => [
+					'class' => 'example_static_module__image',
+				],
+				'childrenSanitizer' => 'et_core_esc_previously',
+				'children'          => $image_html,
 			]
 		);
 

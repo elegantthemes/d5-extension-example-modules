@@ -41,10 +41,11 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
         attrName: 'module',
       })}
       <div className="example_static_module__inner">
-        {elements.render({
-          attrName:              'image',
-          imageWrapperClassName: 'example_static_module__image',
-        })}
+        <div className="example_static_module__image">
+          {elements.render({
+            attrName: 'image',
+          })}
+        </div>
         <div className="example_static_module__content-container">
           {elements.render({
             attrName: 'title',
