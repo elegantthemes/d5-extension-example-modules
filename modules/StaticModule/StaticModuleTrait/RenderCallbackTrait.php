@@ -53,17 +53,17 @@ trait RenderCallbackTrait {
 			]
 		);
 
-		// Summary.
-		$summary = $elements->render(
-			[
-				'attrName' => 'summary',
-			]
-		);
-
 		// Title.
 		$title = $elements->render(
 			[
 				'attrName' => 'title',
+			]
+		);
+
+		// Summary.
+		$summary = $elements->render(
+			[
+				'attrName' => 'summary',
 			]
 		);
 
