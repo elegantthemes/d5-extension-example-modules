@@ -13,7 +13,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use ET\Builder\Framework\DependencyManagement\Interfaces\DependencyInterface;
+use ET\Builder\Framework\Route\RESTRoute;
 use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
+use MEE\Modules\StaticModule\StaticModuleTrait\StaticModuleRESTController;
 
 
 /**
@@ -46,6 +48,18 @@ class StaticModule implements DependencyInterface {
 					$module_json_folder_path,
 					[
 						'render_callback' => [ StaticModule::class, 'render_callback' ],
+					]
+				);
+
+				// Register REST API endpoint for Visual Builder.
+				// Note: RESTRoute::post() already handles rest_api_init internally.
+				$route = new RESTRoute( 'divi/v1' );
+				$route->prefix( '/module-data' )->post(
+					'/static-module/html',
+					[
+						'args'                => [ StaticModuleRESTController::class, 'index_args' ],
+						'callback'            => [ StaticModuleRESTController::class, 'index' ],
+						'permission_callback' => [ StaticModuleRESTController::class, 'index_permission' ],
 					]
 				);
 			}

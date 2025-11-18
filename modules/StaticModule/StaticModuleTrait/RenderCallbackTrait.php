@@ -18,96 +18,138 @@ use ET\Builder\Packages\Module\Module;
 use ET\Builder\Framework\Utility\HTMLUtility;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
 use ET\Builder\Packages\Module\Options\Element\ElementComponents;
+use ET\Builder\FrontEnd\Assets\StaticCSS;
+use ET\Builder\FrontEnd\Page;
+use ET\Builder\Packages\Shortcode\ShortcodeUtils;
+use ET_Post_Stack;
+use ET_Theme_Builder_Layout;
 use MEE\Modules\StaticModule\StaticModule;
 
 trait RenderCallbackTrait {
 
 	/**
-	 * Static module render callback which outputs server side rendered HTML on the Front-End.
+	 * Render callback: Programmatically render library layout (Issue #46433).
 	 *
 	 * @since ??
-	 * @param array          $attrs    Block attributes that were saved by VB.
+	 * @param array          $attrs    Block attributes.
 	 * @param string         $content  Block content.
-	 * @param WP_Block       $block    Parsed block object that being rendered.
+	 * @param WP_Block       $block    Parsed block object.
 	 * @param ModuleElements $elements ModuleElements instance.
 	 *
-	 * @return string HTML rendered of Static module.
+	 * @return string HTML rendered layout.
 	 */
 	public static function render_callback( $attrs, $content, $block, $elements ) {
-		// Image.
-		$image_src = $attrs['image']['innerContent']['desktop']['value']['src'] ?? '';
-		$image_alt = $attrs['image']['innerContent']['desktop']['value']['alt'] ?? '';
-		$image     = HTMLUtility::render(
-			[
-				'tag'                  => 'img',
-				'attributes'           => [
-					'src' => $image_src,
-					'alt' => $image_alt,
-				],
-				'attributesSanitizers' => [
-					'src' => function ( $value ) {
-						$protocols = array_merge( wp_allowed_protocols(), [ 'data' ] ); // Need to add `data` protocol for default image.
-						return esc_url( $value, $protocols );
-					},
-				],
-			]
-		);
+		// Test case: Render library layout programmatically for cache invalidation testing.
+		$layout_id = 1464;
 
-		// Image container.
-		$image_container = HTMLUtility::render(
-			[
-				'tag'               => 'div',
-				'attributes'        => [
-					'class' => 'example_static_module__image',
-				],
-				'childrenSanitizer' => 'et_core_esc_previously',
-				'children'          => $image,
-			]
-		);
+		$layout = get_post( $layout_id );
 
-		// Title.
-		$title = $elements->render(
-			[
-				'attrName' => 'title',
-			]
-		);
+		if ( null === $layout || 'et_pb_layout' !== $layout->post_type ) {
+			$error_message = HTMLUtility::render(
+				[
+					'tag'               => 'div',
+					'attributes'        => [
+						'class' => 'd5_test_programmatic_layout_error',
+					],
+					'childrenSanitizer' => 'esc_html',
+					'children'          => 'Layout ' . $layout_id . ' not found',
+				]
+			);
 
-		// Summary.
-		$summary = $elements->render(
-			[
-				'attrName' => 'summary',
-			]
-		);
+			$parent       = BlockParserStore::get_parent( $block->parsed_block['id'], $block->parsed_block['storeInstance'] );
+			$parent_attrs = $parent->attrs ?? [];
 
-		// Content.
-		$content = $elements->render(
-			[
-				'attrName' => 'content',
-			]
-		);
+			return Module::render(
+				[
+					'orderIndex'          => $block->parsed_block['orderIndex'],
+					'storeInstance'       => $block->parsed_block['storeInstance'],
+					'attrs'               => $attrs,
+					'elements'            => $elements,
+					'id'                  => $block->parsed_block['id'],
+					'name'                => $block->block_type->name,
+					'moduleCategory'      => $block->block_type->category,
+					'classnamesFunction'  => [ StaticModule::class, 'module_classnames' ],
+					'stylesComponent'     => [ StaticModule::class, 'module_styles' ],
+					'scriptDataComponent' => [ StaticModule::class, 'module_script_data' ],
+					'parentAttrs'         => $parent_attrs,
+					'parentId'            => $parent->id ?? '',
+					'parentName'          => $parent->blockName ?? '',
+					'children'            => [
+						ElementComponents::component(
+							[
+								'attrs'         => $attrs['module']['decoration'] ?? [],
+								'id'            => $block->parsed_block['id'],
+								'orderIndex'    => $block->parsed_block['orderIndex'],
+								'storeInstance' => $block->parsed_block['storeInstance'],
+							]
+						),
+						HTMLUtility::render(
+							[
+								'tag'               => 'div',
+								'attributes'        => [
+									'class' => 'example_static_module__inner',
+								],
+								'childrenSanitizer' => 'et_core_esc_previously',
+								'children'          => $error_message,
+							]
+						),
+					],
+				]
+			);
+		}
 
-		// Content container.
-		$content_container = HTMLUtility::render(
-			[
-				'tag'               => 'div',
-				'attributes'        => [
-					'class' => 'example_static_module__content-container',
-				],
-				'childrenSanitizer' => 'et_core_esc_previously',
-				'children'          => $title . $summary . $content,
-			]
-		);
+		// Begin theme builder layout context.
+		ET_Theme_Builder_Layout::begin_theme_builder_layout( $layout_id );
+		ET_Post_Stack::replace( $layout );
+
+		$post_content = get_the_content();
+		ShortcodeUtils::wrap_shortcodes_for_theme_builder();
+
+		// Render layout content.
+		$layout_content = '';
+		try {
+			$layout_content = et_builder_render_layout( $post_content );
+		} finally {
+			ShortcodeUtils::unwrap_shortcodes_for_theme_builder();
+			ET_Post_Stack::restore();
+			ET_Theme_Builder_Layout::end_theme_builder_layout();
+		}
+
+		// Generate CSS on frontend only (VB handles CSS differently).
+		if ( ! et_core_is_fb_enabled() ) {
+			$has_dynamic_content = et_builder_frontend_get_dynamic_contents( $post_content );
+
+			if ( is_singular() ) {
+				$result = StaticCSS::setup_styles_manager( ET_Post_Stack::get_main_post_id() );
+			} elseif ( is_tax() && ! empty( $has_dynamic_content ) ) {
+				$result = StaticCSS::setup_styles_manager( 0 );
+			} else {
+				$result = StaticCSS::setup_styles_manager( $layout->ID );
+			}
+
+			$styles_manager          = $result['manager'];
+			$deferred_styles_manager = $result['deferred'] ?? null;
+
+			if ( StaticCSS::$forced_inline_styles || ! $styles_manager->has_file() || $styles_manager->forced_inline ) {
+				$custom = Page::custom_css( $layout->ID );
+				StaticCSS::style_output(
+					[
+						'styles_manager'          => $styles_manager,
+						'deferred_styles_manager' => $deferred_styles_manager,
+						'custom'                  => $custom,
+						'element_id'              => $layout_id,
+					]
+				);
+			}
+		}
 
 		$parent       = BlockParserStore::get_parent( $block->parsed_block['id'], $block->parsed_block['storeInstance'] );
 		$parent_attrs = $parent->attrs ?? [];
 
 		return Module::render(
 			[
-				// FE only.
 				'orderIndex'          => $block->parsed_block['orderIndex'],
 				'storeInstance'       => $block->parsed_block['storeInstance'],
-
-				// VB equivalent.
 				'attrs'               => $attrs,
 				'elements'            => $elements,
 				'id'                  => $block->parsed_block['id'],
@@ -124,8 +166,6 @@ trait RenderCallbackTrait {
 						[
 							'attrs'         => $attrs['module']['decoration'] ?? [],
 							'id'            => $block->parsed_block['id'],
-
-							// FE only.
 							'orderIndex'    => $block->parsed_block['orderIndex'],
 							'storeInstance' => $block->parsed_block['storeInstance'],
 						]
@@ -134,10 +174,10 @@ trait RenderCallbackTrait {
 						[
 							'tag'               => 'div',
 							'attributes'        => [
-								'class' => 'example_static_module__inner',
+								'class' => 'example_static_module__inner d5_programmatic_layout_content',
 							],
 							'childrenSanitizer' => 'et_core_esc_previously',
-							'children'          => $image_container . $content_container,
+							'children'          => et_core_intentionally_unescaped( $layout_content, 'html' ),
 						]
 					),
 				],
