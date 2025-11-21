@@ -119,3 +119,32 @@ function d5_extension_example_module_enqueue_frontend_scripts() {
 	wp_enqueue_style( 'd5-extension-example-modules-builder-bundle-style', "{$plugin_dir_url}styles/bundle.css", array(), '1.0.0' );
 }
 add_action( 'wp_enqueue_scripts', 'd5_extension_example_module_enqueue_frontend_scripts' );
+
+/**
+ * Ensure library layouts used programmatically clear all caches when saved.
+ *
+ * This filter demonstrates how to use the cache clearing filter for layouts
+ * that are rendered programmatically. When the layout used by StaticModule
+ * (ID 1464) is saved, all caches are cleared to ensure fresh CSS is served.
+ *
+ * @since ??
+ * @param string|int $post_id The post ID to use for cache clearing.
+ * @param WP_Post    $post    The post object being saved.
+ * @param bool       $update  Whether this is an existing post being updated.
+ *
+ * @return string|int The post ID to use for cache clearing.
+ */
+function d5_extension_example_module_clear_all_caches_for_programmatic_layouts( $post_id, $post, $update ) {
+	// The StaticModule renders layout ID 1464 programmatically.
+	// When that specific layout is saved, clear all caches to ensure
+	// pages rendering it programmatically get fresh CSS.
+	error_log( 'd5_extension_example_module_clear_all_caches_for_programmatic_layouts' );
+	$programmatic_layout_id = 1464;
+
+	if ( 'et_pb_layout' === $post->post_type && absint( $post->ID ) === $programmatic_layout_id && 'all' !== $post_id ) {
+		return 'all';
+	}
+
+	return $post_id;
+}
+add_filter( 'et_core_page_resource_post_id_before_clear', 'd5_extension_example_module_clear_all_caches_for_programmatic_layouts', 5, 3 );
