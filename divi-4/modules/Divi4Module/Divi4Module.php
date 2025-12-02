@@ -12,6 +12,9 @@ class D4_Module extends ET_Builder_Module {
 	// Visual Builder support (off|partial|on)
 	public $vb_support = 'on';
 
+	// Module icon path.
+	public $icon_path;
+
 	/**
 	 * Module properties initialization
 	 *
@@ -140,7 +143,7 @@ class D4_Module extends ET_Builder_Module {
 	 *
 	 * @return string module's rendered output
 	 */
-	function render( $attrs, $content = null, $render_slug ) {
+	function render( $attrs, $content, $render_slug ) {
 		// Module specific props added on $this->get_fields()
 		$title        = $this->props['title'];
 		$header_level = et_pb_process_header_level( $this->props['header_level'], 'h2' );
@@ -153,7 +156,7 @@ class D4_Module extends ET_Builder_Module {
 			</div>',
 			$header_level,
 			esc_html( $title ),
-			et_sanitized_previously( $this->content )
+			et_core_esc_previously( $this->content )
 		);
 
 		return $output;
