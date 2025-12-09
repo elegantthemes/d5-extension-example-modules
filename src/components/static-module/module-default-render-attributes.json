@@ -1,0 +1,58 @@
+{
+  "_comment": "Testing separated default render attributes for 3rd party modules",
+  "module": {
+    "meta": {
+      "adminLabel": {
+        "desktop": {
+          "value": "Static Module"
+        }
+      }
+    },
+    "advanced": {
+      "text": {
+        "text": {
+          "desktop": {
+            "value": {
+              "color": "light"
+            }
+          }
+        }
+      }
+    },
+    "decoration": {
+      "spacing": {
+        "desktop": {
+          "value": {
+            "padding": {
+              "top": "30px",
+              "right": "30px",
+              "bottom": "30px",
+              "left": "30px"
+            }
+          }
+        }
+      }
+    }
+  },
+  "title": {
+    "decoration": {
+      "font": {
+        "font": {
+          "desktop": {
+            "value": {
+              "headingLevel": "h2"
+            }
+          }
+        }
+      }
+    }
+  },
+  "summary": {
+    "innerContent": {
+      "desktop": {
+        "value": "This is a brief summary that provides an overview of the content below. It can span multiple lines to give readers a comprehensive understanding of what to expect in the main content section."
+      }
+    }
+  }
+}
+

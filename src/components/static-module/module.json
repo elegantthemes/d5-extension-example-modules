@@ -11,52 +11,6 @@
     "module": {
       "type": "object",
       "selector": "{{selector}}",
-      "default": {
-        "meta": {
-          "adminLabel": {
-            "desktop": {
-              "value": "Static Module"
-            }
-          }
-        },
-        "advanced": {
-          "text": {
-            "text": {
-              "desktop": {
-                "value": {
-                  "color": "light"
-                }
-              }
-            }
-          }
-        },
-        "decoration": {
-          "attributes": {},
-          "spacing": {
-            "desktop": {
-              "value": {
-                "margin": {
-                  "top":    "0px",
-                  "right":  "auto",
-                  "bottom": "30px",
-                  "left":   "auto"
-                }
-              }
-            }
-          }
-        }
-      },
-      "defaultPrintedStyle": {
-        "decoration": {
-          "background": {
-            "desktop": {
-              "value": {
-                "color": "#ecf4f7"
-              }
-            }
-          }
-        }
-      },
       "styleProps": {
         "border": {
           "important": true
@@ -200,34 +154,6 @@
     "title": {
       "type": "object",
       "selector": "{{selector}} .example_static_module__title",
-      "default": {
-        "decoration": {
-          "font": {
-            "font": {
-              "desktop": {
-                "value": {
-                  "headingLevel": "h2"
-                }
-              }
-            }
-          }
-        }
-      },
-      "defaultPrintedStyle": {
-        "decoration": {
-          "font": {
-            "font": {
-              "desktop": {
-                "value": {
-                  "size": "26px",
-                  "lineHeight": "1em",
-                  "weight": "500"
-                }
-              }
-            }
-          }
-        }
-      },
       "styleProps": {
         "font": {
           "important": {
@@ -295,13 +221,6 @@
       },
       "inlineEditor": "plainText",
       "childrenSanitizer": "et_core_esc_previously",
-      "default": {
-        "innerContent": {
-          "desktop": {
-            "value": "This is a brief summary that provides an overview of the content below. It can span multiple lines to give readers a comprehensive understanding of what to expect in the main content section."
-          }
-        }
-      },
       "settings": {
         "innerContent": {
           "groupType": "group-item",

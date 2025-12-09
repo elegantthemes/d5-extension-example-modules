@@ -81,18 +81,18 @@ trait RenderCallbackTrait {
 				'attributes'        => [
 					'class' => 'example_static_module__content-container',
 				],
-				'childrenSanitizer' => 'et_core_esc_previously',
-				'children'          => $title . $summary . HTMLUtility::render(
-					[
-						'tag'               => 'div',
-						'attributes'        => [
-							'class' => 'example_static_module__content',
-						],
-						'childrenSanitizer' => 'et_core_esc_previously',
-						'children'          => $content,
-					]
-				),
-			]
+			'childrenSanitizer' => 'et_core_esc_previously',
+			'children'          => $title . $summary . HTMLUtility::render(
+				[
+					'tag'               => 'div',
+					'attributes'        => [
+						'class' => 'example_static_module__content',
+					],
+					'childrenSanitizer' => 'et_core_esc_previously',
+					'children'          => $content,
+				]
+			),
+		]
 		);
 
 		$parent       = BlockParserStore::get_parent( $block->parsed_block['id'], $block->parsed_block['storeInstance'] );
