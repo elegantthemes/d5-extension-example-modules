@@ -78,18 +78,6 @@ trait ModuleScriptDataTrait {
 						'sanitizer'     => 'et_core_esc_previously',
 					],
 				],
-				'setAttrs'      => [
-					[
-						'selector'      => $selector . ' .example_static_module__image img',
-						'data'          => [
-							'src' => $attrs['image']['innerContent'] ?? [],
-						],
-						'valueResolver' => function( $value ) {
-							return $value['src'] ?? '';
-						},
-						'tag'           => 'img',
-					],
-				],
 			]
 		);
 	}
