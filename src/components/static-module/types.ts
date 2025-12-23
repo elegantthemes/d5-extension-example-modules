@@ -50,7 +50,13 @@ export interface StaticModuleAttrs extends InternalAttrs {
       'transform' |
       'transition' |
       'zIndex'
-    >;
+    > & {
+      // Custom Attributes are stored at module.decoration.attributes
+      // Using intersection type because @divi/types may not include 'attributes' in PickedAttributes yet
+      // TODO: The Divi types library may need to be updated to properly export Element.Decoration.Attributes.Attributes
+      // For now using 'any' - the actual structure matches FormatBreakpointStateAttr<{ attributes: AttributeItem[] }>
+      attributes?: any;
+    };
   };
 
   image?: {
@@ -60,7 +66,13 @@ export interface StaticModuleAttrs extends InternalAttrs {
     'boxShadow' |
     'filters' |
     'spacing'
-    >;
+    > & {
+      // Custom Attributes are stored at image.decoration.attributes
+      // Using intersection type because @divi/types may not include 'attributes' in PickedAttributes yet
+      // TODO: The Divi types library may need to be updated to properly export Element.Decoration.Attributes.Attributes
+      // For now using 'any' - the actual structure matches FormatBreakpointStateAttr<{ attributes: AttributeItem[] }>
+      attributes?: any;
+    };
   };
 
   // Title
