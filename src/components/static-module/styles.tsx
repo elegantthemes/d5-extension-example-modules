@@ -7,6 +7,7 @@ import {
   StylesProps,
   CssStyle,
   TextStyle,
+  CommonStyle,
 } from '@divi/module';
 
 // Local dependencies.
@@ -67,6 +68,22 @@ export const ModuleStyles = ({
       {/* Content */}
       {elements.style({
         attrName: 'content',
+      })}
+
+      {/* Badge */}
+      {elements.style({
+        attrName: 'badge',
+        styleProps: {
+          advancedStyles: [
+            {
+              componentName: 'divi/common',
+              props: {
+                attr: attrs?.badge?.decoration?.color,
+                property: 'color',
+              },
+            },
+          ],
+        },
       })}
 
       {/*

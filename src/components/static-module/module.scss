@@ -15,6 +15,21 @@
         flex: 0 0 50%;
         max-width: 50%;
         padding-right: 20px;
+        position: relative;
+    }
+
+    &__badge {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        padding: 6px 12px;
+        background-color: #007cba;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        z-index: 1;
     }
 
     &__content-container {

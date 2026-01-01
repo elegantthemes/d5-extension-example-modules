@@ -53,6 +53,13 @@ trait RenderCallbackTrait {
 			]
 		);
 
+		// Badge.
+		$badge = $elements->render(
+			[
+				'attrName' => 'badge',
+			]
+		);
+
 		// Image container.
 		$image_container = HTMLUtility::render(
 			[
@@ -61,7 +68,7 @@ trait RenderCallbackTrait {
 					'class' => 'example_static_module__image',
 				],
 				'childrenSanitizer' => 'et_core_esc_previously',
-				'children'          => $image,
+				'children'          => $image . $badge,
 			]
 		);
 
