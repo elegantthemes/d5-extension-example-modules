@@ -1,17 +1,16 @@
 // External dependencies.
-import React, {ReactElement} from 'react';
+import React, { ReactElement } from 'react';
 
 // Divi dependencies.
 import {
   StyleContainer,
   StylesProps,
   CssStyle,
-  TextStyle,
 } from '@divi/module';
 
 // Local dependencies.
-import {StaticModuleAttrs} from './types';
-import {cssFields} from './custom-css';
+import { StaticModuleAttrs } from './types';
+import { cssFields } from './custom-css';
 
 /**
  * Static Module's style components.
@@ -67,6 +66,22 @@ export const ModuleStyles = ({
       {/* Content */}
       {elements.style({
         attrName: 'content',
+      })}
+
+      {/* Badge */}
+      {elements.style({
+        attrName: 'badge',
+        styleProps: {
+          advancedStyles: [
+            {
+              componentName: 'divi/common',
+              props: {
+                attr: attrs?.badge?.decoration?.color,
+                property: 'color',
+              },
+            },
+          ],
+        },
       })}
 
       {/*

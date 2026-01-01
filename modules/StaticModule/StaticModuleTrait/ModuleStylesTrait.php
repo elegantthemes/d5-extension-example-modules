@@ -99,6 +99,24 @@ trait ModuleStylesTrait {
 						]
 					),
 
+					// Badge.
+					$elements->style(
+						[
+							'attrName'   => 'badge',
+							'styleProps' => [
+								'advancedStyles' => [
+									[
+										'componentName' => 'divi/common',
+										'props'         => [
+											'attr'     => $attrs['badge']['decoration']['color'] ?? [],
+											'property' => 'color',
+										],
+									],
+								],
+							],
+						]
+					),
+
 					/*
 					 * We need to add CssStyle at the very bottom of other
 					 * components so that custom css can override module styles

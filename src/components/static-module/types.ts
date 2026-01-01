@@ -18,6 +18,7 @@ export interface StaticModuleCssAttr extends Module.Css.AttributeValue {
   summary?: string;
   content?: string;
   image?: string;
+  badge?: string;
 }
 
 export type StaticModuleCssGroupAttr = FormatBreakpointStateAttr<StaticModuleCssAttr>;
@@ -83,6 +84,14 @@ export interface StaticModuleAttrs extends InternalAttrs {
 
   // Content
   content?: Element.Types.Content.Attributes;
+
+  // Badge
+  badge?: {
+    innerContent?: Element.Types.Title.InnerContent.Attributes;
+    decoration?: {
+      color?: Element.Decoration.Color.Attributes;
+    };
+  };
 }
 
 export type StaticModuleEditProps = ModuleEditProps<StaticModuleAttrs>;
