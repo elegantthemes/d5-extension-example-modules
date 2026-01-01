@@ -34,22 +34,10 @@ trait RenderCallbackTrait {
 	 * @return string HTML rendered of Static module.
 	 */
 	public static function render_callback( $attrs, $content, $block, $elements ) {
-		// Image.
-		$image_src = $attrs['image']['innerContent']['desktop']['value']['src'] ?? '';
-		$image_alt = $attrs['image']['innerContent']['desktop']['value']['alt'] ?? '';
-		$image     = HTMLUtility::render(
+		// Image - render using elements->render() and wrap in div with class.
+		$image_html = $elements->render(
 			[
-				'tag'                  => 'img',
-				'attributes'           => [
-					'src' => $image_src,
-					'alt' => $image_alt,
-				],
-				'attributesSanitizers' => [
-					'src' => function ( $value ) {
-						$protocols = array_merge( wp_allowed_protocols(), [ 'data' ] ); // Need to add `data` protocol for default image.
-						return esc_url( $value, $protocols );
-					},
-				],
+				'attrName' => 'image',
 			]
 		);
 
@@ -61,14 +49,15 @@ trait RenderCallbackTrait {
 		);
 
 		// Image container.
-		$image_container = HTMLUtility::render(
+		$image = HTMLUtility::render(
 			[
 				'tag'               => 'div',
 				'attributes'        => [
 					'class' => 'example_static_module__image',
 				],
 				'childrenSanitizer' => 'et_core_esc_previously',
-				'children'          => $image . $badge,
+				'children'          => $image_html . $badge,
+				'children'          => $image_html,
 			]
 		);
 
@@ -100,9 +89,18 @@ trait RenderCallbackTrait {
 				'attributes'        => [
 					'class' => 'example_static_module__content-container',
 				],
-				'childrenSanitizer' => 'et_core_esc_previously',
-				'children'          => $title . $summary . $content,
-			]
+			'childrenSanitizer' => 'et_core_esc_previously',
+			'children'          => $title . $summary . HTMLUtility::render(
+				[
+					'tag'               => 'div',
+					'attributes'        => [
+						'class' => 'example_static_module__content',
+					],
+					'childrenSanitizer' => 'et_core_esc_previously',
+					'children'          => $content,
+				]
+			),
+		]
 		);
 
 		$parent       = BlockParserStore::get_parent( $block->parsed_block['id'], $block->parsed_block['storeInstance'] );
@@ -144,7 +142,7 @@ trait RenderCallbackTrait {
 								'class' => 'example_static_module__inner',
 							],
 							'childrenSanitizer' => 'et_core_esc_previously',
-							'children'          => $image_container . $content_container,
+							'children'          => $image . $content_container,
 						]
 					),
 				],
