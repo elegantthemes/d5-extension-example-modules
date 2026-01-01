@@ -45,6 +45,7 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
 
           {elements.render({
             attrName: 'badge',
+          })}
           {elements.render({
             attrName: 'image',
           })}
