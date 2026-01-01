@@ -1,18 +1,16 @@
 // External dependencies.
-import React, {ReactElement} from 'react';
+import React, { ReactElement } from 'react';
 
 // Divi dependencies.
 import {
   StyleContainer,
   StylesProps,
   CssStyle,
-  TextStyle,
-  CommonStyle,
 } from '@divi/module';
 
 // Local dependencies.
-import {StaticModuleAttrs} from './types';
-import {cssFields} from './custom-css';
+import { StaticModuleAttrs } from './types';
+import { cssFields } from './custom-css';
 
 /**
  * Static Module's style components.

@@ -63,9 +63,7 @@
     "decoration": {
       "color": {
         "desktop": {
-          "value": {
-            "color": "#ffffff"
-          }
+          "value": "#ffffff"
         }
       }
     }
