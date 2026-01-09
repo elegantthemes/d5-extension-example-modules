@@ -16,7 +16,6 @@ use ET\Builder\FrontEnd\Module\Style;
 use ET\Builder\Packages\Module\Options\Text\TextStyle;
 use ET\Builder\Packages\Module\Options\Css\CssStyle;
 use ET\Builder\Packages\Module\Layout\Components\StyleCommon\CommonStyle;
-use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
 use MEE\Modules\ChildModule\ChildModule;
 
 trait ModuleStylesTrait {
@@ -53,9 +52,6 @@ trait ModuleStylesTrait {
 		$elements     = $args['elements'];
 		$settings     = $args['settings'] ?? [];
 		$parent_attrs = $args['parentAttrs'] ?? [];
-
-		$parent_default_attributes = ModuleRegistration::get_default_attrs( 'example/parent-module' );
-		$parent_attrs_with_default = array_replace_recursive( $parent_default_attributes, $parent_attrs );
 
 		$content_container_selector = "{$order_class} .example_child_module__content-container";
 
@@ -110,21 +106,21 @@ trait ModuleStylesTrait {
 									[
 										'componentName' => 'divi/common',
 										'props'         => [
-											'attr'                => $attrs['icon']['innerContent'] ?? $parent_attrs_with_default['icon']['innerContent'] ?? [],
+											'attr'                => $attrs['icon']['innerContent'] ?? $parent_attrs['icon']['innerContent'] ?? [],
 											'declarationFunction' => [ChildModule::class, 'icon_font_declaration'],
 										]
 									],
 									[
 										'componentName' => 'divi/common',
 										'props'         => [
-											'attr'     => $attrs['icon']['advanced']['color'] ?? $parent_attrs_with_default['icon']['advanced']['color'] ?? [],
+											'attr'     => $attrs['icon']['advanced']['color'] ?? $parent_attrs['icon']['advanced']['color'] ?? [],
 											'property' => 'color',
 										]
 									],
 									[
 										'componentName' => 'divi/common',
 										'props'         => [
-											'attr'     => $attrs['icon']['advanced']['size'] ?? $parent_attrs_with_default['icon']['advanced']['size'] ?? [],
+											'attr'     => $attrs['icon']['advanced']['size'] ?? $parent_attrs['icon']['advanced']['size'] ?? [],
 											'property' => 'font-size',
 										]
 									],
