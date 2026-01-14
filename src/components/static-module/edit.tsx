@@ -42,6 +42,10 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
       })}
       <div className="example_static_module__inner">
         <div className="example_static_module__image">
+
+          {elements.render({
+            attrName: 'badge',
+          })}
           {elements.render({
             attrName: 'image',
           })}
