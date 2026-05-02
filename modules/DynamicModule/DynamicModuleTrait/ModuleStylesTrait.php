@@ -13,7 +13,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 use ET\Builder\FrontEnd\Module\Style;
-use ET\Builder\Packages\Module\Options\Text\TextStyle;
+use ET\Builder\Packages\Module\Options\Css\CssStyle;
+use MEE\Modules\DynamicModule\DynamicModule;
 
 trait ModuleStylesTrait {
 
@@ -83,6 +84,19 @@ trait ModuleStylesTrait {
 					$elements->style(
 						[
 							'attrName' => 'postTitle',
+						]
+					),
+
+					/*
+					 * We need to add CssStyle at the very bottom of other
+					 * components so that custom css can override module styles
+					 * till we find a more elegant solution.
+					 */
+					CssStyle::style(
+						[
+							'selector'  => $args['orderClass'],
+							'attr'      => $attrs['css'] ?? [],
+							'cssFields' => DynamicModule::custom_css(),
 						]
 					),
 
