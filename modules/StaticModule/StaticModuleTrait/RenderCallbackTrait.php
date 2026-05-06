@@ -14,10 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
-use ET\Builder\Packages\Module\Module;
-use ET\Builder\Framework\Utility\HTMLUtility;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
-use ET\Builder\Packages\Module\Options\Element\ElementComponents;
+use ET\Builder\Framework\Utility\HTMLUtility;
+use ET\Builder\Packages\Module\Module;
+use ET\Builder\Packages\ModuleUtils\ChildrenUtils;
 use MEE\Modules\StaticModule\StaticModule;
 
 trait RenderCallbackTrait {
@@ -26,14 +26,20 @@ trait RenderCallbackTrait {
 	 * Static module render callback which outputs server side rendered HTML on the Front-End.
 	 *
 	 * @since ??
-	 * @param array          $attrs    Block attributes that were saved by VB.
-	 * @param string         $content  Block content.
-	 * @param WP_Block       $block    Parsed block object that being rendered.
-	 * @param ModuleElements $elements ModuleElements instance.
+	 * @param array          $attrs                       Block attributes that were saved by VB.
+	 * @param string         $content                     Rendered inner blocks (Elements children).
+	 * @param \WP_Block      $block                       Parsed block object that being rendered.
+	 * @param \ET\Builder\Packages\Module\Layout\Components\ModuleElements\ModuleElements $elements ModuleElements instance.
+	 * @param array          $_default_printed_style_attrs Optional. Passed by ModuleRegistration.
 	 *
 	 * @return string HTML rendered of Static module.
 	 */
-	public static function render_callback( $attrs, $content, $block, $elements ) {
+	public static function render_callback( $attrs, $content, $block, $elements, $_default_printed_style_attrs = [] ) {
+		$inner_blocks_html = $content;
+
+		// Extract child module IDs from the block's innerBlocks.
+		$children_ids = ChildrenUtils::extract_children_ids( $block );
+
 		// Image - render using elements->render() and wrap in div with class.
 		$image_html = $elements->render(
 			[
@@ -74,8 +80,8 @@ trait RenderCallbackTrait {
 			]
 		);
 
-		// Content.
-		$content = $elements->render(
+		// Main body field (must not reuse $content — that holds rendered Elements / inner blocks from WordPress).
+		$richtext_content = $elements->render(
 			[
 				'attrName' => 'content',
 			]
@@ -96,7 +102,7 @@ trait RenderCallbackTrait {
 							'class' => 'example_static_module__content',
 						],
 						'childrenSanitizer' => 'et_core_esc_previously',
-						'children'          => $content,
+						'children'          => $richtext_content,
 					]
 				),
 			]
@@ -123,15 +129,11 @@ trait RenderCallbackTrait {
 				'parentAttrs'         => $parent_attrs,
 				'parentId'            => $parent->id ?? '',
 				'parentName'          => $parent->blockName ?? '',
+				'childrenIds'         => $children_ids,
 				'children'            => [
-					ElementComponents::component(
+					$elements->style_components(
 						[
-							'attrs'         => $attrs['module']['decoration'] ?? [],
-							'id'            => $block->parsed_block['id'],
-
-							// FE only.
-							'orderIndex'    => $block->parsed_block['orderIndex'],
-							'storeInstance' => $block->parsed_block['storeInstance'],
+							'attrName' => 'module',
 						]
 					),
 					HTMLUtility::render(
@@ -144,6 +146,7 @@ trait RenderCallbackTrait {
 							'children'          => $image . $content_container,
 						]
 					),
+					$inner_blocks_html,
 				],
 			]
 		);
