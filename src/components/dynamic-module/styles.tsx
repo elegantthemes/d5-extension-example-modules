@@ -9,8 +9,8 @@ import {
 } from '@divi/module';
 
 // Local dependencies.
+import metadata from './module.json';
 import { DynamicModuleAttrs } from './types';
-import { cssFields } from './custom-css';
 
 /**
  * Dynamic Module's style components.
@@ -60,7 +60,7 @@ const ModuleStyles = ({
       <CssStyle
         selector={orderClass}
         attr={attrs.css}
-        cssFields={cssFields}
+        cssFields={metadata.customCssFields}
       />
     </StyleContainer>
   );

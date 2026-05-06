@@ -17,8 +17,8 @@ trait CustomCssTrait {
 	/**
 	 * Custom CSS fields
 	 *
-	 * This function is equivalent of JS const cssFields located in
-	 * src/components/dynamic-module/custom-css.ts.
+	 * This function is equivalent of JS `metadata.customCssFields` from
+	 * src/components/dynamic-module/module.json.
 	 *
 	 * A minor difference with the JS const cssFields, this function did not have `label` property on each array item.
 	 *
