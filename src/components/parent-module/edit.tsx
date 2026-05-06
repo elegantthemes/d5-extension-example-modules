@@ -28,6 +28,7 @@ export const ParentModuleEdit = (props: ParentModuleEditProps): ReactElement => 
     childrenIds,
   } = props;
 
+  // List wrapper: `ul` here matches Child Module `tag="li"`. For “any module” children, see README / `index.ts` JSDoc.
   return (
     <ModuleContainer
       attrs={attrs}

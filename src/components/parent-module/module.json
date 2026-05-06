@@ -35,6 +35,22 @@
           "adminLabel": {}
         },
         "advanced": {
+          "elements": {
+            "groupType": "group-item",
+            "item": {
+              "groupSlug": "contentElements",
+              "priority": 5,
+              "render": true,
+              "component": {
+                "type": "group",
+                "name": "divi/elements",
+                "props": {
+                  "grouped": false
+                }
+              }
+            }
+          },
+          "html": {},
           "link": {},
           "text": {
             "component": {
@@ -50,6 +66,7 @@
           "htmlAttributes": {}
         },
         "decoration": {
+          "layout": {},
           "background": {},
           "sizing": {},
           "spacing": {},
@@ -275,6 +292,19 @@
     "design": "auto",
     "advanced": "auto",
     "groups": {
+      "contentElements": {
+        "panel": "content",
+        "priority": 5,
+        "groupName": "contentElements",
+        "multiElements": true,
+        "component": {
+          "name": "divi/composite",
+          "props": {
+            "groupLabel": "Elements",
+            "preset": "content"
+          }
+        }
+      },
       "contentIcon": {
         "panel": "content",
         "priority": 20,

@@ -2,6 +2,7 @@
 import { __ } from '@wordpress/i18n';
 
 // Divi dependencies.
+import { elementsCallbacks } from '@divi/module-utils';
 import {
   type Metadata,
   type ModuleLibrary,
@@ -21,5 +22,10 @@ export const d4Module: ModuleLibrary.Module.RegisterDefinition<D4ModuleAttrs> = 
   conversionOutline,
   renderers: {
     edit: D4ModuleEdit,
+  },
+  callbacks: {
+    content: {
+      elements: elementsCallbacks,
+    },
   },
 };
