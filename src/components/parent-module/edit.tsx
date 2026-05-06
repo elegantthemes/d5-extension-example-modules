@@ -13,11 +13,9 @@ import { moduleClassnames } from './module-classnames';
 /**
  * Parent Module edit component of visual builder.
  *
- * @since ??
- *
- * @param {ParentModuleEditProps} props React component props.
- *
- * @returns {ReactElement}
+ * Neutral wrapper + `ChildModulesContainer` for mixed child types (Child Module + regular modules).
+ * For `ul`/`li` or strict single-child-only setups, see README / `index.ts` JSDoc on `parentModule`.
+ * When `ModuleEditProps` includes loop/canvas fields, you may forward them like core `divi/group`.
  */
 export const ParentModuleEdit = (props: ParentModuleEditProps): ReactElement => {
   const {
@@ -28,22 +26,23 @@ export const ParentModuleEdit = (props: ParentModuleEditProps): ReactElement => 
     childrenIds,
   } = props;
 
-  // List wrapper: `ul` here matches Child Module `tag="li"`. For “any module” children, see README / `index.ts` JSDoc.
   return (
     <ModuleContainer
       attrs={attrs}
       elements={elements}
       id={id}
       name={name}
+      childrenIds={childrenIds}
       stylesComponent={ModuleStyles}
       scriptDataComponent={ModuleScriptData}
       classnamesFunction={moduleClassnames}
-      tag="ul"
     >
       {elements.styleComponents({
         attrName: 'module',
       })}
-      <ChildModulesContainer ids={childrenIds} />
+      {childrenIds && childrenIds.length > 0 && (
+        <ChildModulesContainer ids={childrenIds} />
+      )}
     </ModuleContainer>
   );
 }

@@ -14,20 +14,27 @@ import { ParentModuleAttrs } from './types';
 import './module.scss';
 
 /**
- * Parent module (example): accepts only `example/child-module` as nested content.
+ * Parent module (example): **any** regular module *plus* `example/child-module` as a nested child.
  *
- * ### Optional: allow *any* module as children
+ * Uses the same metadata pattern as core **Accordion** (`childrenName` lists the dedicated child block
+ * and **`allowAllElements`: true**). A parent with only `childrenName: []` cannot nest modules whose
+ * `category` is `child-module` — Divi’s `isValidChild` rejects them by design.
  *
- * 1. **`module.json`** — Set `"childrenName": []` and remove `childModuleName` / `childModuleTitle`.
- * 2. **`index.ts`** — Set `childrenName: []` here so registration matches metadata.
- * 3. **`edit.tsx`** — Prefer a neutral wrapper (not `tag="ul"`) if children are not all list items;
- *    pass `childrenIds`, `isLooped`, `loopIndex`, and `canvasId` into `ModuleContainer` /
- *    `ChildModulesContainer` the same way core Group does.
- * 4. **Child module markup** — If the child used `tag="li"`, switch to `div` (or similar) when the
- *    parent is no longer a `<ul>`, and adjust SCSS selectors if needed.
- * 5. **`callbacks.content.elements`** — Keep `elementsCallbacks` from `@divi/module-utils` whenever
- *    `module.json` exposes the Elements group (`advanced.elements`), so “Add” opens the module
- *    picker instead of dispatching with an undefined module name.
+ * ### Optional: only one child type (no arbitrary modules)
+ *
+ * Omit **`allowAllElements`** (or set it `false`) and keep a single entry in `childrenName` /
+ * `childModuleName` so only that module may be nested.
+ *
+ * ### Optional: `ul` / `li` list markup
+ *
+ * 1. **`edit.tsx`** — `tag="ul"` on the parent and `tag="li"` on the child edit when every child is the same row type.
+ * 2. **SCSS** — Target `ul.your_parent_class` if you use a list wrapper.
+ *
+ * When your `ModuleEditProps` typings include them, you may forward `isLooped`, `loopIndex`, and `canvasId`
+ * like core `divi/group`.
+ *
+ * Keep **`callbacks.content.elements` → `elementsCallbacks`** from `@divi/module-utils` whenever
+ * `module.json` exposes the Elements group (`advanced.elements`).
  */
 export const parentModule: ModuleLibrary.Module.RegisterDefinition<ParentModuleAttrs> = {
   // Imported json has no inferred type hence type-cast is necessary.

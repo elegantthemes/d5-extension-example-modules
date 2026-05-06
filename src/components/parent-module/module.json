@@ -12,6 +12,7 @@
   "childrenName": [
     "example/child-module"
   ],
+  "allowAllElements": true,
   "attributes": {
     "module": {
       "type": "object",
