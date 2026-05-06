@@ -4,12 +4,8 @@ import React, { ReactElement } from 'react';
 // Divi Dependencies.
 import {
   ModuleContainer,
-  ElementComponents,
-  DynamicData,
+  ChildModulesContainer,
 } from '@divi/module';
-import {
-  getAttrByMode,
-} from '@divi/module-utils';
 
 // Local Dependencies.
 import { D4ModuleEditProps } from './types';
@@ -32,6 +28,10 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
     id,
     name,
     elements,
+    childrenIds,
+    isLooped,
+    loopIndex,
+    canvasId,
   } = props;
 
   return (
@@ -43,6 +43,9 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
       stylesComponent={ModuleStyles}
       classnamesFunction={moduleClassnames}
       scriptDataComponent={ModuleScriptData}
+      cssPosition={childrenIds && 0 < childrenIds.length ? 'before' : null}
+      isLooped={isLooped}
+      loopIndex={loopIndex}
     >
       {elements.styleComponents({
         attrName: 'module',
@@ -55,6 +58,9 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
           attrName: 'content',
         })}
       </div>
+      {childrenIds && childrenIds.length > 0 && (
+        <ChildModulesContainer ids={childrenIds} isLooped={isLooped} loopIndex={loopIndex} canvasId={canvasId} />
+      )}
     </ModuleContainer>
   );
 }

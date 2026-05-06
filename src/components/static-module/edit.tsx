@@ -2,7 +2,7 @@
 import React, { ReactElement } from 'react';
 
 // Divi Dependencies.
-import { ModuleContainer } from '@divi/module';
+import { ChildModulesContainer, ModuleContainer } from '@divi/module';
 
 // Local Dependencies.
 import { StaticModuleEditProps } from './types';
@@ -25,6 +25,10 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
     elements,
     id,
     name,
+    childrenIds,
+    isLooped,
+    loopIndex,
+    canvasId,
   } = props;
 
   return (
@@ -36,6 +40,9 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
       stylesComponent={ModuleStyles}
       classnamesFunction={moduleClassnames}
       scriptDataComponent={ModuleScriptData}
+      cssPosition={childrenIds && 0 < childrenIds.length ? 'before' : null}
+      isLooped={isLooped}
+      loopIndex={loopIndex}
     >
       {elements.styleComponents({
         attrName: 'module',
@@ -64,6 +71,9 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
           </div>
         </div>
       </div>
+      {childrenIds && childrenIds.length > 0 && (
+        <ChildModulesContainer ids={childrenIds} isLooped={isLooped} loopIndex={loopIndex} canvasId={canvasId} />
+      )}
     </ModuleContainer>
   );
 };

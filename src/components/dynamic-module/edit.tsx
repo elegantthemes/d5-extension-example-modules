@@ -5,6 +5,7 @@ import React, { ReactElement, useEffect, useRef } from 'react';
 import {
   ModuleContainer,
   ElementComponents,
+  ChildModulesContainer,
 } from '@divi/module';
 import { useFetch } from '@divi/rest';
 
@@ -31,6 +32,10 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
     id,
     name,
     elements,
+    childrenIds,
+    isLooped,
+    loopIndex,
+    canvasId,
   } = props;
 
   const {
@@ -79,6 +84,9 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
       stylesComponent={ModuleStyles}
       classnamesFunction={moduleClassnames}
       scriptDataComponent={ModuleScriptData}
+      cssPosition={childrenIds && 0 < childrenIds.length ? 'before' : null}
+      isLooped={isLooped}
+      loopIndex={loopIndex}
     >
       {elements.styleComponents({
         attrName: 'module',
@@ -121,6 +129,9 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
           <div>{__('Loading...', 'd5-extension-example-modules')}</div>
         )
       }
+      {childrenIds && childrenIds.length > 0 && (
+        <ChildModulesContainer ids={childrenIds} isLooped={isLooped} loopIndex={loopIndex} canvasId={canvasId} />
+      )}
     </ModuleContainer>
   );
 }

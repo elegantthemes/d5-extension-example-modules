@@ -7,6 +7,7 @@
   "moduleClassName": "example_d4_module",
   "moduleOrderClassName": "example_d4_module",
   "category": "module",
+  "childrenName": [],
   "attributes": {
     "module": {
       "type": "object",
@@ -25,11 +26,14 @@
           "adminLabel": {}
         },
         "advanced": {
+          "elements": {},
+          "html": {},
           "link": {},
           "text": {},
           "htmlAttributes": {}
         },
         "decoration": {
+          "layout": {},
           "background": {},
           "bodyFont": {},
           "sizing": {},
