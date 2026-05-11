@@ -177,7 +177,33 @@
       }
     }
   },
-  "customCssFields": {},
+  "customCssFields": {
+    "inner": {
+      "subName": "inner",
+      "label": "Inner",
+      "selectorSuffix": " .example_dynamic_module__inner"
+    },
+    "title": {
+      "subName": "title",
+      "label": "Title",
+      "selectorSuffix": " .example_dynamic_module__title"
+    },
+    "postTitle": {
+      "subName": "postTitle",
+      "label": "Post Title",
+      "selectorSuffix": " .example_dynamic_module__post-item-title"
+    },
+    "postItem": {
+      "subName": "postItem",
+      "label": "Post Item",
+      "selectorSuffix": " .example_dynamic_module__post-item"
+    },
+    "postContent": {
+      "subName": "postContent",
+      "label": "Post Content",
+      "selectorSuffix": " .example_dynamic_module__post-item-content"
+    }
+  },
   "settings": {
     "content": "auto",
     "design": "auto",
