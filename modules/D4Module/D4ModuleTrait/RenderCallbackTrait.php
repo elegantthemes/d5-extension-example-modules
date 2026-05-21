@@ -64,11 +64,21 @@ trait RenderCallbackTrait {
 			]
 		);
 
+		// Layout classes for inner container.
+		$layout_display_value = $attrs['module']['decoration']['layout']['desktop']['value']['display'] ?? 'flex';
+		$inner_classes        = HTMLUtility::classnames(
+			'example_d4_module_inner',
+			[
+				'et_flex_module' => 'flex' === $layout_display_value,
+				'et_grid_module' => 'grid' === $layout_display_value,
+			]
+		);
+
 		$inner_content = HTMLUtility::render(
 			[
 				'tag'               => 'div',
 				'attributes'        => [
-					'class' => 'example_d4_module_inner',
+					'class' => $inner_classes,
 				],
 				'childrenSanitizer' => 'et_core_esc_previously',
 				'children'          => [

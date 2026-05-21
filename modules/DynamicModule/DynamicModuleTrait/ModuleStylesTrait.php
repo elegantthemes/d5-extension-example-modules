@@ -67,8 +67,10 @@ trait ModuleStylesTrait {
 									[
 										'componentName' => 'divi/text',
 										'props'         => [
-											'selector' => $order_class . ' .example_dynamic_module__inner',
-											'attr'     => $attrs['module']['advanced']['text'] ?? [],
+											// Module root only — __inner is reserved for Layout flex (see module.json styleProps.layout).
+											'selector'                => $order_class,
+											'attr'                    => $attrs['module']['advanced']['text'] ?? [],
+											'defaultPrintedStyleAttr' => $default_printed_style_attrs['module']['advanced']['text'] ?? [],
 										],
 									],
 								],

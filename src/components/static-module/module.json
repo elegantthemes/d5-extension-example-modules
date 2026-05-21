@@ -15,6 +15,9 @@
       "styleProps": {
         "border": {
           "important": true
+        },
+        "layout": {
+          "selector": "{{selector}} .example_static_module__inner"
         }
       },
       "settings": {

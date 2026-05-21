@@ -1,5 +1,6 @@
 // External Dependencies.
 import React, { ReactElement } from 'react';
+import classnames from 'classnames';
 
 // Divi Dependencies.
 import {
@@ -34,6 +35,13 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
     canvasId,
   } = props;
 
+  // Layout classes for inner container.
+  const layoutDisplayValue = attrs?.module?.decoration?.layout?.desktop?.value?.display ?? 'flex';
+  const innerClasses       = classnames('example_d4_module_inner', {
+    et_flex_module: 'flex' === layoutDisplayValue,
+    et_grid_module: 'grid' === layoutDisplayValue,
+  });
+
   return (
     <ModuleContainer
       attrs={attrs}
@@ -50,7 +58,7 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
       {elements.styleComponents({
         attrName: 'module',
       })}
-      <div className="example_d4_module_inner">
+      <div className={innerClasses}>
         {elements.render({
           attrName: 'title',
         })}

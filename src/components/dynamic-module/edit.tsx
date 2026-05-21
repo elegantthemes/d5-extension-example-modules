@@ -1,5 +1,7 @@
 // External Dependencies.
 import React, { ReactElement, useEffect, useRef } from 'react';
+import classnames from 'classnames';
+import { map } from 'lodash';
 
 // Divi Dependencies.
 import {
@@ -12,7 +14,6 @@ import { useFetch } from '@divi/rest';
 // Local Dependencies.
 import { DynamicModuleEditProps } from './types';
 import { ModuleStyles } from './styles';
-import { map } from 'lodash';
 import { __ } from '@wordpress/i18n';
 import { ModuleScriptData } from './module-script-data';
 import { moduleClassnames } from './module-classnames';
@@ -75,6 +76,13 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
     };
   }, [postsNumber]);
 
+  // Layout classes for inner container.
+  const layoutDisplayValue = attrs?.module?.decoration?.layout?.desktop?.value?.display ?? 'flex';
+  const innerClasses       = classnames('example_dynamic_module__inner', {
+    et_flex_module: 'flex' === layoutDisplayValue,
+    et_grid_module: 'grid' === layoutDisplayValue,
+  });
+
   return (
     <ModuleContainer
       attrs={attrs}
@@ -98,7 +106,7 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
               attrs={attrs?.module?.decoration ?? {}}
               id={id}
             />
-            <div className="example_dynamic_module__inner">
+            <div className={innerClasses}>
               {elements.render({
                 attrName: 'title',
               })}

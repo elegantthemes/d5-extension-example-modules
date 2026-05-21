@@ -1,5 +1,6 @@
 // External Dependencies.
 import React, { ReactElement } from 'react';
+import classnames from 'classnames';
 
 // Divi Dependencies.
 import { ChildModulesContainer, ModuleContainer } from '@divi/module';
@@ -31,6 +32,13 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
     canvasId,
   } = props;
 
+  // Layout classes for inner container.
+  const layoutDisplayValue = attrs?.module?.decoration?.layout?.desktop?.value?.display ?? 'flex';
+  const innerClasses         = classnames('example_static_module__inner', {
+    et_flex_module: 'flex' === layoutDisplayValue,
+    et_grid_module: 'grid' === layoutDisplayValue,
+  });
+
   return (
     <ModuleContainer
       attrs={attrs}
@@ -47,7 +55,7 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
       {elements.styleComponents({
         attrName: 'module',
       })}
-      <div className="example_static_module__inner">
+      <div className={innerClasses}>
         <div className="example_static_module__image">
 
           {elements.render({

@@ -24,6 +24,9 @@
       "styleProps": {
         "bodyFont": {
           "selector": "{{selector}} .example_dynamic_module__post-item-content"
+        },
+        "layout": {
+          "selector": "{{selector}} .example_dynamic_module__inner"
         }
       },
       "settings": {

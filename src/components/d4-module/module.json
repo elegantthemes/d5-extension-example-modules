@@ -12,6 +12,11 @@
     "module": {
       "type": "object",
       "selector": "{{selector}}",
+      "styleProps": {
+        "layout": {
+          "selector": "{{selector}} .example_d4_module_inner"
+        }
+      },
       "default": {
         "meta": {
           "adminLabel": {

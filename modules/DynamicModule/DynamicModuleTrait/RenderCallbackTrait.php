@@ -144,6 +144,16 @@ trait RenderCallbackTrait {
 		$parent       = BlockParserStore::get_parent( $block->parsed_block['id'], $block->parsed_block['storeInstance'] );
 		$parent_attrs = $parent->attrs ?? [];
 
+		// Layout classes for inner container.
+		$layout_display_value = $attrs['module']['decoration']['layout']['desktop']['value']['display'] ?? 'flex';
+		$inner_classes        = HTMLUtility::classnames(
+			'example_dynamic_module__inner',
+			[
+				'et_flex_module' => 'flex' === $layout_display_value,
+				'et_grid_module' => 'grid' === $layout_display_value,
+			]
+		);
+
 		return Module::render(
 			[
 				// FE only.
@@ -169,7 +179,7 @@ trait RenderCallbackTrait {
 						[
 							'tag'               => 'div',
 							'attributes'        => [
-								'class' => 'example_dynamic_module__inner',
+								'class' => $inner_classes,
 							],
 							'childrenSanitizer' => 'et_core_esc_previously',
 							'children'          => [

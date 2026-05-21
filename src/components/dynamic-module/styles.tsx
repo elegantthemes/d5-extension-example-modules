@@ -5,7 +5,6 @@ import React, { ReactElement } from 'react';
 import {
   StyleContainer,
   StylesProps,
-  TextStyle,
 } from '@divi/module';
 
 // Local dependencies.
@@ -16,7 +15,7 @@ import { DynamicModuleAttrs } from './types';
  *
  * @since ??
  */
- const ModuleStyles = ({
+const ModuleStyles = ({
   settings,
   mode,
   state,
@@ -24,24 +23,28 @@ import { DynamicModuleAttrs } from './types';
   elements,
   attrs,
   orderClass,
+  defaultPrintedStyleAttrs,
 }: StylesProps<DynamicModuleAttrs>): ReactElement => {
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
       {elements.style({
         attrName: 'module',
         styleProps: {
+          defaultPrintedStyleAttrs: defaultPrintedStyleAttrs?.module?.decoration,
           disabledOn: {
             disabledModuleVisibility: settings?.disabledModuleVisibility,
           },
           advancedStyles: [
             {
-              componentName: "divi/text",
+              componentName: 'divi/text',
               props: {
-                selector:`${orderClass} .example_dynamic_module__inner`,
-                attr:attrs?.module?.advanced?.text,
-              }
-            }
-          ]
+                // Module root only — __inner is reserved for Layout flex (see module.json styleProps.layout).
+                selector: orderClass,
+                attr: attrs?.module?.advanced?.text,
+                defaultPrintedStyleAttr: defaultPrintedStyleAttrs?.module?.advanced?.text,
+              },
+            },
+          ],
         },
       })}
       {elements.style({
