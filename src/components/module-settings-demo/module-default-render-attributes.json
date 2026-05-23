@@ -1,0 +1,32 @@
+{
+  "module": {
+    "meta": {
+      "adminLabel": {
+        "desktop": {
+          "value": "Module Settings Demo"
+        }
+      }
+    }
+  },
+  "textInput": {
+    "innerContent": {
+      "desktop": {
+        "value": "Your text goes here"
+      }
+    }
+  },
+  "selectField": {
+    "innerContent": {
+      "desktop": {
+        "value": "option_b"
+      }
+    }
+  },
+  "checkboxesField": {
+    "innerContent": {
+      "desktop": {
+        "value": ["option_2"]
+      }
+    }
+  }
+}

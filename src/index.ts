@@ -9,6 +9,7 @@ import { d4Module } from './components/d4-module';
 import { dynamicModule } from './components/dynamic-module';
 import { parentModule } from './components/parent-module';
 import { staticModule } from './components/static-module';
+import { moduleSettingsDemo } from './components/module-settings-demo';
 
 import './module-icons';
 
@@ -19,4 +20,5 @@ addAction('divi.moduleLibrary.registerModuleLibraryStore.after', 'extensionExamp
   registerModule(childModule.metadata, omit(childModule, 'metadata'));
   registerModule(parentModule.metadata, omit(parentModule, 'metadata'));
   registerModule(d4Module.metadata, omit(d4Module, 'metadata'));
+  registerModule(moduleSettingsDemo.metadata, omit(moduleSettingsDemo, 'metadata'));
 });
