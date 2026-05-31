@@ -12,7 +12,7 @@ composer install
 
 ### Node.js Dependencies
 
-You need to have **npm** available in your node.js environment. And make sure to use **node version: 18.0.0 or later**.
+You need to have **npm** available in your node.js environment. Use **Node.js 20.18.1 or later** (required by transitive dependencies such as `undici@7.x`; Node `20.18.0` will fail `npm install` when `engine-strict` is enabled).
 
 For D5 modules only:
 ```
@@ -92,17 +92,17 @@ It will install dependencies for Divi 5 modules. For D4 modules, you need to run
 ### `npm run start`
 It will start the webpack compiler for development with watch mode. By default, it works for D5 modules. For D4 modules, you need to run `npm run start:divi-4`. You can also use `npm run start:all` to start both D5 and D4 modules.
 
-_Note: If you see error messages for divi packages related to `placeholderContent` in `npm run start` and `npm run start:all`, this is a known issue and it will be fixed once we update `divi-types` npm packages. You can continue developing despite the error messages._
+_Note: Divi Visual Builder type definitions are installed from scoped `@divi/*` npm packages (see [Release 5.1](https://dev.elegantthemes.com/docs/blog/release-5.1)). Install only the `@divi/*` packages your code imports; npm will pull related type dependencies as needed._
 
 ### `npm run build`
 It will build all JS and CSS assets for production. By default, it works for D5 modules. For D4 modules, you need to run `npm run build:divi-4`. You can also use `npm run build:all` to build assets for both Divi 5 and Divi 4 modules.
 
-_Note: If you see error messages for divi packages related to `placeholderContent` in `npm run build` and `npm run build:all`, this is a known issue and it will be fixed once we update `divi-types` npm packages._
+_Note: If TypeScript reports missing types for a `@divi/*` import, add that package to `devDependencies` in `package.json` and run `npm install`._
 
 ### `npm run reset-install`
 It will remove node_modules and reinstall all dependencies for D5 modules. For D4 modules, you need to run `npm run reset-install:divi-4`.
 
-_Note: If you are facing error for divi packages in `npm run install`, then you need to run `npm run reset-install` command._
+_Note: If you are facing errors for `@divi/*` packages in `npm run install`, run `npm run reset-install` to refresh `node_modules` and `package-lock.json`._
 
 ### `npm run zip`
 It will zip all assets and files without the `src` folder for distribution.

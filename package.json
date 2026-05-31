@@ -6,7 +6,7 @@
   "author": "Elegant Themes",
   "engines": {
     "npm": ">=10.0.0",
-    "node": ">=18.0.0"
+    "node": ">=20.18.1"
   },
   "scripts": {
     "start": "NODE_ENV=development webpack -w --config webpack.config.js --progress",
@@ -29,35 +29,16 @@
     "@babel/preset-env": "^7.24.5",
     "@babel/preset-react": "^7.24.1",
     "@babel/preset-typescript": "^7.24.1",
-    "@divi/types": "npm:divi-types@^1.0.10",
+    "@divi/icon-library": "^1.0.1",
+    "@divi/module": "^1.0.7",
+    "@divi/module-library": "^1.0.7",
+    "@divi/module-utils": "^1.0.7",
+    "@divi/rest": "^1.0.3",
+    "@divi/style-library": "^1.0.5",
+    "@divi/types": "^1.0.6",
     "@emotion/jest": "^11.11.0",
     "@mdx-js/react": "^3.0.1",
     "@tinymce/tinymce-react": "^5.0.1",
-    "@types/divi__app-preferences": "npm:divi-types-app-preferences@^1.0.10",
-    "@types/divi__app-ui": "npm:divi-types-app-ui@^1.0.10",
-    "@types/divi__conversion": "npm:divi-types-conversion@^1.0.10",
-    "@types/divi__data": "npm:divi-types-data@^1.0.10",
-    "@types/divi__edit-post": "npm:divi-types-edit-post@^1.0.10",
-    "@types/divi__error-boundary": "npm:divi-types-error-boundary@^1.0.10",
-    "@types/divi__events": "npm:divi-types-events@^1.0.10",
-    "@types/divi__external": "npm:divi-types-external@^1.0.10",
-    "@types/divi__field-library": "npm:divi-types-field-library@^1.0.10",
-    "@types/divi__fonts": "npm:divi-types-fonts@^1.0.10",
-    "@types/divi__help": "npm:divi-types-help@^1.0.10",
-    "@types/divi__history": "npm:divi-types-history@^1.0.10",
-    "@types/divi__icon-library": "npm:divi-types-icon-library@^1.0.10",
-    "@types/divi__keyboard-shortcuts": "npm:divi-types-keyboard-shortcuts@^1.0.10",
-    "@types/divi__modal": "npm:divi-types-modal@^1.0.10",
-    "@types/divi__modal-library": "npm:divi-types-modal-library@^1.0.10",
-    "@types/divi__module": "npm:divi-types-module@^1.0.10",
-    "@types/divi__module-library": "npm:divi-types-module-library@^1.0.10",
-    "@types/divi__module-utils": "npm:divi-types-module-utils@^1.0.10",
-    "@types/divi__rest": "npm:divi-types-rest@^1.0.10",
-    "@types/divi__script-library": "npm:divi-types-script-library@^1.0.10",
-    "@types/divi__serialized-post": "npm:divi-types-serialized-post@^1.0.10",
-    "@types/divi__settings": "npm:divi-types-settings@^1.0.10",
-    "@types/divi__shortcode-module": "npm:divi-types-shortcode-module@^1.0.10",
-    "@types/divi__style-library": "npm:divi-types-style-library@^1.0.10",
     "@types/enzyme": "^3.10.18",
     "@types/jest": "^29.5.12",
     "@types/jquery": "^3.5.30",
@@ -103,6 +84,9 @@
   },
   "dependencies": {
     "classnames": "^2.5.1"
+  },
+  "overrides": {
+    "@types/codemirror": "5.60.17"
   },
   "resolutions": {
     "@types/react": "17.0.44",
