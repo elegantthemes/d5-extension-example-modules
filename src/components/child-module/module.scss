@@ -1,6 +1,8 @@
 .example_child_module {
-  display: flex;
-  flex-wrap: wrap;
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   &__icon.et-pb-icon {
     font-size: 21px;

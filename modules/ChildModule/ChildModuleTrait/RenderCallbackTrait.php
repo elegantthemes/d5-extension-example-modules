@@ -14,12 +14,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
-use ET\Builder\Packages\Module\Module;
-use ET\Builder\Framework\Utility\HTMLUtility;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
+use ET\Builder\Framework\Utility\HTMLUtility;
 use ET\Builder\Packages\IconLibrary\IconFont\Utils;
-use ET\Builder\Packages\Module\Options\Element\ElementComponents;
-use ET\Builder\Packages\ModuleLibrary\ModuleRegistration;
+use ET\Builder\Packages\Module\Module;
+use ET\Builder\Packages\ModuleUtils\ChildrenUtils;
 use ET\Builder\Packages\ModuleUtils\ModuleUtils;
 use MEE\Modules\ChildModule\ChildModule;
 
@@ -33,14 +32,20 @@ trait RenderCallbackTrait {
 	 *
 	 * @since ??
 	 *
-	 * @param array          $attrs Block attributes that were saved by VB.
-	 * @param string         $content          Block content.
-	 * @param WP_Block       $block            Parsed block object that being rendered.
-	 * @param ModuleElements $elements         ModuleElements instance.
+	 * @param array          $attrs                       Block attributes that were saved by VB.
+	 * @param string         $content                     Rendered inner blocks (Elements children).
+	 * @param \WP_Block      $block                       Parsed block object that being rendered.
+	 * @param \ET\Builder\Packages\Module\Layout\Components\ModuleElements\ModuleElements $elements ModuleElements instance.
+	 * @param array          $_default_printed_style_attrs Optional. Passed by ModuleRegistration.
 	 *
 	 * @return string HTML rendered of Child module.
 	 */
-	public static function render_callback( $attrs, $content, $block, $elements ) {
+	public static function render_callback( $attrs, $content, $block, $elements, $_default_printed_style_attrs = [] ) {
+		$inner_blocks_html = $content;
+
+		// Extract child module IDs from the block's innerBlocks.
+		$children_ids = ChildrenUtils::extract_children_ids( $block );
+
 		$parent = BlockParserStore::get_parent( $block->parsed_block['id'], $block->parsed_block['storeInstance'] );
 
 		$parent_attrs = ModuleUtils::get_all_attrs( $parent );
@@ -66,15 +71,14 @@ trait RenderCallbackTrait {
 			]
 		);
 
-		// Content.
-		$content = $elements->render(
+		// Main content field (do not shadow $inner_blocks_html).
+		$richtext_content = $elements->render(
 			[
 				'attrName'      => 'content',
 				'hoverSelector' => '{{parentSelector}}',
 			]
 		);
 
-		// Content container.
 		$content_container = HTMLUtility::render(
 			[
 				'tag'               => 'div',
@@ -82,7 +86,18 @@ trait RenderCallbackTrait {
 					'class' => 'example_child_module__content-container',
 				],
 				'childrenSanitizer' => 'et_core_esc_previously',
-				'children'          => $title . $content,
+				'children'          => $title . $richtext_content,
+			]
+		);
+
+		$inner_content = HTMLUtility::render(
+			[
+				'tag'               => 'div',
+				'attributes'        => [
+					'class' => 'example_child_module__inner',
+				],
+				'childrenSanitizer' => 'et_core_esc_previously',
+				'children'          => $icon . $content_container,
 			]
 		);
 
@@ -104,16 +119,16 @@ trait RenderCallbackTrait {
 				'parentAttrs'         => $parent_attrs,
 				'parentId'            => $parent->id ?? '',
 				'parentName'          => $parent->blockName ?? '',
-				'children'            => ElementComponents::component(
-					[
-						'attrs'         => $attrs['module']['decoration'] ?? [],
-						'id'            => $block->parsed_block['id'],
-
-						// FE only.
-						'orderIndex'    => $block->parsed_block['orderIndex'],
-						'storeInstance' => $block->parsed_block['storeInstance'],
-					]
-				) . $icon . $content_container,
+				'childrenIds'         => $children_ids,
+				'children'            => [
+					$elements->style_components(
+						[
+							'attrName' => 'module',
+						]
+					),
+					$inner_content,
+					$inner_blocks_html,
+				],
 			]
 		);
 	}
