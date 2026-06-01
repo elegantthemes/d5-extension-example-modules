@@ -1,4 +1,5 @@
 // Divi dependencies.
+import { elementsCallbacks } from '@divi/module-utils';
 import {
   type Metadata,
   type ModuleLibrary,
@@ -31,6 +32,11 @@ export const childModule: ModuleLibrary.Module.RegisterDefinition<ChildModuleAtt
   },
   renderers: {
     edit: ChildModuleEdit,
+  },
+  callbacks: {
+    content: {
+      elements: elementsCallbacks,
+    },
   },
   parentsName: ['example/parent-module'],
 };

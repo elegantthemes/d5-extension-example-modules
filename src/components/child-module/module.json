@@ -4,6 +4,7 @@
   "title": "Child Module",
   "titles": "Child Modules",
   "category": "child-module",
+  "childrenName": [],
   "moduleClassName": "example_child_module",
   "moduleOrderClassName": "example_child_module",
   "attributes": {
@@ -22,10 +23,15 @@
       "styleProps": {
         "border": {
           "important": true
+        },
+        "layout": {
+          "selector": "{{selector}}, {{selector}} .example_child_module__inner"
         }
       },
       "settings": {
         "advanced": {
+          "elements": {},
+          "html": {},
           "link": {},
           "text": {
             "component": {
@@ -41,6 +47,7 @@
           "htmlAttributes": {}
         },
         "decoration": {
+          "layout": {},
           "background": {},
           "sizing": {},
           "spacing": {},
@@ -233,7 +240,11 @@
   "customCssFields": {
     "contentContainer": {
       "subName": "contentContainer",
-      "selectorSuffix": " .example_child_module__content-container"
+      "selectorSuffix": " .example_child_module__inner"
+    },
+    "inner": {
+      "subName": "inner",
+      "selectorSuffix": " .example_child_module__inner"
     },
     "title": {
       "subName": "title",
