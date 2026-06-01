@@ -8,12 +8,13 @@
 .example_child_module__icon.et-pb-icon {
   font-size: 21px;
   padding-top: 6px;
+  padding-bottom: 6px;
   color: #29c4a9;
 }
 .example_child_module__content-container {
   flex-grow: 1;
   flex-basis: 0%;
-  padding-left: 15px;
+  padding-left: 6px;
 }
 .example_child_module__title {
   font-size: 21px;
