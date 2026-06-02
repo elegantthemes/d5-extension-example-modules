@@ -55,4 +55,7 @@ export const conversionOutline: ModuleConversionOutline = {
     title:        'title.innerContent.*',
     header_level: 'title.decoration.font.font.*.headingLevel',
   },
+  valueExpansionFunctionMap: {
+    body_font: 'convertBodyFont',
+  },
 };

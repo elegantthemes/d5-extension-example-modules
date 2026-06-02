@@ -117,5 +117,11 @@ add_action( 'divi_visual_builder_assets_before_enqueue_scripts', 'd5_extension_e
 function d5_extension_example_module_enqueue_frontend_scripts() {
 	$plugin_dir_url = plugin_dir_url( __FILE__ );
 	wp_enqueue_style( 'd5-extension-example-modules-builder-bundle-style', "{$plugin_dir_url}styles/bundle.css", array(), '1.0.0' );
+	wp_enqueue_style(
+		'd5-extension-example-modules-divi4-module',
+		"{$plugin_dir_url}divi-4/modules/Divi4Module/style.css",
+		array(),
+		'1.0.0'
+	);
 }
 add_action( 'wp_enqueue_scripts', 'd5_extension_example_module_enqueue_frontend_scripts' );

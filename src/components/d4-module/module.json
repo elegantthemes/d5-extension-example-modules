@@ -40,7 +40,6 @@
         "decoration": {
           "layout": {},
           "background": {},
-          "bodyFont": {},
           "sizing": {},
           "spacing": {},
           "border": {},
@@ -123,6 +122,30 @@
       },
       "tagName": "div",
       "inlineEditor": "richText",
+      "default": {
+        "decoration": {
+          "bodyFont": {
+            "body": {
+              "font": {
+                "desktop": {
+                  "value": {
+                    "weight": "700"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "styleProps": {
+        "bodyFont": {
+          "selectors": {
+            "desktop": {
+              "value": "{{selector}} .example_d4_module_content"
+            }
+          }
+        }
+      },
       "settings": {
         "innerContent": {
           "groupType": "group-item",
@@ -143,6 +166,11 @@
               "name": "divi/richtext",
               "type": "field"
             }
+          }
+        },
+        "decoration": {
+          "bodyFont": {
+            "attrName": "content.decoration.bodyFont"
           }
         }
       }

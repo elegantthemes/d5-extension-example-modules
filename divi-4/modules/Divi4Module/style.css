@@ -1,0 +1,9 @@
+/**
+ * Default body font weight for Divi 4 Module.
+ *
+ * Matches Testimonial Author: field default sets the builder UI; static CSS
+ * ensures font-weight applies on the frontend when the value matches the default.
+ */
+.d4_module .example_d4_module_content {
+	font-weight: 700;
+}

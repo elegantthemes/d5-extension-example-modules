@@ -21,7 +21,6 @@ class D4_Module extends ET_Builder_Module {
 	 * @since 1.0.0
 	 */
 	function init() {
-		// Module name
 		$this->name = esc_html__( 'Divi 4 Module', 'dicm-divi-custom-modules' );
 
 		// Module Icon
@@ -65,6 +64,9 @@ class D4_Module extends ET_Builder_Module {
 					'label'          => et_builder_i18n( 'Body' ),
 					'css'            => array(
 						'main' => '%%order_class%% .example_d4_module_content',
+					),
+					'font'           => array(
+						'default' => '|700|||||||',
 					),
 					'block_elements' => array(
 						'tabbed_subtoggles' => true,
