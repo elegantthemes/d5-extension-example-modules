@@ -17,6 +17,7 @@ use MEE\Modules\D4Module\D4Module;
 use MEE\Modules\ChildModule\ChildModule;
 use MEE\Modules\ParentModule\ParentModule;
 use MEE\Modules\DynamicModule\DynamicModule;
+use MEE\Modules\ModuleSettingsDemo\ModuleSettingsDemo;
 
 add_action(
 	'divi_module_library_modules_dependency_tree',
@@ -26,5 +27,6 @@ add_action(
 		$dependency_tree->add_dependency( new StaticModule() );
 		$dependency_tree->add_dependency( new D4Module() );
 		$dependency_tree->add_dependency( new DynamicModule() );
+		$dependency_tree->add_dependency( new ModuleSettingsDemo() );
 	}
 );
