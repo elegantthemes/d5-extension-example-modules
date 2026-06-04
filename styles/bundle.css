@@ -1,19 +1,20 @@
 /*!******************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/components/child-module/module.scss ***!
   \******************************************************************************************************************************************************************************************/
-.example_child_module {
+.example_child_module__inner {
   display: flex;
   flex-wrap: wrap;
 }
 .example_child_module__icon.et-pb-icon {
   font-size: 21px;
   padding-top: 6px;
+  padding-bottom: 6px;
   color: #29c4a9;
 }
 .example_child_module__content-container {
   flex-grow: 1;
   flex-basis: 0%;
-  padding-left: 15px;
+  padding-left: 6px;
 }
 .example_child_module__title {
   font-size: 21px;
@@ -48,7 +49,8 @@
 /*!*******************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[2].use[1]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[2].use[2]!./src/components/parent-module/module.scss ***!
   \*******************************************************************************************************************************************************************************************/
-.entry-content ul.example_parent_module {
+.entry-content ul.example_parent_module,
+.entry-content .example_parent_module {
   list-style: none;
 }
 /*!*******************************************************************************************************************************************************************************************!*\

@@ -3,10 +3,11 @@ import React, { ReactElement } from 'react';
 
 // Divi Dependencies.
 import {
-  ModuleContainer
+  ChildModulesContainer,
+  ModuleContainer,
 } from '@divi/module';
 import { generateDefaultAttrs } from '@divi/module-library';
-import {getAttrByMode} from '@divi/module-utils';
+import { getAttrByMode } from '@divi/module-utils';
 import { processFontIcon } from '@divi/icon-library';
 import { ModuleMetadata } from '@divi/types';
 
@@ -17,17 +18,17 @@ import { moduleClassnames } from './module-classnames';
 import {
   isEmpty,
   merge,
-} from "lodash";
+} from 'lodash';
 import parentMetadata from '../parent-module/module.json';
 
 /**
  * Child Module edit component of visual builder.
  *
- * @since ??
+ * Uses a neutral `div` root because Parent may nest any module type. If your parent is `ul`-only
+ * with a single child type, you can use `tag="li"` here instead (see parent README / `index.ts` JSDoc).
  *
- * @param {ChildModuleEditProps} props React component props.
- *
- * @returns {ReactElement}
+ * @param {ChildModuleEditProps} props Component props.
+ * @returns Visual builder edit tree.
  */
 export const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
   const {
@@ -36,6 +37,10 @@ export const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
     id,
     name,
     parentAttrs,
+    childrenIds,
+    isLooped,
+    loopIndex,
+    canvasId,
   } = props;
 
   const parentDefaultAttrs = generateDefaultAttrs(parentMetadata as ModuleMetadata);
@@ -55,26 +60,34 @@ export const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
       name={name}
       stylesComponent={ModuleStyles}
       classnamesFunction={moduleClassnames}
-      tag="li"
+      tag="div"
+      cssPosition={childrenIds && 0 < childrenIds.length ? 'before' : null}
+      isLooped={isLooped}
+      loopIndex={loopIndex}
     >
       {elements.styleComponents({
         attrName: 'module',
       })}
-      {icon && (
-        <div className="example_child_module__icon et-pb-icon">
-          {processFontIcon(icon)}
-        </div>
-      )}
-      <div className="example_child_module__content-container">
-        {elements.render({
-          attrName: 'title',
-        })}
-        <div className="example_child_module__content">
+      <div className="example_child_module__inner">
+        {icon && (
+          <div className="example_child_module__icon et-pb-icon">
+            {processFontIcon(icon)}
+          </div>
+        )}
+        <div className="example_child_module__content-container">
           {elements.render({
-            attrName: 'content',
+            attrName: 'title',
           })}
+          <div className="example_child_module__content">
+            {elements.render({
+              attrName: 'content',
+            })}
+          </div>
         </div>
       </div>
+      {childrenIds && childrenIds.length > 0 && (
+        <ChildModulesContainer ids={childrenIds} isLooped={isLooped} loopIndex={loopIndex} canvasId={canvasId} />
+      )}
     </ModuleContainer>
   );
 };

@@ -1,3 +1,4 @@
+import { elementsCallbacks } from '@divi/module-utils';
 import {
   type Metadata,
   type ModuleLibrary,
@@ -16,5 +17,10 @@ export const dynamicModule: ModuleLibrary.Module.RegisterDefinition<DynamicModul
   placeholderContent,
   renderers: {
     edit: DynamicModuleEdit,
+  },
+  callbacks: {
+    content: {
+      elements: elementsCallbacks,
+    },
   },
 };

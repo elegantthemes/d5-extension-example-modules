@@ -7,6 +7,7 @@
   "moduleClassName": "example_dynamic_module",
   "moduleOrderClassName": "example_dynamic_module",
   "category": "module",
+  "childrenName": [],
   "attributes": {
     "module": {
       "type": "object",
@@ -23,6 +24,9 @@
       "styleProps": {
         "bodyFont": {
           "selector": "{{selector}} .example_dynamic_module__post-item-content"
+        },
+        "layout": {
+          "selector": "{{selector}} .example_dynamic_module__inner"
         }
       },
       "settings": {
@@ -30,11 +34,14 @@
           "adminLabel": {}
         },
         "advanced": {
+          "elements": {},
+          "html": {},
           "link": {},
           "text": {},
           "htmlAttributes": {}
         },
         "decoration": {
+          "layout": {},
           "background": {},
           "bodyFont": {},
           "sizing": {},
