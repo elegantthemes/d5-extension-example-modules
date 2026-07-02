@@ -1,0 +1,11 @@
+[
+  {
+    "title": "Default Static Module edit props",
+    "args": {
+      "attrs": {},
+      "id": "static-module-edit-test-1",
+      "name": "example/static-module",
+      "childrenIds": []
+    }
+  }
+]

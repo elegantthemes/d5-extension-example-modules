@@ -105,7 +105,9 @@ npm test
 npm run test:modules
 ```
 
-`npm test` runs the EX-01 smoke test harness. `npm run test:modules` uses the full Divi and WordPress Jest setup for upcoming module tests.
+`npm test` runs the EX-01 smoke and StaticModule metadata unit tests. `npm run test:modules` runs StaticModule edit snapshot tests with RTL. The full Divi and WordPress Jest setup in `test-config/jest.config.js` is reserved for upcoming module integration tests.
+
+Run `npm run build` before PHP StaticModule registration tests so `modules-json/static-module/` exists locally.
 
 PHPUnit requires a PHP binary with the `mysqli` extension enabled. If `composer test` fails with a missing MySQL extension error, run PHPUnit with a compatible PHP binary such as `php vendor/bin/phpunit`.
 

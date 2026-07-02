@@ -5,8 +5,11 @@ const pluginRootDirectory = resolve(__dirname, '..');
 module.exports = {
   rootDir:    pluginRootDirectory,
   preset:     '@wordpress/jest-preset-default',
+  moduleNameMapper: {
+    '^@divi/module$': resolve( __dirname, 'mocks/divi-module.js' ),
+  },
   testMatch:  [
-    '<rootDir>/src/components/static-module/__tests__/metadata.test.ts',
+    '<rootDir>/src/components/static-module/__tests__/edit.test.tsx',
   ],
   transform: {
     '^.+\\.[jt]sx?$': resolve(__dirname, 'babel-transformer.js'),

@@ -91,6 +91,9 @@ module.exports = {
     '/__test-cases__',
     '/__mock-data__',
     '/test-config',
-    '<rootDir>/src/components/static-module/__tests__/module-json.test.ts',
+    '<rootDir>/src/components/static-module/__tests__/metadata.test.ts',
+  ],
+  testMatch: [
+    '<rootDir>/src/components/static-module/__tests__/edit.test.tsx',
   ],
 };
