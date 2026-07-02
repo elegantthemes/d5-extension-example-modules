@@ -7,7 +7,7 @@ const babelJest = require('babel-jest');
 const isWPGlobal           = /\/wp-includes\/js\/dist\/[^/]+\.js$/;
 const isDiviGlobal         = /\/wp-content\/themes\/Divi\/includes\/builder-5\/visual-builder\/build\/[^/]+\.js$/;
 const diviModuleName       = /\(window\.divi\s*=\s*window\.divi\s\|\|\s*\{\}\)\.([a-zA-Z]*)\s*=\s*__webpack_exports__;/;
-const babelJestTransformer = babelJest.default.createTransformer({
+const babelJestTransformer = babelJest.createTransformer({
   plugins: [
     '@babel/plugin-proposal-class-properties',
     '@babel/plugin-transform-runtime',
@@ -18,6 +18,9 @@ const babelJestTransformer = babelJest.default.createTransformer({
     '@babel/preset-typescript',
   ],
 });
+
+
+const buildTransformResult = (transformedSource) => ( { code: transformedSource } );
 
 
 module.exports = {
@@ -37,9 +40,9 @@ module.exports = {
         } else {
           module.exports = global.wp.${name};
         }`;
-        return `${source}${exporter}`;
+        return buildTransformResult( `${source}${exporter}` );
       }
-      return source;
+      return buildTransformResult( source );
     }
 
     // TODO: This one will work with unminified code. But after production, we need to recheck.
@@ -56,9 +59,9 @@ module.exports = {
         } else {
           module.exports = global.divi.${name};
         }`;
-        return `${source}${exporter}`;
+        return buildTransformResult( `${source}${exporter}` );
       }
-      return source;
+      return buildTransformResult( source );
     }
 
     return babelJestTransformer.process(source, file, ...args);
