@@ -70,10 +70,17 @@ class DynamicModuleRenderTest extends DiviWPUnitTest {
 	 * @return string
 	 */
 	private function normalize_dynamic_module_snapshot_html( string $rendered_html ): string {
-		return preg_replace(
+		$normalized_html = preg_replace(
 			'#href="[^"]+\?p=\d+"#',
 			'href="http://example.test/?p=POST_ID"',
 			$rendered_html
 		) ?? $rendered_html;
+
+		// Newer Divi builds add flex wrapper classes that vary by environment version.
+		return preg_replace(
+			'/\set_flex_module(?="|\s)/',
+			'',
+			$normalized_html
+		) ?? $normalized_html;
 	}
 }
