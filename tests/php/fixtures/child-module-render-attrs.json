@@ -1,0 +1,36 @@
+{
+  "module": {
+    "meta": {
+      "adminLabel": {
+        "desktop": {
+          "value": "Child Module"
+        }
+      }
+    }
+  },
+  "title": {
+    "innerContent": {
+      "desktop": {
+        "value": "Child Module Snapshot Title"
+      }
+    },
+    "decoration": {
+      "font": {
+        "font": {
+          "desktop": {
+            "value": {
+              "headingLevel": "div"
+            }
+          }
+        }
+      }
+    }
+  },
+  "content": {
+    "innerContent": {
+      "desktop": {
+        "value": "Child module snapshot content for nested FE output."
+      }
+    }
+  }
+}

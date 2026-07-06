@@ -5,6 +5,8 @@
  * @package D5ExtensionExampleModules\Tests
  */
 
+use MEE\Modules\ChildModule\ChildModule;
+use MEE\Modules\ParentModule\ParentModule;
 use MEE\Modules\StaticModule\StaticModule;
 
 /**
@@ -40,5 +42,23 @@ class PluginSmokeTest extends WP_UnitTestCase {
 	 */
 	public function test_static_module_class_is_autoloaded(): void {
 		$this->assertTrue( class_exists( StaticModule::class ) );
+	}
+
+	/**
+	 * Verifies ParentModule class is available through Composer autoloading.
+	 *
+	 * @return void
+	 */
+	public function test_parent_module_class_is_autoloaded(): void {
+		$this->assertTrue( class_exists( ParentModule::class ) );
+	}
+
+	/**
+	 * Verifies ChildModule class is available through Composer autoloading.
+	 *
+	 * @return void
+	 */
+	public function test_child_module_class_is_autoloaded(): void {
+		$this->assertTrue( class_exists( ChildModule::class ) );
 	}
 }
