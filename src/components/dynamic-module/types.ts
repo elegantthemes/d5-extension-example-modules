@@ -4,9 +4,21 @@ import {
   FormatBreakpointStateAttr,
   InternalAttrs,
   type Element,
+  type Module,
 } from '@divi/types';
 
+export interface DynamicModuleCssAttr extends Module.Css.AttributeValue {
+  inner?: string;
+  title?: string;
+  postTitle?: string;
+  postItem?: string;
+  postContent?: string;
+}
+
+export type DynamicModuleCssGroupAttr = FormatBreakpointStateAttr<DynamicModuleCssAttr>;
+
 export interface DynamicModuleAttrs extends InternalAttrs {
+  css?: DynamicModuleCssGroupAttr;
   module?: {
     meta?: Element.Meta.Attributes;
     advanced?: {

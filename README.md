@@ -81,7 +81,33 @@ You can find the module conversion process in the `src/components/d4-module` fol
 You can find the module icons in the `src/icons` folder. You can use these icons for module icon. You can also add your own icons in this folder.
 
 ## Tests
-In Divi 5, we always use testing. The `test-config` folder contains the configuration for JavaScript testing. The testing for the module is set up in the `__tests__` folder. We test modules based on `test-cases.json`. Some modules require additional mock data, and this data is stored in the `__mock-data__` folder.
+In Divi 5, we always use testing. The `test-config` folder contains the configuration for JavaScript testing. Module tests live in each module's `__tests__` folder. Some modules require additional mock data, and this data is stored in the `__mock-data__` folder.
+
+### Local test prerequisites
+Tests run locally against your WordPress and Divi installs. Set the following environment variables before running tests:
+
+```bash
+export DIVI_PATH=/absolute/path/to/wp-content/themes/Divi
+export DIVIDIR=$DIVI_PATH/includes/builder-5/visual-builder/build
+export WPDIR=/absolute/path/to/wordpress/root/folder
+```
+
+For PHP tests, copy `tests/php/.env.example` to `tests/php/.env` and update the database and WordPress paths for your environment. PHPUnit bootstraps through Divi's WP test suite using `DIVI_PATH`. WooCommerce must be installed in your local WordPress plugins directory when using Divi's PHPUnit bootstrap.
+
+Build assets before running JavaScript module tests so Divi Visual Builder packages are available:
+
+```bash
+npm run build:all
+composer install
+npm install
+composer test
+npm test
+npm run test:modules
+```
+
+`npm test` runs the EX-01 smoke test harness. `npm run test:modules` uses the full Divi and WordPress Jest setup for upcoming module tests.
+
+PHPUnit requires a PHP binary with the `mysqli` extension enabled. If `composer test` fails with a missing MySQL extension error, run PHPUnit with a compatible PHP binary such as `php vendor/bin/phpunit`.
 
 ## Available Commands
 Some `npm` commands are available for your development and tests.
@@ -108,7 +134,10 @@ _Note: If you are facing errors for `@divi/*` packages in `npm run install`, run
 It will zip all assets and files without the `src` folder for distribution.
 
 ### `npm run test`
-It will run all tests for the module.
+It will run all JavaScript tests for the module.
+
+### `composer test`
+It will run all PHP tests for the plugin.
 
 
 ## Folder Structure

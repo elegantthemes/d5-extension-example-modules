@@ -45,6 +45,7 @@ export const conversionOutline: ModuleConversionOutline = {
   },
   css: {
     after:         'css.*.after',
+    free_form:     'css.*.freeForm',
     before:        'css.*.before',
     main_element:  'css.*.mainElement',
     content:       'css.*.content',

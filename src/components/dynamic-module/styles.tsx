@@ -3,11 +3,13 @@ import React, { ReactElement } from 'react';
 
 // Divi dependencies.
 import {
+  CssStyle,
   StyleContainer,
   StylesProps,
 } from '@divi/module';
 
 // Local dependencies.
+import metadata from './module.json';
 import { DynamicModuleAttrs } from './types';
 
 /**
@@ -53,6 +55,17 @@ const ModuleStyles = ({
       {elements.style({
         attrName: 'postTitle',
       })}
+
+      {/*
+       * We need to add CssStyle at the very bottom of other components
+       * so that custom css can override module styles till we find a
+       * more elegant solution.
+       */}
+      <CssStyle
+        selector={orderClass}
+        attr={attrs.css}
+        cssFields={metadata.customCssFields}
+      />
     </StyleContainer>
   );
 }

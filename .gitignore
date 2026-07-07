@@ -13,5 +13,7 @@ yarn-error.log*
 .yarnrc.yml
 .env
 
+.phpunit.result.cache
+
 vendor
 modules-json

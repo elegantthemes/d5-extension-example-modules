@@ -1,0 +1,31 @@
+<?php
+/**
+ * DynamicModule::custom_css().
+ *
+ * @package MEE\Modules\DynamicModule
+ * @since ??
+ */
+
+namespace MEE\Modules\DynamicModule\DynamicModuleTrait;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	die( 'Direct access forbidden.' );
+}
+
+trait CustomCssTrait {
+
+	/**
+	 * Custom CSS fields
+	 *
+	 * This function is equivalent of JS `metadata.customCssFields` from
+	 * src/components/dynamic-module/module.json.
+	 *
+	 * A minor difference with the JS const cssFields, this function did not have `label` property on each array item.
+	 *
+	 * @since ??
+	 */
+	public static function custom_css() {
+		return \WP_Block_Type_Registry::get_instance()->get_registered( 'example/dynamic-module' )->customCssFields;
+	}
+
+}

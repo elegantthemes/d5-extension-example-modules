@@ -24,6 +24,7 @@ use MEE\Modules\DynamicModule\DynamicModuleTrait;
  * @since ??
  */
 class DynamicModule implements DependencyInterface {
+	use DynamicModuleTrait\CustomCssTrait;
 	use DynamicModuleTrait\RenderCallbackTrait;
 
 	/**
