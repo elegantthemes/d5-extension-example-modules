@@ -7,6 +7,7 @@ module.exports = {
   preset:     '@wordpress/jest-preset-default',
   testMatch:  [
     '<rootDir>/src/components/static-module/__tests__/module-json.test.ts',
+    '<rootDir>/src/components/d4-module/__tests__/conversion.test.ts',
   ],
   transform: {
     '^.+\\.[jt]sx?$': resolve(__dirname, 'babel-transformer.js'),

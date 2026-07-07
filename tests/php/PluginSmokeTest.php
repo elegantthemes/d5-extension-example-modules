@@ -5,6 +5,7 @@
  * @package D5ExtensionExampleModules\Tests
  */
 
+use MEE\Modules\D4Module\D4Module;
 use MEE\Modules\StaticModule\StaticModule;
 
 /**
@@ -40,5 +41,14 @@ class PluginSmokeTest extends WP_UnitTestCase {
 	 */
 	public function test_static_module_class_is_autoloaded(): void {
 		$this->assertTrue( class_exists( StaticModule::class ) );
+	}
+
+	/**
+	 * Verifies D4Module class is available through Composer autoloading.
+	 *
+	 * @return void
+	 */
+	public function test_d4_module_class_is_autoloaded(): void {
+		$this->assertTrue( class_exists( D4Module::class ) );
 	}
 }
