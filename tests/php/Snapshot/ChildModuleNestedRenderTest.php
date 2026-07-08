@@ -54,6 +54,24 @@ class ChildModuleNestedRenderTest extends DiviWPUnitTest {
 		$this->assertStringContainsString( 'example_child_module', $rendered_html );
 		$this->assertStringContainsString( self::SNAPSHOT_CHILD_TITLE, $rendered_html );
 		$this->assertStringContainsString( self::SNAPSHOT_CHILD_CONTENT, $rendered_html );
-		$this->assertMatchesHtmlSnapshot( $rendered_html );
+		$this->assertMatchesHtmlSnapshot( $this->normalize_nested_child_snapshot_html( $rendered_html ) );
+	}
+
+	/**
+	 * Normalizes environment-specific values for snapshot comparison.
+	 *
+	 * Newer Divi versions add `et_flex_module` to module wrappers; strip it so
+	 * snapshots stay stable across local and reviewer environments.
+	 *
+	 * @param string $rendered_html Raw rendered HTML.
+	 *
+	 * @return string
+	 */
+	private function normalize_nested_child_snapshot_html( string $rendered_html ): string {
+		return preg_replace(
+			'/\set_flex_module(?="|\s)/',
+			'',
+			$rendered_html
+		) ?? $rendered_html;
 	}
 }
