@@ -105,7 +105,7 @@ npm test
 npm run test:modules
 ```
 
-`npm test` runs the smoke test harness plus ParentModule and ChildModule metadata/default-attrs tests. `npm run test:modules` uses the full Divi and WordPress Jest setup for upcoming module tests.
+`npm test` runs the smoke test harness plus module metadata tests (StaticModule, DynamicModule, ParentModule, and ChildModule). `npm run test:modules` uses the full Divi and WordPress Jest setup for upcoming module tests.
 
 PHPUnit requires a PHP binary with the `mysqli` extension enabled. If `composer test` fails with a missing MySQL extension error, run PHPUnit with a compatible PHP binary such as `php vendor/bin/phpunit`.
 

@@ -1,0 +1,76 @@
+{
+  "module": {
+    "meta": {
+      "adminLabel": {
+        "desktop": {
+          "value": "Dynamic Module"
+        }
+      }
+    },
+    "advanced": {
+      "text": {
+        "text": {
+          "desktop": {
+            "value": {
+              "color": "light"
+            }
+          }
+        }
+      }
+    },
+    "decoration": {
+      "spacing": {
+        "desktop": {
+          "value": {
+            "padding": {
+              "top": "30px",
+              "right": "30px",
+              "bottom": "30px",
+              "left": "30px"
+            }
+          }
+        }
+      }
+    }
+  },
+  "title": {
+    "innerContent": {
+      "desktop": {
+        "value": "Dynamic Module Snapshot Title"
+      }
+    },
+    "decoration": {
+      "font": {
+        "font": {
+          "desktop": {
+            "value": {
+              "headingLevel": "h2"
+            }
+          }
+        }
+      }
+    }
+  },
+  "postItems": {
+    "innerContent": {
+      "desktop": {
+        "value": {
+          "postsNumber": "1"
+        }
+      }
+    }
+  },
+  "postTitle": {
+    "decoration": {
+      "font": {
+        "font": {
+          "desktop": {
+            "value": {
+              "headingLevel": "h3"
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -6,6 +6,7 @@
  */
 
 use MEE\Modules\ChildModule\ChildModule;
+use MEE\Modules\DynamicModule\DynamicModule;
 use MEE\Modules\ParentModule\ParentModule;
 use MEE\Modules\StaticModule\StaticModule;
 
@@ -42,6 +43,15 @@ class PluginSmokeTest extends WP_UnitTestCase {
 	 */
 	public function test_static_module_class_is_autoloaded(): void {
 		$this->assertTrue( class_exists( StaticModule::class ) );
+	}
+
+	/**
+	 * Verifies DynamicModule class is available through Composer autoloading.
+	 *
+	 * @return void
+	 */
+	public function test_dynamic_module_class_is_autoloaded(): void {
+		$this->assertTrue( class_exists( DynamicModule::class ) );
 	}
 
 	/**
