@@ -105,7 +105,7 @@ npm test
 npm run test:modules
 ```
 
-`npm test` runs the EX-01 smoke and StaticModule metadata unit tests. `npm run test:modules` runs StaticModule edit snapshot tests with RTL. The full Divi and WordPress Jest setup in `test-config/jest.config.js` is reserved for upcoming module integration tests.
+`npm test` runs the EX-01 smoke test harness plus module metadata unit tests (StaticModule and DynamicModule). `npm run test:modules` runs StaticModule edit snapshot tests with RTL. The full Divi and WordPress Jest setup in `test-config/jest.config.js` is reserved for upcoming module integration tests.
 
 Run `npm run build` before PHP StaticModule registration tests so `modules-json/static-module/` exists locally.
 
