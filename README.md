@@ -107,7 +107,7 @@ npm run test:modules
 
 `npm run build:all` runs both `npm run build` (D5 `modules-json/` output) and `npm run build:divi-4` (Divi 4 Visual Builder assets). Run `npm run build:divi-4` separately when working on the `divi-4/` subtree only.
 
-`npm test` runs the smoke test harness plus D4Module conversion tests. `npm run test:modules` uses the full Divi and WordPress Jest setup for upcoming module tests.
+`npm test` runs the smoke test harness plus module metadata tests (StaticModule and DynamicModule) and D4Module conversion tests. `npm run test:modules` uses the full Divi and WordPress Jest setup for upcoming module tests.
 
 PHPUnit requires a PHP binary with the `mysqli` extension enabled. If `composer test` fails with a missing MySQL extension error, run PHPUnit with a compatible PHP binary such as `php vendor/bin/phpunit`.
 
