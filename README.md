@@ -94,7 +94,7 @@ export WPDIR=/absolute/path/to/wordpress/root/folder
 
 For PHP tests, copy `tests/php/.env.example` to `tests/php/.env` and update the database and WordPress paths for your environment. PHPUnit bootstraps through Divi's WP test suite using `DIVI_PATH`. WooCommerce must be installed in your local WordPress plugins directory when using Divi's PHPUnit bootstrap.
 
-Build assets before running JavaScript module tests so Divi Visual Builder packages are available:
+Build assets before running tests:
 
 ```bash
 npm run build:all
@@ -105,7 +105,9 @@ npm test
 npm run test:modules
 ```
 
-`npm test` runs the EX-01 smoke test harness plus module metadata tests (StaticModule and DynamicModule). `npm run test:modules` uses the full Divi and WordPress Jest setup for upcoming module tests.
+`npm run build:all` runs both `npm run build` (D5 `modules-json/` output) and `npm run build:divi-4` (Divi 4 Visual Builder assets). Run `npm run build:divi-4` separately when working on the `divi-4/` subtree only.
+
+`npm test` runs the smoke test harness plus module metadata tests (StaticModule and DynamicModule) and D4Module conversion tests. `npm run test:modules` uses the full Divi and WordPress Jest setup for upcoming module tests.
 
 PHPUnit requires a PHP binary with the `mysqli` extension enabled. If `composer test` fails with a missing MySQL extension error, run PHPUnit with a compatible PHP binary such as `php vendor/bin/phpunit`.
 
