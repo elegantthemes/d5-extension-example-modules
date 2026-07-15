@@ -10,6 +10,7 @@ module.exports = {
     '<rootDir>/src/components/dynamic-module/__tests__/metadata.test.ts',
     '<rootDir>/src/components/parent-module/__tests__/metadata.test.ts',
     '<rootDir>/src/components/child-module/__tests__/default-attrs.test.ts',
+    '<rootDir>/src/components/d4-module/__tests__/conversion.test.ts',
   ],
   transform: {
     '^.+\\.[jt]sx?$': resolve(__dirname, 'babel-transformer.js'),
