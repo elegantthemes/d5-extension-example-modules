@@ -111,6 +111,117 @@ npm run test:modules
 
 PHPUnit requires a PHP binary with the `mysqli` extension enabled. If `composer test` fails with a missing MySQL extension error, run PHPUnit with a compatible PHP binary such as `php vendor/bin/phpunit`.
 
+### Manual VB testing
+
+Track C **L3** checklists for flows automated tests do not cover: live Visual Builder integration, save/reload persistence, drag-and-resize, and front-end rendering inside a real WordPress + Divi install. Use these steps when you need to verify module behavior manually in the Visual Builder.
+
+#### Prerequisites
+
+- Local WordPress with **Divi 5** active.
+- This plugin cloned or symlinked into `wp-content/plugins/d5-extension-example-modules`.
+- At least **two published posts** in WordPress (required for Dynamic Module checks).
+
+#### Build and activate
+
+Run these commands from the plugin root before opening the Visual Builder:
+
+```bash
+composer install
+npm install
+npm run build:all
+```
+
+`npm run build:all` builds D5 `modules-json/` output and Divi 4 Visual Builder assets. Run `npm run build:divi-4` separately when you change only the `divi-4/` subtree.
+
+Then in WordPress admin:
+
+1. Go to **Plugins**.
+2. Activate **D5 Extension Example: Modules**.
+3. Create or open a test page and launch the **Visual Builder**.
+
+#### Static Module
+
+Module library name: **Static Module** (`example/static-module`).
+
+- [ ] Insert **Static Module** from the module library into the page.
+- [ ] Click the module and open **Content** settings.
+- [ ] Edit the **Summary** field with recognizable text (for example, `Manual VB static summary check`).
+- [ ] Save the page and view the front end.
+- [ ] Confirm the summary appears inside `.example_static_module__summary`.
+- [ ] Confirm **Title** and **Content** fields still render in the module wrapper.
+
+#### Dynamic Module
+
+Module library name: **Dynamic Module** (`example/dynamic-module`).
+
+Requires **published posts**. Draft-only sites will not return post data on the front end.
+
+- [ ] Confirm at least two posts are **Published** (not Draft).
+- [ ] Insert **Dynamic Module** from the module library.
+- [ ] Open **Content** settings and set **Number of posts** to `2` (or fewer than your published count).
+- [ ] Save the page and view the front end.
+- [ ] Confirm `.example_dynamic_module__post-item` elements render for published posts.
+- [ ] Confirm `.example_dynamic_module__post-item-title` shows real post titles (not placeholder lorem text).
+- [ ] Confirm `.example_dynamic_module__post-item-content` shows post excerpt content.
+
+#### Parent Module and Child Module
+
+Module library names: **Parent Module** (`example/parent-module`) and **Child Module** (`example/child-module`).
+
+Focus: **icon inheritance** from parent to child when the child does not define its own icon.
+
+- [ ] Insert **Parent Module** from the module library.
+- [ ] Add a **Child Module** nested inside the parent (not as a sibling section/module).
+- [ ] Select the **Parent Module** and open **Content** → **Icon**.
+- [ ] Set a recognizable parent icon (default is ETmodules `&#x39;` if unchanged).
+- [ ] Select the **Child Module** and open **Content** → **Icon**.
+- [ ] Leave the child icon unset (do not pick a custom child icon).
+- [ ] Confirm the child shows the parent icon in the Visual Builder preview (`.example_child_module__icon.et-pb-icon`).
+- [ ] Save the page and view the front end.
+- [ ] Confirm the child still renders the inherited icon on the front end.
+- [ ] Change only the parent icon, save, and confirm the child icon updates without setting a child icon.
+
+#### Divi 4 Module
+
+Module library name: **Divi 4 Module** (`example/d4-module`). D4 shortcode slug: `d4_module`.
+
+Test **both** paths below: direct D5 insertion and legacy shortcode conversion.
+
+##### Path A — Insert in Divi 5 Visual Builder
+
+- [ ] Insert **Divi 4 Module** from the module library.
+- [ ] Open **Content** settings and set **Title** and **Content**.
+- [ ] Set title **Heading Level** to `H2` in design/font settings.
+- [ ] Confirm the Visual Builder canvas shows a rendered heading and content (not raw JavaScript or broken markup).
+- [ ] Save the page and view the front end.
+- [ ] Confirm the title renders as `<h2 class="example_d4_module_title">` (not a plain `<div>` wrapper).
+- [ ] Confirm content renders inside `.example_d4_module_content`.
+
+##### Path B — Convert legacy `[d4_module]` shortcode
+
+- [ ] Create a test page with a Divi 4 layout that includes the `d4_module` shortcode, for example:
+
+```text
+[d4_module title="D4 converted title" header_level="h2"]D4 converted content for manual VB check.[/d4_module]
+```
+
+- [ ] Open the page in the **Divi 5 Visual Builder** so the shortcode converts to the D5 block.
+- [ ] Confirm the converted module preview renders title and content (not raw JS).
+- [ ] Open module settings and confirm **Title**, **Content**, and heading level mapped correctly.
+- [ ] Save the page and view the front end.
+- [ ] Confirm the front end matches Path A expectations (`<h2 class="example_d4_module_title">` and `.example_d4_module_content`).
+
+#### Related automated tests
+
+| Module | Automated coverage |
+|--------|-------------------|
+| StaticModule | `module-json` metadata smoke test; PHP snapshot render |
+| DynamicModule | Metadata smoke test; PHP snapshot render |
+| ParentModule + ChildModule | Metadata and default-attrs smoke tests; nested FE snapshot; icon inheritance unit test |
+| D4Module | Conversion outline smoke test; PHP conversion + FE heading snapshot |
+
+Run `composer test` and `npm test` after `npm run build:all` for automated L1/L2 coverage.
+
 ## Available Commands
 Some `npm` commands are available for your development and tests.
 
