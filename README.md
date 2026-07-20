@@ -113,7 +113,7 @@ PHPUnit requires a PHP binary with the `mysqli` extension enabled. If `composer 
 
 ### Manual VB testing
 
-Track C **L3** checklists for flows automated tests do not cover: live Visual Builder integration, save/reload persistence, drag-and-resize, and front-end rendering inside a real WordPress + Divi install. Use these steps when you need to verify module behavior manually in the Visual Builder.
+Track C **L3** manual testing for flows automated tests do not cover: live Visual Builder integration, save/reload persistence, and front-end rendering inside a real WordPress + Divi install. The items below describe capabilities you can verify in the Visual Builder — not step-by-step checklists.
 
 #### Prerequisites
 
@@ -139,77 +139,60 @@ Then in WordPress admin:
 2. Activate **D5 Extension Example: Modules**.
 3. Create or open a test page and launch the **Visual Builder**.
 
-#### Static Module
+#### Static Module (`example/static-module`)
 
-Module library name: **Static Module** (`example/static-module`).
+Basic static module with title, summary, content, and image fields. Settings open in the standard module panel and front-end output mirrors Visual Builder edits after save.
 
-- [ ] Insert **Static Module** from the module library into the page.
-- [ ] Click the module and open **Content** settings.
-- [ ] Edit the **Summary** field with recognizable text (for example, `Manual VB static summary check`).
-- [ ] Save the page and view the front end.
-- [ ] Confirm the summary appears inside `.example_static_module__summary`.
-- [ ] Confirm **Title** and **Content** fields still render in the module wrapper.
+What you can do:
 
-#### Dynamic Module
+- Insert **Static Module** from the Add Module dialog
+- Open module settings and edit **Title**, **Summary**, and **Content** in the Content tab
+- See summary, title, and content update in the Visual Builder canvas as you edit
+- Save the page and confirm the summary renders on the front end inside `.example_static_module__summary`
 
-Module library name: **Dynamic Module** (`example/dynamic-module`).
+#### Dynamic Module (`example/dynamic-module`)
 
-Requires **published posts**. Draft-only sites will not return post data on the front end.
+Dynamic post-list module that fetches published posts through the WordPress REST API. Requires at least two **published** posts — draft-only sites will not return post data on the front end.
 
-- [ ] Confirm at least two posts are **Published** (not Draft).
-- [ ] Insert **Dynamic Module** from the module library.
-- [ ] Open **Content** settings and set **Number of posts** to `2` (or fewer than your published count).
-- [ ] Save the page and view the front end.
-- [ ] Confirm `.example_dynamic_module__post-item` elements render for published posts.
-- [ ] Confirm `.example_dynamic_module__post-item-title` shows real post titles (not placeholder lorem text).
-- [ ] Confirm `.example_dynamic_module__post-item-content` shows post excerpt content.
+What you can do:
 
-#### Parent Module and Child Module
+- Insert **Dynamic Module** from the Add Module dialog
+- Set **Number of posts** in Content settings and see the post list update in the Visual Builder
+- Confirm `.example_dynamic_module__post-item-title` shows real published post titles (not placeholder text)
+- Confirm `.example_dynamic_module__post-item-content` shows post excerpt content on the front end after save
 
-Module library names: **Parent Module** (`example/parent-module`) and **Child Module** (`example/child-module`).
+#### Parent Module and Child Module (`example/parent-module` / `example/child-module`)
 
-Focus: **icon inheritance** from parent to child when the child does not define its own icon.
+Parent module that accepts nested child modules. Child modules inherit the parent icon when no child icon is set.
 
-- [ ] Insert **Parent Module** from the module library.
-- [ ] Add a **Child Module** nested inside the parent (not as a sibling section/module).
-- [ ] Select the **Parent Module** and open **Content** → **Icon**.
-- [ ] Set a recognizable parent icon (default is ETmodules `&#x39;` if unchanged).
-- [ ] Select the **Child Module** and open **Content** → **Icon**.
-- [ ] Leave the child icon unset (do not pick a custom child icon).
-- [ ] Confirm the child shows the parent icon in the Visual Builder preview (`.example_child_module__icon.et-pb-icon`).
-- [ ] Save the page and view the front end.
-- [ ] Confirm the child still renders the inherited icon on the front end.
-- [ ] Change only the parent icon, save, and confirm the child icon updates without setting a child icon.
+What you can do:
 
-#### Divi 4 Module
+- Insert **Parent Module** and add a **Child Module** nested inside it (not as a sibling)
+- Set a parent icon in **Content** → **Icon** and see it appear on child items that have no icon of their own
+- Confirm the inherited icon renders in the Visual Builder preview on `.example_child_module__icon.et-pb-icon`
+- Save the page and confirm the inherited icon still renders on the front end
+- Change only the parent icon and see the child icon update without setting a child icon
 
-Module library name: **Divi 4 Module** (`example/d4-module`). D4 shortcode slug: `d4_module`.
+#### Divi 4 Module (`example/d4-module`)
 
-Test **both** paths below: direct D5 insertion and legacy shortcode conversion.
+Module converted from Divi 4 to Divi 5. D4 shortcode slug: `d4_module`. Supports direct insertion in the Visual Builder and conversion from legacy shortcode layouts.
 
-##### Path A — Insert in Divi 5 Visual Builder
+What you can do:
 
-- [ ] Insert **Divi 4 Module** from the module library.
-- [ ] Open **Content** settings and set **Title** and **Content**.
-- [ ] Set title **Heading Level** to `H2` in design/font settings.
-- [ ] Confirm the Visual Builder canvas shows a rendered heading and content (not raw JavaScript or broken markup).
-- [ ] Save the page and view the front end.
-- [ ] Confirm the title renders as `<h2 class="example_d4_module_title">` (not a plain `<div>` wrapper).
-- [ ] Confirm content renders inside `.example_d4_module_content`.
+- Insert **Divi 4 Module** from the Add Module dialog and edit **Title** and **Content** in settings
+- Set the title **Heading Level** (for example, H2) and see a rendered heading in the Visual Builder canvas (not raw JavaScript or broken markup)
+- Save the page and confirm the title renders as `<h2 class="example_d4_module_title">` with content inside `.example_d4_module_content`
+- Open a page that contains a legacy `[d4_module]` shortcode in the Divi 5 Visual Builder and confirm it converts to the D5 block
 
-##### Path B — Convert legacy `[d4_module]` shortcode
-
-- [ ] Create a test page with a Divi 4 layout that includes the `d4_module` shortcode, for example:
+Example shortcode:
 
 ```text
 [d4_module title="D4 converted title" header_level="h2"]D4 converted content for manual VB check.[/d4_module]
 ```
 
-- [ ] Open the page in the **Divi 5 Visual Builder** so the shortcode converts to the D5 block.
-- [ ] Confirm the converted module preview renders title and content (not raw JS).
-- [ ] Open module settings and confirm **Title**, **Content**, and heading level mapped correctly.
-- [ ] Save the page and view the front end.
-- [ ] Confirm the front end matches Path A expectations (`<h2 class="example_d4_module_title">` and `.example_d4_module_content`).
+- Confirm the converted module preview renders title and content in the Visual Builder
+- Confirm converted **Title**, **Content**, and heading level settings are preserved in the module panel
+- Save and confirm the converted module front-end output matches a directly inserted Divi 4 Module
 
 #### Related automated tests
 
