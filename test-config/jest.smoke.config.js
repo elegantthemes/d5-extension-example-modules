@@ -8,6 +8,8 @@ module.exports = {
   testMatch:  [
     '<rootDir>/src/components/static-module/__tests__/metadata.test.ts',
     '<rootDir>/src/components/dynamic-module/__tests__/metadata.test.ts',
+    '<rootDir>/src/components/parent-module/__tests__/metadata.test.ts',
+    '<rootDir>/src/components/child-module/__tests__/default-attrs.test.ts',
     '<rootDir>/src/components/d4-module/__tests__/conversion.test.ts',
   ],
   transform: {
