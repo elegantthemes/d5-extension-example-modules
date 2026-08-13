@@ -28,7 +28,13 @@ module.exports = {
   process(source, file, ...args) {
     if (file.indexOf('/wp-includes/js/dist/') > 0) {
       if (file.match(isWPGlobal)) {
-        const name = source.split('(window.wp = window.wp || {}).')[1].split(' =')[0].trim();
+        const wpGlobalMarker = '(window.wp = window.wp || {}).';
+
+        if (-1 === source.indexOf(wpGlobalMarker)) {
+          return babelJestTransformer.process(source, file, ...args);
+        }
+
+        const name = source.split(wpGlobalMarker)[1].split(' =')[0].trim();
 
         source = source.split('this["wp"]').join('global["wp"]');
 
@@ -48,7 +54,13 @@ module.exports = {
     // TODO: This one will work with unminified code. But after production, we need to recheck.
     if (file.indexOf('/wp-content/themes/Divi/includes/builder-5/visual-builder/build/') > 0) {
       if (file.match(isDiviGlobal)) {
-        const name = source.match(diviModuleName)[1];
+        const diviGlobalMatch = source.match(diviModuleName);
+
+        if ( ! diviGlobalMatch) {
+          return babelJestTransformer.process(source, file, ...args);
+        }
+
+        const name = diviGlobalMatch[1];
         source = source.split('(window.divi = window.divi || {}).').join('(global.divi = global.divi || {}).');
 
         const exporter = `;
