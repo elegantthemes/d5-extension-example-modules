@@ -1,0 +1,48 @@
+{
+  "module": {
+    "meta": {
+      "adminLabel": {
+        "desktop": {
+          "value": "Parent Module"
+        }
+      }
+    },
+    "decoration": {
+      "spacing": {
+        "desktop": {
+          "value": {
+            "padding": {
+              "top": "20px",
+              "right": "20px",
+              "bottom": "20px",
+              "left": "20px"
+            }
+          }
+        }
+      }
+    }
+  },
+  "icon": {
+    "innerContent": {
+      "desktop": {
+        "value": {
+          "unicode": "&#x39;",
+          "type": "divi",
+          "weight": "400"
+        }
+      }
+    },
+    "advanced": {
+      "color": {
+        "desktop": {
+          "value": "#ae16f0"
+        }
+      },
+      "size": {
+        "desktop": {
+          "value": "28px"
+        }
+      }
+    }
+  }
+}

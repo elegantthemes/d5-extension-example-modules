@@ -1,0 +1,50 @@
+{
+  "module": {
+    "meta": {
+      "adminLabel": {
+        "desktop": {
+          "value": "D4 Module"
+        }
+      }
+    },
+    "decoration": {
+      "spacing": {
+        "desktop": {
+          "value": {
+            "padding": {
+              "top": "20px",
+              "right": "20px",
+              "bottom": "20px",
+              "left": "20px"
+            }
+          }
+        }
+      }
+    }
+  },
+  "title": {
+    "innerContent": {
+      "desktop": {
+        "value": "D4 Module Snapshot Title"
+      }
+    },
+    "decoration": {
+      "font": {
+        "font": {
+          "desktop": {
+            "value": {
+              "headingLevel": "h2"
+            }
+          }
+        }
+      }
+    }
+  },
+  "content": {
+    "innerContent": {
+      "desktop": {
+        "value": "D4 module snapshot content for FE heading output."
+      }
+    }
+  }
+}
