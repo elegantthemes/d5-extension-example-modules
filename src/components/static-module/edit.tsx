@@ -1,8 +1,9 @@
 // External Dependencies.
 import React, { ReactElement } from 'react';
+import classnames from 'classnames';
 
 // Divi Dependencies.
-import { ModuleContainer } from '@divi/module';
+import { ChildModulesContainer, ModuleContainer } from '@divi/module';
 
 // Local Dependencies.
 import { StaticModuleEditProps } from './types';
@@ -25,7 +26,18 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
     elements,
     id,
     name,
+    childrenIds,
+    isLooped,
+    loopIndex,
+    canvasId,
   } = props;
+
+  // Layout classes for inner container.
+  const layoutDisplayValue = attrs?.module?.decoration?.layout?.desktop?.value?.display ?? 'flex';
+  const innerClasses         = classnames('example_static_module__inner', {
+    et_flex_module: 'flex' === layoutDisplayValue,
+    et_grid_module: 'grid' === layoutDisplayValue,
+  });
 
   return (
     <ModuleContainer
@@ -36,11 +48,14 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
       stylesComponent={ModuleStyles}
       classnamesFunction={moduleClassnames}
       scriptDataComponent={ModuleScriptData}
+      cssPosition={childrenIds && 0 < childrenIds.length ? 'before' : null}
+      isLooped={isLooped}
+      loopIndex={loopIndex}
     >
       {elements.styleComponents({
         attrName: 'module',
       })}
-      <div className="example_static_module__inner">
+      <div className={innerClasses}>
         <div className="example_static_module__image">
 
           {elements.render({
@@ -64,6 +79,9 @@ export const StaticModuleEdit = (props: StaticModuleEditProps): ReactElement => 
           </div>
         </div>
       </div>
+      {childrenIds && childrenIds.length > 0 && (
+        <ChildModulesContainer ids={childrenIds} isLooped={isLooped} loopIndex={loopIndex} canvasId={canvasId} />
+      )}
     </ModuleContainer>
   );
 };

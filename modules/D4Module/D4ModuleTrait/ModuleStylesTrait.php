@@ -15,7 +15,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 use ET\Builder\FrontEnd\Module\Style;
 use ET\Builder\Packages\Module\Layout\Components\StyleCommon\CommonStyle;
 use ET\Builder\Packages\Module\Options\Css\CssStyle;
-use ET\Builder\Packages\Module\Options\Text\TextStyle;
 
 trait ModuleStylesTrait {
 
@@ -67,13 +66,18 @@ trait ModuleStylesTrait {
 								'disabledOn'               => [
 									'disabledModuleVisibility' => $settings['disabledModuleVisibility'] ?? null,
 								],
+								'advancedStyles'           => [
+									[
+										'componentName' => 'divi/text',
+										'props'         => [
+											// Module root only — .example_d4_module_inner is reserved for Layout flex (see module.json styleProps.layout).
+											'selector'                => $order_class,
+											'attr'                    => $attrs['module']['advanced']['text'] ?? [],
+											'defaultPrintedStyleAttr' => $default_printed_style_attrs['module']['advanced']['text'] ?? [],
+										],
+									],
+								],
 							],
-						]
-					),
-					TextStyle::style(
-						[
-							'selector' => $order_class . ' .example_d4_module_inner',
-							'attr'     => $attrs['module']['advanced']['text'] ?? [],
 						]
 					),
 					// Set the `.example_d4_module_inner` element `position` to `relative` if the background image has parallax enabled.
@@ -88,7 +92,7 @@ trait ModuleStylesTrait {
 									return 'position: relative;';
 								}
 
-								return 'position: relative;';
+								return '';
 							},
 						]
 					),

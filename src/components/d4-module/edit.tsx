@@ -1,15 +1,12 @@
 // External Dependencies.
 import React, { ReactElement } from 'react';
+import classnames from 'classnames';
 
 // Divi Dependencies.
 import {
   ModuleContainer,
-  ElementComponents,
-  DynamicData,
+  ChildModulesContainer,
 } from '@divi/module';
-import {
-  getAttrByMode,
-} from '@divi/module-utils';
 
 // Local Dependencies.
 import { D4ModuleEditProps } from './types';
@@ -32,7 +29,18 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
     id,
     name,
     elements,
+    childrenIds,
+    isLooped,
+    loopIndex,
+    canvasId,
   } = props;
+
+  // Layout classes for inner container.
+  const layoutDisplayValue = attrs?.module?.decoration?.layout?.desktop?.value?.display ?? 'flex';
+  const innerClasses       = classnames('example_d4_module_inner', {
+    et_flex_module: 'flex' === layoutDisplayValue,
+    et_grid_module: 'grid' === layoutDisplayValue,
+  });
 
   return (
     <ModuleContainer
@@ -43,11 +51,14 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
       stylesComponent={ModuleStyles}
       classnamesFunction={moduleClassnames}
       scriptDataComponent={ModuleScriptData}
+      cssPosition={childrenIds && 0 < childrenIds.length ? 'before' : null}
+      isLooped={isLooped}
+      loopIndex={loopIndex}
     >
       {elements.styleComponents({
         attrName: 'module',
       })}
-      <div className="example_d4_module_inner">
+      <div className={innerClasses}>
         {elements.render({
           attrName: 'title',
         })}
@@ -55,6 +66,9 @@ const D4ModuleEdit = (props: D4ModuleEditProps): ReactElement => {
           attrName: 'content',
         })}
       </div>
+      {childrenIds && childrenIds.length > 0 && (
+        <ChildModulesContainer ids={childrenIds} isLooped={isLooped} loopIndex={loopIndex} canvasId={canvasId} />
+      )}
     </ModuleContainer>
   );
 }

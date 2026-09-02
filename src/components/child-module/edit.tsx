@@ -23,11 +23,11 @@ import parentMetadata from '../parent-module/module.json';
 /**
  * Child Module edit component of visual builder.
  *
- * @since ??
+ * Uses a neutral `div` root because Parent may nest any module type. If your parent is `ul`-only
+ * with a single child type, you can use `tag="li"` here instead (see parent README / `index.ts` JSDoc).
  *
- * @param {ChildModuleEditProps} props React component props.
- *
- * @returns {ReactElement}
+ * @param {ChildModuleEditProps} props Component props.
+ * @returns Visual builder edit tree.
  */
 export const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
   const {
@@ -55,7 +55,7 @@ export const ChildModuleEdit = (props: ChildModuleEditProps): ReactElement => {
       name={name}
       stylesComponent={ModuleStyles}
       classnamesFunction={moduleClassnames}
-      tag="li"
+      tag="div"
     >
       {elements.styleComponents({
         attrName: 'module',

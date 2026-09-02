@@ -46,9 +46,10 @@ trait ModuleStylesTrait {
 	 * }
 	 */
 	public static function module_styles( $args ) {
-		$attrs    = $args['attrs'] ?? [];
-		$elements = $args['elements'];
-		$settings = $args['settings'] ?? [];
+		$attrs                       = $args['attrs'] ?? [];
+		$elements                    = $args['elements'];
+		$settings                    = $args['settings'] ?? [];
+		$default_printed_style_attrs = $args['defaultPrintedStyleAttrs'] ?? [];
 
 		Style::add(
 			[
@@ -62,18 +63,21 @@ trait ModuleStylesTrait {
 						[
 							'attrName'   => 'module',
 							'styleProps' => [
-								'disabledOn'     => [
+								'defaultPrintedStyleAttrs' => $default_printed_style_attrs['module']['decoration'] ?? [],
+								'disabledOn'               => [
 									'disabledModuleVisibility' => $settings['disabledModuleVisibility'] ?? null,
 								],
-								'advancedStyles' => [
+								'advancedStyles'           => [
 									[
 										'componentName' => 'divi/text',
 										'props'         => [
-											'selector' => "{$args['orderClass']} .example_static_module__content-container",
-											'attr'     => $attrs['module']['advanced']['text'] ?? [],
-										]
-									]
-								]
+											// Module root only — __inner is reserved for Layout flex (see module.json styleProps.layout).
+											'selector'                => $args['orderClass'],
+											'attr'                    => $attrs['module']['advanced']['text'] ?? [],
+											'defaultPrintedStyleAttr' => $default_printed_style_attrs['module']['advanced']['text'] ?? [],
+										],
+									],
+								],
 							],
 						]
 					),

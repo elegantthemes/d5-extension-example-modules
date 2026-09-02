@@ -7,10 +7,16 @@
   "moduleClassName": "example_d4_module",
   "moduleOrderClassName": "example_d4_module",
   "category": "module",
+  "childrenName": [],
   "attributes": {
     "module": {
       "type": "object",
       "selector": "{{selector}}",
+      "styleProps": {
+        "layout": {
+          "selector": "{{selector}} .example_d4_module_inner"
+        }
+      },
       "default": {
         "meta": {
           "adminLabel": {
@@ -25,11 +31,14 @@
           "adminLabel": {}
         },
         "advanced": {
+          "elements": {},
+          "html": {},
           "link": {},
           "text": {},
           "htmlAttributes": {}
         },
         "decoration": {
+          "layout": {},
           "background": {},
           "bodyFont": {},
           "sizing": {},

@@ -3,6 +3,7 @@ import {
   moduleD4,
   moduleDynamic,
   moduleParent,
+  moduleSettingsDemo,
   moduleStatic,
 } from './icons';
 
@@ -10,9 +11,10 @@ import {
 addFilter('divi.iconLibrary.icon.map', 'extensionExample', (icons) => {
   return {
     ...icons, // This is important. Without this, all other icons will be overwritten.
-    [moduleParent.name]:  moduleParent,
-    [moduleStatic.name]:  moduleStatic,
+    [moduleParent.name]: moduleParent,
+    [moduleStatic.name]: moduleStatic,
     [moduleDynamic.name]: moduleDynamic,
-    [moduleD4.name]:      moduleD4,
+    [moduleD4.name]: moduleD4,
+    [moduleSettingsDemo.name]: moduleSettingsDemo,
   };
 });

@@ -1,3 +1,5 @@
-.entry-content ul.example_parent_module {
+// Legacy `ul` list parent; neutral `div` wrapper when children are mixed module types.
+.entry-content ul.example_parent_module,
+.entry-content .example_parent_module {
   list-style: none;
 }

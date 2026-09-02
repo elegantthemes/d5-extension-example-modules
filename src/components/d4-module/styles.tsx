@@ -7,10 +7,9 @@ import {
   StylesProps,
   CssStyle,
   CommonStyle,
-  TextStyle,
 } from '@divi/module';
 
-import { 
+import {
   type Element,
 } from '@divi/types';
 
@@ -23,7 +22,7 @@ import { cssFields } from './custom-css';
  *
  * @since ??
  */
- const ModuleStyles = ({
+const ModuleStyles = ({
   attrs,
   settings,
   orderClass,
@@ -31,28 +30,37 @@ import { cssFields } from './custom-css';
   state,
   noStyleTag,
   elements,
+  defaultPrintedStyleAttrs,
 }: StylesProps<D4ModuleAttrs>): ReactElement => {
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
       {elements.style({
         attrName: 'module',
         styleProps: {
+          defaultPrintedStyleAttrs: defaultPrintedStyleAttrs?.module?.decoration,
           disabledOn: {
             disabledModuleVisibility: settings?.disabledModuleVisibility,
           },
+          advancedStyles: [
+            {
+              componentName: 'divi/text',
+              props: {
+                // Module root only — .example_d4_module_inner is reserved for Layout flex (see module.json styleProps.layout).
+                selector: orderClass,
+                attr: attrs?.module?.advanced?.text,
+                defaultPrintedStyleAttr: defaultPrintedStyleAttrs?.module?.advanced?.text,
+              },
+            },
+          ],
         },
       })}
-      <TextStyle
-        selector={`${orderClass} .example_d4_module_inner`}
-        attr={attrs?.module?.advanced?.text}
-      />
       {
         // Set the `.example_d4_module_inner` element `position` to `relative` if the background image has parallax enabled.
       }
       <CommonStyle
         selector={`${orderClass} .example_d4_module_inner`}
         attr={attrs?.module?.decoration?.background}
-        declarationFunction={({attrValue}:{attrValue:Element.Decoration.Background.AttributeValue}) => {
+        declarationFunction={({ attrValue }: { attrValue: Element.Decoration.Background.AttributeValue }) => {
           if ('on' === attrValue?.image?.parallax?.enabled) {
             return 'position: relative;';
           }
@@ -73,7 +81,7 @@ import { cssFields } from './custom-css';
       />
     </StyleContainer>
   );
-}
+};
 
 export {
   ModuleStyles,

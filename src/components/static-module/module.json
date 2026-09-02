@@ -7,6 +7,7 @@
   "moduleClassName": "example_static_module",
   "moduleOrderClassName": "example_static_module",
   "category": "module",
+  "childrenName": [],
   "attributes": {
     "module": {
       "type": "object",
@@ -14,6 +15,9 @@
       "styleProps": {
         "border": {
           "important": true
+        },
+        "layout": {
+          "selector": "{{selector}} .example_static_module__inner"
         }
       },
       "settings": {
@@ -21,11 +25,14 @@
           "adminLabel": {}
         },
         "advanced": {
+          "elements": {},
+          "html": {},
           "link": {},
           "text": {},
           "htmlAttributes": {}
         },
         "decoration": {
+          "layout": {},
           "attributes": {},
           "background": {},
           "sizing": {},

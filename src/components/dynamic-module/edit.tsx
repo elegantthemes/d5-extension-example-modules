@@ -1,17 +1,19 @@
 // External Dependencies.
 import React, { ReactElement, useEffect, useRef } from 'react';
+import classnames from 'classnames';
+import { map } from 'lodash';
 
 // Divi Dependencies.
 import {
   ModuleContainer,
   ElementComponents,
+  ChildModulesContainer,
 } from '@divi/module';
 import { useFetch } from '@divi/rest';
 
 // Local Dependencies.
 import { DynamicModuleEditProps } from './types';
 import { ModuleStyles } from './styles';
-import { map } from 'lodash';
 import { __ } from '@wordpress/i18n';
 import { ModuleScriptData } from './module-script-data';
 import { moduleClassnames } from './module-classnames';
@@ -31,6 +33,10 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
     id,
     name,
     elements,
+    childrenIds,
+    isLooped,
+    loopIndex,
+    canvasId,
   } = props;
 
   const {
@@ -70,6 +76,13 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
     };
   }, [postsNumber]);
 
+  // Layout classes for inner container.
+  const layoutDisplayValue = attrs?.module?.decoration?.layout?.desktop?.value?.display ?? 'flex';
+  const innerClasses       = classnames('example_dynamic_module__inner', {
+    et_flex_module: 'flex' === layoutDisplayValue,
+    et_grid_module: 'grid' === layoutDisplayValue,
+  });
+
   return (
     <ModuleContainer
       attrs={attrs}
@@ -79,6 +92,9 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
       stylesComponent={ModuleStyles}
       classnamesFunction={moduleClassnames}
       scriptDataComponent={ModuleScriptData}
+      cssPosition={childrenIds && 0 < childrenIds.length ? 'before' : null}
+      isLooped={isLooped}
+      loopIndex={loopIndex}
     >
       {elements.styleComponents({
         attrName: 'module',
@@ -90,7 +106,7 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
               attrs={attrs?.module?.decoration ?? {}}
               id={id}
             />
-            <div className="example_dynamic_module__inner">
+            <div className={innerClasses}>
               {elements.render({
                 attrName: 'title',
               })}
@@ -121,6 +137,9 @@ const DynamicModuleEdit = (props: DynamicModuleEditProps): ReactElement => {
           <div>{__('Loading...', 'd5-extension-example-modules')}</div>
         )
       }
+      {childrenIds && childrenIds.length > 0 && (
+        <ChildModulesContainer ids={childrenIds} isLooped={isLooped} loopIndex={loopIndex} canvasId={canvasId} />
+      )}
     </ModuleContainer>
   );
 }

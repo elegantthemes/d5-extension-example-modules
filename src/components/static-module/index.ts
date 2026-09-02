@@ -1,4 +1,5 @@
 // Divi dependencies.
+import { elementsCallbacks } from '@divi/module-utils';
 import {
   type Metadata,
   type ModuleLibrary,
@@ -24,5 +25,10 @@ export const staticModule: ModuleLibrary.Module.RegisterDefinition<StaticModuleA
   placeholderContent,
   renderers: {
     edit: StaticModuleEdit,
+  },
+  callbacks: {
+    content: {
+      elements: elementsCallbacks,
+    },
   },
 };

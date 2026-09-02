@@ -25,24 +25,28 @@ const ModuleStyles = ({
   elements,
   attrs,
   orderClass,
+  defaultPrintedStyleAttrs,
 }: StylesProps<DynamicModuleAttrs>): ReactElement => {
   return (
     <StyleContainer mode={mode} state={state} noStyleTag={noStyleTag}>
       {elements.style({
         attrName: 'module',
         styleProps: {
+          defaultPrintedStyleAttrs: defaultPrintedStyleAttrs?.module?.decoration,
           disabledOn: {
             disabledModuleVisibility: settings?.disabledModuleVisibility,
           },
           advancedStyles: [
             {
-              componentName: "divi/text",
+              componentName: 'divi/text',
               props: {
-                selector: `${orderClass} .example_dynamic_module__inner`,
+                // Module root only — __inner is reserved for Layout flex (see module.json styleProps.layout).
+                selector: orderClass,
                 attr: attrs?.module?.advanced?.text,
-              }
-            }
-          ]
+                defaultPrintedStyleAttr: defaultPrintedStyleAttrs?.module?.advanced?.text,
+              },
+            },
+          ],
         },
       })}
       {elements.style({

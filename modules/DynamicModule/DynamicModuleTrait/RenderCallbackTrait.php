@@ -14,11 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // phpcs:disable ET.Sniffs.ValidVariableName.UsedPropertyNotSnakeCase -- WP use snakeCase in \WP_Block_Parser_Block
 
-use ET\Builder\Packages\Module\Module;
 use ET\Builder\FrontEnd\BlockParser\BlockParserStore;
 use ET\Builder\Framework\Utility\HTMLUtility;
-use ET\Builder\Packages\Module\Layout\Components\ModuleElements\ModuleElements;
-use ET\Builder\Packages\Module\Options\Element\ElementComponents;
+use ET\Builder\Packages\Module\Module;
+use ET\Builder\Packages\ModuleUtils\ChildrenUtils;
 
 trait RenderCallbackTrait {
 	use ModuleClassnamesTrait;
@@ -30,25 +29,24 @@ trait RenderCallbackTrait {
 	 *
 	 * @since ??
 	 *
-	 * @param array          $attrs    Block attributes that were saved by VB.
-	 * @param string         $content  Block content.
-	 * @param \WP_Block      $block    Parsed block object that being rendered.
-	 * @param ModuleElements $elements ModuleElements instance.
+	 * @param array          $attrs                       Block attributes that were saved by VB.
+	 * @param string         $content                     Rendered inner blocks (Elements children).
+	 * @param \WP_Block      $block                       Parsed block object that being rendered.
+	 * @param \ET\Builder\Packages\Module\Layout\Components\ModuleElements\ModuleElements $elements ModuleElements instance.
+	 * @param array          $_default_printed_style_attrs Optional. Passed by ModuleRegistration.
 	 *
 	 * @return string HTML rendered of Dynamic module.
 	 */
-	public static function render_callback( $attrs, $content, $block, $elements ) {
+	public static function render_callback( $attrs, $content, $block, $elements, $_default_printed_style_attrs = [] ) {
+		// Extract child module IDs from the block's innerBlocks.
+		$children_ids = ChildrenUtils::extract_children_ids( $block );
+
 		$post_heading_level = $attrs['postTitle']['decoration']['font']['font']['desktop']['value']['headingLevel'];
 		$posts_per_page     = $attrs['postItems']['innerContent']['desktop']['value']['postsNumber'];
 
-		$background_component = ElementComponents::component(
+		$module_styles_markup = $elements->style_components(
 			[
-				'attrs'         => $attrs['module']['decoration'] ?? [],
-				'id'            => $block->parsed_block['id'],
-
-				// FE only.
-				'orderIndex'    => $block->parsed_block['orderIndex'],
-				'storeInstance' => $block->parsed_block['storeInstance'],
+				'attrName' => 'module',
 			]
 		);
 
@@ -146,6 +144,16 @@ trait RenderCallbackTrait {
 		$parent       = BlockParserStore::get_parent( $block->parsed_block['id'], $block->parsed_block['storeInstance'] );
 		$parent_attrs = $parent->attrs ?? [];
 
+		// Layout classes for inner container.
+		$layout_display_value = $attrs['module']['decoration']['layout']['desktop']['value']['display'] ?? 'flex';
+		$inner_classes        = HTMLUtility::classnames(
+			'example_dynamic_module__inner',
+			[
+				'et_flex_module' => 'flex' === $layout_display_value,
+				'et_grid_module' => 'grid' === $layout_display_value,
+			]
+		);
+
 		return Module::render(
 			[
 				// FE only.
@@ -164,13 +172,14 @@ trait RenderCallbackTrait {
 				'parentAttrs'         => $parent_attrs,
 				'parentId'            => $parent->id ?? '',
 				'parentName'          => $parent->blockName ?? '',
+				'childrenIds'         => $children_ids,
 				'children'            => [
-					$background_component,
+					$module_styles_markup,
 					HTMLUtility::render(
 						[
 							'tag'               => 'div',
 							'attributes'        => [
-								'class' => 'example_dynamic_module__inner',
+								'class' => $inner_classes,
 							],
 							'childrenSanitizer' => 'et_core_esc_previously',
 							'children'          => [
@@ -179,6 +188,7 @@ trait RenderCallbackTrait {
 							],
 						]
 					),
+					$content,
 				],
 			]
 		);
